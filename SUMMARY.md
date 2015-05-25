@@ -12,5 +12,6 @@
     - [coolie.json](./begin/coolie.json.md)
     - [hello world](./begin/hello-world.md)
 - [进阶](./advance/readme.md)
-- [开发](./develop/readme.md)
+- [贡献](./contribute/readme.md)
+- [文章](./articles/readme.md)
 - [鸣谢](./thanks/readme.md)
