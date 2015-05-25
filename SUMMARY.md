@@ -1,6 +1,7 @@
 - [介绍](./introduction/readme.md)
     - [什么是 coolie](./introduction/what-is-coolie.md)
     - [coolie.js](./introduction/coolie.js.md)
+    - [coolie-config.js](./introduction/coolie-config.js.md)
     - [coolie.ci](./introduction/coolie.cli.md)
     - [模块化开发](./introduction/coolie.cli.md)
     - [前端构建](./introduction/coolie.cli.md)
