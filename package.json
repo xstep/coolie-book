@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "description": "coolie-book",
-  "scripts": {},
+  "scripts": {
+    "publish": "gitbook build ./ ./webroot && git add webroot/* && git commit -am 'publish'"
+  },
   "preferGlobal": false,
   "bin": {},
   "engines": {
