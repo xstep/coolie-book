@@ -10,7 +10,7 @@
     - [优势](./introduction/advantage.md)
 - [入门](./begin/readme.md)
     - [安装](./begin/install.md)
-    - [命令](./begin/comman.md)
+    - [命令](./begin/command.md)
     - [coolie-configs.js](./begin/coolie-config.js.md)
     - [coolie.json](./begin/coolie.json.md)
     - [hello world](./begin/hello-world.md)
