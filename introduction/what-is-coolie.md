@@ -17,3 +17,7 @@ coolie 是一个中英文同音、同义一个词，义指苦力。在前端开�
 ## 地址
 - **coolie.js**：<https://github.com/cloudcome/coolie>
 - **coolie.cli**：<https://www.npmjs.com/package/coolie>
+
+
+{% include "../_include/cnzz.md" %}
+

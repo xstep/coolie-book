@@ -32,3 +32,7 @@ html 文件泛指模板文件。见图：
 ## 总结
 
 以上只是简单举例，其实 coolie 做的事情比这多的多。
+
+{% include "../_include/cnzz.md" %}
+
+
