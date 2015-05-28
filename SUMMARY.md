@@ -11,6 +11,7 @@
 - [入门](./begin/readme.md)
     - [安装](./begin/install.md)
     - [命令](./begin/command.md)
+    - [路径](./begin/path.md)
     - [coolie-configs.js](./begin/coolie-config.js.md)
     - [coolie.json](./begin/coolie.json.md)
     - [hello world](./begin/hello-world.md)
