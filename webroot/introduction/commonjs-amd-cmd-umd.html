@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="1.3" data-basepath=".." data-revision="Thu May 28 2015 21:12:32 GMT+0800 (CST)">
+    <div class="book" data-level="1.3" data-basepath=".." data-revision="Thu May 28 2015 21:33:47 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -488,32 +488,36 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="commonjs%E3%80%81amd%E3%80%81cmd%E3%80%81umd">commonjs&#x3001;amd&#x3001;cmd&#x3001;umd</h1>
-<p>&#x5728;&#x6A21;&#x5757;&#x5316;&#x89C4;&#x8303;&#x63D0;&#x51FA;&#x7684;&#x5E74;&#x4EE3;&#xFF0C;&#x5F88;&#x591A;&#x89C4;&#x8303;&#x5E94;&#x8FD0;&#x800C;&#x751F;&#xFF0C;&#x6807;&#x9898;&#x663E;&#x793A;&#x7684;&#x5C31;&#x6709;&#x56DB;&#x79CD;&#xFF0C;&#x4E5F;&#x662F;&#x76EE;&#x524D;&#x4E3B;&#x6D41;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x9010;&#x4E00;&#x4ECB;&#x7ECD;&#x3002;</p>
-<h2 id="commonjs">commonjs</h2>
+                        <p>&#x5728;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x89C4;&#x8303;&#x63D0;&#x51FA;&#x7684;&#x5E74;&#x4EE3;&#xFF0C;&#x5F88;&#x591A;&#x89C4;&#x8303;&#x5E94;&#x8FD0;&#x800C;&#x751F;&#xFF0C;&#x6807;&#x9898;&#x663E;&#x793A;&#x7684;&#x5C31;&#x6709;&#x56DB;&#x79CD;&#xFF0C;&#x4E5F;&#x662F;&#x76EE;&#x524D;&#x4E3B;&#x6D41;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x9010;&#x4E00;&#x4ECB;&#x7ECD;&#x3002;</p>
+<h1 id="commonjs">commonJS</h1>
 <p>&#x8FD0;&#x884C;&#x5728; node &#x7AEF;&#x3002;</p>
 <pre><code>var fs = require(&apos;fs&apos;);
 
 fs.readFile(&apos;file.md&apos;);
-</code></pre><p>&#x4EE5;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x9075;&#x5FAA;&#x4E86; commonjs &#x89C4;&#x8303;&#x7684; nodejs &#x4EE3;&#x7801;&#x3002;</p>
-<h2 id="amd">amd</h2>
-<p>&#x4E0E; commonjs &#x89C4;&#x8303;&#x7C7B;&#x4F3C;&#xFF0C;&#x8FD0;&#x884C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x3002;</p>
+</code></pre><p>&#x4EE5;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x9075;&#x5FAA;&#x4E86; commonJS &#x89C4;&#x8303;&#x7684; nodejs &#x4EE3;&#x7801;&#x3002;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x53EF;&#x4EE5;&#x52A0;&#x6A21;&#x5757;&#x53D1;&#x5E03;&#x5230; 
+<a href="https://npmjs.com/" target="_blank">npm</a> &#x4E0A;&#xFF0C;
+&#x4FBF;&#x4E8E;&#x7BA1;&#x7406;&#x3001;&#x5F00;&#x6E90;&#x548C;&#x4F7F;&#x7528;&#xFF0C;&#x540C;&#x65F6; npm &#x4E5F;&#x505A;&#x597D;&#x4E86;&#x6BD4;&#x8F83;&#x89C4;&#x77E9;&#x7684;&#x7248;&#x672C;&#x7BA1;&#x7406;&#xFF0C;&#x7B97;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x5B8C;&#x7F8E;&#x7684;&#x6A21;&#x5757;&#x5316;&#x5F00;&#x53D1;&#x65B9;&#x5F0F;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x9700;&#x8981;&#x4F60;&#x7528;&#x8FC7; nodejs&#xFF0C;
+&#x90A3;&#x4E48;&#x4F60;&#x5BF9;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x7684;&#x8981;&#x6C42;&#x5C06;&#x4F1A;&#x66F4;&#x52A0;&#x5F3A;&#x70C8;&#x3002;</p>
+<h1 id="amd">AMD</h1>
+<p>&#x8FD0;&#x884C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#xFF0C;&#x4F7F;&#x7528;<code>define</code>&#x5305;&#x88C5;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x6307;&#x5B9A;&#x5F53;&#x524D;&#x6A21;&#x5757;&#x7684;ID&#x548C;&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;&#x6570;&#x7EC4;&#xFF0C;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x3002;</p>
 <pre><code>define(&apos;index.js&apos;, [
     &apos;./xhr.js&apos;
 ], function(xhr){
     xhr.ajax(...);
 });
 </code></pre><p>&#x4EE5;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x9075;&#x5FAA;&#x4E86; AMD &#x89C4;&#x8303;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4EE3;&#x7801;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x6307;&#x5B9A;&#x6A21;&#x5757;&#x7684;&#x540D;&#x5B57;&#x548C;&#x4F9D;&#x8D56;&#x3002;</p>
-<h2 id="cmd">cmd</h2>
-<p>cmd &#x662F; amd &#x548C; commonjs &#x7684;&#x4E00;&#x4E2A;&#x53D8;&#x79CD;&#xFF0C;&#x4E5F;&#x662F;&#x8FD0;&#x884C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x3002;</p>
+<h1 id="cmd">CMD</h1>
+<p>CMD &#x662F; AMD &#x548C; commonJS &#x7684;&#x4E00;&#x4E2A;&#x53D8;&#x79CD;&#xFF0C;&#x4E5F;&#x662F;&#x8FD0;&#x884C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x3002;</p>
 <pre><code>define(function(require, exports, module){
     var xhr = require(&apos;./xhr.js&apos;);
 
     xhr.ajax(...);
 });
-</code></pre><p>&#x4E0E; amd &#x89C4;&#x8303;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x65E0;&#x987B;&#x624B;&#x52A8;&#x6307;&#x5B9A;&#x6A21;&#x5757;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x66F4;&#x4E13;&#x6CE8;&#x4E8E;&#x5F00;&#x53D1;&#x53CA;&#x4F9D;&#x8D56;&#x3002;</p>
-<h2 id="umd">umd</h2>
-<p>&#x6B63;&#x56E0;&#x4E3A;&#xFF0C;&#x51FA;&#x73B0;&#x4E86; amd&#x3001;cmd&#x3001;commonjs&#x3001;global/window &#x7B49;&#x591A;&#x4E2A;&#x89C4;&#x8303;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5BF9;&#x4E24;&#x8005;&#x505A;&#x51FA;&#x4E00;&#x4E9B;&#x517C;&#x5BB9;&#xFF0C;umd &#x89C4;&#x8303;&#x8BDE;&#x751F;&#x4E86;&#x3002;</p>
+</code></pre><p>&#x76F8;&#x6BD4;&#x8F83; AMD &#x89C4;&#x8303;&#x6765;&#x8BF4;&#xFF0C;CMD &#x6765;&#x7684;&#x7B80;&#x5355;&#x8F7B;&#x5DE7;&#xFF0C;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x4E5F;&#x975E;&#x5E38;&#x660E;&#x4E86;&#xFF0C;
+&#x800C;&#x52A0;&#x4E0A; define &#x5305;&#x88C5;&#x4E5F;&#x548C; nodejs &#x7AEF;&#x7684;&#x4EE3;&#x7801;&#x5F62;&#x6210;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x533A;&#x5206;&#x3002;</p>
+<p>coolie.js&#xFF08;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#xFF09; &#x4F7F;&#x7528;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x89C4;&#x8303;&#xFF0C;&#x5B83;&#x7684;&#x8F7B;&#x76C8;&#x4F7F;&#x4F60;&#x7684;&#x7F16;&#x5199;&#x66F4;&#x52A0;&#x987A;&#x7545;&#x3001;&#x81EA;&#x7531;&#xFF0C;&#x65E0;&#x987B;&#x4E3A;&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;&#x4F24;&#x8111;&#x7B4B;&#x3002;</p>
+<h1 id="umd">umd</h1>
+<p>&#x6B63;&#x56E0;&#x4E3A;&#xFF0C;&#x51FA;&#x73B0;&#x4E86; AMD&#x3001;CMD&#x3001;commonJS&#x3001;global/window &#x7B49;&#x591A;&#x4E2A;&#x89C4;&#x8303;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5BF9;&#x4E24;&#x8005;&#x505A;&#x51FA;&#x4E00;&#x4E9B;&#x517C;&#x5BB9;&#xFF0C;umd &#x89C4;&#x8303;&#x8BDE;&#x751F;&#x4E86;&#x3002;</p>
 <pre><code>(function (root, factory) {
     if (typeof define === &apos;function&apos; &amp;&amp; define.amd) {
         // AMD
@@ -529,13 +533,14 @@ fs.readFile(&apos;file.md&apos;);
         root.returnExports = factory(root.jQuery);
     }
 }(this, function ($) {
-    //    methods
+    // methods
     function myFunc(){};
 
-    //    exposed public method
+    // exposed public method
     return myFunc;
 }));
-</code></pre><p>&#x4F7F;&#x7528; umd &#x5305;&#x88C5;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x6539;&#x5199;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x5728; node &#x548C; &#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x4EE5;&#x53CA;&#x4F17;&#x591A;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x4E0B;&#xFF0C;&#x5F53;&#x7136;&#x4EE3;&#x7801;&#x4F1A;&#x76F8;&#x5BF9;&#x591A;&#x5F88;&#x591A;&#x3002;</p>
+</code></pre><p>&#x4F7F;&#x7528; UMD &#x5305;&#x88C5;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x6539;&#x5199;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x5728; node &#x548C; &#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x4EE5;&#x53CA;&#x4F17;&#x591A;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x4E0B;&#xFF0C;&#x5F53;&#x7136;&#x4EE3;&#x7801;&#x4F1A;&#x76F8;&#x5BF9;&#x591A;&#x5F88;&#x591A;&#x3002;
+UMD &#x89C4;&#x8303;&#x76F8;&#x5BF9;&#x524D;&#x4E09;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x662F;&#x4E00;&#x79CD;&#x59A5;&#x534F;&#xFF0C;&#x4F46;&#x4E0D;&#x5931;&#x4E3A;&#x662F;&#x4E00;&#x79CD;&#x53D8;&#x901A;&#x3002;&#x5728; JS &#x5B98;&#x65B9;&#x7EC4;&#x7EC7;&#x7684;&#x6A21;&#x5757;&#x5316;&#x89C4;&#x8303;&#x6210;&#x719F;&#x4E4B;&#x524D;&#xFF0C;&#x8FD9;&#x4E5F;&#x8BB8;&#x662F;&#x4E00;&#x79CD;&#x6700;&#x4FDD;&#x5B88;&#x7684;&#x5199;&#x6CD5;&#x3002;</p>
 
                     
                     </section>
