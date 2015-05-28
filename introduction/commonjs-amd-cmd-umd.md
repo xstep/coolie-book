@@ -15,7 +15,7 @@ fs.readFile('file.md');
 
 
 # AMD
-运行在浏览器端，使用`define`包装，需要手动指定当前模块的ID和依赖的模块数组，比较麻烦。
+运行在浏览器端，使用`define`包装。
 ```
 define('index.js', [
     './xhr.js'
@@ -23,7 +23,7 @@ define('index.js', [
     xhr.ajax(...);
 });
 ```
-以上是一个典型的遵循了 AMD 规范的浏览器代码，需要手动指定模块的名字和依赖。
+以上是一个典型的遵循了 AMD 规范的浏览器代码，需要手动指定模块的名字和依赖，非常麻烦。
 
 
 # CMD
@@ -38,11 +38,12 @@ define(function(require, exports, module){
 相比较 AMD 规范来说，CMD 来的简单轻巧，依赖关系也非常明了，
 而加上 define 包装也和 nodejs 端的代码形成了一定的区分。
 
-coolie.js（前端模块加载器） 使用的就是这种规范，它的轻盈使你的编写更加顺畅、自由，无须为模块的定义伤脑筋。
+在开发环境中，coolie.js（前端模块加载器） 使用的就是这种规范，它的轻盈使你的编写更加顺畅、自由，无须为模块的定义伤脑筋。
+而在生产环境中，coolie.cli（前端开发构建工具）将会将模块合并，此时遵循的 AMD 规范。
 
 
 # umd
-正因为，出现了 AMD、CMD、commonJS、global/window 等多个规范，所以需要对两者做出一些兼容，umd 规范诞生了。
+正因为，出现了 AMD、CMD、commonJS、global/window 等多个规范，所以需要对四者做出一些兼容，umd 规范诞生了。
 
 ```
 (function (root, factory) {
