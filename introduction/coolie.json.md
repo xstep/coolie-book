@@ -1,5 +1,8 @@
 # coolie.json
-coolie.json 是 coolie.cli 的配置文件。
+coolie.json 是 coolie.cli 的配置文件，该配置文件仅需要在项目创建之时生成，而在日常的开发过程中无需关心、无需挂念。
+从项目的出生到死亡，它都默默无闻的待在那个角落，做好份内之事。
+
+而如果使用其他构建工具，它的配置文件将会越来越臃肿、越来越难写。
 
 {% include "../_include/cnzz.md" %}
 
