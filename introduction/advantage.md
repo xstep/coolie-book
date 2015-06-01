@@ -1,5 +1,5 @@
 coolie 配套的有模块加载器（coolie.js）和模块构建工具（coolie.cli）两部分，其中模块加载器是可选的。
-当然如果不使用 coolie.js 来作为模块加载器的话，那么就无法构建 JS 模块。
+当然如果不使用 coolie.js 来作为模块加载器的话，那么就无法构建 JS 模块，只能构建 HTML、CSS、静态资源文件。
 
 # 模块加载器优势
 
@@ -7,9 +7,9 @@ coolie 配套的有模块加载器（coolie.js）和模块构建工具（coolie.
 
 模块加载器 | 配置文件 | 兼容性 | 其他亮点
 ---------|---------|-------|--------
-[coolie.js](https://github.com/cloudcome/coolie) | 只有一条配置，极其简单 | IE6+ | 配套的构建工具，生成版本配置
-[seajs](https://github.com/seajs/seajs) | 配置繁杂，包括 base、别名、路径、变量等 | IE6+ | 配套构建工具，详细参考后文的 spm
-[requirejs](https://github.com/jrburke/requirejs) | 配置繁杂，包括 base、别名、路径、变量等 | IE6+ | 配套构建工具，详细参考后文的 r.js
+[coolie.js](https://github.com/cloudcome/coolie) | 只有一条配置，极其简单 | IE6+ | 配套的构建工具，生成版本配置，详细参考下表中的 coolie
+[seajs](https://github.com/seajs/seajs) | 配置繁杂，包括 base、别名、路径、变量等 | IE6+ | 配套构建工具，详细参考下表中的 spm
+[requirejs](https://github.com/jrburke/requirejs) | 配置繁杂，包括 base、别名、路径、变量等 | IE6+ | 配套构建工具，详细参考下表中的 r.js
 
 
 
