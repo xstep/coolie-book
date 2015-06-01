@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>coolie.json | coolie 官方指南</title>
+        <title>路径 | coolie 官方指南</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.2">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="../introduction/modules-development.html" />
+    <link rel="next" href="../begin/coolie-config.js.html" />
     
     
-    <link rel="prev" href="../introduction/coolie.cli.html" />
+    <link rel="prev" href="../begin/command.html" />
     
 
         
@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="1.6" data-basepath=".." data-revision="Mon Jun 01 2015 18:05:45 GMT+0800 (CST)">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="Mon Jun 01 2015 18:05:45 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -157,7 +157,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="introduction/coolie.json.html">
+        <li class="chapter " data-level="1.6" data-path="introduction/coolie.json.html">
             
                 
                     <a href="../introduction/coolie.json.html">
@@ -268,7 +268,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="begin/path.html">
+        <li class="chapter active" data-level="2.3" data-path="begin/path.html">
             
                 
                     <a href="../begin/path.html">
@@ -496,15 +496,32 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="coolie-json">coolie.json</h1>
-<p>coolie.json &#x662F; coolie.cli &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x8BE5;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4EC5;&#x9700;&#x8981;&#x5728;&#x9879;&#x76EE;&#x521B;&#x5EFA;&#x4E4B;&#x65F6;&#x751F;&#x6210;&#xFF0C;&#x800C;&#x5728;&#x65E5;&#x5E38;&#x7684;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x3001;&#x65E0;&#x9700;&#x6302;&#x5FF5;&#x3002;
-&#x4ECE;&#x9879;&#x76EE;&#x7684;&#x51FA;&#x751F;&#x5230;&#x6B7B;&#x4EA1;&#xFF0C;&#x5B83;&#x90FD;&#x9ED8;&#x9ED8;&#x65E0;&#x95FB;&#x7684;&#x5F85;&#x5728;&#x90A3;&#x4E2A;&#x89D2;&#x843D;&#xFF0C;&#x505A;&#x597D;&#x4EFD;&#x5185;&#x4E4B;&#x4E8B;&#x3002;</p>
-<p>&#x800C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5C06;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x81C3;&#x80BF;&#x3001;&#x8D8A;&#x6765;&#x8D8A;&#x96BE;&#x5199;&#x3002;</p>
-<div style="display: none;">
-    <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
-</div>
-
-
+                        <h1 id="%E5%85%A5%E5%8F%A3%E6%A8%A1%E5%9D%97%E8%B7%AF%E5%BE%84%E5%85%B3%E7%B3%BB">&#x5165;&#x53E3;&#x6A21;&#x5757;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;</h1>
+<p>&#x65E0;&#x8BBA;&#x662F;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#xFF08;coolie.js&#xFF09;&#x8FD8;&#x662F;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF08;coolie.cli&#xFF09;&#xFF0C;&#x53C2;&#x8003;&#x8DEF;&#x5F84;&#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;
+coolie &#x7684;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;&#xFF0C;&#x548C; seajs &#x76F8;&#x6BD4;&#x6765;&#x8BF4;&#xFF0C;&#x8981;&#x7B80;&#x5355;&#x5F88;&#x591A;&#xFF0C;&#x7B80;&#x8981;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x5F53;&#x524D;&#x9875;&#x9762;&#x3002;</li>
+<li>&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3002;</li>
+<li>&#x5165;&#x53E3;&#x6A21;&#x5757; base &#x76EE;&#x5F55;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3002;</li>
+<li>&#x5165;&#x53E3;&#x6A21;&#x5757;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E; base &#x76EE;&#x5F55;&#x3002;</li>
+</ul>
+<p>&#x7528;&#x4E00;&#x884C;&#x6587;&#x5B57;&#x6765;&#x8868;&#x793A;&#xFF1A;</p>
+<pre><code>&#x5165;&#x53E3;&#x6A21;&#x5757; =&gt; base =&gt; &#x6A21;&#x5757;&#x914D;&#x7F6E;&#x6587;&#x4EF6; =&gt; &#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;
+</code></pre><h1 id="%E5%BC%95%E7%94%A8%E6%A8%A1%E5%9D%97%E7%9A%84%E8%B7%AF%E5%BE%84%E5%85%B3%E7%B3%BB">&#x5F15;&#x7528;&#x6A21;&#x5757;&#x7684;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;</h1>
+<p>&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x91C7;&#x7528;&#x7684;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;&#x5982;&#xFF1A;</p>
+<pre><code>- app.js
+- lib.js
+</code></pre><p>app.js &#x548C; lib.js &#x662F;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#xFF0C;&#x90A3;&#x4E48; app.js &#x5BF9; lib.js &#x7684;&#x5F15;&#x7528;&#x8DEF;&#x5F84;&#x4E3A;&#xFF1A;</p>
+<pre><code>require(&apos;./lib.js&apos;);
+</code></pre><h1 id="%E5%88%AB%E5%90%8D%E4%B8%8E-shim">&#x522B;&#x540D;&#x4E0E; shim</h1>
+<p>coolie &#x4E0D;&#x652F;&#x6301;&#x4EFB;&#x4F55;&#x7684;&#x522B;&#x540D;&#x548C; shim&#x3002;&#x56E0;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>&#x4FDD;&#x6301;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3001;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x7684;&#x7B80;&#x5355;&#x914D;&#x7F6E;&#x3002;</li>
+<li>&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x8DEF;&#x5F84;&#x957F;&#x5EA6;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x53CD;&#x800C;&#x6709;&#x4E86;&#x522B;&#x540D;&#x4F1A;&#x589E;&#x52A0;&#x8BC6;&#x522B;&#x96BE;&#x5EA6;&#xFF0C;&#x800C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x6765;&#x6807;&#x8BC6;&#x6A21;&#x5757;&#xFF0C;
+&#x5BF9;&#x5F00;&#x53D1;&#x4E5F;&#x4F1A;&#x66F4;&#x52A0;&#x53CB;&#x597D;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x5728; webstorm &#x91CC;&#xFF0C;&#x8FD9;&#x4E2A;&#x540E;&#x6587;&#x4F1A;&#x8BF4;&#x3002;</li>
+<li>&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x518D;&#x600E;&#x4E48;&#x957F;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x6784;&#x5EFA;&#x538B;&#x7F29;&#x6389;&#xFF08;&#x53D8;&#x6210;1&#x4E2A;&#x5B57;&#x7B26;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x914D;&#x7F6E;&#x522B;&#x540D;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x610F;&#x4E49;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E; shim &#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#x624B;&#x52A8;&#x4FEE;&#x6539;&#x4E0B;&#x5373;&#x53EF;&#xFF0C;&#x65E0;&#x975E;&#x5C31;&#x662F;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; define&#xFF0C;&#x7528;&#x914D;&#x7F6E;&#x6765;&#x5B8C;&#x6210;&#xFF0C;&#x65E0;&#x7591;&#x4F1A;&#x589E;&#x52A0;&#x914D;&#x7F6E;&#x6210;&#x672C;&#x548C;&#x6784;&#x5EFA;&#x96BE;&#x5EA6;&#x3002;</li>
+</ul>
 
                     
                     </section>
@@ -515,10 +532,10 @@
         </div>
 
         
-        <a href="../introduction/coolie.cli.html" class="navigation navigation-prev " aria-label="Previous page: coolie.cli"><i class="fa fa-angle-left"></i></a>
+        <a href="../begin/command.html" class="navigation navigation-prev " aria-label="Previous page: 命令"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../introduction/modules-development.html" class="navigation navigation-next " aria-label="Next page: 模块化开发"><i class="fa fa-angle-right"></i></a>
+        <a href="../begin/coolie-config.js.html" class="navigation navigation-next " aria-label="Next page: coolie-configs.js"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
