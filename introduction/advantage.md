@@ -23,7 +23,7 @@ coolie 配套的有模块加载器（coolie.js）和模块构建工具（coolie.
 
 工具 | JS 模块压缩、合并、版本管理 | CSS 文件的合并、压缩、版本管理 | HTML 文件的替换、压缩 | 静态资源的版本管理 | 包管理
 ----|-------------------------|---------------------------|--------------------|-----------------|------
-[coolie](https://www.npmjs.com/package/coolie) | 全面、完整 | 全面、完整 | 全面、完整 | 全面、完整 | 目前支持 coolie.js 和 alien
+[coolie](https://www.npmjs.com/package/coolie) | 全面、完整 | 全面、完整 | 全面、完整 | 全面、完整 | 弱支持
 [webpack](https://www.npmjs.com/package/webpack) | 支持度不够，需要手动指定 | 不支持 | 不支持 | 不支持 | 不支持
 [fis](https://www.npmjs.com/package/fis) | 需要监听构建，配置繁琐 | 需要监听构建，配置繁琐 | 需要监听构建，配置繁琐 | 需要监听构建，配置繁琐 | 不支持
 [spm](https://www.npmjs.com/package/spm) | 需要手动版本管理，配置繁琐 | 不支持 | 不支持 | 不支持 | 弱支持
