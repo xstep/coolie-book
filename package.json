@@ -4,7 +4,8 @@
   "private": true,
   "description": "coolie-book",
   "scripts": {
-    "publish": "rm -r webroot && gitbook build ./ ./webroot && git add webroot/* && git commit -am 'publish'"
+    "publish": "rm -rf webroot && gitbook build ./ ./webroot && git add webroot/* && git commit -am 'publish'",
+    "release": "rm -rf webroot && gitbook build ./ ./webroot && git add webroot/* && git commit -am 'publish' && git push"
   },
   "preferGlobal": false,
   "bin": {},
