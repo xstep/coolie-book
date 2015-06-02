@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.3" data-basepath=".." data-revision="Tue Jun 02 2015 20:46:53 GMT+0800 (CST)">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="Tue Jun 02 2015 21:08:15 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -346,6 +346,72 @@
                 
             
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="global-debug.html">
+            
+                
+                    <a href="../global-debug.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        DEBUG 全局变量
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="attribute-coolie.html">
+            
+                
+                    <a href="../attribute-coolie.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        coolie 属性
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="attribute-coolieignore.html">
+            
+                
+                    <a href="../attribute-coolieignore.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        coolieignore 属性
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="comments.html">
+            
+                
+                    <a href="../comments.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        注释
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="4" data-path="contribute/readme.html">
@@ -504,7 +570,6 @@ coolie &#x7684;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;&#xFF0C;&#x548C; seajs/requireJS 
 <li>&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3002;</li>
 <li>&#x5165;&#x53E3;&#x6A21;&#x5757; base &#x76EE;&#x5F55;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3002;</li>
 <li>&#x5165;&#x53E3;&#x6A21;&#x5757;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E; base &#x76EE;&#x5F55;&#x3002;</li>
-<li>&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5F53;&#x524D;&#x9879;&#x76EE; URL &#x8BBF;&#x95EE;&#x7684;&#x6839;&#x76EE;&#x5F55;&#x3002;</li>
 </ul>
 <p>&#x7528;&#x4E00;&#x884C;&#x6587;&#x5B57;&#x6765;&#x8868;&#x793A;&#xFF1A;</p>
 <pre><code>&#x5165;&#x53E3;&#x6A21;&#x5757; =&gt; base =&gt; &#x6A21;&#x5757;&#x914D;&#x7F6E;&#x6587;&#x4EF6; =&gt; &#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;
@@ -514,6 +579,27 @@ coolie &#x7684;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;&#xFF0C;&#x548C; seajs/requireJS 
 - lib.js
 </code></pre><p>app.js &#x548C; lib.js &#x662F;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#xFF0C;&#x90A3;&#x4E48; app.js &#x5BF9; lib.js &#x7684;&#x5F15;&#x7528;&#x8DEF;&#x5F84;&#x4E3A;&#xFF1A;</p>
 <pre><code>require(&apos;./lib.js&apos;);
+</code></pre><h1 id="%E8%B5%84%E6%BA%90-uri-%E8%B7%AF%E5%BE%84">&#x8D44;&#x6E90; URI &#x8DEF;&#x5F84;</h1>
+<p>&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5F53;&#x524D;&#x9879;&#x76EE; URL &#x8BBF;&#x95EE;&#x7684;&#x6839;&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x5BF9;&#x9879;&#x76EE;&#x91CC;&#x8D44;&#x6E90;&#x7684;&#x5B9A;&#x4F4D;&#x6765;&#x8BF4;&#x3002;</p>
+<pre><code>- webroot
+|-- static
+|   `-- js
+|       |-- app
+|       |   `-- abc.js
+|       |-- coolie.js
+|       `-- coolie-config.js
+`-- views
+    `-- abc.html
+</code></pre><p>abc.html &#x91CC;&#x7684;<code>script</code>&#x6807;&#x7B7E;&#x4E3A;&#xFF1A;</p>
+<pre><code>&lt;script src=&quot;/static/js/coolie.js&quot;
+    data-config=&quot;./coolie-config.js&quot;
+    data-main=&quot;./abc.js&quot;
+&gt;&lt;/script&gt;
+</code></pre><p>&#x5176;&#x4E2D; coolie-config.js&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E; coolie.min.js&#xFF0C;&#x7528;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x6765;&#x5199;&#x7684;&#x8BDD;&#x4E0A;&#x8FF0;&#x5185;&#x5BB9;&#x57FA;&#x672C;&#x662F;&#x4E0D;&#x53D8;&#x7684;&#x3002;</p>
+<p>coolie-config.js &#x5185;&#x5BB9;&#x4E3A;&#xFF1A;</p>
+<pre><code>coolie.config({
+    &quot;base&quot;: &quot;./app/&quot;
+}).use();
 </code></pre><h1 id="%E5%88%AB%E5%90%8D%E4%B8%8E-shim">&#x522B;&#x540D;&#x4E0E; shim</h1>
 <p>coolie &#x4E0D;&#x652F;&#x6301;&#x4EFB;&#x4F55;&#x7684;&#x522B;&#x540D;&#x548C; shim&#x3002;&#x56E0;&#x4E3A;&#xFF1A;</p>
 <ul>
