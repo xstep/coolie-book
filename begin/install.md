@@ -13,7 +13,7 @@ npm install -g coolie
 ➜ coolie
 
             ╔═══════════════════════════════════════════════════════╗
-            ║          coolie.cli@0.16.20                           ║
+            ║          coolie.cli@0.16.24                           ║
             ║          The front-end development builder.           ║
             ╚═══════════════════════════════════════════════════════╝
 

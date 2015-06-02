@@ -116,6 +116,14 @@ coolie build [path]  => 在指定目录根据`coolie.json`配置文件执行构�
 ```
 如上，`1/2`表示对话询问进度，`1`表示第一步，`2`表示一共有两步。
 
+如上生成的文件内容为：
+```
+coolie.config({
+    "base": "./app/"
+}).use();
+```
+关于各个参数的解释，[后文会详细说到](./coolie-config.js.md)。
+
 
 # coolie json [path]
 在指定目录生成`coolie.json`（前端构建工具的配置文件），默认为当前工作目录。
@@ -178,6 +186,38 @@ coolie build [path]  => 在指定目录根据`coolie.json`配置文件执行构�
 
                   √  => /path/to/coolie.json
 ```
+如上生成的内容为：
+```
+{
+  "js": {
+    "src": [
+      "./static/js/app/**/*.js"
+    ],
+    "coolie-config.js": "./static/js/coolie-config.js"
+  },
+  "css": {
+    "dest": "./static/css/",
+    "minify": {
+      "compatibility": "ie7"
+    }
+  },
+  "html": {
+    "src": [
+      "./views/**/*.html"
+    ],
+    "minify": true
+  },
+  "resource": {
+    "dest": "./static/res/"
+  },
+  "copy": [],
+  "dest": {
+    "dirname": "../dest/",
+    "host": ""
+  }
+}
+```
+关于各个参数的解释，[后文会详细说到](./coolie.json.md)。
 
 
 # coolie build [path]
@@ -247,6 +287,42 @@ coolie.config({
         "length.js": "5d113baeb803b345fa0bb6e42c9faaa6"
     }
 }).use();
+```
+生成的**relationship-map.json**：
+```
+{
+    "views/area.html": {
+        "css": [
+            {
+                "static/css/255990a3b6b5b76cf3488ffb76157d45.css": [
+                    "static/css/font.css",
+                    "static/css/img.css",
+                    "static/css/style.css"
+                ]
+            }
+        ],
+        "main": "static/js/app/area.js",
+        "deps": [
+            "static/js/utils.js"
+        ]
+    },
+    "views/length.html": {
+        "css": [
+            {
+                "static/css/255990a3b6b5b76cf3488ffb76157d45.css": [
+                    "static/css/font.css",
+                    "static/css/img.css",
+                    "static/css/style.css"
+                ]
+            }
+        ],
+        "main": "static/js/app/length.js",
+        "deps": [
+            "static/js/utils.js",
+            "static/js/utils2.js"
+        ]
+    }
+}
 ```
 
 # 快速上手
