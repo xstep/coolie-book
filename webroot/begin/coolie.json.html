@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.5" data-basepath=".." data-revision="Thu Jun 04 2015 14:14:45 GMT+0800 (CST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Thu Jun 04 2015 14:20:13 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -625,8 +625,36 @@
                         <p><code>coolie.json</code>&#xFF08;&#x524D;&#x7AEF;&#x6784;&#x5EFA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x76F8;&#x5BF9;&#x4E8E;<code>coolie-config.js</code>&#xFF08;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x6765;&#x8BF4;&#x8981;&#x590D;&#x6742;&#x7684;&#x591A;&#xFF0C;
 &#x4E0D;&#x8FC7;&#x4E0D;&#x5FC5;&#x7D27;&#x5F20;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;</p>
 <pre><code>coolie json
-</code></pre><p><a href="webroot/begin/command.md#coolie-json-path">&#x81EA;&#x52A8;&#x751F;&#x6210;</a>&#x3002;</p>
-<p><strong>&#x7533;&#x660E;</strong></p>
+</code></pre><p><a href="command.html">&#x81EA;&#x52A8;&#x751F;&#x6210;</a>&#x3002;</p>
+<pre><code>{
+  &quot;js&quot;: {
+    &quot;src&quot;: [
+      &quot;./static/js/app/**/*.js&quot;
+    ],
+    &quot;coolie-config.js&quot;: &quot;./static/js/coolie-config.js&quot;
+  },
+  &quot;css&quot;: {
+    &quot;dest&quot;: &quot;./static/css/&quot;,
+    &quot;minify&quot;: {
+      &quot;compatibility&quot;: &quot;ie7&quot;
+    }
+  },
+  &quot;html&quot;: {
+    &quot;src&quot;: [
+      &quot;./views/**/*.html&quot;
+    ],
+    &quot;minify&quot;: true
+  },
+  &quot;resource&quot;: {
+    &quot;dest&quot;: &quot;./static/res/&quot;
+  },
+  &quot;copy&quot;: [],
+  &quot;dest&quot;: {
+    &quot;dirname&quot;: &quot;../dest/&quot;,
+    &quot;host&quot;: &quot;&quot;
+  }
+}
+</code></pre><p><strong>&#x7533;&#x660E;</strong></p>
 <ul>
 <li>&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x533A;&#x5206;&#xFF0C;&#x5C06;&#x6784;&#x5EFA;&#x7684;&#x6E90;&#x76EE;&#x5F55;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;&#x5F00;&#x53D1;&#x76EE;&#x5F55;&#x201D;&#xFF0C;&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#x7684;&#x76EE;&#x5F55;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x201D;&#x3002;</li>
 <li><code>src</code>&#x8DEF;&#x5F84;/&#x76EE;&#x5F55;&#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x76EE;&#x5F55;&#x7684;&#x3002;</li>
@@ -648,7 +676,7 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 </ul>
 <p><strong>&#x8FDB;&#x9636;&#x9605;&#x8BFB;</strong></p>
 <ul>
-<li><a href="advance/comments.md">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
+<li><a href="../advance/comments.html">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
 <li><a href="https://www.npmjs.com/package/glob" target="_blank">npm: glob</a></li>
 <li><a href="https://www.npmjs.com/package/uglify-js" target="_blank">npm: uglify-js</a></li>
 </ul>
@@ -663,7 +691,7 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 &#x4FDD;&#x6301;&#x9ED8;&#x8BA4;&#x5373;&#x53EF;&#x3002;</p>
 <p><strong>&#x8FDB;&#x9636;&#x9605;&#x8BFB;</strong></p>
 <ul>
-<li><a href="advance/comments.md">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
+<li><a href="../advance/comments.html">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
 <li><a href="https://www.npmjs.com/package/clean-css" target="_blank">npm: clean-css</a></li>
 </ul>
 <h1 id="html">html</h1>
@@ -674,9 +702,9 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 <p><code>boolean</code>&#x3002;html &#x6587;&#x4EF6;&#x662F;&#x5426;&#x538B;&#x7F29;&#xFF0C;&#x4E3A;&#x4E86;&#x7167;&#x987E;&#x5230;&#x5404;&#x79CD;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#xFF0C;&#x53EA;&#x5220;&#x9664;&#x4E86;&#x56DE;&#x8F66;&#x3001;&#x6CE8;&#x91CA;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x4E86;&#x4E00;&#x4E9B;&#x9017;&#x6BD4;&#x7684;&#x7F29;&#x8FDB;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A; false&#x3002;</p>
 <p><strong>&#x8FDB;&#x9636;&#x9605;&#x8BFB;</strong></p>
 <ul>
-<li><a href="advance/comments.md">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
-<li><a href="advance/attribute-coolie.md">coolie &#x6807;&#x7B7E;&#x5C5E;&#x6027;</a></li>
-<li><a href="advance/attribute-coolieignore.md">coolieignore &#x6807;&#x7B7E;&#x5C5E;&#x6027;</a></li>
+<li><a href="../advance/comments.html">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
+<li><a href="../advance/attribute-coolie.html">coolie &#x6807;&#x7B7E;&#x5C5E;&#x6027;</a></li>
+<li><a href="../advance/attribute-coolieignore.html">coolieignore &#x6807;&#x7B7E;&#x5C5E;&#x6027;</a></li>
 </ul>
 <h1 id="resource">resource</h1>
 <h2 id="resource-dest">resource.dest</h2>
@@ -688,7 +716,7 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 <h2 id="dest-dirname">dest.dirname</h2>
 <p><code>string</code>&#x3002;&#x76EE;&#x6807;&#x76EE;&#x5F55;&#xFF0C;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x3002;</p>
 <h2 id="dest-host">dest.host</h2>
-<p><code>string</code>&#x3002;&#x7ED1;&#x5B9A;&#x7684;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#xFF0C;&#x901A;&#x5E38;&#x4E3A;&#x5206;&#x5E03;&#x5230; CDN &#x73AF;&#x5883;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x201C;<a href="http://cdn.domain.com/path/to/&#x201D;&#x3002;" target="_blank">http://cdn.domain.com/path/to/&#x201D;&#x3002;</a></p>
+<p><code>string</code>&#x3002;&#x7ED1;&#x5B9A;&#x7684;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#xFF0C;&#x901A;&#x5E38;&#x4E3A;&#x5206;&#x5E03;&#x5230; CDN &#x73AF;&#x5883;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x201C;//cdn.domain.com/path/to/&#x201D;&#x3002;</p>
 <div style="display: none;">
     <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
 </div>

@@ -3,7 +3,38 @@
 ```
 coolie json
 ```
-[自动生成](./webroot/begin/command.md#coolie-json-path)。
+[自动生成](./command.md)。
+
+```
+{
+  "js": {
+    "src": [
+      "./static/js/app/**/*.js"
+    ],
+    "coolie-config.js": "./static/js/coolie-config.js"
+  },
+  "css": {
+    "dest": "./static/css/",
+    "minify": {
+      "compatibility": "ie7"
+    }
+  },
+  "html": {
+    "src": [
+      "./views/**/*.html"
+    ],
+    "minify": true
+  },
+  "resource": {
+    "dest": "./static/res/"
+  },
+  "copy": [],
+  "dest": {
+    "dirname": "../dest/",
+    "host": ""
+  }
+}
+```
 
 **申明**
 
@@ -29,7 +60,7 @@ JS 压缩采用的是 uglify2。
 - `!`：排除匹配
 
 **进阶阅读**
-- [注释的特殊处理](./advance/comments.md)
+- [注释的特殊处理](../advance/comments.md)
 - [npm: glob](https://www.npmjs.com/package/glob)
 - [npm: uglify-js](https://www.npmjs.com/package/uglify-js)
 
@@ -50,7 +81,7 @@ CSS 文件的构建的相关配置。
 
 **进阶阅读**
 
-- [注释的特殊处理](./advance/comments.md)
+- [注释的特殊处理](../advance/comments.md)
 - [npm: clean-css](https://www.npmjs.com/package/clean-css)
 
 
@@ -65,9 +96,9 @@ HTML 文件的构建的相关配置。
 
 **进阶阅读**
 
-- [注释的特殊处理](./advance/comments.md)
-- [coolie 标签属性](./advance/attribute-coolie.md)
-- [coolieignore 标签属性](./advance/attribute-coolieignore.md)
+- [注释的特殊处理](../advance/comments.md)
+- [coolie 标签属性](../advance/attribute-coolie.md)
+- [coolieignore 标签属性](../advance/attribute-coolieignore.md)
 
 # resource
 ## resource.dest
@@ -81,7 +112,7 @@ HTML 文件的构建的相关配置。
 ## dest.dirname
 `string`。目标目录，生产目录。
 ## dest.host
-`string`。绑定的网络地址，通常为分布到 CDN 环境的地址，如“http://cdn.domain.com/path/to/”。
+`string`。绑定的网络地址，通常为分布到 CDN 环境的地址，如“//cdn.domain.com/path/to/”。
 
 
 {% include "../_include/cnzz.md" %}
