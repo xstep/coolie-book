@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.5" data-basepath=".." data-revision="Thu Jun 04 2015 10:38:36 GMT+0800 (CST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Thu Jun 04 2015 14:14:00 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -622,7 +622,73 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="coolie-json">coolie.json</h1>
+                        <p><code>coolie.json</code>&#xFF08;&#x524D;&#x7AEF;&#x6784;&#x5EFA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x76F8;&#x5BF9;&#x4E8E;<code>coolie-config.js</code>&#xFF08;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x6765;&#x8BF4;&#x8981;&#x590D;&#x6742;&#x7684;&#x591A;&#xFF0C;
+&#x4E0D;&#x8FC7;&#x4E0D;&#x5FC5;&#x7D27;&#x5F20;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;</p>
+<pre><code>coolie json
+</code></pre><p><a href="webroot/begin/command.md#coolie-json-path">&#x81EA;&#x52A8;&#x751F;&#x6210;</a>&#x3002;</p>
+<p><strong>&#x7533;&#x660E;</strong></p>
+<ul>
+<li>&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x533A;&#x5206;&#xFF0C;&#x5C06;&#x6784;&#x5EFA;&#x7684;&#x6E90;&#x76EE;&#x5F55;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;&#x5F00;&#x53D1;&#x76EE;&#x5F55;&#x201D;&#xFF0C;&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#x7684;&#x76EE;&#x5F55;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x201D;&#x3002;</li>
+<li><code>src</code>&#x8DEF;&#x5F84;/&#x76EE;&#x5F55;&#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x76EE;&#x5F55;&#x7684;&#x3002;</li>
+<li><code>dest</code>&#x8DEF;&#x5F84;/&#x76EE;&#x5F55;&#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x7684;&#x3002;</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x9010;&#x4E00;&#x4ECB;&#x7ECD;&#x4E0B; coolie.json &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x5404;&#x4E2A;&#x914D;&#x7F6E;&#x9879;&#x3002;</p>
+<h1 id="js">js</h1>
+<p>JS &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="js-src">js.src</h2>
+<p><code>array</code>&#x3002;coolie.js &#x7684;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x652F;&#x6301; glob &#x901A;&#x914D;&#x7B26;&#xFF08;&#x4E0B;&#x6587;&#x63D0;&#x5230;&#x7684;&#x901A;&#x914D;&#x7B26;&#x4E0E;&#x6B64;&#x76F8;&#x540C;&#xFF09;&#xFF0C;
+JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
+<p><strong>glob&#x90E8;&#x5206;&#x8BED;&#x6CD5;</strong></p>
+<ul>
+<li><code>*</code>&#xFF1A;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x4F46;&#x4E0D;&#x5339;&#x914D;<code>/</code></li>
+<li><code>?</code>&#xFF1A;&#x5339;&#x914D;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x4F46;&#x4E0D;&#x5339;&#x914D;<code>/</code></li>
+<li><code>**</code>&#xFF1A;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x5305;&#x62EC;<code>/</code>&#xFF0C;&#x53EA;&#x8981;&#x5B83;&#x662F;&#x8DEF;&#x5F84;&#x4E2D;&#x552F;&#x4E00;&#x7684;&#x4E00;&#x90E8;&#x5206;</li>
+<li><code>{}</code>&#xFF1A;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x9017;&#x53F7;&#x5206;&#x5272;&#x7684;&#x5217;&#x8868;&#x6216;&#x8005;&#x8868;&#x8FBE;&#x5F0F;</li>
+<li><code>!</code>&#xFF1A;&#x6392;&#x9664;&#x5339;&#x914D;</li>
+</ul>
+<p><strong>&#x8FDB;&#x9636;&#x9605;&#x8BFB;</strong></p>
+<ul>
+<li><a href="advance/comments.md">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
+<li><a href="https://www.npmjs.com/package/glob" target="_blank">npm: glob</a></li>
+<li><a href="https://www.npmjs.com/package/uglify-js" target="_blank">npm: uglify-js</a></li>
+</ul>
+<h2 id="js-coolie-config-js">js.coolie-config.js</h2>
+<p><code>string</code>&#x3002;coolie.js &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x56E0;&#x4E3A;&#x6784;&#x5EFA;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x6539;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;</p>
+<h1 id="css">css</h1>
+<p>CSS &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="css-dest">css.dest</h2>
+<p><code>string</code>&#x3002;css &#x6587;&#x4EF6;&#x7684;&#x4FDD;&#x5B58;&#x76EE;&#x5F55;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x3002;</p>
+<h2 id="css-minify">css.minify</h2>
+<p><code>object</code>&#x3002;css &#x538B;&#x7F29;&#x7684;&#x4E00;&#x4E9B;&#x914D;&#x7F6E;&#xFF0C;&#x538B;&#x7F29;&#x5DE5;&#x5177;&#x4F7F;&#x7528;&#x7684;&#x662F; clean-css&#x3002;
+&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;&#x5373;&#x53EF;&#x3002;</p>
+<p><strong>&#x8FDB;&#x9636;&#x9605;&#x8BFB;</strong></p>
+<ul>
+<li><a href="advance/comments.md">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
+<li><a href="https://www.npmjs.com/package/clean-css" target="_blank">npm: clean-css</a></li>
+</ul>
+<h1 id="html">html</h1>
+<p>HTML &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="html-src">html.src</h2>
+<p><code>array</code>&#x3002;html &#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;&#x8FD9;&#x4E9B; html &#x6587;&#x4EF6;&#x91CC;&#x7684;&#x5185;&#x5BB9;&#x4F1A;&#x88AB;&#x6784;&#x5EFA;&#x4FEE;&#x6539;&#x3002;</p>
+<h2 id="html-minify">html.minify</h2>
+<p><code>boolean</code>&#x3002;html &#x6587;&#x4EF6;&#x662F;&#x5426;&#x538B;&#x7F29;&#xFF0C;&#x4E3A;&#x4E86;&#x7167;&#x987E;&#x5230;&#x5404;&#x79CD;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#xFF0C;&#x53EA;&#x5220;&#x9664;&#x4E86;&#x56DE;&#x8F66;&#x3001;&#x6CE8;&#x91CA;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x4E86;&#x4E00;&#x4E9B;&#x9017;&#x6BD4;&#x7684;&#x7F29;&#x8FDB;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A; false&#x3002;</p>
+<p><strong>&#x8FDB;&#x9636;&#x9605;&#x8BFB;</strong></p>
+<ul>
+<li><a href="advance/comments.md">&#x6CE8;&#x91CA;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</a></li>
+<li><a href="advance/attribute-coolie.md">coolie &#x6807;&#x7B7E;&#x5C5E;&#x6027;</a></li>
+<li><a href="advance/attribute-coolieignore.md">coolieignore &#x6807;&#x7B7E;&#x5C5E;&#x6027;</a></li>
+</ul>
+<h1 id="resource">resource</h1>
+<h2 id="resource-dest">resource.dest</h2>
+<p><code>string</code>&#x3002;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF08;&#x5728; HTML &#x6587;&#x4EF6;&#x91CC;&#x5F15;&#x7528;&#x5230;&#x7684;&#x56FE;&#x7247;&#x3001;ico &#x548C;&#x5728; CSS &#x6587;&#x4EF6;&#x91CC;&#x5F15;&#x7528;&#x5230;&#x7684;&#x56FE;&#x7247;&#x3001;&#x5B57;&#x4F53;&#x7B49;&#xFF09;&#x7684;&#x4FDD;&#x5B58;&#x76EE;&#x5F55;&#x3002;</p>
+<h1 id="copy">copy</h1>
+<p><code>array</code>&#x3002;&#x9700;&#x8981;&#x539F;&#x6837;&#x590D;&#x5236;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
+<h1 id="dest">dest</h1>
+<p>&#x6784;&#x5EFA;&#x7684;&#x76EE;&#x5F55;&#x76EE;&#x5F55;&#xFF0C;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="dest-dirname">dest.dirname</h2>
+<p><code>string</code>&#x3002;&#x76EE;&#x6807;&#x76EE;&#x5F55;&#xFF0C;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x3002;</p>
+<h2 id="dest-host">dest.host</h2>
+<p><code>string</code>&#x3002;&#x7ED1;&#x5B9A;&#x7684;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#xFF0C;&#x901A;&#x5E38;&#x4E3A;&#x5206;&#x5E03;&#x5230; CDN &#x73AF;&#x5883;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x201C;<a href="http://cdn.domain.com/path/to/&#x201D;&#x3002;" target="_blank">http://cdn.domain.com/path/to/&#x201D;&#x3002;</a></p>
 <div style="display: none;">
     <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
 </div>

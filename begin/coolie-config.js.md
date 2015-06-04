@@ -35,7 +35,7 @@ version: {
 
 
 # callback
-callback 所有引用模块准备完毕后执行的回调。该函数出口的就是入口模块的出口，这对测试来说，很重要。
+callback 所有引用模块准备完毕后执行的回调。该函数出口的就是入口模块的出口，这对测试来说，很重要。不推荐重写。
 可以一次性注册多个 callback。
 ```
 coolie.callback(function(){
