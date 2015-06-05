@@ -5,10 +5,10 @@
 ```
 . demo
 |-- dev 开发环境
-|   |-- hello.html
+|   |-- coolie.json
 |   |-- coolie.min.js
 |   |-- coolie-config.js
-|   |-- coolie.json
+|   |-- hello.html
 |   `-- hello.js
 `-- pro 生成环境
     `-- 空
@@ -140,14 +140,82 @@ define(function () {
                         past 119 ms
 ```
 
-我们来看看构建之后的文件
+我们来看看构建之后的目录结构：
+```
+. demo
+|-- dev 开发环境
+|   |-- coolie.json
+|   |-- coolie.min.js
+|   |-- coolie-config.js
+|   |-- hello.html
+|   `-- hello.js
+`-- pro 生成环境
+    |-- coolie.min.js
+    |-- coolie-config.2a8dac0468211aefcaf584c3035207ab.js
+    |-- hello.4f60ff2579e7b55f2e1ca87ba2221fde.js
+    |-- hello.html
+    `-- relationship-map.json
+```
 
 # html
+*为了阅读，已经折行处理了。*
 ```
-<!DOCTYPE html><html><head lang="zh-cn"> <meta charset="UTF-8"> <title>hello.html</title></head><body><script src="./coolie.min.js" data-config="./coolie-config.2a8dac0468211aefcaf584c3035207ab.js" data-main="hello.js"></script></body></html>
+<!DOCTYPE html><html><head lang="zh-cn"> <meta charset="UTF-8"> <title>hello.html</title></head>
+<body><script src="./coolie.min.js" data-config="./coolie-config.2a8dac0468211aefcaf584c3035207ab.js" 
+data-main="hello.js"></script></body></html>
 <!--coolie@0.17.0 1433515570936-->
 ```
-构建之后，会在 html 文件模块打上构建工具的版本和的构建时间
+
+- 构建之后，会在 html 文件模块打上构建工具的版本和的构建时间。
+- `script`上的`coolie`属性也被去掉了。
+- `data-config`属性也被重写了。
+
+# js
+## coolie-config.js
+构建之后的前端模块加载器配置文件为`coolie-config.2a8dac0468211aefcaf584c3035207ab.js`。
+
+*为了阅读，已经折行处理了。*
+```
+/*coolie@0.17.0 1433515570885*/
+coolie.config({
+    base:"./",
+    debug:!1,
+    version:{
+        "hello.js":"4f60ff2579e7b55f2e1ca87ba2221fde"
+    }
+}).use();
+```
+
+- 在文件开头，打上构建工具的版本和的构建时间。
+- 增加了`debug`参数，值为 false（[详细参考点这里](./coolie-config.js.md)）。
+- 增加了`version`属性，值为`hello.js`的版本（[详细参考点这里](./coolie-config.js.md)）。
+
+## hello.js
+新的`hello.js`重命名为`hello.4f60ff2579e7b55f2e1ca87ba2221fde.js`。
+
+*为了阅读，已经折行处理了。*
+```
+/*coolie@0.17.0 1433515570881*/
+define("0",[],function(){alert("hello world")});
+```
+
+- 在文件开头，打上构建工具的版本和的构建时间。
+- 代码进行了压缩，并且加上了模块的 ID 为 “0”。
+
+
+# relationship-map.json
+`relationship-map.json`是新生成的文件。
+```
+{
+    "hello.html": {
+        "css": [],
+        "main": "hello.js",
+        "deps": []
+    }
+}
+```
+这个文件，按照构建的 HTML 文件分开，分别标识了每个 HTML 文件里引用的入口 JS 文件，依赖的 JS 模块和引用的 CSS 文件。
+
 
 # demo
 查看 demo 的时候，注意看看页面的源代码、Network 信息。
