@@ -1,5 +1,19 @@
 帮你领进门，学习完 hello world，就算是入门结束了，下面开始。
 
+# 准备
+先准备以下目录
+```
+. demo
+|-- dev 开发环境
+|   |-- hello.html
+|   |-- coolie.min.js
+|   |-- coolie-config.js
+|   |-- coolie.json
+|   `-- hello.js
+`-- pro 生成环境
+    `-- 空
+```
+
 # html
 先写个页面`hello.html`
 ```
@@ -50,6 +64,88 @@ define(function () {
     alert('hello world');
 });
 ```
+
+# coolie.json
+```
+{
+  "js": {
+    "src": [
+      "./hello.js"
+    ],
+    "coolie-config.js": "./coolie-config.js"
+  },
+  "css": {
+    "dest": "./static/css/",
+    "minify": {
+      "compatibility": "ie7"
+    }
+  },
+  "html": {
+    "src": [
+      "./hello.html"
+    ],
+    "minify": true
+  },
+  "resource": {
+    "dest": "./static/res/"
+  },
+  "copy": [],
+  "dest": {
+    "dirname": "../pro/",
+    "host": ""
+  }
+}
+```
+
+- `js.src`：入口文件，即 hello.js
+- `html.src`：需要构建的 HTML，即 hello.html
+- `dest.dirname`：构建的目标目录，即上层的 pro 目录
+
+# 构建
+目前，源代码什么都是没有被构建的，我们来尝试构建一下看看。
+```
+➜ coolie build
+
+            ╔═══════════════════════════════════════════════════════╗
+            ║          coolie.cli@0.17.0                            ║
+            ║          The front-end development builder.           ║
+            ╚═══════════════════════════════════════════════════════╝
+
+
+                 1/5 => copy files
+
+                 2/5 => build main
+                  √  => /path/to/demo/dev/hello.js
+
+                 3/5 => overwrite config
+                  √  => base: "./"
+                  √  => version: "{
+                          "hello.js": "4f60ff2579e7b55f2e1ca87ba2221fde"
+                        }"
+                  √  => callbacks: 0
+                  √  => /path/to/demo/pro/coolie-config.2a8dac0468211aefcaf584c3035207ab.js
+
+                 4/5 => build html css
+                  √  => /path/to/demo/pro/coolie.min.js
+                  √  => /path/to/demo/dev/hello.html
+
+                 5/5 => generator relationship map
+                  √  => /path/to/demo/pro/relationship-map.json
+
+       build success => copy 1 file(s),
+                        build 1 js file(s),
+                        build 1 html file(s),
+                        build 0 css file(s),
+                        build 0 resource file(s),
+                        past 119 ms
+```
+
+# demo
+查看 demo 的时候，注意看看页面的源代码、Network 信息。
+
+- [点击这里查看开发环境的效果](../demo/dev/hello.html)
+- [点击这里查看生产环境的效果](../demo/pro/hello.html)
+
 
 
 {% include "../_include/cnzz.md" %}
