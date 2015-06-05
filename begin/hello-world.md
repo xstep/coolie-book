@@ -140,6 +140,15 @@ define(function () {
                         past 119 ms
 ```
 
+我们来看看构建之后的文件
+
+# html
+```
+<!DOCTYPE html><html><head lang="zh-cn"> <meta charset="UTF-8"> <title>hello.html</title></head><body><script src="./coolie.min.js" data-config="./coolie-config.2a8dac0468211aefcaf584c3035207ab.js" data-main="hello.js"></script></body></html>
+<!--coolie@0.17.0 1433515570936-->
+```
+构建之后，会在 html 文件模块打上构建工具的版本和的构建时间
+
 # demo
 查看 demo 的时候，注意看看页面的源代码、Network 信息。
 
