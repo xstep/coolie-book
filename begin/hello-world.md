@@ -166,7 +166,7 @@ data-main="hello.js"></script></body></html>
 <!--coolie@0.17.0 1433515570936-->
 ```
 
-- 构建之后，会在 html 文件模块打上构建工具的版本和的构建时间。
+- 在文件末尾打上构建工具的版本和的构建时间。
 - `script`上的`coolie`属性也被去掉了。
 - `data-config`属性也被重写了。
 
