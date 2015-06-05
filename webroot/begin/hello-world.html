@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.6" data-basepath=".." data-revision="Fri Jun 05 2015 22:28:41 GMT+0800 (CST)">
+    <div class="book" data-level="2.6" data-basepath=".." data-revision="Fri Jun 05 2015 22:37:37 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -663,15 +663,39 @@
 &lt;/head&gt;
 &lt;body&gt;
 
-
-&lt;script coolie src=&quot;http://s.ydr.me/@/p/j/coolie/0.12.0/coolie.min.js&quot;
+&lt;!--&#x6CE8;&#x610F;&#xFF1A;--&gt;
+&lt;!--1. &#x8FD9;&#x91CC;&#x7684; script &#x6807;&#x7B7E;&#x591A;&#x4E86; coolie &#x5C5E;&#x6027;--&gt;
+&lt;!--2. &#x5F15;&#x7528;&#x4E86; coolie.min.js--&gt;
+&lt;!--3. &#x589E;&#x52A0;&#x4E86; data-config &#x5C5E;&#x6027;--&gt;
+&lt;!--4. &#x589E;&#x52A0;&#x4E86; data-main &#x5C5E;&#x6027;--&gt;
+&lt;script coolie src=&quot;./coolie.min.js&quot;
         data-config=&quot;./coolie-config.js&quot;
         data-main=&quot;hello.js&quot;&gt;&lt;/script&gt;
 
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><h1 id="js">js</h1>
-<div style="display: none;">
+</code></pre><ol>
+<li><code>coolie</code>&#x5C5E;&#x6027;&#xFF1A;&#x8868;&#x660E;&#x8BE5; script &#x662F; coolie.cli&#xFF08;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF09; &#x7684;&#x7BA1;&#x8F96;&#x8303;&#x56F4;</li>
+<li><code>coolie.min.js</code>&#xFF1A;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;</li>
+<li><code>data-config</code>&#x5C5E;&#x6027;&#xFF1A;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+<li><code>data-main</code>&#x5C5E;&#x6027;&#xFF1A;&#x6A21;&#x5757;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x5730;&#x5740;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;<code>data-config.js</code>&#x91CC;&#x7684;<code>base</code>&#x5C5E;&#x6027;&#xFF0C;&#x540E;&#x6587;&#x8BF4;&#x7684;</li>
+</ol>
+<h1 id="js">js</h1>
+<p>&#x63A5;&#x4E0A;&#x6587;&#xFF0C;&#x81F3;&#x5C11;&#x9700;&#x8981;&#x65B0;&#x5EFA;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="coolie-config-js">coolie-config.js</h2>
+<p>&#x5F88;&#x7B80;&#x5355;</p>
+<pre><code>coolie.config({
+    base: &apos;./&apos;
+}).use();
+</code></pre><ul>
+<li><code>base</code>&#x5730;&#x5740;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#xFF08;&#x5373;&#xFF1A;coolie.js &#x7684;&#x6587;&#x4EF6; URL &#x5730;&#x5740;&#xFF09;</li>
+<li><code>use</code>&#x8868;&#x793A;&#x542F;&#x52A8;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<h2 id="hello-js">hello.js</h2>
+<pre><code>define(function () {
+    alert(&apos;hello world&apos;);
+});
+</code></pre><div style="display: none;">
     <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
 </div>
 
