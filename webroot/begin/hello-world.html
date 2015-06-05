@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.6" data-basepath=".." data-revision="Fri Jun 05 2015 22:37:37 GMT+0800 (CST)">
+    <div class="book" data-level="2.6" data-basepath=".." data-revision="Fri Jun 05 2015 23:45:39 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -653,7 +653,18 @@
                     <section class="normal" id="section-">
                     
                         <p>&#x5E2E;&#x4F60;&#x9886;&#x8FDB;&#x95E8;&#xFF0C;&#x5B66;&#x4E60;&#x5B8C; hello world&#xFF0C;&#x5C31;&#x7B97;&#x662F;&#x5165;&#x95E8;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x4E0B;&#x9762;&#x5F00;&#x59CB;&#x3002;</p>
-<h1 id="html">html</h1>
+<h1 id="%E5%87%86%E5%A4%87">&#x51C6;&#x5907;</h1>
+<p>&#x5148;&#x51C6;&#x5907;&#x4EE5;&#x4E0B;&#x76EE;&#x5F55;</p>
+<pre><code>. demo
+|-- dev &#x5F00;&#x53D1;&#x73AF;&#x5883;
+|   |-- hello.html
+|   |-- coolie.min.js
+|   |-- coolie-config.js
+|   |-- coolie.json
+|   `-- hello.js
+`-- pro &#x751F;&#x6210;&#x73AF;&#x5883;
+    `-- &#x7A7A;
+</code></pre><h1 id="html">html</h1>
 <p>&#x5148;&#x5199;&#x4E2A;&#x9875;&#x9762;<code>hello.html</code></p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -695,7 +706,88 @@
 <pre><code>define(function () {
     alert(&apos;hello world&apos;);
 });
-</code></pre><div style="display: none;">
+</code></pre><h1 id="coolie-json">coolie.json</h1>
+<pre><code>{
+  &quot;js&quot;: {
+    &quot;src&quot;: [
+      &quot;./hello.js&quot;
+    ],
+    &quot;coolie-config.js&quot;: &quot;./coolie-config.js&quot;
+  },
+  &quot;css&quot;: {
+    &quot;dest&quot;: &quot;./static/css/&quot;,
+    &quot;minify&quot;: {
+      &quot;compatibility&quot;: &quot;ie7&quot;
+    }
+  },
+  &quot;html&quot;: {
+    &quot;src&quot;: [
+      &quot;./hello.html&quot;
+    ],
+    &quot;minify&quot;: true
+  },
+  &quot;resource&quot;: {
+    &quot;dest&quot;: &quot;./static/res/&quot;
+  },
+  &quot;copy&quot;: [],
+  &quot;dest&quot;: {
+    &quot;dirname&quot;: &quot;../pro/&quot;,
+    &quot;host&quot;: &quot;&quot;
+  }
+}
+</code></pre><ul>
+<li><code>js.src</code>&#xFF1A;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x5373; hello.js</li>
+<li><code>html.src</code>&#xFF1A;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x7684; HTML&#xFF0C;&#x5373; hello.html</li>
+<li><code>dest.dirname</code>&#xFF1A;&#x6784;&#x5EFA;&#x7684;&#x76EE;&#x6807;&#x76EE;&#x5F55;&#xFF0C;&#x5373;&#x4E0A;&#x5C42;&#x7684; pro &#x76EE;&#x5F55;</li>
+</ul>
+<h1 id="%E6%9E%84%E5%BB%BA">&#x6784;&#x5EFA;</h1>
+<p>&#x76EE;&#x524D;&#xFF0C;&#x6E90;&#x4EE3;&#x7801;&#x4EC0;&#x4E48;&#x90FD;&#x662F;&#x6CA1;&#x6709;&#x88AB;&#x6784;&#x5EFA;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5C1D;&#x8BD5;&#x6784;&#x5EFA;&#x4E00;&#x4E0B;&#x770B;&#x770B;&#x3002;</p>
+<pre><code>&#x279C; coolie build
+
+            &#x2554;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2557;
+            &#x2551;          coolie.cli@0.17.0                            &#x2551;
+            &#x2551;          The front-end development builder.           &#x2551;
+            &#x255A;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x255D;
+
+
+                 1/5 =&gt; copy files
+
+                 2/5 =&gt; build main
+                  &#x221A;  =&gt; /path/to/demo/dev/hello.js
+
+                 3/5 =&gt; overwrite config
+                  &#x221A;  =&gt; base: &quot;./&quot;
+                  &#x221A;  =&gt; version: &quot;{
+                          &quot;hello.js&quot;: &quot;4f60ff2579e7b55f2e1ca87ba2221fde&quot;
+                        }&quot;
+                  &#x221A;  =&gt; callbacks: 0
+                  &#x221A;  =&gt; /path/to/demo/pro/coolie-config.2a8dac0468211aefcaf584c3035207ab.js
+
+                 4/5 =&gt; build html css
+                  &#x221A;  =&gt; /path/to/demo/pro/coolie.min.js
+                  &#x221A;  =&gt; /path/to/demo/dev/hello.html
+
+                 5/5 =&gt; generator relationship map
+                  &#x221A;  =&gt; /path/to/demo/pro/relationship-map.json
+
+       build success =&gt; copy 1 file(s),
+                        build 1 js file(s),
+                        build 1 html file(s),
+                        build 0 css file(s),
+                        build 0 resource file(s),
+                        past 119 ms
+</code></pre><p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#x7684;&#x6587;&#x4EF6;</p>
+<h1 id="html">html</h1>
+<pre><code>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head lang=&quot;zh-cn&quot;&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;hello.html&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;script src=&quot;./coolie.min.js&quot; data-config=&quot;./coolie-config.2a8dac0468211aefcaf584c3035207ab.js&quot; data-main=&quot;hello.js&quot;&gt;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;
+&lt;!--coolie@0.17.0 1433515570936--&gt;
+</code></pre><p>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x5728; html &#x6587;&#x4EF6;&#x6A21;&#x5757;&#x6253;&#x4E0A;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x7684;&#x7248;&#x672C;&#x548C;&#x7684;&#x6784;&#x5EFA;&#x65F6;&#x95F4;</p>
+<h1 id="demo">demo</h1>
+<p>&#x67E5;&#x770B; demo &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6CE8;&#x610F;&#x770B;&#x770B;&#x9875;&#x9762;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x3001;Network &#x4FE1;&#x606F;&#x3002;</p>
+<ul>
+<li><a href="../demo/dev/hello.html">&#x70B9;&#x51FB;&#x8FD9;&#x91CC;&#x67E5;&#x770B;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7684;&#x6548;&#x679C;</a></li>
+<li><a href="../demo/pro/hello.html">&#x70B9;&#x51FB;&#x8FD9;&#x91CC;&#x67E5;&#x770B;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x7684;&#x6548;&#x679C;</a></li>
+</ul>
+<div style="display: none;">
     <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
 </div>
 
