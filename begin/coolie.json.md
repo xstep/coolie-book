@@ -11,7 +11,8 @@ coolie json
     "src": [
       "./static/js/app/**/*.js"
     ],
-    "coolie-config.js": "./static/js/coolie-config.js"
+    "coolie-config.js": "./static/js/coolie-config.js",
+    "dest": "./static/js/"
   },
   "css": {
     "dest": "./static/css/",
@@ -26,7 +27,8 @@ coolie json
     "minify": true
   },
   "resource": {
-    "dest": "./static/res/"
+    "dest": "./static/res/",
+    "minify": true
   },
   "copy": [],
   "dest": {
@@ -69,6 +71,10 @@ JS 压缩采用的是 uglify2。
 `string`。coolie.js 的配置文件（前端模块化加载器配置文件）的路径，因为构建操作需要改写配置文件，所以这个选项是必须的。
 
 
+## js.dest
+非模块化脚本的保存路径。
+
+
 # css
 CSS 文件的构建的相关配置。
 
@@ -103,6 +109,10 @@ HTML 文件的构建的相关配置。
 # resource
 ## resource.dest
 `string`。静态资源（在 HTML 文件里引用到的图片、ico 和在 CSS 文件里引用到的图片、字体等）的保存目录。
+
+## resource.minify
+保留属性，即是否压缩静态资源。
+
 
 # copy
 `array`。需要原样复制的文件，支持通配符。

@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.5" data-basepath=".." data-revision="Sat Jun 06 2015 21:26:29 GMT+0800 (CST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Thu Jun 11 2015 17:09:03 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -661,7 +661,8 @@
     &quot;src&quot;: [
       &quot;./static/js/app/**/*.js&quot;
     ],
-    &quot;coolie-config.js&quot;: &quot;./static/js/coolie-config.js&quot;
+    &quot;coolie-config.js&quot;: &quot;./static/js/coolie-config.js&quot;,
+    &quot;dest&quot;: &quot;./static/js/&quot;
   },
   &quot;css&quot;: {
     &quot;dest&quot;: &quot;./static/css/&quot;,
@@ -676,7 +677,8 @@
     &quot;minify&quot;: true
   },
   &quot;resource&quot;: {
-    &quot;dest&quot;: &quot;./static/res/&quot;
+    &quot;dest&quot;: &quot;./static/res/&quot;,
+    &quot;minify&quot;: true
   },
   &quot;copy&quot;: [],
   &quot;dest&quot;: {
@@ -712,6 +714,8 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 </ul>
 <h2 id="js-coolie-config-js">js.coolie-config.js</h2>
 <p><code>string</code>&#x3002;coolie.js &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x56E0;&#x4E3A;&#x6784;&#x5EFA;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x6539;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;</p>
+<h2 id="js-dest">js.dest</h2>
+<p>&#x975E;&#x6A21;&#x5757;&#x5316;&#x811A;&#x672C;&#x7684;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;&#x3002;</p>
 <h1 id="css">css</h1>
 <p>CSS &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
 <h2 id="css-dest">css.dest</h2>
@@ -739,6 +743,8 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 <h1 id="resource">resource</h1>
 <h2 id="resource-dest">resource.dest</h2>
 <p><code>string</code>&#x3002;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF08;&#x5728; HTML &#x6587;&#x4EF6;&#x91CC;&#x5F15;&#x7528;&#x5230;&#x7684;&#x56FE;&#x7247;&#x3001;ico &#x548C;&#x5728; CSS &#x6587;&#x4EF6;&#x91CC;&#x5F15;&#x7528;&#x5230;&#x7684;&#x56FE;&#x7247;&#x3001;&#x5B57;&#x4F53;&#x7B49;&#xFF09;&#x7684;&#x4FDD;&#x5B58;&#x76EE;&#x5F55;&#x3002;</p>
+<h2 id="resource-minify">resource.minify</h2>
+<p>&#x4FDD;&#x7559;&#x5C5E;&#x6027;&#xFF0C;&#x5373;&#x662F;&#x5426;&#x538B;&#x7F29;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x3002;</p>
 <h1 id="copy">copy</h1>
 <p><code>array</code>&#x3002;&#x9700;&#x8981;&#x539F;&#x6837;&#x590D;&#x5236;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
 <h1 id="dest">dest</h1>
