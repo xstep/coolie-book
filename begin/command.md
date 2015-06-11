@@ -48,9 +48,10 @@ coolie build [path]  => 在指定目录根据`coolie.json`配置文件执行构�
             ║          The front-end development builder.           ║
             ╚═══════════════════════════════════════════════════════╝
 
-       local version => 0.16.20
+       local version => 0.20.5
         check update => wait a moment...
-           coolie.js => 0.9.0
+           coolie.js => 0.13.7
+          coolie.cli => 0.20.5
 ```
 
 
