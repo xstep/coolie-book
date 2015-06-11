@@ -53,4 +53,10 @@ coolie.callback(function(){
 ```
 
 
+# use([main])
+启用模块化入口。
+
+指定模块化（`main`）入口用于单元测试阶段，正常开发不必指定。
+
+
 {% include "../_include/cnzz.md" %}
