@@ -130,59 +130,64 @@ coolie.config({
 ```
 ➜  coolie json
 
-            ╔═══════════════════════════════════════════════════════╗
-            ║          coolie.cli@0.20.5                            ║
-            ║          The front-end development builder.           ║
-            ╚═══════════════════════════════════════════════════════╝
-
-                tips => 以下操作留空回车表示同意默认配置。
-
-           file path => /path/to/coolie.json
-             warning => 如果上述目录不正确，请按`ctrl+C`退出后重新指定。
-                 1/6 => 请输入 JS 入口模块的路径。
-                        支持通配符，多个路径使用空格分开，默认为“./static/js/app/**/*.js”。
-
-                 2/6 => 请输入 coolie.js 配置文件所在的路径，默认为“./static/js/coolie-config.js”。
-
-                 3/6 => 请输入生成的 CSS 文件的保存目录。默认为“./static/css/”
-
-                 4/6 => 请输入 HTML 文件所在的路径。
-                        支持通配符，多个路径使用空格分开。默认为“./views/**/*.html”。
-
-                 5/6 => 请输入生成的静态资源（如：图片、字体）保存目录，默认为“./static/res/”。
-
-                 6/6 => 请输入构建的目标目录，默认为“../dest/”。
-
-             confirm => 文件内容为：
-         coolie.json => {
-                          "js": {
-                            "src": [
-                              "./static/js/app/**/*.js"
-                            ],
-                            "coolie-config.js": "./static/js/coolie-config.js"
-                          },
-                          "css": {
-                            "dest": "./static/css/",
-                            "minify": {
-                              "compatibility": "ie7"
-                            }
-                          },
-                          "html": {
-                            "src": [
-                              "./views/**/*.html"
-                            ],
-                            "minify": true
-                          },
-                          "resource": {
-                            "dest": "./static/res/"
-                          },
-                          "copy": [],
-                          "dest": {
-                            "dirname": "../dest/",
-                            "host": ""
-                          }
-                        }
-             confirm => 确认文件内容正确并生成文件？（[y]/n）
+             ╔═══════════════════════════════════════════════════════╗
+             ║          coolie.cli@0.20.5                            ║
+             ║          The front-end development builder.           ║
+             ╚═══════════════════════════════════════════════════════╝
+ 
+                 tips => 以下操作留空回车表示同意默认配置。
+ 
+            file path => /path/to/coolie.json
+              warning => 如果上述目录不正确，请按`ctrl+C`退出后重新指定。
+                  1/7 => 请输入 JS 入口模块的路径。
+                         支持通配符，多个路径使用空格分开，默认为“./static/js/app/**/*.js”。
+ 
+                  2/7 => 请输入 coolie.js 配置文件所在的路径，默认为“./static/js/coolie-config.js”。
+ 
+                  3/7 => 请输入合并压缩后的非模块化 JS 文件的保存目录。默认为“./static/js/”。
+                         不建议与 JS 入口模块的目录一样
+ 
+                  4/7 => 请输入合并压缩后的 CSS 文件的保存目录。默认为“./static/css/”。
+ 
+                  5/7 => 请输入 HTML 文件所在的路径。
+                         支持通配符，多个路径使用空格分开。默认为“./views/**/*.html”。
+ 
+                  6/7 => 请输入构建之后的静态资源（如：图片、字体）的目录，默认为“./static/res/”。
+ 
+                  7/7 => 请输入构建的目标目录，默认为“../dest/”。
+ 
+              confirm => 文件内容为：
+          coolie.json => {
+                           "js": {
+                             "src": [
+                               "./static/js/app/**/*.js"
+                             ],
+                             "coolie-config.js": "./static/js/coolie-config.js",
+                             "dest": "./static/js/"
+                           },
+                           "css": {
+                             "dest": "./static/css/",
+                             "minify": {
+                               "compatibility": "ie7"
+                             }
+                           },
+                           "html": {
+                             "src": [
+                               "./views/**/*.html"
+                             ],
+                             "minify": true
+                           },
+                           "resource": {
+                             "dest": "./static/res/",
+                             "minify": true
+                           },
+                           "copy": [],
+                           "dest": {
+                             "dirname": "../dest/",
+                             "host": ""
+                           }
+                         }
+              confirm => 确认文件内容正确并生成文件？（[y]/n）
 
                   √  => /path/to/coolie.json
 ```
