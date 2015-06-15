@@ -1,6 +1,6 @@
 {
     "hello.html": {
-        "css": [],
+        "css": {},
         "main": "hello.js",
         "deps": []
     }

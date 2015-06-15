@@ -3,7 +3,8 @@
     "src": [
       "./hello.js"
     ],
-    "coolie-config.js": "./coolie-config.js"
+    "coolie-config.js": "./coolie-config.js",
+    "dest": "./"
   },
   "css": {
     "dest": "./static/css/",
