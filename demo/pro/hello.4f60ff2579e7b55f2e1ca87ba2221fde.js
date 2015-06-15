@@ -1,2 +1,2 @@
-/*coolie@0.17.0 1433515570881*/
+/*coolie@0.20.7*/
 define("0",[],function(){alert("hello world")});

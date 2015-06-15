@@ -72,7 +72,8 @@ define(function () {
     "src": [
       "./hello.js"
     ],
-    "coolie-config.js": "./coolie-config.js"
+    "coolie-config.js": "./coolie-config.js",
+    "dest": "./"
   },
   "css": {
     "dest": "./static/css/",
@@ -106,8 +107,9 @@ define(function () {
 ```
 ➜ coolie build
 
+
             ╔═══════════════════════════════════════════════════════╗
-            ║          coolie.cli@0.17.0                            ║
+            ║          coolie.cli@0.20.7                            ║
             ║          The front-end development builder.           ║
             ╚═══════════════════════════════════════════════════════╝
 
@@ -115,7 +117,7 @@ define(function () {
                  1/5 => copy files
 
                  2/5 => build main
-                  √  => /path/to/demo/dev/hello.js
+                  √  => /path/to/dev/hello.js
 
                  3/5 => overwrite config
                   √  => base: "./"
@@ -123,21 +125,21 @@ define(function () {
                           "hello.js": "4f60ff2579e7b55f2e1ca87ba2221fde"
                         }"
                   √  => callbacks: 0
-                  √  => /path/to/demo/pro/coolie-config.2a8dac0468211aefcaf584c3035207ab.js
+                  √  => /path/to/pro/coolie-config.9a754400b547e8ef8518ecd28103c6bd.js
 
                  4/5 => build html css
-                  √  => /path/to/demo/pro/coolie.min.js
-                  √  => /path/to/demo/dev/hello.html
+                  √  => /path/to/pro/coolie.min.js
+                  √  => /path/to/dev/hello.html
 
                  5/5 => generator relationship map
-                  √  => /path/to/demo/pro/relationship-map.json
+                  √  => /path/to/pro/relationship-map.json
 
        build success => copy 1 file(s),
                         build 1 js file(s),
                         build 1 html file(s),
                         build 0 css file(s),
                         build 0 resource file(s),
-                        past 119 ms
+                        past 185 ms
 ```
 
 我们来看看构建之后的目录结构：
@@ -151,7 +153,7 @@ define(function () {
 |   `-- hello.js
 `-- pro 生成环境
     |-- coolie.min.js
-    |-- coolie-config.2a8dac0468211aefcaf584c3035207ab.js
+    |-- coolie-config.9a754400b547e8ef8518ecd28103c6bd.js
     |-- hello.4f60ff2579e7b55f2e1ca87ba2221fde.js
     |-- hello.html
     `-- relationship-map.json
@@ -160,10 +162,16 @@ define(function () {
 # html
 *为了阅读，已经折行处理了。*
 ```
-<!DOCTYPE html><html><head lang="zh-cn"> <meta charset="UTF-8"> <title>hello.html</title></head>
-<body><script src="./coolie.min.js" data-config="./coolie-config.2a8dac0468211aefcaf584c3035207ab.js" 
-data-main="hello.js"></script></body></html>
-<!--coolie@0.17.0 1433515570936-->
+<!DOCTYPE html>
+<html><head lang="zh-cn"> 
+<meta charset="UTF-8"> 
+<title>hello.html</title>
+</head><body>
+<script src="/coolie.min.js" 
+data-config="./coolie-config.9a754400b547e8ef8518ecd28103c6bd.js" 
+data-main="hello.js"></script>
+</body></html>
+<!--coolie@0.20.7-->
 ```
 
 - 在文件末尾打上构建工具的版本和的构建时间。
@@ -176,14 +184,14 @@ data-main="hello.js"></script></body></html>
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.17.0 1433515570885*/
+/*coolie@0.20.7*/
 coolie.config({
-    base:"./",
-    debug:!1,
-    version:{
-        "hello.js":"4f60ff2579e7b55f2e1ca87ba2221fde"
-    }
-}).use();
+base:"./",
+debug:!1,
+cache:!0,
+version:{
+  "hello.js":"4f60ff2579e7b55f2e1ca87ba2221fde"
+}}).use();
 ```
 
 - 在文件开头，打上构建工具的版本和的构建时间。
@@ -195,7 +203,7 @@ coolie.config({
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.17.0 1433515570881*/
+/*coolie@0.20.7*/
 define("0",[],function(){alert("hello world")});
 ```
 
@@ -208,7 +216,7 @@ define("0",[],function(){alert("hello world")});
 ```
 {
     "hello.html": {
-        "css": [],
+        "css": {},
         "main": "hello.js",
         "deps": []
     }
