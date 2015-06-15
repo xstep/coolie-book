@@ -1,3 +1,6 @@
 {
-  "title": "coolie 官方指南"
+  "title": "coolie 官方指南",
+  "variables": {
+    "version": "0.20.7"
+  }
 }
