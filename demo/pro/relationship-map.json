@@ -1,7 +1,0 @@
-{
-    "hello.html": {
-        "css": {},
-        "main": "hello.js",
-        "deps": []
-    }
-}

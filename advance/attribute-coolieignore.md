@@ -1,1 +1,0 @@
-# coolieignore 属性
