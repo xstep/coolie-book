@@ -20,7 +20,7 @@
         
     
     
-    <link rel="next" href="../advance/html-comments.html" />
+    <link rel="next" href="../advance/build-resource.html" />
     
     
     <link rel="prev" href="../advance/build-css.html" />
@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="3.3" data-basepath=".." data-revision="Tue Jun 16 2015 16:33:33 GMT+0800 (CST)">
+    <div class="book" data-level="3.3" data-basepath=".." data-revision="Tue Jun 16 2015 21:23:19 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -396,15 +396,7 @@
     
         <li class="chapter " data-level="3.4" data-path="advance/html-comments.html">
             
-                
-                    <a href="../advance/html-comments.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.4.</b>
-                        
-                        HTML 注释
-                    </a>
-                
+            <span><b>3.4.</b> HTML 注释</span>
             
             
         </li>
@@ -607,7 +599,84 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="html-%E5%8E%8B%E7%BC%A9">HTML &#x538B;&#x7F29;</h1>
+                        <p>HTML &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x9700;&#x8981;&#x8003;&#x8651;&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#xFF1A;</p>
+<h1 id="%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%A0%87%E7%AD%BE">&#x9759;&#x6001;&#x8D44;&#x6E90;&#x6807;&#x7B7E;</h1>
+<p>&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x5F15;&#x7528;&#x7684;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x4F1A;&#x88AB;&#x6784;&#x5EFA;&#xFF1A;</p>
+<ul>
+<li>img &#x6807;&#x7B7E;&#x7684; src &#x5C5E;&#x6027;</li>
+<li>link &#x6807;&#x7B7E;&#x7684; favicon</li>
+</ul>
+<p>&#x4E0D;&#x5FC5;&#x6784;&#x5EFA;&#x7684;&#x6807;&#x7B7E;&#xFF0C;&#x6DFB;&#x52A0;<code>coolieignore</code>&#x5C5E;&#x6027;&#x5373;&#x53EF;&#xFF0C;&#x5982;&#xFF1A;</p>
+<pre><code>&lt;img src=&quot;./demo1.png&quot;&gt;
+&lt;img src=&quot;./demo1.png&quot; coolieignore&gt;
+</code></pre><p>&#x6784;&#x5EFA;&#x4E4B;&#x540E;</p>
+<pre><code>&lt;img src=&quot;/static/res/xxxxoooo1.png&quot;&gt;
+&lt;img src=&quot;./demo1.png&quot;&gt;
+</code></pre><h1 id="%E5%A4%96%E9%93%BE%E7%9A%84%E8%84%9A%E6%9C%AC%E3%80%81%E6%A0%B7%E5%BC%8F">&#x5916;&#x94FE;&#x7684;&#x811A;&#x672C;&#x3001;&#x6837;&#x5F0F;</h1>
+<ul>
+<li>&#x5916;&#x94FE;&#x7684;&#x811A;&#x672C;&#xFF1A;<a href="build-js.html">&#x811A;&#x672C;&#x7684;&#x5408;&#x5E76;&#x3001;&#x538B;&#x7F29;&#x3001;&#x7248;&#x672C;&#x7BA1;&#x7406;</a>&#x3002;</li>
+<li>&#x5916;&#x94FE;&#x7684;&#x6837;&#x5F0F;&#xFF1A;<a href="build-css.html">&#x6837;&#x5F0F;&#x7684;&#x5408;&#x5E76;&#x3001;&#x538B;&#x7F29;&#x3001;&#x7248;&#x672C;&#x7BA1;&#x7406;</a>&#x3002;</li>
+</ul>
+<h1 id="%E5%86%85%E8%81%94%E7%9A%84%E8%84%9A%E6%9C%AC%E3%80%81%E6%A0%B7%E5%BC%8F">&#x5185;&#x8054;&#x7684;&#x811A;&#x672C;&#x3001;&#x6837;&#x5F0F;</h1>
+<p>&#x5185;&#x8054;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x4F7F;&#x7528;<code>script</code>&#x6807;&#x7B7E;&#x5305;&#x88F9;&#x8D77;&#x6765;&#x7684;&#x811A;&#x672C;&#x5185;&#x5BB9;&#xFF0C;&#x4E5F;&#x540C;&#x6837;&#x4F1A;&#x88AB;&#x538B;&#x7F29;&#x5904;&#x7406;&#x3002;
+<strong>&#x9664;&#x975E;</strong>&#xFF0C;&#x8BE5;<code>script</code>&#x6307;&#x5B9A;&#x4E86;<code>coolieignore</code>&#x5C5E;&#x6027;&#xFF0C;&#x6216;&#x8005;<code>type</code>&#x5C5E;&#x6027;&#x503C;&#x4E0D;&#x662F;&#x811A;&#x672C;&#x3002;</p>
+<p>js type &#x503C;&#x6709;&#xFF1A;</p>
+<ul>
+<li>&#x7A7A;&#x503C;</li>
+<li>javascript</li>
+<li>text/javascript</li>
+<li>text/ecmascript</li>
+<li>text/ecmascript-6</li>
+<li>text/jsx</li>
+<li>application/javascript</li>
+<li>application/ecmascript</li>
+</ul>
+<p>&#x5185;&#x8054;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x4F7F;&#x7528;<code>style</code>&#x6807;&#x7B7E;&#x5305;&#x88F9;&#x8D77;&#x6765;&#x7684;&#x6837;&#x5F0F;&#x5185;&#x5BB9;&#xFF0C;&#x4E5F;&#x540C;&#x6837;&#x4F1A;&#x88AB;&#x538B;&#x7F29;&#x5904;&#x7406;&#x3001;&#x7248;&#x672C;&#x7BA1;&#x7406;&#x3002;</p>
+<pre><code>&lt;script&gt;var abc = &apos;&#x8FD9;&#x91CC;&#x7684; script &#x4F1A;&#x88AB;&#x6784;&#x5EFA;&#x5904;&#x7406;&apos;;&lt;/script&gt;
+&lt;script coolieignore&gt;var abc = &apos;&#x8FD9;&#x91CC;&#x7684; script &#x4F1A;&#x88AB;&#x6784;&#x5EFA;&#x5904;&#x7406;&apos;;&lt;/script&gt;
+</code></pre><p><strong>&#x9664;&#x975E;</strong>&#xFF0C;&#x8BE5;<code>style</code>&#x6307;&#x5B9A;&#x4E86;<code>coolieignore</code>&#x5C5E;&#x6027;&#xFF0C;&#x6216;&#x8005;<code>type</code>&#x5C5E;&#x6027;&#x503C;&#x4E0D;&#x662F;&#x6837;&#x5F0F;&#x3002;</p>
+<h1 id="%E5%86%85%E5%B5%8C%E7%9A%84%E6%A0%B7%E5%BC%8F">&#x5185;&#x5D4C;&#x7684;&#x6837;&#x5F0F;</h1>
+<p>&#x5185;&#x5D4C;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x6807;&#x7B7E;&#x91CC;&#x7684;<code>style</code>&#x5C5E;&#x6027;&#x91CC;&#x7684;&#x6837;&#x5F0F;&#x5185;&#x5BB9;&#xFF0C;&#x4E5F;&#x540C;&#x6837;&#x4F1A;&#x88AB;&#x538B;&#x7F29;&#x5904;&#x7406;&#x3001;&#x7248;&#x672C;&#x7BA1;&#x7406;&#x3002;</p>
+<pre><code>&lt;div style=&quot;background: url(&apos;./demo.png&apos;);&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background: url(&apos;/static/img/demo.png&apos;);&quot;&gt;&lt;/div&gt;
+</code></pre><p>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF1A;</p>
+<pre><code>&lt;div style=&quot;background: url(&apos;/static/res/xxxxoooo1.png&apos;);&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background: url(&apos;/static/res/xxxxoooo2.png&apos;);&quot;&gt;&lt;/div&gt;
+</code></pre><h1 id="%E9%A2%84%E6%A0%BC%E5%BC%8F%E6%96%87%E6%9C%AC">&#x9884;&#x683C;&#x5F0F;&#x6587;&#x672C;</h1>
+<p><code>pre</code>&#x3001;<code>textarea</code>&#xFF0C;&#x4EE5;&#x53CA;&#x6DFB;&#x52A0;&#x4E86;<code>coolieignore</code>&#x6216;&#x4E0D;&#x7B26;&#x5408;&#x811A;&#x672C;&#x3001;&#x6837;&#x5F0F;&#x7684;<code>script</code>&#x3001;<code>style</code>&#x6807;&#x7B7E;&#x90FD;&#x4F1A;&#x4FDD;&#x7559;&#x539F;&#x59CB;&#x7684;&#x6587;&#x672C;&#x683C;&#x5F0F;&#x3002;&#x5982;&#xFF1A;</p>
+<pre><code>&lt;pre&gt;
+&#x9884;&#x683C;&#x5F0F;&#x6587;&#x672C;1
+&lt;/pre&gt;
+
+&lt;script type=&quot;text/plain&quot;&gt;
+&#x9884;&#x683C;&#x5F0F;&#x6587;&#x672C;2
+&lt;/script&gt;
+</code></pre><p>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x683C;&#x5F0F;&#x4E0D;&#x4F1A;&#x53D8;&#x5316;&#xFF1A;</p>
+<pre><code>&lt;pre&gt;
+&#x9884;&#x683C;&#x5F0F;&#x6587;&#x672C;1
+&lt;/pre&gt;&lt;script type=&quot;text/plain&quot;&gt;
+&#x9884;&#x683C;&#x5F0F;&#x6587;&#x672C;2
+&lt;/script&gt;
+</code></pre><h1 id="%E6%B3%A8%E9%87%8A">&#x6CE8;&#x91CA;</h1>
+<p>&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;&#x6CE8;&#x91CA;&#x90FD;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x53C2;&#x8003;&#x4EE5;&#x4E0B;&#x51E0;&#x6761;&#xFF1A;</p>
+<ul>
+<li>&#x975E;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#x4F1A;&#x88AB;&#x4FDD;&#x7559;<pre><code>  &lt;!--
+  &#x6362;&#x884C;&#x4E86;
+  --&gt;
+</code></pre>  &#x6784;&#x5EFA;&#x4E4B;&#x540E;<pre><code>  &lt;!--&#x6362;&#x884C;&#x4E86;--&gt;
+</code></pre></li>
+<li>&#x5F00;&#x5934;&#x4E3A;<code>-</code>&#x7684;&#x591A;&#x884C;&#x6CE8;&#x91CA;&#x4F1A;&#x88AB;&#x5220;&#x9664;<pre><code>  &lt;!--
+  - &#x6362;&#x884C;&#x4E86;
+  --&gt;
+</code></pre>  &#x6784;&#x5EFA;&#x4E4B;&#x540E;<pre><code>  &lt;&#x7A7A;&gt;
+</code></pre></li>
+</ul>
+<h1 id="%E8%B7%AF%E5%BE%84%E5%85%B3%E7%B3%BB">&#x8DEF;&#x5F84;&#x5173;&#x7CFB;</h1>
+<p>&#x5728;&#x4EE5;&#x4E0A;&#x7684;&#x51E0;&#x70B9;&#x5206;&#x522B;&#x90FD;&#x63D0;&#x5230;&#x4E86;&#xFF1A;</p>
+<ul>
+<li>style &#x6807;&#x7B7E;&#x91CC;&#x7684;&#x8D44;&#x6E90;&#xFF1A;&#x76F8;&#x5BF9;&#x4E8E;&#x5F53;&#x524D; html &#x6587;&#x4EF6;&#xFF0C;&#x90FD;&#x4F1A;&#x6784;&#x5EFA;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;</li>
+<li>style &#x5C5E;&#x6027;&#x91CC;&#x7684;&#x8D44;&#x6E90;&#xFF1A;&#x76F8;&#x5BF9;&#x4E8E;&#x5F53;&#x524D; html &#x6587;&#x4EF6;&#xFF0C;&#x90FD;&#x4F1A;&#x6784;&#x5EFA;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;</li>
+</ul>
 
                     
                     </section>
@@ -621,7 +690,7 @@
         <a href="../advance/build-css.html" class="navigation navigation-prev " aria-label="Previous page: CSS 构建"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../advance/html-comments.html" class="navigation navigation-next " aria-label="Next page: HTML 注释"><i class="fa fa-angle-right"></i></a>
+        <a href="../advance/build-resource.html" class="navigation navigation-next " aria-label="Next page: 静态资源构建"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
