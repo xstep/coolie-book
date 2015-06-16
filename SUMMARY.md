@@ -16,7 +16,6 @@
     - [coolie.json](./begin/coolie.json.md)
     - [hello world](./begin/hello-world.md)
 - [进阶](./advance/readme.md)
-    - [DEBUG 全局变量](./advance/global-debug.md)
     - [JS 构建](./advance/build-js.md)
     - [CSS 构建](./advance/build-css.md)
     - [HTML 构建](./advance/build-html.md)

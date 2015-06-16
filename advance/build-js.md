@@ -1,3 +1,24 @@
+# DEBUG 全局变量
+
+- 开发环境：window.DEBUG = true;
+- 生产环境：window.DEBUG = false;
+
+是不是有遇到过测试代码发布到生产环境的情况？是不是打一堆`log`，上线之前还要注释掉？
+现在有了`DEBUG`全局变量，就可以这样了：
+```
+if(DEBUG){
+    console.log('1');
+}
+
+console.log('2');
+```
+构建之后：
+```
+console.log('2');
+```
+
+`DEBUG`全局变量是 coolie.js 根据 coolie-config.js 加上的（[coolie-config.js 详细配置](../bdegin/coolie-config.js.md)）。
+
 
 在 JS 构建上，coolie 不仅对模块化的脚本支持良好，对非模块化的脚本支持也不错，使用也非常方便。
 

@@ -18,7 +18,7 @@
 # debug
 表示是否要输出调试信息（不推荐重写），默认：
 
-- 开发环境：默认为 true，即会在控制台输出模块信息，同时也会注入一个全局变量`DEBUG`（[有什么用？](../advance/global-debug.md)）。
+- 开发环境：默认为 true，即会在控制台输出模块信息，同时也会注入一个全局变量`DEBUG`（[有什么用？](../advance/build-js.md)）。
 - 生成环境：前端构建工具修改 coolie-config.js 文件里的 debug 为 false。
 
 不建议手动去修改它。
