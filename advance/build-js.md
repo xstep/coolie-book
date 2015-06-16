@@ -1,4 +1,5 @@
 # DEBUG 全局变量
+默认情况下：
 
 - 开发环境：window.DEBUG = true;
 - 生产环境：window.DEBUG = false;
@@ -36,7 +37,8 @@ data-main="main.js"></script>
 - data-main 属性：定义了入口模块的地址，相对于 coolie-config.js 里的 base 属性
 
 coolie.cli 在找到入口后，会根据依赖链一直找到依赖终点，形成了一长串的模块集合，
-然后将这些模块合并起来。
+然后将这些模块合并起来，通过生成的[资源引用关系地图](./relationship-map.json.md)可以知道
+当前入口模块到底依赖了哪些模块。
 
 
 # 引用非模块化脚本
@@ -62,3 +64,75 @@ coolie.cli 在找到入口后，会根据依赖链一直找到依赖终点，形
 
 <script src="xxxxooooo.js"></script>
 ```
+
+# 引用非脚本模块
+coolie 支持以下几种 require 格式：
+```
+require('some.js');
+require('some.txt', 'text');
+require('some.css', 'css');
+require('some.html', 'html');
+require('some.png', 'image');
+```
+其中，`text`、`css`、`html`和`image`都是非脚本模块，但是可以被 coolie.js 正常引用，也可以被 coolie.cli 正常构建。
+如：
+在当前目录下有一个`some.txt`文本，内容为：
+```
+hehe
+```
+那么，
+```
+var text = require('./some.txt', 'text');
+
+text === 'hehe'// return true
+```
+构建之后：
+```
+define(id,[],function(y,d,r){r.exports="hehe"});
+```
+
+其他非脚本模块是类似，其中图片模块，返回的是图片的 base64 编码。
+
+
+# 引用资源路径关系
+如这样一个 css 模块：
+```
+.demo1{
+    background: url("./demo1.png");
+    /* 相对于当前 css 文件 */
+}
+
+.demo2{
+    background: url("/demo2.png");
+    /* 相对于网站根目录 */
+}
+```
+
+相对于样式目录（.demo1）的资源都会被编译成 base64 编码，而相对于网站根目录（.demo2）的资源会被修改为绝对路径：
+```
+.demo1{
+    background: url("data:image/png;base64,.....");
+    /* 编译成 base64 编码 */
+}
+
+.demo2{
+    background: url("/static/res/xxxxoooo.png");
+    /* 修改为绝对路径 */
+}
+```
+
+同样，模块化的 css、html 文件引用的静态资源都遵循这个原则。
+```
+<img src="./demo1.png">
+<img src="/demo2.png">
+```
+构建之后：
+```
+<img src="data:image/png;base64,.....">
+<img src="/static/res/xxxxoooo.png">
+```
+
+**注意**
+不要将模块化的 css、text、html、image 模块与项目使用的 css、html 文件混淆。
+
+
