@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="3.6" data-basepath=".." data-revision="Tue Jun 16 2015 21:23:19 GMT+0800 (CST)">
+    <div class="book" data-level="3.5" data-basepath=".." data-revision="Tue Jun 16 2015 21:31:10 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -394,20 +394,13 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="advance/html-comments.html">
-            
-            <span><b>3.4.</b> HTML 注释</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.5" data-path="advance/build-resource.html">
+        <li class="chapter " data-level="3.4" data-path="advance/build-resource.html">
             
                 
                     <a href="../advance/build-resource.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.5.</b>
+                            <b>3.4.</b>
                         
                         静态资源构建
                     </a>
@@ -416,13 +409,13 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.6" data-path="advance/relationship-map.json.html">
+        <li class="chapter active" data-level="3.5" data-path="advance/relationship-map.json.html">
             
                 
                     <a href="../advance/relationship-map.json.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.6.</b>
+                            <b>3.5.</b>
                         
                         资源关系地图
                     </a>
@@ -431,13 +424,13 @@
             
         </li>
     
-        <li class="chapter " data-level="3.7" data-path="advance/publish-cdn.html">
+        <li class="chapter " data-level="3.6" data-path="advance/publish-cdn.html">
             
                 
                     <a href="../advance/publish-cdn.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.7.</b>
+                            <b>3.6.</b>
                         
                         发布到 CDN
                     </a>
@@ -600,6 +593,31 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="%E8%B5%84%E6%BA%90%E5%85%B3%E7%B3%BB%E5%9C%B0%E5%9B%BE">&#x8D44;&#x6E90;&#x5173;&#x7CFB;&#x5730;&#x56FE;</h1>
+<p>&#x8D44;&#x6E90;&#x5173;&#x7CFB;&#x5730;&#x56FE;&#x6307;&#x7684;&#x662F;&#x5728;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#x89E3;&#x6790;&#x51FA;&#x6765;&#x7684;&#x8D44;&#x6E90;&#x4E92;&#x76F8;&#x5F15;&#x7528;&#x3001;&#x8C03;&#x7528;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x662F;&#x4E00;&#x4E2A; JSON &#x6587;&#x4EF6;&#xFF0C;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x770B;&#x3002;</p>
+<pre><code>{
+    &quot;html/index.html&quot;: {
+        &quot;css&quot;: {
+            &quot;static/css/2ad76922b15e819253082e9dd624b9fb.css&quot;: [
+                &quot;static/css/path1/path2/3.css&quot;,
+                &quot;static/css/bootstrap.css&quot;
+            ],
+            &quot;static/css/0caf51b26ddc9d51ca9d87da0988ec10.css&quot;: [
+                &quot;static/css/3.css&quot;
+            ]
+        },
+        &quot;main&quot;: &quot;static/js/app/index.js&quot;,
+        &quot;deps&quot;: [
+            &quot;static/img/100x100.png&quot;,
+            &quot;static/img/loading.gif&quot;,
+            &quot;static/js/libs/path1/path2/index.js&quot;
+        ]
+    }
+}
+</code></pre><p>&#x5982;&#x4E0A;&#xFF0C;&#x9875;&#x9762;&#x6587;&#x4EF6;<code>html/index.html</code>&#x6784;&#x5EFA;&#x751F;&#x6210;&#x4E86;<code>static/css/2ad76922b15e819253082e9dd624b9fb.css</code>
+&#x548C;<code>static/css/0caf51b26ddc9d51ca9d87da0988ec10.css</code>&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x5E76;&#x4E14;&#x524D;&#x8005;&#x5F15;&#x7528;&#x4E86;<code>static/css/path1/path2/3.css</code>
+&#x548C;<code>static/css/bootstrap.css</code>&#x3002;&#x800C;<code>main</code>&#x5C5E;&#x6027;&#x5219;&#x662F;&#x9875;&#x9762;&#x7684;&#x6A21;&#x5757;&#x5165;&#x53E3;&#xFF0C;&#x5176;&#x4E2D;&#x4F9D;&#x8D56;&#x4E86;<code>static/img/100x100.png</code>&#x3001;
+<code>static/img/loading.gif</code>&#x548C;<code>static/js/libs/path1/path2/index.js</code>&#x4E09;&#x4E2A;&#x6A21;&#x5757;&#xFF08;&#x5206;&#x522B;&#x662F; &#x6587;&#x672C;&#x3001;&#x56FE;&#x7247;&#x3001;JS &#x6A21;&#x5757;&#xFF09;&#x3002;</p>
+<p>&#x8D44;&#x6E90;&#x5173;&#x7CFB;&#x5730;&#x56FE;&#x4EE5; html &#x9875;&#x9762;&#x4E3A;&#x57FA;&#x51C6;&#xFF0C;&#x5206;&#x522B;&#x8BB0;&#x5F55;&#x4E86;&#x6BCF;&#x4E2A; html &#x8D44;&#x6E90;&#x5F15;&#x7528;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
 
                     
                     </section>
