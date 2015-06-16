@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>引用非脚本模块 | coolie 官方指南</title>
+        <title>HTML 构建 | coolie 官方指南</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.2">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="../advance/jsminify.html" />
+    <link rel="next" href="../advance/html-comments.html" />
     
     
-    <link rel="prev" href="../advance/global-debug.html" />
+    <link rel="prev" href="../advance/build-css.html" />
     
 
         
@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="3.2" data-basepath=".." data-revision="Tue Jun 16 2015 15:12:27 GMT+0800 (CST)">
+    <div class="book" data-level="3.4" data-basepath=".." data-revision="Tue Jun 16 2015 15:31:28 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -364,75 +364,75 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="advance/require-not-js-module.html">
+        <li class="chapter " data-level="3.2" data-path="advance/build-js.html">
             
                 
-                    <a href="../advance/require-not-js-module.html">
+                    <a href="../advance/build-js.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.</b>
                         
-                        引用非脚本模块
+                        JS 构建
                     </a>
                 
             
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="advance/jsminify.html">
+        <li class="chapter " data-level="3.3" data-path="advance/build-css.html">
             
                 
-                    <a href="../advance/jsminify.html">
+                    <a href="../advance/build-css.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.</b>
                         
-                        JS 压缩
+                        CSS 构建
                     </a>
                 
             
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="advance/cssminify.html">
+        <li class="chapter active" data-level="3.4" data-path="advance/build-html.html">
             
                 
-                    <a href="../advance/cssminify.html">
+                    <a href="../advance/build-html.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.4.</b>
                         
-                        CSS 压缩
+                        HTML 构建
                     </a>
                 
             
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="advance/htmlminify.html">
+        <li class="chapter " data-level="3.5" data-path="advance/html-comments.html">
             
                 
-                    <a href="../advance/htmlminify.html">
+                    <a href="../advance/html-comments.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.5.</b>
                         
-                        HTML 压缩
+                        HTML 注释
                     </a>
                 
             
             
         </li>
     
-        <li class="chapter " data-level="3.6" data-path="advance/resminify.html">
+        <li class="chapter " data-level="3.6" data-path="advance/build-resource.html">
             
                 
-                    <a href="../advance/resminify.html">
+                    <a href="../advance/build-resource.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.6.</b>
                         
-                        静态资源压缩
+                        静态资源构建
                     </a>
                 
             
@@ -607,37 +607,8 @@
                 
                     <section class="normal" id="section-">
                     
-                        <p>&#x5728; JS &#x6784;&#x5EFA;&#x4E0A;&#xFF0C;coolie &#x4E0D;&#x4EC5;&#x5BF9;&#x6A21;&#x5757;&#x5316;&#x7684;&#x811A;&#x672C;&#x652F;&#x6301;&#x826F;&#x597D;&#xFF0C;&#x5BF9;&#x975E;&#x6A21;&#x5757;&#x5316;&#x7684;&#x811A;&#x672C;&#x652F;&#x6301;&#x4E5F;&#x4E0D;&#x9519;&#xFF0C;&#x4F7F;&#x7528;&#x4E5F;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x3002;</p>
-<h1 id="%E5%BC%95%E7%94%A8%E6%A8%A1%E5%9D%97%E5%8C%96%E8%84%9A%E6%9C%AC">&#x5F15;&#x7528;&#x6A21;&#x5757;&#x5316;&#x811A;&#x672C;</h1>
-<pre><code>&lt;script coolie src=&quot;coolie.min.js&quot;
-data-config=&quot;coolie-config.js&quot;
-data-main=&quot;main.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>&#x4EE5;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x6A21;&#x5757;&#x5316;&#x811A;&#x672C;&#x7684;&#x5165;&#x53E3;&#x5B9A;&#x4E49;&#xFF1A;</p>
-<ul>
-<li>coolie &#x5C5E;&#x6027;&#xFF1A;&#x5B9A;&#x4E49;&#x4E86;&#x6B64;&#x6807;&#x7B7E;&#x5C5E;&#x4E8E;&#x8BE5;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x57FA;&#x4E8E; coolie.js</li>
-<li>src &#x5C5E;&#x6027;&#xFF1A;&#x5B9A;&#x4E49;&#x4E86;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;</li>
-<li>data-config &#x5C5E;&#x6027;&#xFF1A;&#x5B9A;&#x4E49;&#x4E86;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5730;&#x5740;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E; src &#x5C5E;&#x6027;</li>
-<li>data-main &#x5C5E;&#x6027;&#xFF1A;&#x5B9A;&#x4E49;&#x4E86;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E; coolie-config.js &#x91CC;&#x7684; base &#x5C5E;&#x6027;</li>
-</ul>
-<p>coolie.cli &#x5728;&#x627E;&#x5230;&#x5165;&#x53E3;&#x540E;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x4F9D;&#x8D56;&#x94FE;&#x4E00;&#x76F4;&#x627E;&#x5230;&#x4F9D;&#x8D56;&#x7EC8;&#x70B9;&#xFF0C;&#x5F62;&#x6210;&#x4E86;&#x4E00;&#x957F;&#x4E32;&#x7684;&#x6A21;&#x5757;&#x96C6;&#x5408;&#xFF0C;
-&#x7136;&#x540E;&#x5C06;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x5408;&#x5E76;&#x8D77;&#x6765;&#x3002;</p>
-<h1 id="%E5%BC%95%E7%94%A8%E9%9D%9E%E6%A8%A1%E5%9D%97%E5%8C%96%E8%84%9A%E6%9C%AC">&#x5F15;&#x7528;&#x975E;&#x6A21;&#x5757;&#x5316;&#x811A;&#x672C;</h1>
-<p>&#x975E;&#x6A21;&#x5757;&#x5316;&#x6307;&#x7684;&#x662F;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6A21;&#x5757;&#x5316;&#x5305;&#x88C5;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x901A;&#x5E38;&#x8FD9;&#x4E9B;&#x811A;&#x672C;&#x90FD;&#x662F;&#x76F4;&#x63A5;&#x5C06;&#x5C5E;&#x6027;&#x3001;&#x65B9;&#x6CD5;&#x6302;&#x8F7D;&#x5728; window &#x5BF9;&#x8C61;&#x4E0A;&#xFF0C;&#x5982;&#xFF1A;</p>
-<pre><code>(function(){
-    this.abc = &apos;abc&apos;;
-}).call(this);
-</code></pre><p>&#x5982;&#x4E0A;&#xFF0C;&#x5C31;&#x5728;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#x4E0B;&#x7684; window &#x5BF9;&#x8C61;&#x4E0A;&#x6DFB;&#x52A0;&#x4E86;<code>abc</code>&#x5C5E;&#x6027;&#xFF0C;&#x5C5E;&#x6027;&#x503C;&#x4E3A;<code>&quot;abc&quot;</code>&#x3002;</p>
-<p>&#x6B64;&#x7C7B;&#x975E;&#x6A21;&#x5757;&#x5316;&#x811A;&#x672C;&#x4E5F;&#x652F;&#x6301; coolie &#x7684;&#x6784;&#x5EFA;&#x4E0E;&#x5408;&#x5E76;&#xFF0C;&#x7528;&#x6CD5;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#x3002;</p>
-<pre><code>&lt;!--coolie--&gt;
-&lt;script src=&quot;1.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;2.js&quot;&gt;&lt;/script&gt;
-&lt;!--/coolie--&gt;
-</code></pre><p>&#x5982;&#x4E0A;&#xFF0C;&#x4F7F;&#x7528;<code>&lt;!--coolie--&gt;</code>&#x548C;<code>&lt;!--/coolie--&gt;</code>&#x5C5E;&#x6027;&#x5305;&#x88F9;&#x8D77;&#x6765;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x5757;&#x7EA7;&#x533A;&#x57DF;&#x5185;&#x7684;&#x6240;&#x6709;&#x811A;&#x672C;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x3001;&#x538B;&#x7F29;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x7248;&#x672C;&#x7BA1;&#x7406;&#x3002;
-&#x76F8;&#x540C;&#x7684;&#x5408;&#x5E76;&#x53EA;&#x4F1A;&#x5904;&#x7406;&#x4E00;&#x6B21;&#xFF0C;&#x7248;&#x672C;&#x53F7;&#x4E5F;&#x4F1A;&#x4E00;&#x81F4;&#x3002;</p>
-<pre><code>=&gt;
+                        <h1 id="html-%E5%8E%8B%E7%BC%A9">HTML &#x538B;&#x7F29;</h1>
 
-&lt;script src=&quot;xxxxooooo.js&quot;&gt;&lt;/script&gt;
-</code></pre>
                     
                     </section>
                 
@@ -647,10 +618,10 @@ data-main=&quot;main.js&quot;&gt;&lt;/script&gt;
         </div>
 
         
-        <a href="../advance/global-debug.html" class="navigation navigation-prev " aria-label="Previous page: DEBUG 全局变量"><i class="fa fa-angle-left"></i></a>
+        <a href="../advance/build-css.html" class="navigation navigation-prev " aria-label="Previous page: CSS 构建"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../advance/jsminify.html" class="navigation navigation-next " aria-label="Next page: JS 压缩"><i class="fa fa-angle-right"></i></a>
+        <a href="../advance/html-comments.html" class="navigation navigation-next " aria-label="Next page: HTML 注释"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
