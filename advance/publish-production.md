@@ -72,3 +72,4 @@ var index = 456;
 - `7niu upload`：将静态文件上传到 CDN
 - `git add webroot-pro && git commit -am 'release' && git push`：提交代码
 
+{% include "../_include/cnzz.md" %}

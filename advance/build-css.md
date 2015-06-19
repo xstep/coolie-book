@@ -73,3 +73,6 @@ css 文件里的资源引用路径，与引用样式文件的 html 文件路径�
 ```
 
 **注意**：`res`是静态资源的保存目录，这个[后文说到](./build-resource.md)。
+
+
+{% include "../_include/cnzz.md" %}

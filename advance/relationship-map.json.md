@@ -29,3 +29,6 @@
 `static/img/loading.gif`和`static/js/libs/path1/path2/index.js`三个模块（分别是 文本、图片、JS 模块）。
 
 资源关系地图以 html 页面为基准，分别记录了每个 html 资源引用的关系。
+
+
+{% include "../_include/cnzz.md" %}

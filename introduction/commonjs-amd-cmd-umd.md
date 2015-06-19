@@ -70,3 +70,6 @@ define(function(require, exports, module){
 ```
 使用 UMD 包装的代码，可以不用改写就可以直接运行在 node 和 浏览器，以及众多模块加载器下，当然代码会相对多很多。
 UMD 规范相对前三者来说，更多的是一种妥协，但不失为是一种变通。在 JS 官方组织的模块化规范成熟之前，这也许是一种最保守的写法。
+
+{% include "../_include/cnzz.md" %}
+
