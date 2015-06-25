@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.5" data-basepath=".." data-revision="Wed Jun 24 2015 20:55:02 GMT+0800 (CST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Thu Jun 25 2015 21:46:36 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -602,7 +602,8 @@
       &quot;./static/js/app/**/*.js&quot;
     ],
     &quot;coolie-config.js&quot;: &quot;./static/js/coolie-config.js&quot;,
-    &quot;dest&quot;: &quot;./static/js/&quot;
+    &quot;dest&quot;: &quot;./static/js/&quot;,
+    &quot;chunk&quot;: []
   },
   &quot;css&quot;: {
     &quot;dest&quot;: &quot;./static/css/&quot;,
@@ -634,7 +635,7 @@
 </ul>
 <p>&#x4E0B;&#x9762;&#x9010;&#x4E00;&#x4ECB;&#x7ECD;&#x4E0B; coolie.json &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x5404;&#x4E2A;&#x914D;&#x7F6E;&#x9879;&#x3002;</p>
 <h1 id="js">js</h1>
-<p>JS &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
+<p>JS &#x6587;&#x4EF6;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
 <h2 id="js-src">js.src</h2>
 <p><code>array</code>&#x3002;coolie.js &#x7684;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x652F;&#x6301; glob &#x901A;&#x914D;&#x7B26;&#xFF08;&#x4E0B;&#x6587;&#x63D0;&#x5230;&#x7684;&#x901A;&#x914D;&#x7B26;&#x4E0E;&#x6B64;&#x76F8;&#x540C;&#xFF09;&#xFF0C;
 JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
@@ -653,10 +654,32 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 <li><a href="https://www.npmjs.com/package/uglify-js" target="_blank">npm: uglify-js</a></li>
 </ul>
 <h2 id="js-coolie-config-js">js.coolie-config.js</h2>
-<p><code>string</code>&#x3002;coolie.js &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x56E0;&#x4E3A;&#x6784;&#x5EFA;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x6539;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;</p>
+<p><code>string</code>&#x3002;coolie.js &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x5316;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;
+&#x56E0;&#x4E3A;&#x6784;&#x5EFA;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x6539;&#x5199;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;</p>
 <h2 id="js-dest">js.dest</h2>
-<p>&#x975E;&#x6A21;&#x5757;&#x5316;&#x811A;&#x672C;&#x7684;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;&#x3002;</p>
-<h1 id="css">css</h1>
+<p>&#x975E;&#x6A21;&#x5757;&#x5316;&#x811A;&#x672C;&#xFF08;&#x6307;&#x7684;&#x662F;&#x9875;&#x9762;&#x4E0A;&#x4F7F;&#x7528;<code>script</code>&#x5F15;&#x7528;&#x7684;&#x811A;&#x672C;&#xFF09;&#x7684;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;&#x3002;</p>
+<pre><code>&lt;!--coolie--&gt;
+&lt;script src=&quot;1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;2.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;3.js&quot;&gt;&lt;/script&gt;
+&lt;!--/coolie--&gt;
+</code></pre><p>&#x5982;&#x4E0A;&#xFF0C;3 &#x4E2A; JS &#x4F1A;&#x88AB;&#x5408;&#x5E76;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF08;<a href="../advance/build-html.html">&#x8BE6;&#x7EC6;&#x70B9;&#x8FD9;&#x91CC;</a>&#xFF09;&#x3002;</p>
+<h2 id="js-chunk">js.chunk</h2>
+<p>&#x6A21;&#x5757;&#x5316;&#x5206;&#x5757;&#x5730;&#x5740;&#x5217;&#x8868;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
+<pre><code>&quot;chunk&quot;: [
+    &quot;./static/js/libs/**/*&quot;,
+    &quot;./static/js/3rd/**/*&quot;
+]
+</code></pre><p>&#x5982;&#x4E0A;&#xFF0C;&#x88AB;&#x5F15;&#x7528;&#x7684; libs &#x6A21;&#x5757;&#x548C; 3rd &#x6A21;&#x5757;&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x5355;&#x72EC;&#x62BD;&#x51FA;&#x6765;&#x6253;&#x5305;&#x6210;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5B58;&#x653E; libs &#x6A21;&#x5757;&#xFF0C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5B58;&#x653E; 3rd &#x6A21;&#x5757;&#x3002;
+&#x5373;&#xFF1A;</p>
+<pre><code>static/js/libs/1.js --
+static/js/libs/2.js  |-&gt; &#x6A21;&#x5757;&#x5408;&#x5E76;&#x6210; 0.xxxx.js
+static/js/libs/3.js --
+
+static/js/3rd/1.js --
+static/js/3rd/2.js  |-&gt; &#x6A21;&#x5757;&#x5408;&#x5E76;&#x6210; 1.xxxx.js
+static/js/3rd/3.js --
+</code></pre><h1 id="css">css</h1>
 <p>CSS &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
 <h2 id="css-dest">css.dest</h2>
 <p><code>string</code>&#x3002;css &#x6587;&#x4EF6;&#x7684;&#x4FDD;&#x5B58;&#x76EE;&#x5F55;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x3002;</p>
@@ -686,7 +709,7 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
 <h2 id="resource-minify">resource.minify</h2>
 <p>&#x4FDD;&#x7559;&#x5C5E;&#x6027;&#xFF0C;&#x5373;&#x662F;&#x5426;&#x538B;&#x7F29;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x3002;</p>
 <h1 id="copy">copy</h1>
-<p><code>array</code>&#x3002;&#x9700;&#x8981;&#x539F;&#x6837;&#x590D;&#x5236;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
+<p><code>array</code>&#x3002;&#x9700;&#x8981;&#x539F;&#x6837;&#x590D;&#x5236;&#x7684;&#x6587;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
 <h1 id="dest">dest</h1>
 <p>&#x6784;&#x5EFA;&#x7684;&#x76EE;&#x5F55;&#x76EE;&#x5F55;&#xFF0C;&#x751F;&#x4EA7;&#x76EE;&#x5F55;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
 <h2 id="dest-dirname">dest.dirname</h2>
