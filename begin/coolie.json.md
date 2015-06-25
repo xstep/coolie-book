@@ -12,7 +12,8 @@ coolie json
       "./static/js/app/**/*.js"
     ],
     "coolie-config.js": "./static/js/coolie-config.js",
-    "dest": "./static/js/"
+    "dest": "./static/js/",
+    "chunk": []
   },
   "css": {
     "dest": "./static/css/",
@@ -48,7 +49,7 @@ coolie json
 下面逐一介绍下 coolie.json 配置文件的各个配置项。
 
 # js
-JS 文件的构建的相关配置。
+JS 文件构建的相关配置。
 
 ## js.src
 `array`。coolie.js 的前端模块化入口文件，支持 glob 通配符（下文提到的通配符与此相同），
@@ -68,11 +69,42 @@ JS 压缩采用的是 uglify2。
 
 
 ## js.coolie-config.js
-`string`。coolie.js 的配置文件（前端模块化加载器配置文件）的路径，因为构建操作需要改写配置文件，所以这个选项是必须的。
+`string`。coolie.js 的配置文件（前端模块化加载器配置文件）的路径，
+因为构建操作需要改写配置文件，所以这个选项是必须的。
 
 
 ## js.dest
-非模块化脚本的保存路径。
+非模块化脚本（指的是页面上使用`script`引用的脚本）的保存路径。
+```
+<!--coolie-->
+<script src="1.js"></script>
+<script src="2.js"></script>
+<script src="3.js"></script>
+<!--/coolie-->
+```
+如上，3 个 JS 会被合并打包成一个文件（[详细点这里](../advance/build-html.md)）。
+
+
+## js.chunk
+模块化分块地址列表，支持通配符。
+
+```
+"chunk": [
+    "./static/js/libs/**/*",
+    "./static/js/3rd/**/*"
+]
+```
+如上，被引用的 libs 模块和 3rd 模块，都会被单独抽出来打包成两个文件，一个文件存放 libs 模块，一个文件存放 3rd 模块。
+即：
+```
+static/js/libs/1.js --
+static/js/libs/2.js  |-> 模块合并成 0.xxxx.js
+static/js/libs/3.js --
+
+static/js/3rd/1.js --
+static/js/3rd/2.js  |-> 模块合并成 1.xxxx.js
+static/js/3rd/3.js --
+```
 
 
 # css
@@ -80,6 +112,7 @@ CSS 文件的构建的相关配置。
 
 ## css.dest
 `string`。css 文件的保存目录，相对于生产目录。
+
 
 ## css.minify
 `object`。css 压缩的一些配置，压缩工具使用的是 clean-css。
@@ -97,6 +130,7 @@ HTML 文件的构建的相关配置。
 ## html.src
 `array`。html 文件的路径，支持通配符。这些 html 文件里的内容会被构建修改。
 
+
 ## html.minify
 `boolean`。html 文件是否压缩，为了照顾到各种模板引擎，只删除了回车、注释，如果用了一些逗比的缩进模板引擎，那么需要设置为 false。
 
@@ -105,6 +139,7 @@ HTML 文件的构建的相关配置。
 - [注释的特殊处理](../advance/comments.md)
 - [coolie 标签属性](../advance/attribute-coolie.md)
 - [coolieignore 标签属性](../advance/attribute-coolieignore.md)
+
 
 # resource
 ## resource.dest
@@ -115,12 +150,14 @@ HTML 文件的构建的相关配置。
 
 
 # copy
-`array`。需要原样复制的文件，支持通配符。
+`array`。需要原样复制的文件列表，支持通配符。
 
 # dest
 构建的目录目录，生产目录相关配置。
+
 ## dest.dirname
 `string`。目标目录，生产目录。
+
 ## dest.host
 `string`。绑定的网络地址，通常为分布到 CDN 环境的地址，如“//cdn.domain.com/path/to/”。
 

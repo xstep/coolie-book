@@ -109,7 +109,7 @@ define(function () {
 
 
             ╔═══════════════════════════════════════════════════════╗
-            ║          coolie.cli@0.20.7                            ║
+            ║          coolie.cli0.21.1                             ║
             ║          The front-end development builder.           ║
             ╚═══════════════════════════════════════════════════════╝
 
@@ -171,7 +171,7 @@ define(function () {
 data-config="./coolie-config.9a754400b547e8ef8518ecd28103c6bd.js" 
 data-main="hello.js"></script>
 </body></html>
-<!--coolie@0.20.7-->
+<!--coolie@0.21.1-->
 ```
 
 - 在文件末尾打上构建工具的版本和的构建时间。
@@ -184,7 +184,7 @@ data-main="hello.js"></script>
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.20.7*/
+/*coolie@0.21.1*/
 coolie.config({
 base:"./",
 debug:!1,
@@ -203,7 +203,7 @@ version:{
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.20.7*/
+/*coolie@0.21.1*/
 define("0",[],function(){alert("hello world")});
 ```
 
