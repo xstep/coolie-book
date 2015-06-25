@@ -73,7 +73,8 @@ define(function () {
       "./hello.js"
     ],
     "coolie-config.js": "./coolie-config.js",
-    "dest": "./"
+    "dest": "./",
+    "chunk": []
   },
   "css": {
     "dest": "./static/css/",
@@ -182,7 +183,7 @@ data-main="hello.js"></script>
 ## coolie-config.js
 构建之后的前端模块加载器配置文件为`coolie-config.2a8dac0468211aefcaf584c3035207ab.js`。
 
-*为了阅读，已经折行处理了。*
+*为了便于阅读，已经折行处理了。*
 ```
 /*coolie@0.21.1*/
 coolie.config({
