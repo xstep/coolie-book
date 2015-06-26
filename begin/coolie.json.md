@@ -98,13 +98,22 @@ JS 压缩采用的是 uglify2。
 即：
 ```
 static/js/libs/1.js --
-static/js/libs/2.js  |-> 模块合并成 0.xxxx.js
+static/js/libs/2.js   |-> 模块合并成 0.xxxx.js
 static/js/libs/3.js --
 
 static/js/3rd/1.js --
-static/js/3rd/2.js  |-> 模块合并成 1.xxxx.js
+static/js/3rd/2.js   |-> 模块合并成 1.xxxx.js
 static/js/3rd/3.js --
 ```
+
+生成的 chunk 模块放在 base（coolie-config>base） 目录下，因此**不要将你的入口模块命名为 0、1、2 这种**。
+
+
+**进阶提示**
+1. 只有被指定的 chunk 模块才会进入 chunk 分析
+2. 当有两个及以上的入口模块，并且只有被两个及以上的入口模块引用的 chunk 模块引用才会抽离出来
+3. 当只有一个入口模块时，指定的 chunk 模块都会被抽离
+
 
 
 # css
