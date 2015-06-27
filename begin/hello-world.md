@@ -4,24 +4,24 @@
 先准备以下目录
 ```
 . demo
-|-- dev 开发环境
+|-- src 开发环境
 |   |-- coolie.json
 |   |-- coolie.min.js
 |   |-- coolie-config.js
-|   |-- hello.html
-|   `-- hello.js
-`-- pro 生成环境
+|   |-- index.html
+|   `-- index.js
+`-- dest 生成环境
     `-- 空
 ```
 
 # html
-先写个页面`hello.html`
+先写个页面`index.html`
 ```
 <!DOCTYPE html>
 <html>
 <head lang="zh-cn">
     <meta charset="UTF-8">
-    <title>hello.html</title>
+    <title>index.html</title>
 </head>
 <body>
 
@@ -32,7 +32,7 @@
 <!--4. 增加了 data-main 属性-->
 <script coolie src="./coolie.min.js"
         data-config="./coolie-config.js"
-        data-main="hello.js"></script>
+        data-main="index.js"></script>
 
 </body>
 </html>
@@ -69,7 +69,7 @@ define(function () {
 ```
 {
   "js": {
-    "src": [
+    "main": [
       "./hello.js"
     ],
     "coolie-config.js": "./coolie-config.js",
@@ -108,39 +108,39 @@ define(function () {
 ```
 ➜ coolie build
 
-
-            ╔═══════════════════════════════════════════════════════╗
-            ║          coolie.cli0.21.1                             ║
-            ║          The front-end development builder.           ║
-            ╚═══════════════════════════════════════════════════════╝
-
+   ╔═════════════════════════════════════════╗
+   ║   coolie@0.21.6                         ║
+   ║   The front-end development builder.    ║
+   ╚═════════════════════════════════════════╝
 
                  1/5 => copy files
 
                  2/5 => build main
-                  √  => /path/to/dev/hello.js
+                  √  =>/path/to/demo/src/index.js
+                  ×  => unchunk modules
 
                  3/5 => overwrite config
                   √  => base: "./"
                   √  => version: "{
-                          "hello.js": "4f60ff2579e7b55f2e1ca87ba2221fde"
+                          "index.js": "0c0e55a404cb28a132fd79b5d1dec5b1"
                         }"
                   √  => callbacks: 0
-                  √  => /path/to/pro/coolie-config.9a754400b547e8ef8518ecd28103c6bd.js
+                  √  =>/path/to/demo/dest/coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js
 
                  4/5 => build html css
-                  √  => /path/to/pro/coolie.min.js
-                  √  => /path/to/dev/hello.html
+                  √  =>/path/to/demo/dest/coolie.min.js
+                  √  =>/path/to/demo/src/index.html
 
                  5/5 => generator relationship map
-                  √  => /path/to/pro/relationship-map.json
+                  √  =>/path/to/demo/dest/relationship-map.json
 
        build success => copy 1 file(s),
-                        build 1 js file(s),
+                        build 1 main file(s),
+                        build 0 js file(s),
                         build 1 html file(s),
                         build 0 css file(s),
                         build 0 resource file(s),
-                        past 185 ms
+                        past 159 ms
 ```
 
 我们来看看构建之后的目录结构：
@@ -150,13 +150,13 @@ define(function () {
 |   |-- coolie.json
 |   |-- coolie.min.js
 |   |-- coolie-config.js
-|   |-- hello.html
-|   `-- hello.js
+|   |-- index.html
+|   `-- index.js
 `-- pro 生成环境
     |-- coolie.min.js
-    |-- coolie-config.9a754400b547e8ef8518ecd28103c6bd.js
-    |-- hello.4f60ff2579e7b55f2e1ca87ba2221fde.js
-    |-- hello.html
+    |-- coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js
+    |-- index.0c0e55a404cb28a132fd79b5d1dec5b1.js
+    |-- index.html
     `-- relationship-map.json
 ```
 
@@ -169,7 +169,7 @@ define(function () {
 <title>hello.html</title>
 </head><body>
 <script src="/coolie.min.js" 
-data-config="./coolie-config.9a754400b547e8ef8518ecd28103c6bd.js" 
+data-config="./coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js" 
 data-main="hello.js"></script>
 </body></html>
 <!--coolie@0.21.1-->
@@ -181,17 +181,17 @@ data-main="hello.js"></script>
 
 # js
 ## coolie-config.js
-构建之后的前端模块加载器配置文件为`coolie-config.2a8dac0468211aefcaf584c3035207ab.js`。
+构建之后的前端模块加载器配置文件为`coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js`。
 
 *为了便于阅读，已经折行处理了。*
 ```
-/*coolie@0.21.1*/
+/*coolie@0.21.6*/
 coolie.config({
 base:"./",
 debug:!1,
 cache:!0,
 version:{
-  "hello.js":"4f60ff2579e7b55f2e1ca87ba2221fde"
+  "index.js":"0c0e55a404cb28a132fd79b5d1dec5b1"
 }}).use();
 ```
 
@@ -200,11 +200,11 @@ version:{
 - 增加了`version`属性，值为`hello.js`的版本（[详细参考点这里](./coolie-config.js.md)）。
 
 ## hello.js
-新的`hello.js`重命名为`hello.4f60ff2579e7b55f2e1ca87ba2221fde.js`。
+新的`hello.js`重命名为`index.0c0e55a404cb28a132fd79b5d1dec5b1.js`。
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.21.1*/
+/*coolie@0.21.6*/
 define("0",[],function(){alert("hello world")});
 ```
 
@@ -218,7 +218,7 @@ define("0",[],function(){alert("hello world")});
 {
     "hello.html": {
         "css": {},
-        "main": "hello.js",
+        "main": "index.js",
         "deps": []
     }
 }

@@ -8,7 +8,7 @@ coolie json
 ```
 {
   "js": {
-    "src": [
+    "main": [
       "./static/js/app/**/*.js"
     ],
     "coolie-config.js": "./static/js/coolie-config.js",
@@ -51,7 +51,7 @@ coolie json
 # js
 JS 文件构建的相关配置。
 
-## js.src
+## js.main
 `array`。coolie.js 的前端模块化入口文件，支持 glob 通配符（下文提到的通配符与此相同），
 JS 压缩采用的是 uglify2。
 
