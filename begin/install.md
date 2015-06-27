@@ -12,10 +12,10 @@ npm install -g coolie
 ```
 ➜ coolie
 
-            ╔═══════════════════════════════════════════════════════╗
-            ║          coolie.cli@0.20.7                           ║
-            ║          The front-end development builder.           ║
-            ╚═══════════════════════════════════════════════════════╝
+   ╔═════════════════════════════════════════╗
+   ║   coolie@0.21.6                         ║
+   ║   The front-end development builder.    ║
+   ╚═════════════════════════════════════════╝
 
 coolie book          => 打开 coolie book
 coolie version       => 输出版本号
@@ -26,7 +26,5 @@ coolie json [path]   => 在指定目录生成`coolie.json`
 coolie build [path]  => 在指定目录根据`coolie.json`配置文件执行构建HTML/JS/CSS
 ```
 
-目前，coolie 带有一些私有色彩，其中`coolie alien`命令，你可能用不到，但其他命令都是公用的。
-你可能注意到了，coolie 没有`install`命令，coolie 目前没有全面实现包下载管理。
 
 {% include "../_include/cnzz.md" %}
