@@ -23,8 +23,7 @@ require.min.js |  15,329B
 -------------|-------
 coolie.min.js | 1 + 4 个（手动配置 base，自动配置 debug/cache/version/callback）
 sea.js | 9 个（alias/paths/vars/map/preload/debug/base/charset/callback）
-require.min.js |  16 个（baseUrl/paths/bundles/shim/map/packages/nodeIdCompat/
-waitSeconds/context/deps/callback/enforceDefine/xhtml/urlArgs/scriptType/skipDataMain）
+require.min.js |  16 个（baseUrl/paths/bundles/shim/map/packages/nodeIdCompat/<br>waitSeconds/context/deps/callback/enforceDefine/<br>xhtml/urlArgs/scriptType/skipDataMain）
 
 
 
