@@ -27,13 +27,24 @@ coolie 作为可能最好的前端开发构建工具，它做了哪些事情？
 # HTML 文件分析、压缩、版本管理
 ```
 <!DOCTYPE html>
+
 <link rel="stylesheet" href="/src/bdd8e022ce7470f06d7183daabac0b79.css">
+
 <script src="/src/6c762d4e4b7d1e9504281bc12abd65b9.js"></script>
+
+<img src="/src/57b007ddecc025d9fcfbe207d5febff8.png" >
+
 <script src="/src/coolie.min.js" 
-data-config="./coolie-config.c58dd5aa2dacebd9a86c92b49b66a6ba.js" 
+data-config="./coolie-config.3ec9b6f8a4c6913cd58f2e844a809418.js" 
 data-main="entry1.js"></script>
 <!--coolie@0.21.6-->
 ```
+
+- link 文件的版本管理以及资源定位
+- script 文件的版本管理以及资源定位
+- img 图片资源的版本管理及资源定位
+- coolie 模块的版本管理
+
 
 # 入口模块的分析、分块、合并、压缩、版本管理
 ## 未分块构建
@@ -80,6 +91,10 @@ data-main="entry1.js"></script>
                         past 273 ms
 
 ```
+
+结果演示图：
+[![](http://s1.momo.moda/2015/06/27/006f52e9102a8d3be2fe5614f42ba989.jpg)](http://s1.momo.moda/2015/06/27/006f52e9102a8d3be2fe5614f42ba989.jpg)
+
 
 ## 分块构建
 增加 chunk 配置：
@@ -134,6 +149,13 @@ data-main="entry1.js"></script>
                         past 229 ms
 
 ```
+来看看 chunk 模块：
+```
+/*coolie@0.21.6*/
+define("2",[],function(y,d,r){r.exports="html{margin:0;padding:0}"});
+```
+构建结果：
+[![](http://s1.momo.moda/2015/06/27/6faa8040da20ef399b63a72d0e4ab575.jpg)](http://s1.momo.moda/2015/06/27/6faa8040da20ef399b63a72d0e4ab575.jpg)
 
 # 静态资源的分析、压缩、版本管理
 CSS 文件里引用了图片，**bdd8e022ce7470f06d7183daabac0b79.css**：
