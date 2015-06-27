@@ -30,10 +30,8 @@ coolie 配套的有模块加载器（coolie.js）和模块构建工具（coolie.
 [r.js](https://github.com/jrburke/r.js) | 需要手动版本管理，配置繁琐 | 不支持 | 不支持 | 不支持 | 不支持
 [grunt](https://www.npmjs.com/package/grunt) | 需要大量代码、配置 | 需要大量代码、配置 | 需要大量代码、配置 | 需要大量代码、配置 | 不支持
 [gulp](https://www.npmjs.com/package/gulp) | 需要大量代码、配置 | 需要大量代码、配置 | 需要大量代码、配置 | 需要大量代码、配置 | 不支持
-[bone](https://www.npmjs.com/package/bone) | 需要大量代码、配置 | 不支持 | 不支持 | 不支持 | 不支持
-[duo](https://www.npmjs.com/package/duo) | 需要大量维护代码 |  需要大量维护代码 |  不支持 | 不支持 | 不支持
-[jspm](https://www.npmjs.com/package/jspm) | 需要大量维护代码 |  不支持 |  不支持 | 不支持 | 支持
-[cortex](https://www.npmjs.com/package/cortex) | 需要大量维护代码 |  不支持 |  不支持 | 不支持 | 支持
+
+
 
 
 {% include "../_include/cnzz.md" %}
