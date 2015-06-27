@@ -11,6 +11,9 @@ coolie 作为可能最好的前端开发构建工具，它做了哪些事情？
 
 <script src="/src/6c762d4e4b7d1e9504281bc12abd65b9.js"></script>
 ```
+示意图：
+[![](http://s1.momo.moda/2015/06/28/b337e84de8752b27eda3a12363109e80.jpg)](http://s1.momo.moda/2015/06/28/b337e84de8752b27eda3a12363109e80.jpg)
+
 
 # CSS 文件的分析、合并、压缩、版本管理
 ```
@@ -23,6 +26,9 @@ coolie 作为可能最好的前端开发构建工具，它做了哪些事情？
 
 <link rel="stylesheet" href="/src/bdd8e022ce7470f06d7183daabac0b79.css">
 ```
+
+示意图：
+[![](http://s1.momo.moda/2015/06/28/11b9842e0a271ff252c1903e7132cd68.jpg)](http://s1.momo.moda/2015/06/28/11b9842e0a271ff252c1903e7132cd68.jpg)
 
 # HTML 文件分析、压缩、版本管理
 ```
@@ -93,7 +99,7 @@ data-main="entry1.js"></script>
 ```
 
 结果演示图：
-[![](http://s1.momo.moda/2015/06/27/006f52e9102a8d3be2fe5614f42ba989.jpg)](http://s1.momo.moda/2015/06/27/006f52e9102a8d3be2fe5614f42ba989.jpg)
+[![](http://s1.momo.moda/2015/06/27/258be18e31c8188555c2ff05b4d542c3.jpg)](http://s1.momo.moda/2015/06/27/258be18e31c8188555c2ff05b4d542c3.jpg)
 
 
 ## 分块构建
