@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="1.2" data-basepath=".." data-revision="Sat Jun 27 2015 18:14:51 GMT+0800 (CST)">
+    <div class="book" data-level="1.2" data-basepath=".." data-revision="Sat Jun 27 2015 20:39:32 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -593,8 +593,86 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="coolie-js">coolie.js</h1>
-<p>coolie.js &#x662F;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3002;&#x8FD0;&#x884C;&#x65F6;&#x9700;&#x8981;<a href="coolie-config.js.html">coolie-config.js</a>&#xFF08;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x81EA;&#x52A8;&#x751F;&#x6210;&#xFF0C;&#x540E;&#x6587;&#x8BE6;&#x8BF4;&#xFF09;&#x3002;</p>
+<p>coolie.js &#x662F;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x4E5F;&#x662F; coolie.cli &#x9ED8;&#x8BA4;&#x652F;&#x6301;&#x7684;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3002;
+&#x8FD0;&#x884C;&#x65F6;&#x9700;&#x8981; <a href="coolie-config.js.html">coolie-config.js</a> &#xFF08;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x81EA;&#x52A8;&#x751F;&#x6210;&#xFF0C;&#x540E;&#x6587;&#x8BE6;&#x8BF4;&#xFF09;&#x3002;</p>
 <p>coolie.js &#x652F;&#x6301;&#x7684;&#x662F;<a href="commonjs-amd-cmd-umd.html"><strong>CMD</strong>&#x89C4;&#x8303;</a>&#x3002;</p>
+<h1 id="%E7%AE%80%E5%8D%95">&#x7B80;&#x5355;</h1>
+<p>&#x4E0E;&#x4E3B;&#x6D41;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x5BB9;&#x91CF;&#x6BD4;&#x8F83;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;</th>
+<th>&#x5BB9;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coolie.min.js</td>
+<td>5,836B</td>
+</tr>
+<tr>
+<td>sea.js</td>
+<td>6,922B</td>
+</tr>
+<tr>
+<td>require.min.js</td>
+<td>15,329B</td>
+</tr>
+</tbody>
+</table>
+<h1 id="%E7%BA%AF%E7%B2%B9">&#x7EAF;&#x7CB9;</h1>
+<p>&#x4E0E;&#x4E3B;&#x6D41;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x624B;&#x52A8;&#x914D;&#x7F6E;&#x6570;&#x91CF;&#x6BD4;&#x8F83;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;</th>
+<th>&#x914D;&#x7F6E;&#x6570;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coolie.min.js</td>
+<td>1 + 4 &#x4E2A;&#xFF08;&#x624B;&#x52A8;&#x914D;&#x7F6E; base&#xFF0C;&#x81EA;&#x52A8;&#x914D;&#x7F6E; debug/cache/version/callback&#xFF09;</td>
+</tr>
+<tr>
+<td>sea.js</td>
+<td>9 &#x4E2A;&#xFF08;alias/paths/vars/map/preload/debug/base/charset/callback&#xFF09;</td>
+</tr>
+<tr>
+<td>require.min.js</td>
+<td>16 &#x4E2A;&#xFF08;baseUrl/paths/bundles/shim/map/packages/nodeIdCompat/waitSeconds/context/deps/callback/enforceDefine/xhtml/urlArgs/scriptType/skipDataMain&#xFF09;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="%E8%83%BD%E5%BC%BA">&#x80FD;&#x5F3A;</h1>
+<p>coolie &#x4F7F;&#x7528;&#x7684;&#x6A21;&#x5757;&#x65B9;&#x6848;&#x662F;&#xFF1A;</p>
+<h2 id="%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">&#x5F00;&#x53D1;&#x73AF;&#x5883;</h2>
+<p>&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F; CMD &#x65B9;&#x6848;&#xFF1A;</p>
+<pre><code>define(function(require, exports, module){
+    var mod = require(&apos;./mod.js&apos;);
+
+    module.exports = &apos;mod&apos;;
+});
+</code></pre><p>&#x56E0;&#x4E3A;&#xFF0C;&#x76EE;&#x524D;&#x6CA1;&#x6709;&#x6BD4;&#x8FD9;&#x4E2A;&#x66F4;&#x7B80;&#x5355;&#x3001;&#x66F4;&#x76F4;&#x89C2;&#x7684;&#x4E66;&#x5199;&#x65B9;&#x5F0F;&#x3002;</p>
+<h2 id="%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83">&#x751F;&#x4EA7;&#x73AF;&#x5883;</h2>
+<p>&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;coolie &#x4F1A;&#x6784;&#x5EFA;&#x6210; AMD &#x7684;&#x5F62;&#x5F0F;&#x3002;</p>
+<pre><code>define(&apos;1&apos;/*&#x6CE8;&#x610F;&#x70B9;1*/, [&apos;0&apos;]/*&#x6CE8;&#x610F;&#x70B9;2*/, function(r/*&#x6CE8;&#x610F;&#x70B9;3*/, e, m){
+    var mod = r/*&#x6CE8;&#x610F;&#x70B9;4*/(&apos;0&apos;/*&#x6CE8;&#x610F;&#x70B9;5*/);
+
+    m.exports = &apos;mod&apos;;
+});
+</code></pre><p>&#x6CE8;&#x610F;&#x70B9;&#xFF1A;</p>
+<ol>
+<li>&#x6A21;&#x5757; ID &#x4ECE;&#x7269;&#x7406;&#x8DEF;&#x5F84;&#x8F6C;&#x6362;&#x6210;&#x4E86;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x822C;&#x7684;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#x54E6;&#xFF0C;
+&#x662F; coolie &#x521D;&#x671F;&#x4F5C;&#x4E3A;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x65B9;&#x9762;&#x7684;&#x6700;&#x5927;&#x4EAE;&#x70B9;&#x3002;
+webpack &#x7684;&#x505A;&#x6CD5;&#x662F;&#x5C06;&#x6A21;&#x5757;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x91CC;<code>[function(){}, function(){}]</code>&#xFF0C;
+&#x8FD9;&#x6837;&#x6A21;&#x5757;&#x7684; ID &#x5C31;&#x662F;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&#x503C;&#xFF0C;&#x633A;&#x5DE7;&#x5999;&#x7684;&#x3002;</li>
+<li>&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757; ID &#x4E5F;&#x4ECE;&#x7269;&#x7406;&#x8DEF;&#x5F84;&#x8F6C;&#x6362;&#x6210;&#x4E86;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#x3002;</li>
+<li><code>function</code> &#x91CC;&#x7684;&#x53C2;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x538B;&#x7F29;&#x7684;&#x54E6;&#xFF0C;&#x56E0;&#x4E3A;&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#x6A21;&#x5757;&#x7684; ID &#x548C;&#x4F9D;&#x8D56;&#x90FD;&#x662F;&#x663E;&#x6027;&#x7684;&#xFF0C;
+<code>require</code>&#x53C2;&#x6570;&#x662F;&#x53EF;&#x4EE5;&#x538B;&#x7F29;&#x7684;&#x54E6;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x901A;&#x8FC7;<code>function.toString</code>&#x6765;&#x5206;&#x6790;&#x4F9D;&#x8D56;&#x7684;&#x54E6;&#x3002;</li>
+<li><code>require</code>&#x53D8;&#x91CF;&#x88AB;&#x538B;&#x7F29;&#x6210;&#x4E86;<code>r</code>&#x3002;</li>
+<li>&#x8FD9;&#x91CC;&#x7684;&#x4F9D;&#x8D56;&#x6A21;&#x5757; ID &#x4E5F;&#x53D8;&#x6210;&#x4E86;<code>0</code>&#x4E86;&#x54E6;&#x3002;</li>
+</ol>
 <div style="display: none;">
     <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
 </div>
