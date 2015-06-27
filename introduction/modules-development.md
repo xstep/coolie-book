@@ -40,7 +40,7 @@
 
 同样的，其他语言都已早早的实现了模块化编程，如import、include等等。
 
-因此，es6 的模块化标准（[更多](http://www.infoq.com/cn/news/2013/08/es6-modules)）就要来了，
+因此，es2015 的模块化标准（[更多](http://www.infoq.com/cn/news/2013/08/es6-modules)）就要来了，
 javascript 也正为此做准备着，因此现在学习模块化正是最佳时机。
 
 {% include "../_include/cnzz.md" %}
