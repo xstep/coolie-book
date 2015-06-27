@@ -11,7 +11,9 @@ coolie 作为可能最好的前端开发构建工具，它做了哪些事情？
 
 <script src="/src/6c762d4e4b7d1e9504281bc12abd65b9.js"></script>
 ```
+
 示意图：
+
 [![](http://s1.momo.moda/2015/06/28/b337e84de8752b27eda3a12363109e80.jpg)](http://s1.momo.moda/2015/06/28/b337e84de8752b27eda3a12363109e80.jpg)
 
 
@@ -28,7 +30,9 @@ coolie 作为可能最好的前端开发构建工具，它做了哪些事情？
 ```
 
 示意图：
+
 [![](http://s1.momo.moda/2015/06/28/11b9842e0a271ff252c1903e7132cd68.jpg)](http://s1.momo.moda/2015/06/28/11b9842e0a271ff252c1903e7132cd68.jpg)
+
 
 # HTML 文件分析、压缩、版本管理
 ```
@@ -51,6 +55,9 @@ data-main="entry1.js"></script>
 - img 图片资源的版本管理及资源定位
 - coolie 模块的版本管理
 
+见图：
+
+[![](http://s1.momo.moda/2015/06/28/f770b62bc8f42a0b66751fe636fc6eb0.jpg)](http://s1.momo.moda/2015/06/28/f770b62bc8f42a0b66751fe636fc6eb0.jpg)
 
 # 入口模块的分析、分块、合并、压缩、版本管理
 ## 未分块构建
@@ -161,6 +168,7 @@ data-main="entry1.js"></script>
 define("2",[],function(y,d,r){r.exports="html{margin:0;padding:0}"});
 ```
 构建结果：
+
 [![](http://s1.momo.moda/2015/06/27/6faa8040da20ef399b63a72d0e4ab575.jpg)](http://s1.momo.moda/2015/06/27/6faa8040da20ef399b63a72d0e4ab575.jpg)
 
 # 静态资源的分析、压缩、版本管理
