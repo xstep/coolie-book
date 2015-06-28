@@ -106,7 +106,7 @@ data-main="entry1.js"></script>
 ```
 
 结果演示图：
-[![](http://s1.momo.moda/2015/06/27/258be18e31c8188555c2ff05b4d542c3.jpg)](http://s1.momo.moda/2015/06/27/258be18e31c8188555c2ff05b4d542c3.jpg)
+[![](http://s1.momo.moda/2015/06/28/fde9264cf376fffe2ee4ddf4a988880d.jpg)](http://s1.momo.moda/2015/06/28/fde9264cf376fffe2ee4ddf4a988880d.jpg)
 
 
 ## 分块构建
