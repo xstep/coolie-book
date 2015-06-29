@@ -18,7 +18,7 @@ console.log('2');
 console.log('2');
 ```
 
-`DEBUG`全局变量是 coolie.js 根据 coolie-config.js 加上的（[coolie-config.js 详细配置](../bdegin/coolie-config.js.md)）。
+`DEBUG`全局变量是 coolie.js 根据 coolie-config.js 加上的（[coolie-config.js 详细配置](../begin/coolie-config.js.md)）。
 
 
 在 JS 构建上，coolie 不仅对模块化的脚本支持良好，对非模块化的脚本支持也不错，使用也非常方便。
