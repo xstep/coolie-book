@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="3.1" data-basepath=".." data-revision="Mon Jun 29 2015 11:29:18 GMT+0800 (CST)">
+    <div class="book" data-level="3.1" data-basepath=".." data-revision="Fri Aug 07 2015 14:30:48 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -394,13 +394,28 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="advance/build-resource.html">
+        <li class="chapter " data-level="3.4" data-path="advance/build-modules.html">
+            
+                
+                    <a href="../advance/build-modules.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        模块构建
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="advance/build-resource.html">
             
                 
                     <a href="../advance/build-resource.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.4.</b>
+                            <b>3.5.</b>
                         
                         静态资源构建
                     </a>
@@ -409,13 +424,13 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="advance/relationship-map.json.html">
+        <li class="chapter " data-level="3.6" data-path="advance/relationship-map.json.html">
             
                 
                     <a href="../advance/relationship-map.json.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.5.</b>
+                            <b>3.6.</b>
                         
                         资源关系地图
                     </a>
@@ -424,13 +439,13 @@
             
         </li>
     
-        <li class="chapter " data-level="3.6" data-path="advance/publish-production.html">
+        <li class="chapter " data-level="3.7" data-path="advance/publish-production.html">
             
                 
                     <a href="../advance/publish-production.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.6.</b>
+                            <b>3.7.</b>
                         
                         发布到生产环境
                     </a>
@@ -656,36 +671,7 @@ require(&apos;some.png&apos;, &apos;image&apos;);
 text === &apos;hehe&apos;// return true
 </code></pre><p>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF1A;</p>
 <pre><code>define(id,[],function(y,d,r){r.exports=&quot;hehe&quot;});
-</code></pre><p>&#x5176;&#x4ED6;&#x975E;&#x811A;&#x672C;&#x6A21;&#x5757;&#x662F;&#x7C7B;&#x4F3C;&#xFF0C;&#x5176;&#x4E2D;&#x56FE;&#x7247;&#x6A21;&#x5757;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x56FE;&#x7247;&#x7684; base64 &#x7F16;&#x7801;&#x3002;</p>
-<h1 id="%E5%BC%95%E7%94%A8%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84%E5%85%B3%E7%B3%BB">&#x5F15;&#x7528;&#x8D44;&#x6E90;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;</h1>
-<p>&#x5982;&#x8FD9;&#x6837;&#x4E00;&#x4E2A; css &#x6A21;&#x5757;&#xFF1A;</p>
-<pre><code>.demo1{
-    background: url(&quot;./demo1.png&quot;);
-    /* &#x76F8;&#x5BF9;&#x4E8E;&#x5F53;&#x524D; css &#x6587;&#x4EF6; */
-}
-
-.demo2{
-    background: url(&quot;/demo2.png&quot;);
-    /* &#x76F8;&#x5BF9;&#x4E8E;&#x7F51;&#x7AD9;&#x6839;&#x76EE;&#x5F55; */
-}
-</code></pre><p>&#x76F8;&#x5BF9;&#x4E8E;&#x6837;&#x5F0F;&#x76EE;&#x5F55;&#xFF08;.demo1&#xFF09;&#x7684;&#x8D44;&#x6E90;&#x90FD;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x6210; base64 &#x7F16;&#x7801;&#xFF0C;&#x800C;&#x76F8;&#x5BF9;&#x4E8E;&#x7F51;&#x7AD9;&#x6839;&#x76EE;&#x5F55;&#xFF08;.demo2&#xFF09;&#x7684;&#x8D44;&#x6E90;&#x4F1A;&#x88AB;&#x4FEE;&#x6539;&#x4E3A;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF1A;</p>
-<pre><code>.demo1{
-    background: url(&quot;data:image/png;base64,.....&quot;);
-    /* &#x7F16;&#x8BD1;&#x6210; base64 &#x7F16;&#x7801; */
-}
-
-.demo2{
-    background: url(&quot;/static/res/xxxxoooo.png&quot;);
-    /* &#x4FEE;&#x6539;&#x4E3A;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84; */
-}
-</code></pre><p>&#x540C;&#x6837;&#xFF0C;&#x6A21;&#x5757;&#x5316;&#x7684; css&#x3001;html &#x6587;&#x4EF6;&#x5F15;&#x7528;&#x7684;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x90FD;&#x9075;&#x5FAA;&#x8FD9;&#x4E2A;&#x539F;&#x5219;&#x3002;</p>
-<pre><code>&lt;img src=&quot;./demo1.png&quot;&gt;
-&lt;img src=&quot;/demo2.png&quot;&gt;
-</code></pre><p>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF1A;</p>
-<pre><code>&lt;img src=&quot;data:image/png;base64,.....&quot;&gt;
-&lt;img src=&quot;/static/res/xxxxoooo.png&quot;&gt;
-</code></pre><p><strong>&#x6CE8;&#x610F;</strong>
-&#x4E0D;&#x8981;&#x5C06;&#x6A21;&#x5757;&#x5316;&#x7684; css&#x3001;text&#x3001;html&#x3001;image &#x6A21;&#x5757;&#x4E0E;&#x9879;&#x76EE;&#x4F7F;&#x7528;&#x7684; css&#x3001;html &#x6587;&#x4EF6;&#x6DF7;&#x6DC6;&#x3002;</p>
+</code></pre><p><a href="build-modules.html">&#x5173;&#x4E8E;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#xFF0C;&#x66F4;&#x591A;&#x70B9;&#x8FD9;&#x91CC;</a>&#x3002;</p>
 <div style="display: none;">
     <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
 </div>

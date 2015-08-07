@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>更多 | coolie 官方指南</title>
+        <title>模块构建 | coolie 官方指南</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.2">
@@ -20,8 +20,10 @@
         
     
     
+    <link rel="next" href="../advance/build-resource.html" />
     
-    <link rel="prev" href="../thanks/readme.html" />
+    
+    <link rel="prev" href="../advance/build-html.html" />
     
 
         
@@ -34,7 +36,7 @@
     
 
         
-    <div class="book" data-level="6" data-basepath=".." data-revision="Fri Aug 07 2015 14:30:48 GMT+0800 (CST)">
+    <div class="book" data-level="3.4" data-basepath=".." data-revision="Fri Aug 07 2015 14:30:48 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -392,7 +394,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="advance/build-modules.html">
+        <li class="chapter active" data-level="3.4" data-path="advance/build-modules.html">
             
                 
                     <a href="../advance/build-modules.html">
@@ -487,7 +489,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="6" data-path="more/readme.html">
+        <li class="chapter " data-level="6" data-path="more/readme.html">
             
                 
                     <a href="../more/readme.html">
@@ -605,18 +607,63 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="%E6%9B%B4%E5%A4%9A">&#x66F4;&#x591A;</h1>
-<p>&#x7ED3;&#x675F;&#x4E4B;&#x4F59;&#xFF0C;&#x53EF;&#x4EE5;&#x9605;&#x8BFB;&#x4EE5;&#x4E0B;&#x6587;&#x7AE0;&#xFF0C;&#x638C;&#x63E1;&#x66F4;&#x591A;&#x5173;&#x4E8E; coolie &#x53CA;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x6784;&#x5EFA;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x3002;</p>
+                        <p>&#x5728;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x65B9;&#x9762;&#xFF0C;&#x5728; coolie &#x9762;&#x524D;&#xFF0C;&#x6240;&#x6709;&#x8D44;&#x6E90;&#x90FD;&#x662F;&#x6A21;&#x5757;&#xFF0C;&#x5305;&#x62EC;JS&#x3001;CSS&#x3001;HTML&#x3001;JSON&#x3001;&#x56FE;&#x7247;&#x7B49;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x3002;</p>
+<p>coolie &#x6A21;&#x5757;&#x6784;&#x5EFA;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
 <ul>
-<li><a href="http://frontenddev.org/column/introduce-coolie/" target="_blank">FED&#x793E;&#x533A;&#xFF1A;coolie &#x4ECB;&#x7ECD;&#x4E13;&#x8F91;</a></li>
-<li><a href="http://frontenddev.org/column/follow-me-coolie/" target="_blank">FED&#x793E;&#x533A;&#xFF1A;&#x8DDF;&#x6211;&#x5B66; coolie &#x4E13;&#x8F91;</a></li>
-<li><a href="http://www.zhihu.com/question/20790576" target="_blank">&#x77E5;&#x4E4E;&#xFF1A;&#x5927;&#x516C;&#x53F8;&#x91CC;&#x600E;&#x6837;&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x524D;&#x7AEF;&#x4EE3;&#x7801;&#xFF1F;</a></li>
-<li><a href="http://www.infoq.com/cn/articles/front-end-engineering-and-performance-optimization-part1" target="_blank">InfoQ&#xFF1A;&#x524D;&#x7AEF;&#x5DE5;&#x7A0B;&#x7CBE;&#x7CB9;&#xFF08;&#x4E00;&#xFF09;&#xFF1A;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x7248;&#x672C;&#x66F4;&#x65B0;&#x4E0E;&#x7F13;&#x5B58;</a></li>
-<li><a href="http://www.infoq.com/cn/articles/front-end-engineering-and-performance-optimization-part2" target="_blank">InfoQ&#xFF1A;&#x524D;&#x7AEF;&#x5DE5;&#x7A0B;&#x7CBE;&#x7CB9;&#xFF08;&#x4E8C;&#xFF09;&#xFF1A;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x7248;&#x672C;&#x66F4;&#x65B0;&#x4E0E;&#x7F13;&#x5B58;</a></li>
+<li>&#x667A;&#x80FD;&#x5206;&#x6790;&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x3002;</li>
+<li>&#x6784;&#x5EFA;&#x540E;&#x7684;&#x76F8;&#x540C;&#x6A21;&#x5757;&#x6709;&#x552F;&#x4E00;&#x7684;&#x6807;&#x793A;&#x7B26;&#xFF08;&#x5982; 1 &#x6216; 2 &#x6216; 3&#xFF09;&#xFF0C;&#x4FBF;&#x4E8E;&#x5206;&#x5757;&#x6784;&#x5EFA;&#x3002;</li>
+<li>&#x667A;&#x80FD;&#x5206;&#x6790;&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#xFF0C;&#x5982;JS&#x3001;CSS&#x3001;HTML&#x3001;JSON&#x3001;&#x56FE;&#x7247;&#x7B49;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x6784;&#x5EFA;&#x3002;</li>
+<li>&#x667A;&#x80FD;&#x5206;&#x6790;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#x5185;&#x7684;&#x4F9D;&#x8D56;&#xFF0C;&#x5982; HTML &#x6A21;&#x5757;&#x91CC;&#x5F15;&#x7528;&#x7684;&#x6837;&#x5F0F;&#x3001;&#x56FE;&#x7247;&#xFF0C;CSS &#x6A21;&#x5757;&#x91CC;&#x5F15;&#x7528;&#x7684;&#x56FE;&#x7247;&#x3002;</li>
+<li>&#x667A;&#x80FD;&#x5206;&#x6790;&#x5206;&#x5757;&#x6784;&#x5EFA;&#x4F9D;&#x8D56;&#x7684;&#x516C;&#x5171;&#x6A21;&#x5757;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x5206;&#x5757;&#x5904;&#x7406;&#x3002;</li>
+<li>&#x51E0;&#x8FD1;&#x5B8C;&#x7F8E;&#x7684;&#x6A21;&#x5757;&#x538B;&#x7F29;&#x3001;&#x5408;&#x5E76;&#x3002;</li>
 </ul>
-<div style="display: none;">
-    <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
-</div>
+<p>&#x5728;&#x4E86;&#x89E3; coolie &#x6A21;&#x5757;&#x6784;&#x5EFA;&#x65B9;&#x9762;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF1A;</p>
+<h1 id="%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%BC%95%E7%94%A8">&#x914D;&#x7F6E;&#x4E0E;&#x5F15;&#x7528;</h1>
+<p>&#x9700;&#x8981;&#x5728;<code>coolie.json</code>&#x6587;&#x4EF6;&#x7684;<code>js.main</code>&#x91CC;&#x586B;&#x5199;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x7684;&#x8DEF;&#x5F84;&#x5730;&#x5740;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
+<pre><code>{
+    &quot;js&quot;: {
+        &quot;main&quot;: [
+            &quot;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x8DEF;&#x5F84;&quot;
+        ]
+    }
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x53EA;&#x80FD;&#x5199;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x4E0D;&#x80FD;&#x5199;&#x5176;&#x4ED6;&#x975E;&#x6A21;&#x5757;&#x5316;&#x7684;&#x811A;&#x672C;&#x8DEF;&#x5F84;&#x6216;&#x8005;&#x662F;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#x7684;&#x8DEF;&#x5F84;&#x3002;
+&#x8FD9;&#x4E9B;&#x8DEF;&#x5F84;&#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;<code>coolie.json</code>&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;&#x7684;&#x3002;</p>
+<p><strong>&#x540C;&#x65F6;</strong>&#xFF0C;&#x9700;&#x8981;&#x5728; HTML &#x6587;&#x4EF6;&#x91CC;&#x5F15;&#x7528;&#x5B83;</p>
+<pre><code>&lt;script coolie ... data-main=&quot;&#x5165;&#x53E3;&#x6A21;&#x5757;URL&quot;&gt;
+</code></pre><ul>
+<li>&#x5982;&#x679C;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x672A;&#x5F15;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x8B66;&#x544A;&#x88AB;&#x6784;&#x5EFA;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x672A;&#x88AB;&#x4F7F;&#x7528;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x9875;&#x9762;&#x4E0A;&#x5F15;&#x7528;&#x7684;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x672A;&#x88AB;&#x6784;&#x5EFA;&#xFF0C;&#x5219;&#x4F1A;&#x8B66;&#x544A;&#x4E22;&#x5931;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<h1 id="%E5%BC%95%E7%94%A8%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84%E5%85%B3%E7%B3%BB">&#x5F15;&#x7528;&#x8D44;&#x6E90;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;</h1>
+<p>&#x5982;&#x8FD9;&#x6837;&#x4E00;&#x4E2A; css &#x6A21;&#x5757;&#xFF1A;</p>
+<pre><code>.demo1{
+    background: url(&quot;./demo1.png&quot;);
+    /* &#x76F8;&#x5BF9;&#x4E8E;&#x5F53;&#x524D; css &#x6587;&#x4EF6; */
+}
+
+.demo2{
+    background: url(&quot;/demo2.png&quot;);
+    /* &#x76F8;&#x5BF9;&#x4E8E;&#x7F51;&#x7AD9;&#x6839;&#x76EE;&#x5F55; */
+}
+</code></pre><p>&#x76F8;&#x5BF9;&#x4E8E;&#x6837;&#x5F0F;&#x76EE;&#x5F55;&#xFF08;.demo1&#xFF09;&#x7684;&#x8D44;&#x6E90;&#x90FD;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x6210; base64 &#x7F16;&#x7801;&#xFF0C;&#x800C;&#x76F8;&#x5BF9;&#x4E8E;&#x7F51;&#x7AD9;&#x6839;&#x76EE;&#x5F55;&#xFF08;.demo2&#xFF09;&#x7684;&#x8D44;&#x6E90;&#x4F1A;&#x88AB;&#x4FEE;&#x6539;&#x4E3A;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF1A;</p>
+<pre><code>.demo1{
+    background: url(&quot;data:image/png;base64,.....&quot;);
+    /* &#x7F16;&#x8BD1;&#x6210; base64 &#x7F16;&#x7801; */
+}
+
+.demo2{
+    background: url(&quot;/static/res/xxxxoooo.png&quot;);
+    /* &#x4FEE;&#x6539;&#x4E3A;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84; */
+}
+</code></pre><p>&#x540C;&#x6837;&#xFF0C;&#x6A21;&#x5757;&#x5316;&#x7684; css&#x3001;html &#x6587;&#x4EF6;&#x5F15;&#x7528;&#x7684;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x90FD;&#x9075;&#x5FAA;&#x8FD9;&#x4E2A;&#x539F;&#x5219;&#x3002;</p>
+<pre><code>&lt;img src=&quot;./demo1.png&quot;&gt;
+&lt;img src=&quot;/demo2.png&quot;&gt;
+</code></pre><p>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF1A;</p>
+<pre><code>&lt;img src=&quot;data:image/png;base64,.....&quot;&gt;
+&lt;img src=&quot;/static/res/xxxxoooo.png&quot;&gt;
+</code></pre><p><strong>&#x6CE8;&#x610F;</strong>
+&#x4E0D;&#x8981;&#x5C06;&#x6A21;&#x5757;&#x5316;&#x7684; css&#x3001;text&#x3001;html&#x3001;image &#x6A21;&#x5757;&#x4E0E;&#x9879;&#x76EE;&#x4F7F;&#x7528;&#x7684; css&#x3001;html &#x6587;&#x4EF6;&#x6DF7;&#x6DC6;&#x3002;</p>
 
                     
                     </section>
@@ -627,8 +674,10 @@
         </div>
 
         
-        <a href="../thanks/readme.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 鸣谢"><i class="fa fa-angle-left"></i></a>
+        <a href="../advance/build-html.html" class="navigation navigation-prev " aria-label="Previous page: HTML 构建"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../advance/build-resource.html" class="navigation navigation-next " aria-label="Next page: 静态资源构建"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
