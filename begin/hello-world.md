@@ -109,7 +109,7 @@ define(function () {
 ➜ coolie build
 
    ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.111                         ║
+   ║   coolie@0.21.11                         ║
    ║   The front-end development builder.    ║
    ╚═════════════════════════════════════════╝
 
@@ -185,7 +185,7 @@ data-main="index.js"></script>
 
 *为了便于阅读，已经折行处理了。*
 ```
-/*coolie@0.21.111*/
+/*coolie@0.21.11*/
 coolie.config({
 base:"./",
 debug:!1,
@@ -204,7 +204,7 @@ version:{
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.21.111*/
+/*coolie@0.21.11*/
 define("0",[],function(){alert("hello world")});
 ```
 
