@@ -58,7 +58,7 @@ coolie.config({
 - `base`地址相对于模块加载器（即：coolie.js 的文件 URL 地址）
 - `use`表示启动入口文件。
 
-## hello.js
+## index.js
 ```
 define(function () {
     alert('hello world');
@@ -70,7 +70,7 @@ define(function () {
 {
   "js": {
     "main": [
-      "./hello.js"
+      "./index.js"
     ],
     "coolie-config.js": "./coolie-config.js",
     "dest": "./",
@@ -84,7 +84,7 @@ define(function () {
   },
   "html": {
     "src": [
-      "./hello.html"
+      "./index.html"
     ],
     "minify": true
   },
@@ -93,15 +93,15 @@ define(function () {
   },
   "copy": [],
   "dest": {
-    "dirname": "../pro/",
+    "dirname": "../dest/",
     "host": ""
   }
 }
 ```
 
-- `js.src`：入口文件，即 hello.js
-- `html.src`：需要构建的 HTML，即 hello.html
-- `dest.dirname`：构建的目标目录，即上层的 pro 目录
+- `js.src`：入口文件，即 index.js
+- `html.src`：需要构建的 HTML，即 index.html
+- `dest.dirname`：构建的目标目录，即上层的 dest 目录
 
 # 构建
 目前，源代码什么都是没有被构建的，我们来尝试构建一下看看。
@@ -109,7 +109,7 @@ define(function () {
 ➜ coolie build
 
    ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.6                         ║
+   ║   coolie@0.21.111                         ║
    ║   The front-end development builder.    ║
    ╚═════════════════════════════════════════╝
 
@@ -166,13 +166,13 @@ define(function () {
 <!DOCTYPE html>
 <html><head lang="zh-cn"> 
 <meta charset="UTF-8"> 
-<title>hello.html</title>
+<title>index.html</title>
 </head><body>
 <script src="/coolie.min.js" 
 data-config="./coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js" 
-data-main="hello.js"></script>
+data-main="index.js"></script>
 </body></html>
-<!--coolie@0.21.1-->
+<!--coolie@0.21.11-->
 ```
 
 - 在文件末尾打上构建工具的版本和的构建时间。
@@ -185,7 +185,7 @@ data-main="hello.js"></script>
 
 *为了便于阅读，已经折行处理了。*
 ```
-/*coolie@0.21.6*/
+/*coolie@0.21.111*/
 coolie.config({
 base:"./",
 debug:!1,
@@ -197,14 +197,14 @@ version:{
 
 - 在文件开头，打上构建工具的版本和的构建时间。
 - 增加了`debug`参数，值为 false（[详细参考点这里](./coolie-config.js.md)）。
-- 增加了`version`属性，值为`hello.js`的版本（[详细参考点这里](./coolie-config.js.md)）。
+- 增加了`version`属性，值为`index.js`的版本（[详细参考点这里](./coolie-config.js.md)）。
 
-## hello.js
-新的`hello.js`重命名为`index.0c0e55a404cb28a132fd79b5d1dec5b1.js`。
+## index.js
+新的`index.js`重命名为`index.0c0e55a404cb28a132fd79b5d1dec5b1.js`。
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.21.6*/
+/*coolie@0.21.111*/
 define("0",[],function(){alert("hello world")});
 ```
 
@@ -216,7 +216,7 @@ define("0",[],function(){alert("hello world")});
 `relationship-map.json`是新生成的文件。
 ```
 {
-    "hello.html": {
+    "index.html": {
         "css": {},
         "main": "index.js",
         "deps": []

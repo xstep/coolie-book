@@ -91,49 +91,6 @@ text === 'hehe'// return true
 define(id,[],function(y,d,r){r.exports="hehe"});
 ```
 
-其他非脚本模块是类似，其中图片模块，返回的是图片的 base64 编码。
-
-
-# 引用资源路径关系
-如这样一个 css 模块：
-```
-.demo1{
-    background: url("./demo1.png");
-    /* 相对于当前 css 文件 */
-}
-
-.demo2{
-    background: url("/demo2.png");
-    /* 相对于网站根目录 */
-}
-```
-
-相对于样式目录（.demo1）的资源都会被编译成 base64 编码，而相对于网站根目录（.demo2）的资源会被修改为绝对路径：
-```
-.demo1{
-    background: url("data:image/png;base64,.....");
-    /* 编译成 base64 编码 */
-}
-
-.demo2{
-    background: url("/static/res/xxxxoooo.png");
-    /* 修改为绝对路径 */
-}
-```
-
-同样，模块化的 css、html 文件引用的静态资源都遵循这个原则。
-```
-<img src="./demo1.png">
-<img src="/demo2.png">
-```
-构建之后：
-```
-<img src="data:image/png;base64,.....">
-<img src="/static/res/xxxxoooo.png">
-```
-
-**注意**
-不要将模块化的 css、text、html、image 模块与项目使用的 css、html 文件混淆。
-
+[关于模块构建，更多点这里](./build-modules.md)。
 
 {% include "../_include/cnzz.md" %}

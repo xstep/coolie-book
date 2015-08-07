@@ -19,6 +19,7 @@
     - [JS 构建](./advance/build-js.md)
     - [CSS 构建](./advance/build-css.md)
     - [HTML 构建](./advance/build-html.md)
+    - [模块构建](./advance/build-modules.md)
     - [静态资源构建](./advance/build-resource.md)
     - [资源关系地图](./advance/relationship-map.json.md)
     - [发布到生产环境](./advance/publish-production.md)
