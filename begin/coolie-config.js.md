@@ -3,7 +3,7 @@
 # base
 入口模块的基准路径。重温一下上文说的路径关系。
 
-- base 相对于模块配置文件 **coolie-config.js**。
+- **base**相对于模块配置文件 **coolie-config.js**。
 - **coolie-config.js** 相对于 **coolie.min.js**。
 - **coolie.min.js** 相对于被引用的页面，推荐使用绝对路径。
 
@@ -25,11 +25,6 @@
 
 
 # version
-版本控制，值可以是字符串或变量。不推荐重写。
-```
-version: "123456"
-```
-字符串版本标记，表示所有的模块版本号都是“123456”。
 ```
 version: {
     "abc.js": "123456",

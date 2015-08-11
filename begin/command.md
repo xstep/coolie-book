@@ -73,7 +73,7 @@ coolie build [path]  => 在指定目录根据`coolie.json`配置文件执行构�
 
 
 # coolie alien [path]
-下载最新的 alien/（基于现代化浏览器的模块化前端解决方案） 到本地，默认为当前工作目录。
+下载最新的 **alien/**（基于现代化浏览器的模块化前端解决方案） 到本地，默认为当前工作目录。
 ```
 ➜  coolie alien
 

@@ -49,7 +49,10 @@ coolie json
 下面逐一介绍下 coolie.json 配置文件的各个配置项。
 
 # js
-JS 文件构建的相关配置。
+JS 文件构建的相关配置。如：
+```
+"js": {}
+```
 
 ## js.main
 `array`。coolie.js 的前端模块化入口文件，支持 glob 通配符（下文提到的通配符与此相同），
@@ -67,10 +70,27 @@ JS 压缩采用的是 uglify2。
 - [npm: glob](https://www.npmjs.com/package/glob)
 - [npm: uglify-js](https://www.npmjs.com/package/uglify-js)
 
+如：
+```
+"js": {
+    "main": [
+        "./static/js/app/**/*.js"
+    ]
+}
+```
+
 
 ## js.coolie-config.js
 `string`。coolie.js 的配置文件（前端模块化加载器配置文件）的路径，
-因为构建操作需要改写配置文件，所以这个选项是必须的。
+因为构建操作需要改写配置文件，所以这个选项是必须的。如：
+```
+"js": {
+    "main": [
+        "./static/js/app/**/*.js"
+    ],
+    "coolie-config.js": "./static/js/coolie-config.js"
+}
+```
 
 
 ## js.dest
@@ -82,7 +102,17 @@ JS 压缩采用的是 uglify2。
 <script src="3.js"></script>
 <!--/coolie-->
 ```
-如上，3 个 JS 会被合并打包成一个文件（[详细点这里](../advance/build-html.md)）。
+如上，3 个 JS 会被合并打包成一个文件（[详细点这里](../advance/build-html.md)）。如：
+```
+"js": {
+    "main": [
+        "./static/js/app/**/*.js"
+    ],
+    "coolie-config.js": "./static/js/coolie-config.js",
+    "dest": "./static/js/"
+}
+```
+
 
 
 ## js.chunk
@@ -114,18 +144,43 @@ static/js/3rd/3.js --
 2. 当有两个及以上的入口模块，并且只有被两个及以上的入口模块引用的 chunk 模块引用才会抽离出来
 3. 当只有一个入口模块时，指定的 chunk 模块都会被抽离
 
+如：
+```
+"chunk": [
+    "./path/to/1/",
+    "./path/to/2/"
+]
+```
+
+
 
 
 # css
-CSS 文件的构建的相关配置。
+CSS 文件的构建的相关配置。如：
+```
+"css": {}
+```
 
 ## css.dest
 `string`。css 文件的保存目录，相对于生产目录。
+```
+"css": {
+    "dest": "./static/css/"
+}
+```
 
 
 ## css.minify
 `object`。css 压缩的一些配置，压缩工具使用的是 clean-css。
-保持默认即可。
+保持默认即可。如：
+```
+"css": {
+    "dest": "./static/css/",
+    "minify" : {
+        "compatibility": "ie7"
+    }
+}
+```
 
 **进阶阅读**
 
@@ -135,13 +190,30 @@ CSS 文件的构建的相关配置。
 
 # html
 HTML 文件的构建的相关配置。
+```
+"html": {}
+```
 
 ## html.src
 `array`。html 文件的路径，支持通配符。这些 html 文件里的内容会被构建修改。
+```
+"html": {
+    "src": "./views/**/*.html"
+}
+```
 
 
 ## html.minify
-`boolean`。html 文件是否压缩，为了照顾到各种模板引擎，只删除了回车、注释，如果用了一些逗比的缩进模板引擎，那么需要设置为 false。
+`boolean`。html 文件是否压缩，为了照顾到各种模板引擎，只删除了回车、注释，
+如果用了一些**逗比**的缩进模板引擎，那么需要设置为 false。如：
+```
+"html": {
+    "src": "./views/**/*.html",
+    "minify": true
+}
+```
+
+
 
 **进阶阅读**
 
@@ -152,23 +224,55 @@ HTML 文件的构建的相关配置。
 
 # resource
 ## resource.dest
-`string`。静态资源（在 HTML 文件里引用到的图片、ico 和在 CSS 文件里引用到的图片、字体等）的保存目录。
+`string`。静态资源（在 HTML 文件里引用到的图片、ico 和在 CSS 文件里引用到的图片、字体等）的保存目录。如：
+```
+"resource": {
+    "dest": "./static/res/"
+}
+```
+
 
 ## resource.minify
-保留属性，即是否压缩静态资源。
+保留属性，即是否压缩静态资源。如：
+```
+"resource": {
+    "dest": "./static/res/",
+    "minify": true
+}
+```
 
 
 # copy
-`array`。需要原样复制的文件列表，支持通配符。
+`array`。需要原样复制的文件列表，支持通配符。如：
+```
+"copy": [
+  "./favicon.ico",
+  "./path/to/"
+]
+```
 
 # dest
-构建的目录目录，生产目录相关配置。
+构建的目录目录，生产目录相关配置。如：
+```
+"dest": {}
+```
 
 ## dest.dirname
 `string`。目标目录，生产目录。
+```
+"dest": {
+  "dirname": "../webroot-pro"
+}
+```
 
 ## dest.host
-`string`。绑定的网络地址，通常为分布到 CDN 环境的地址，如“//cdn.domain.com/path/to/”。
+`string`。绑定的网络地址，通常为分布到 CDN 环境的地址，如：
+```
+"dest": {
+  "dirname": "../webroot-pro",
+  "host": "//cdn.domain.com/path/to/"
+}
+```
 
 
 {% include "../_include/cnzz.md" %}
