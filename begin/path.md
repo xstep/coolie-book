@@ -32,13 +32,13 @@ http://mydomain.com/static/js/app/page.js
 ```
 在 html 上，配置`data-config`属性可以这样：
 ```
-<script coolie src="http://cdn.com/js/coolie/1.0.1/coolie.min.js"
+<script coolie src="http://cdn.com/js/coolie/1.0.2/coolie.min.js"
     data-config="http://mydomain.com/static/js/coolie-config.js"
     data-main="page.js"></script>
 ```
 在 1.0 版本之后，可以直接这样配置了
 ```
-<script coolie src="http://cdn.com/js/coolie/1.0.1/coolie.min.js"
+<script coolie src="http://cdn.com/js/coolie/1.0.2/coolie.min.js"
     data-config="~/static/js/coolie-config.js"
     data-main="page.js"></script>
 ```
