@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.3" data-basepath=".." data-revision="Thu Aug 13 2015 13:17:13 GMT+0800 (CST)">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="Thu Aug 13 2015 13:43:59 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -627,13 +627,31 @@
 coolie &#x7684;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;&#xFF0C;&#x548C; seajs/requireJS &#x76F8;&#x6BD4;&#x6765;&#x8BF4;&#xFF0C;&#x8981;&#x7B80;&#x5355;&#x5F88;&#x591A;&#xFF0C;&#x7B80;&#x8981;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li>&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x5F53;&#x524D;&#x9875;&#x9762;&#x3002;</li>
-<li>&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x3002;</li>
-<li>&#x5165;&#x53E3;&#x6A21;&#x5757; base &#x76EE;&#x5F55;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#xFF08;&#x4F7F;&#x7528;<code>~</code>&#x5F00;&#x5934;&#x8868;&#x793A;&#x76F8;&#x5BF9;&#x4E8E;&#x9875;&#x9762;&#x6240;&#x5728;&#x7684;&#x6839;&#x57DF;&#xFF09;&#x3002;</li>
+<li>&#x5165;&#x53E3;&#x6A21;&#x5757; base &#x76EE;&#x5F55;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x4F7F;&#x7528;<code>~</code>&#x5F00;&#x5934;&#x8868;&#x793A;&#x76F8;&#x5BF9;&#x4E8E;&#x9875;&#x9762;&#x6240;&#x5728;&#x7684;&#x6839;&#x57DF;&#xFF09;&#x3002;</li>
 <li>&#x5165;&#x53E3;&#x6A21;&#x5757;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E; base &#x76EE;&#x5F55;&#x3002;</li>
 </ul>
 <p>&#x7528;&#x4E00;&#x884C;&#x6587;&#x5B57;&#x6765;&#x8868;&#x793A;&#xFF1A;</p>
 <pre><code>&#x5165;&#x53E3;&#x6A21;&#x5757; =&gt; base =&gt; &#x6A21;&#x5757;&#x914D;&#x7F6E;&#x6587;&#x4EF6; =&gt; &#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;
-</code></pre><h1 id="%E5%BC%95%E7%94%A8%E6%A8%A1%E5%9D%97%E7%9A%84%E8%B7%AF%E5%BE%84%E5%85%B3%E7%B3%BB">&#x5F15;&#x7528;&#x6A21;&#x5757;&#x7684;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;</h1>
+</code></pre><h1 id="-%E7%9A%84%E7%94%A8%E6%B3%95"><code>~</code>&#x7684;&#x7528;&#x6CD5;</h1>
+<p>&#x6709;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;coolie.js &#x4F7F;&#x7528;&#x7684;&#x662F; CDN &#x8DEF;&#x5F84;</p>
+<pre><code>http://cdn.com/js/coolie/1.0.1/coolie.min.js
+</code></pre><p>&#x800C;&#x5F53;&#x524D;&#x9875;&#x9762;&#x7684;&#x5730;&#x5740;&#x662F;</p>
+<pre><code>http://mydomain.com/page.html
+</code></pre><p>coolie-config.js &#x4E5F;&#x662F;&#x5728;&#x5F53;&#x524D;&#x57DF;&#x4E0B;&#x7684;&#xFF1A;</p>
+<pre><code>http://mydomain.com/static/js/coolie-config.js
+</code></pre><p>&#x5165;&#x53E3;&#x6A21;&#x5757; page.js &#x4E5F;&#x662F;&#x5728;&#x5F53;&#x524D;&#x57DF;&#x4E0B;&#x7684;&#xFF1A;</p>
+<pre><code>http://mydomain.com/static/js/app/page.js
+</code></pre><p>&#x5728; html &#x4E0A;&#xFF0C;&#x914D;&#x7F6E;<code>data-config</code>&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code>&lt;script coolie src=&quot;http://cdn.com/js/coolie/1.0.1/coolie.min.js&quot;
+    data-config=&quot;http://mydomain.com/static/js/coolie-config.js&quot;
+    data-main=&quot;page.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>&#x5728; 1.0 &#x7248;&#x672C;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD9;&#x6837;&#x914D;&#x7F6E;&#x4E86;</p>
+<pre><code>&lt;script coolie src=&quot;http://cdn.com/js/coolie/1.0.1/coolie.min.js&quot;
+    data-config=&quot;~/static/js/coolie-config.js&quot;
+    data-main=&quot;page.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>&#x4F7F;&#x7528;<code>~</code>&#x6307;&#x5411;&#x5F53;&#x524D;&#x9875;&#x9762;&#x6240;&#x5728;&#x7684;&#x6839;&#x57DF;&#x3002;</p>
+<h1 id="%E5%BC%95%E7%94%A8%E6%A8%A1%E5%9D%97%E7%9A%84%E8%B7%AF%E5%BE%84%E5%85%B3%E7%B3%BB">&#x5F15;&#x7528;&#x6A21;&#x5757;&#x7684;&#x8DEF;&#x5F84;&#x5173;&#x7CFB;</h1>
 <p>&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x91C7;&#x7528;&#x7684;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;&#x5982;&#xFF1A;</p>
 <pre><code>- app.js
 - lib.js

@@ -4,14 +4,46 @@
 coolie 的路径关系，和 seajs/requireJS 相比来说，要简单很多，简要如下：
 
 - 模块加载器路径，相对于当前页面。
-- 模块加载器配置文件路径，相对于模块加载器。
-- 入口模块 base 目录，相对于模块加载器配置文件。
+- 模块加载器配置文件路径，相对于模块加载器（使用`~`开头表示相对于页面所在的根域）。
+- 入口模块 base 目录，相对于模块加载器配置文件（使用`~`开头表示相对于页面所在的根域）。
 - 入口模块，相对于 base 目录。
 
 用一行文字来表示：
 ```
 入口模块 => base => 模块配置文件 => 模块加载器
 ```
+
+# `~`的用法
+有这种情况，coolie.js 使用的是 CDN 路径
+```
+http://cdn.com/js/coolie/1.0.1/coolie.min.js
+```
+而当前页面的地址是
+```
+http://mydomain.com/page.html
+```
+coolie-config.js 也是在当前域下的：
+```
+http://mydomain.com/static/js/coolie-config.js
+```
+入口模块 page.js 也是在当前域下的：
+```
+http://mydomain.com/static/js/app/page.js
+```
+在 html 上，配置`data-config`属性可以这样：
+```
+<script coolie src="http://cdn.com/js/coolie/1.0.1/coolie.min.js"
+    data-config="http://mydomain.com/static/js/coolie-config.js"
+    data-main="page.js"></script>
+```
+在 1.0 版本之后，可以直接这样配置了
+```
+<script coolie src="http://cdn.com/js/coolie/1.0.1/coolie.min.js"
+    data-config="~/static/js/coolie-config.js"
+    data-main="page.js"></script>
+```
+使用`~`指向当前页面所在的根域。
+
 
 # 引用模块的路径关系
 
