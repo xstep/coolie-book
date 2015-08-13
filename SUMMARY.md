@@ -1,7 +1,7 @@
 - [介绍](./introduction/readme.md)
     - [什么是 coolie](./introduction/what-is-coolie.md)
     - [coolie.js](./introduction/coolie.js.md)
-    - [coolie-vs-seajs.js](./introduction/coolie-vs-seajs.js.md)
+    - [coolie-vs-seajs.js](./introduction/coolie-vs-seajs.md)
     - [commonjs、amd、cmd、umd](./introduction/commonjs-amd-cmd-umd.md)
     - [coolie-config.js](./introduction/coolie-config.js.md)
     - [coolie.cli](./introduction/coolie.cli.md)
