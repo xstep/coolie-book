@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.5" data-basepath=".." data-revision="Thu Aug 13 2015 14:27:14 GMT+0800 (CST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Fri Aug 14 2015 23:46:01 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -715,10 +715,14 @@ JS &#x538B;&#x7F29;&#x91C7;&#x7528;&#x7684;&#x662F; uglify2&#x3002;</p>
     &quot;dest&quot;: &quot;./static/js/&quot;
 }
 </code></pre><h2 id="js-chunk">js.chunk</h2>
-<p>&#x6A21;&#x5757;&#x5316;&#x5206;&#x5757;&#x5730;&#x5740;&#x5217;&#x8868;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
+<p><code>array</code>&#x3002;&#x6A21;&#x5757;&#x5316;&#x5206;&#x5757;&#x5730;&#x5740;&#x5217;&#x8868;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
 <pre><code>&quot;chunk&quot;: [
     &quot;./static/js/libs/**/*&quot;,
-    &quot;./static/js/3rd/**/*&quot;
+    &quot;./static/js/3rd/**/*&quot;,
+    [
+        &quot;./static/js/path1/**/*&quot;,
+        &quot;./static/js/path2/**/*&quot;
+    ]
 ]
 </code></pre><p>&#x5982;&#x4E0A;&#xFF0C;&#x88AB;&#x5F15;&#x7528;&#x7684; libs &#x6A21;&#x5757;&#x548C; 3rd &#x6A21;&#x5757;&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x5355;&#x72EC;&#x62BD;&#x51FA;&#x6765;&#x6253;&#x5305;&#x6210;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5B58;&#x653E; libs &#x6A21;&#x5757;&#xFF0C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5B58;&#x653E; 3rd &#x6A21;&#x5757;&#x3002;
 &#x5373;&#xFF1A;</p>
@@ -729,6 +733,12 @@ static/js/libs/3.js --
 static/js/3rd/1.js --
 static/js/3rd/2.js   |-&gt; &#x6A21;&#x5757;&#x5408;&#x5E76;&#x6210; 1.xxxx.js
 static/js/3rd/3.js --
+
+static/js/path1/1.js --
+static/js/path1/2.js   |
+static/js/path1/3.js   |-&gt; &#x6A21;&#x5757;&#x5408;&#x5E76;&#x6210; 2.xxxx.js
+static/js/path2/1.js   |
+static/js/path2/2.js --
 </code></pre><p>&#x751F;&#x6210;&#x7684; chunk &#x6A21;&#x5757;&#x653E;&#x5728; base&#xFF08;coolie-config&gt;base&#xFF09; &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x56E0;&#x6B64;<strong>&#x4E0D;&#x8981;&#x5C06;&#x4F60;&#x7684;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x547D;&#x540D;&#x4E3A; 0&#x3001;1&#x3001;2 &#x8FD9;&#x79CD;</strong>&#x3002;</p>
 <p><strong>&#x8FDB;&#x9636;&#x63D0;&#x793A;</strong></p>
 <ol>
@@ -815,6 +825,13 @@ static/js/3rd/3.js --
 <pre><code>&quot;dest&quot;: {
   &quot;dirname&quot;: &quot;../webroot-pro&quot;,
   &quot;host&quot;: &quot;//cdn.domain.com/path/to/&quot;
+}
+</code></pre><h2 id="dest-versionlength">dest.versionLength</h2>
+<p><code>number</code>&#x3002;&#x7248;&#x672C;&#x53F7;&#x957F;&#x5EA6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; 32 &#x4F4D;&#x3002;</p>
+<pre><code>&quot;dest&quot;: {
+  &quot;dirname&quot;: &quot;../webroot-pro&quot;,
+  &quot;host&quot;: &quot;//cdn.domain.com/path/to/&quot;,
+  &quot;versionLength&quot;: 8
 }
 </code></pre><div style="display: none;">
     <script src="http://s95.cnzz.com/stat.php?id=1255219323&amp;web_id=1255219323" language="JavaScript"></script>
