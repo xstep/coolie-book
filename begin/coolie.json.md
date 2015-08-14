@@ -121,7 +121,11 @@ JS 压缩采用的是 uglify2。
 ```
 "chunk": [
     "./static/js/libs/**/*",
-    "./static/js/3rd/**/*"
+    "./static/js/3rd/**/*",
+    [
+        "./static/js/path1/**/*",
+        "./static/js/path2/**/*"
+    ]
 ]
 ```
 如上，被引用的 libs 模块和 3rd 模块，都会被单独抽出来打包成两个文件，一个文件存放 libs 模块，一个文件存放 3rd 模块。
@@ -134,6 +138,12 @@ static/js/libs/3.js --
 static/js/3rd/1.js --
 static/js/3rd/2.js   |-> 模块合并成 1.xxxx.js
 static/js/3rd/3.js --
+
+static/js/path1/1.js --
+static/js/path1/2.js   |
+static/js/path1/3.js   |-> 模块合并成 2.xxxx.js
+static/js/path2/1.js   |
+static/js/path2/2.js --
 ```
 
 生成的 chunk 模块放在 base（coolie-config>base） 目录下，因此**不要将你的入口模块命名为 0、1、2 这种**。
@@ -271,6 +281,16 @@ HTML 文件的构建的相关配置。
 "dest": {
   "dirname": "../webroot-pro",
   "host": "//cdn.domain.com/path/to/"
+}
+```
+
+## dest.versionLength
+`number`。版本号长度，默认为 32 位。
+```
+"dest": {
+  "dirname": "../webroot-pro",
+  "host": "//cdn.domain.com/path/to/",
+  "versionLength": 8
 }
 ```
 
