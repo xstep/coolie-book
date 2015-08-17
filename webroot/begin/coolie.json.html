@@ -36,7 +36,7 @@
     
 
         
-    <div class="book" data-level="2.5" data-basepath=".." data-revision="Fri Aug 14 2015 23:46:01 GMT+0800 (CST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Mon Aug 17 2015 09:55:22 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -743,13 +743,17 @@ static/js/path2/2.js --
 <p><strong>&#x8FDB;&#x9636;&#x63D0;&#x793A;</strong></p>
 <ol>
 <li>&#x53EA;&#x6709;&#x88AB;&#x6307;&#x5B9A;&#x7684; chunk &#x6A21;&#x5757;&#x624D;&#x4F1A;&#x8FDB;&#x5165; chunk &#x5206;&#x6790;</li>
-<li>&#x5F53;&#x6709;&#x4E24;&#x4E2A;&#x53CA;&#x4EE5;&#x4E0A;&#x7684;&#x5165;&#x53E3;&#x6A21;&#x5757;&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x6709;&#x88AB;&#x4E24;&#x4E2A;&#x53CA;&#x4EE5;&#x4E0A;&#x7684;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x5F15;&#x7528;&#x7684; chunk &#x6A21;&#x5757;&#x5F15;&#x7528;&#x624D;&#x4F1A;&#x62BD;&#x79BB;&#x51FA;&#x6765;</li>
-<li>&#x5F53;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x65F6;&#xFF0C;&#x6307;&#x5B9A;&#x7684; chunk &#x6A21;&#x5757;&#x90FD;&#x4F1A;&#x88AB;&#x62BD;&#x79BB;</li>
+<li>&#x5F53;<strong>&#x6709;&#x4E24;&#x4E2A;&#x53CA;&#x4EE5;&#x4E0A;&#x7684;&#x5165;&#x53E3;&#x6A21;&#x5757;</strong>&#x65F6;&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x6709;&#x88AB;&#x4E24;&#x4E2A;&#x53CA;&#x4EE5;&#x4E0A;&#x7684;&#x5165;&#x53E3;&#x6A21;&#x5757;&#x5F15;&#x7528;&#x7684; chunk &#x6A21;&#x5757;&#x5F15;&#x7528;&#x624D;&#x4F1A;&#x88AB;&#x62BD;&#x79BB;&#x51FA;&#x6765;</li>
+<li>&#x5F53;<strong>&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5165;&#x53E3;&#x6A21;&#x5757;</strong>&#x65F6;&#xFF0C;&#x6307;&#x5B9A;&#x7684; chunk &#x6A21;&#x5757;&#x90FD;&#x4F1A;&#x88AB;&#x62BD;&#x79BB;</li>
 </ol>
 <p>&#x5982;&#xFF1A;</p>
 <pre><code>&quot;chunk&quot;: [
-    &quot;./path/to/1/&quot;,
-    &quot;./path/to/2/&quot;
+    &quot;./path/to/1/**/*&quot;,
+    &quot;./path/to/2/**/*&quot;,
+    [
+        &quot;./path/to/3/**/*&quot;, 
+        &quot;./path/to/4/**/*&quot;
+    ]
 ]
 </code></pre><h1 id="css">css</h1>
 <p>CSS &#x6587;&#x4EF6;&#x7684;&#x6784;&#x5EFA;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;&#x5982;&#xFF1A;</p>
