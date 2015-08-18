@@ -11,6 +11,7 @@ coolie 从 idea 到诞生，一直稳定发展到现在，感谢那些为 coolie
 - [zhangwang](http://frontenddev.org/developer/zhangwang/)
 - [denglh](http://frontenddev.org/developer/denglh/)
 - [sunny7336](http://frontenddev.org/developer/Sunny7336/)
+- [Leon.Chen](http://frontenddev.org/developer/cyqresig/)
 - [lsx](http://FrontEndDev.org/developer/1052145436)
 - [#云淡然](http://frontenddev.org/developer/cloudcome/)
 
