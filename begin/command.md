@@ -234,35 +234,44 @@ coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认
 ╚═════════════════════════════════════════╝
 
                  1/5 => copy files
-                  √  => /static/js/coolie.min.js
 
                  2/5 => build main
                   √  => /static/js/app/area.js
                   √  => /static/js/app/length.js
+                  ×  => unchunk modules
 
                  3/5 => overwrite config
                   √  => base: "./app/"
-                  √  => host: ""
                   √  => version: "{
-                          "area.js": "355b4d4018bf77cfd42cb6065abceefd",
-                          "length.js": "5d113baeb803b345fa0bb6e42c9faaa6"
+                          "area.js": "e633541fdaad38d5a0a86b24c3ad419c",
+                          "length.js": "cac2241d618488f567abef6c7c99dd0d"
                         }"
                   √  => callbacks: 0
-                  √  => /path/to/webroot-pro/static/js/coolie-config.a7f2bc5bd1bb24e93ee6688fcde03da8.js
+                  √  => /../webroot-pro/static/js/coolie-config.a08fb1c42a015ae88579ff31af1593bd.js
 
                  4/5 => build html css
-                  √  => /path/to/webroot-pro/static/css/255990a3b6b5b76cf3488ffb76157d45.css
-                  √  => /views/**/*.html
+                  √  => /static/fonts/glyphicons-halflings-regular.eot
+                  √  => /static/fonts/glyphicons-halflings-regular.woff2
+                  √  => /static/fonts/glyphicons-halflings-regular.woff
+                  √  => /static/fonts/glyphicons-halflings-regular.ttf
+                  √  => /static/fonts/glyphicons-halflings-regular.svg
+                  √  => /static/img/apic9517.png
+                  √  => /../webroot-pro/static/css/255990a3b6b5b76cf3488ffb76157d45.css
+                  √  => /../webroot-pro/static/js/ba1c8824da1cb2b0d3f7e94f2aea8b8d.js
+                  √  => /views/area.html
+                  √  => /views/length.html
+                  √  => /index.html
 
                  5/5 => generator relationship map
-                  √  => /path/to/webroot-pro/relationship-map.json
+                  √  => /../webroot-pro/relationship-map.json
 
-       build success => copy 1 file(s),
-                        build 2 js file(s),
-                        build 2 html file(s),
+       build success => copy 7 file(s),
+                        build 2 main file(s),
+                        build 0 js file(s),
+                        build 3 html file(s),
                         build 6 css file(s),
-                        build 6 resource file(s),
-                        past 197 ms
+                        build 0 resource file(s),
+                        past 208 ms
 ```
 如上，前端构建的时候，分为 5 个步骤：
 
@@ -272,51 +281,53 @@ coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认
 - 4/5：HTML、CSS、静态文件的构建过程，因为这个过程是糅合的，无法将其分开。
 - 5/5：生成资源引用关系图。
 
-我们来看看生成后的`coolie-config.js`是怎样的（为了便于阅读，已将压缩文件格式化）：
+我们来看看生成后的`coolie-config.a08fb1c42a015ae88579ff31af1593bd.js`是怎样的（为了便于阅读，已将压缩文件格式化）：
 ```
-/*coolie@0.21.18 1433161753973*/
+*coolie@0.22.4*/
 coolie.config({
-    base: "./app/",
-    debug: !1,
-    version: {
-        "area.js": "355b4d4018bf77cfd42cb6065abceefd",
-        "length.js": "5d113baeb803b345fa0bb6e42c9faaa6"
+    base:"./app/",
+    debug:!1,
+    cache:!0,
+    version:{
+        "area.js":"e633541fdaad38d5a0a86b24c3ad419c",
+        "length.js":"cac2241d618488f567abef6c7c99dd0d"
     }
 }).use();
 ```
 生成的**relationship-map.json**：
 ```
-{
     "views/area.html": {
-        "css": [
-            {
-                "static/css/255990a3b6b5b76cf3488ffb76157d45.css": [
-                    "static/css/font.css",
-                    "static/css/img.css",
-                    "static/css/style.css"
-                ]
-            }
-        ],
+        "css": {
+            "static/css/255990a3b6b5b76cf3488ffb76157d45.css": [
+                "static/css/font.css",
+                "static/css/img.css",
+                "static/css/style.css"
+            ]
+        },
+        "js": {},
         "main": "static/js/app/area.js",
         "deps": [
             "static/js/utils.js"
         ]
     },
     "views/length.html": {
-        "css": [
-            {
-                "static/css/255990a3b6b5b76cf3488ffb76157d45.css": [
-                    "static/css/font.css",
-                    "static/css/img.css",
-                    "static/css/style.css"
-                ]
-            }
-        ],
+        "css": {
+            "static/css/255990a3b6b5b76cf3488ffb76157d45.css": [
+                "static/css/font.css",
+                "static/css/img.css",
+                "static/css/style.css"
+            ]
+        },
+        "js": {},
         "main": "static/js/app/length.js",
         "deps": [
-            "static/js/utils.js",
-            "static/js/utils2.js"
+            "static/js/utils.js"
         ]
+    },
+    "index.html": {
+        "css": {},
+        "js": {},
+        "main": ""
     }
 }
 ```
