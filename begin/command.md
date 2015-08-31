@@ -2,7 +2,6 @@
 ```
 ➜ coolie
 
-
 ╔═════════════════════════════════════════╗
 ║   coolie@0.22.4                         ║
 ║   The front-end development builder.    ║
@@ -29,10 +28,10 @@ coolie book          => 打开 coolie book
 ```
 ➜  coolie book
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.18                        ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
 
          coolie book => http://coolie.ydr.me/
 ```
@@ -43,15 +42,15 @@ coolie book          => 打开 coolie book
 ```
 ➜  coolie version
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.18                        ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
 
-       local version => 0.20.5
+       local version => 0.22.4
         check update => wait a moment...
-           coolie.js => 0.13.9
-          coolie.cli => 0.20.5
+           coolie.js => 1.1.1
+          coolie.cli => 0.20.4
 ```
 
 
@@ -61,13 +60,14 @@ coolie book          => 打开 coolie book
 ```
 ➜  coolie pull
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.18                        ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
 
-  pull coolie.min.js => https://raw.githubusercontent.com/cloudcome/coolie/master/coolie.min.js
-  pull coolie.min.js => /path/to/coolie.min.js
+ pull coolie.min.js => https://raw.githubusercontent.com/cloudcome/coolie/master/coolie.min.js
+   coolie.js version => 1.1.1
+  pull coolie.min.js => /Users/zhangyunlai/Downloads/coolietest/coolie.min-1.1.1.js
 ```
 
 
@@ -77,10 +77,10 @@ coolie book          => 打开 coolie book
 ```
 ➜  coolie config
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.18                        ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
 
                 tips => 以下操作留空回车表示同意默认配置。
 
@@ -115,10 +115,10 @@ coolie.config({
 ```
 ➜  coolie json
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.18                        ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
 
                 tips => 以下操作留空回车表示同意默认配置。
 
@@ -228,17 +228,17 @@ coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认
 ```
 ➜  coolie build
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.18                        ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
 
                  1/5 => copy files
-                  √  => /path/to/webroot-dev/static/js/coolie.min.js
+                  √  => /static/js/coolie.min.js
 
                  2/5 => build main
-                  √  => /path/to/webroot-dev/static/js/app/area.js
-                  √  => /path/to/webroot-dev/static/js/app/length.js
+                  √  => /static/js/app/area.js
+                  √  => /static/js/app/length.js
 
                  3/5 => overwrite config
                   √  => base: "./app/"
@@ -252,7 +252,7 @@ coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认
 
                  4/5 => build html css
                   √  => /path/to/webroot-pro/static/css/255990a3b6b5b76cf3488ffb76157d45.css
-                  √  => /path/to/webroot-dev/views/**/*.html
+                  √  => /views/**/*.html
 
                  5/5 => generator relationship map
                   √  => /path/to/webroot-pro/relationship-map.json
