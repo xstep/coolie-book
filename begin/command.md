@@ -2,18 +2,18 @@
 ```
 ➜ coolie
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.18                        ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
 
-coolie book          => 打开 coolie book
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
+
 coolie version       => 输出版本号
-coolie pull [path]   => 下载 coolie.min.js 到指定目录
-coolie alien [path]  => 下载 alien/ 到指定目录
-coolie config [path] => 在指定目录生成`coolie-config.js`
+coolie build [path]  => 在指定目录根据`coolie.json`执行前端构建
 coolie json [path]   => 在指定目录生成`coolie.json`
-coolie build [path]  => 在指定目录根据`coolie.json`配置文件执行构建HTML/JS/CSS
+coolie pull [path]   => 下载 coolie.min.js 到指定目录
+coolie config [path] => 在指定目录生成`coolie-config.js`
+coolie book          => 打开 coolie book
 ```
 
 当然，输入未注册的命令，都会输出这个帮助列表。
