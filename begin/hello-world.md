@@ -4,14 +4,20 @@
 先准备以下目录
 ```
 . demo
-|-- src 开发环境
+|-- dev 开发环境
 |   |-- coolie.json
-|   |-- coolie.min.js
+|   |-- coolie.min-1.1.1.js
 |   |-- coolie-config.js
 |   |-- index.html
 |   `-- index.js
-`-- dest 生成环境
+`-- pro 生成环境
     `-- 空
+```
+
+# 下载模块加载器
+切换到 dev 目录：
+```
+coolie pull
 ```
 
 # html
@@ -30,7 +36,7 @@
 <!--2. 引用了 coolie.min.js-->
 <!--3. 增加了 data-config 属性-->
 <!--4. 增加了 data-main 属性-->
-<script coolie src="./coolie.min.js"
+<script coolie src="./coolie.min-1.1.1.js"
         data-config="./coolie-config.js"
         data-main="index.js"></script>
 
@@ -93,8 +99,9 @@ define(function () {
   },
   "copy": [],
   "dest": {
-    "dirname": "../dest/",
-    "host": ""
+    "dirname": "../pro/",
+    "host": "",
+    "versionLength": 32
   }
 }
 ```
@@ -108,31 +115,39 @@ define(function () {
 ```
 ➜ coolie build
 
-   ╔═════════════════════════════════════════╗
-   ║   coolie@0.21.11                         ║
-   ║   The front-end development builder.    ║
-   ╚═════════════════════════════════════════╝
+
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
+
+
+╔═════════════════════════════════════════╗
+║   coolie@0.22.4                         ║
+║   The front-end development builder.    ║
+╚═════════════════════════════════════════╝
+
 
                  1/5 => copy files
 
                  2/5 => build main
-                  √  =>/path/to/demo/src/index.js
+                  √  => /index.js
                   ×  => unchunk modules
 
                  3/5 => overwrite config
                   √  => base: "./"
                   √  => version: "{
-                          "index.js": "0c0e55a404cb28a132fd79b5d1dec5b1"
+                          "index.js": "4f60ff2579e7b55f2e1ca87ba2221fde"
                         }"
                   √  => callbacks: 0
-                  √  =>/path/to/demo/dest/coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js
+                  √  => /../pro/coolie-config.0e49540baa0842bd9b2a250a6fb643ed.js
 
                  4/5 => build html css
-                  √  =>/path/to/demo/dest/coolie.min.js
-                  √  =>/path/to/demo/src/index.html
+                  √  => /../pro/ba1c8824da1cb2b0d3f7e94f2aea8b8d.js
+                  √  => /index.html
 
                  5/5 => generator relationship map
-                  √  =>/path/to/demo/dest/relationship-map.json
+                  √  => /../pro/relationship-map.json
 
        build success => copy 1 file(s),
                         build 1 main file(s),
@@ -140,7 +155,7 @@ define(function () {
                         build 1 html file(s),
                         build 0 css file(s),
                         build 0 resource file(s),
-                        past 159 ms
+                        past 98 ms
 ```
 
 我们来看看构建之后的目录结构：
@@ -148,14 +163,14 @@ define(function () {
 . demo
 |-- dev 开发环境
 |   |-- coolie.json
-|   |-- coolie.min.js
+|   |-- coolie.min-1.11.js
 |   |-- coolie-config.js
 |   |-- index.html
 |   `-- index.js
 `-- pro 生成环境
-    |-- coolie.min.js
-    |-- coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js
-    |-- index.0c0e55a404cb28a132fd79b5d1dec5b1.js
+    |-- ba1c8824da1cb2b0d3f7e94f2aea8b8d.js
+    |-- coolie-config.0e49540baa0842bd9b2a250a6fb643ed.js
+    |-- index.4f60ff2579e7b55f2e1ca87ba2221fde.js
     |-- index.html
     `-- relationship-map.json
 ```
@@ -163,16 +178,21 @@ define(function () {
 # html
 *为了阅读，已经折行处理了。*
 ```
+
 <!DOCTYPE html>
-<html><head lang="zh-cn"> 
+<html>
+<head lang="zh-cn"> 
 <meta charset="UTF-8"> 
 <title>index.html</title>
-</head><body>
-<script src="/coolie.min.js" 
-data-config="./coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js" 
+</head>
+<body>
+
+<script src="/ba1c8824da1cb2b0d3f7e94f2aea8b8d.js" 
+data-config="./coolie-config.0e49540baa0842bd9b2a250a6fb643ed.js" 
 data-main="index.js"></script>
+
 </body></html>
-<!--coolie@0.21.11-->
+<!--coolie@0.22.4-->
 ```
 
 - 在文件末尾打上构建工具的版本和的构建时间。
@@ -181,18 +201,19 @@ data-main="index.js"></script>
 
 # js
 ## coolie-config.js
-构建之后的前端模块加载器配置文件为`coolie-config.30b4c2b3e6b2e4ec52950f0f91f9f085.js`。
+构建之后的前端模块加载器配置文件为`coolie-config.0e49540baa0842bd9b2a250a6fb643ed.js`。
 
 *为了便于阅读，已经折行处理了。*
 ```
-/*coolie@0.21.11*/
+/*coolie@0.22.4*/
 coolie.config({
-base:"./",
-debug:!1,
-cache:!0,
-version:{
-  "index.js":"0c0e55a404cb28a132fd79b5d1dec5b1"
-}}).use();
+    base:"./",
+    debug:!1,
+    cache:!0,
+    version:{
+        "index.js":"4f60ff2579e7b55f2e1ca87ba2221fde"
+    }
+}).use();
 ```
 
 - 在文件开头，打上构建工具的版本和的构建时间。
@@ -200,11 +221,11 @@ version:{
 - 增加了`version`属性，值为`index.js`的版本（[详细参考点这里](./coolie-config.js.md)）。
 
 ## index.js
-新的`index.js`重命名为`index.0c0e55a404cb28a132fd79b5d1dec5b1.js`。
+新的`index.js`重命名为`index.4f60ff2579e7b55f2e1ca87ba2221fde.js`。
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.21.11*/
+/*coolie@0.22.4*/
 define("0",[],function(){alert("hello world")});
 ```
 
