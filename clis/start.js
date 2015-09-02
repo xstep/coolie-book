@@ -13,7 +13,9 @@ var args = [];
 
 args.push(__filename);
 args.push('-w');
-args.push('./webserver/');
+args.push('./webserver/,./bookroot/');
+args.push('-e');
+args.push('js,md');
 args.push('app.js');
 
 

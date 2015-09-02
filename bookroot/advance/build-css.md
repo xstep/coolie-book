@@ -61,7 +61,9 @@ css 文件里的资源引用路径，与引用样式文件的 html 文件路径�
     /* 相对于网站根目录 */
 }
 ```
+
 构建之后：
+
 ```
 .demo1{
     background: url("../res/demo1.png");
