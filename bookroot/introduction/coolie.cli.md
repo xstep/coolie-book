@@ -5,6 +5,6 @@ coolie.cli 与后端语言无关，目前已在 node、JAVA、静态网站工程
 
 coolie.cli 构建时需要 [coolie.json](./coolie.json.md)（构建配置文件可以使用命令自动生成，后文详说）。
 
-{% include "../_include/cnzz.md" %}
+
 
 

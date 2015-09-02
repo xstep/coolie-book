@@ -337,4 +337,3 @@ coolie.config({
 - 普通构建：[coolie入门6-coolie 实例演示](http://frontenddev.org/article/introductory-coolie-6-coolie-example-demonstration.html)
 - 分块构建：[跟我学 coolie 之 5 模块分块构建](http://frontenddev.org/article/follow-me-coolie-5-module-block-building.html)
 
-{% include "../_include/cnzz.md" %}

@@ -20,5 +20,5 @@ coolie 这个单词有点儿意思，中英同音并且同义，义指苦力。
 - **coolie.cli**（前端开发构建工具）：<https://www.npmjs.com/package/coolie>
 
 
-{% include "../_include/cnzz.md" %}
+
 

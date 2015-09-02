@@ -7,5 +7,5 @@ coolie.json 是 coolie.cli 的配置文件，该配置文件仅需要在项目�
 而如果使用其他构建工具，它的配置文件将会越来越臃肿、越来越难写。
 
 
-{% include "../_include/cnzz.md" %}
+
 

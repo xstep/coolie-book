@@ -8,4 +8,3 @@
 - [InfoQ：前端工程精粹（一）：静态资源版本更新与缓存](http://www.infoq.com/cn/articles/front-end-engineering-and-performance-optimization-part1)
 - [InfoQ：前端工程精粹（二）：静态资源版本更新与缓存](http://www.infoq.com/cn/articles/front-end-engineering-and-performance-optimization-part2)
 
-{% include "../_include/cnzz.md" %}

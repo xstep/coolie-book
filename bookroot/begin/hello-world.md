@@ -250,4 +250,4 @@ define("0",[],function(){alert("hello world")});
 因为构建之后，静态资源路径都替换为了绝对路径，因此你需要启动一个 HTTP 服务器（sts:<https://www.npmjs.com/package/sts>）才可以预览。
 
 
-{% include "../_include/cnzz.md" %}
+

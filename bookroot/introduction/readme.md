@@ -16,5 +16,5 @@ coolie 已经用于企业级产品，兼容 JAVA、NodeJS、静态网站等多�
 同时，阅读本书可以给你的更多的帮助，甚至了启发。
 
 
-{% include "../_include/cnzz.md" %}
+
 

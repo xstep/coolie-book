@@ -17,6 +17,6 @@ coolie 从 idea 到诞生，一直稳定发展到现在，也需要感谢那些�
 - [webpack](https://www.npmjs.com/package/webpack)
 
 
-{% include "../_include/cnzz.md" %}
+
 
 
