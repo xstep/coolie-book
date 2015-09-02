@@ -15,7 +15,7 @@ var webroot = env === 'local' ? 'dev' : 'pro';
 module.exports = {
     port: 10081,
     env: env,
-    bookPath: path.join(__dirname, './book'),
+    bookroot: path.join(__dirname, './bookroot'),
     webroot: path.join(__dirname, './webroot-' + webroot),
     //webroot: path.join(__dirname, './webroot-pro'),
     cookie: {
