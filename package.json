@@ -32,8 +32,14 @@
   "bugs": {
     "url": "https://github.com/cloudcome/coolie-book/issues"
   },
-  "dependencies": {},
-  "peerDependencies": {},
+  "dependencies": {
+    "express": "^4.13.3",
+    "howdo": "^2.0.2"
+  },
+  "peerDependencies": {
+    "fs-extra": "^0.24.0",
+    "ydr-utils": "^22.43.3"
+  },
   "devDependencies": {},
   "licenses": "MIT"
 }
