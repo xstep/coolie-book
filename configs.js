@@ -15,14 +15,7 @@ var webroot = env === 'local' ? 'dev' : 'pro';
 module.exports = {
     port: 10081,
     env: env,
-    api: {
-        dangkrServer: {
-            local: 'http://192.168.2.21:8080',
-            dev: 'http://192.168.2.21:8080',
-            test: 'http://test.dangkr.com',
-            pro: 'http://service.dangkr.com'
-        }[env]
-    },
+    bookPath: path.join(__dirname, './book'),
     webroot: path.join(__dirname, './webroot-' + webroot),
     //webroot: path.join(__dirname, './webroot-pro'),
     cookie: {

@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "express": "^4.13.3",
-    "howdo": "^2.0.2"
+    "howdo": "^2.0.2",
+    "marked": "^0.3.5"
   },
   "peerDependencies": {
     "fs-extra": "^0.24.0",
