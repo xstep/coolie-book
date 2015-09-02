@@ -7,15 +7,23 @@
 
 'use strict';
 
-var fs = require('fs-extra');
+var fse = require('fs-extra');
 var path = require('ydr-utils').path;
 var cache = require('ydr-utils').cache;
 var marked = require('marked');
 var REG_LINK = /]\((.*?)\)\s*?$/;
+var markedRender = new marked.Renderer();
+marked.setOptions({renderer: markedRender});
 
+
+/**
+ * 获取文件
+ * @param bookroot
+ * @returns {Array}
+ */
 exports.getFiles = function (bookroot) {
     var configs = cache.get('app.configs');
-    var summaryCode = fs.readFileSync(path.join(bookroot, 'summary.md'), 'utf8');
+    var summaryCode = fse.readFileSync(path.join(bookroot, 'summary.md'), 'utf8');
     var summaryTokens = marked.lexer(summaryCode);
     var summaryFiles = [];
 
@@ -29,6 +37,27 @@ exports.getFiles = function (bookroot) {
     });
 
     return summaryFiles;
+};
+
+
+/**
+ * 构建路由
+ * @param app
+ * @param controller
+ * @param bookroot
+ */
+exports.buildRouters = function (app, controller, bookroot) {
+    var files = exports.getFiles(bookroot);
+
+    files.forEach(function (file) {
+        var uri = path.relative(bookroot, file);
+        var content = fse.readFileSync(file, 'utf8');
+
+        uri = path.join('/', uri);
+        uri = path.toURI(uri);
+        content = marked(content);
+        app.get(uri, controller(uri, content));
+    });
 };
 
 

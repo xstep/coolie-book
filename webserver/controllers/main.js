@@ -13,3 +13,13 @@ var pkg = require('../../package.json');
 exports.getIndex = function (req, res, next) {
     res.send(pkg.name + '@' + pkg.version);
 };
+
+
+// book
+exports.book = function (uri, file) {
+    return function (req, res, next) {
+        res.send(file);
+    };
+};
+
+

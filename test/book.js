@@ -9,7 +9,7 @@
 
 var book = require('../webserver/utils/').book;
 var path = require('ydr-utils').path;
-var bookPath = path.join(__dirname, '../bookroot/');
+var bookroot = path.join(__dirname, '../bookroot/');
 
-book.getFiles(bookPath);
+book.getFiles(bookroot);
 

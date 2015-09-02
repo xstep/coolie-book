@@ -13,7 +13,7 @@ var env = process.env.ENVIRONMENT || 'local';
 var webroot = env === 'local' ? 'dev' : 'pro';
 
 module.exports = {
-    port: 10081,
+    port: 18083,
     env: env,
     bookroot: path.join(__dirname, './bookroot'),
     webroot: path.join(__dirname, './webroot-' + webroot),

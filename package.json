@@ -41,6 +41,8 @@
     "fs-extra": "^0.24.0",
     "ydr-utils": "^22.43.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "supervisor": "^0.7.1"
+  },
   "licenses": "MIT"
 }

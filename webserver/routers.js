@@ -9,6 +9,7 @@
 
 var express = require('express');
 var configs = require('../configs.js');
+var book = require('./utils/').book;
 
 // 更为详尽配置的静态服务器
 var staticOptions = {
@@ -29,6 +30,10 @@ module.exports = function (next, app) {
 
 
     app.get('/', controllers.main.getIndex);
+
+
+    book.buildRouters(app, controllers.main.book, configs.bookroot);
+
 
     // test
 
