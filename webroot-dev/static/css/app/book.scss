@@ -1,27 +1,54 @@
+html, body {
+  height: 100%;
+}
+
 .body {
+  position: relative;
+  height: 100%;
   $width: 300px;
   background: #fff;
-  border-left: $width solid #f5f5f5;
+
+  &-sidebar,
+  &-main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
 
   &-sidebar {
     width: $width;
-    margin-left: -$width;
+    left: 0;
   }
 
-  &-content {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+  &-main {
+    right: 0;
+    left: $width;
   }
 }
 
 .sidebar {
-  font-size: 18px;
-
   a {
     display: block;
+    color: #5F5F5F;
     line-height: 34px;
     padding: 0 10px;
+
+    &:hover {
+      text-decoration: none;
+      color: #444;
+      background: #eee;
+    }
+  }
+
+  &-title {
+    font-size: 30px;
+    text-align: center;
+
+    a {
+      background: #eee;
+      line-height: 90px;
+    }
   }
 
   li {
@@ -33,6 +60,9 @@
 
 .content {
   padding: 20px;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

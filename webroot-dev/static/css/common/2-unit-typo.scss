@@ -29,29 +29,36 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
-    font-weight: 200;
+    font-weight: normal;
     color: #000;
     margin-bottom: 0.4em;
     line-height: 1.5;
+  }
+
+  .heading {
+    a {
+      color: #444;
+
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        text-decoration: none;
+      }
+
+      &:hover {
+        color: #000;
+      }
+    }
   }
 
   p, pre, ul, ol, dl, form, hr, table, blockquote {
     margin-bottom: 1.8em;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0 0 1.6rem 0;
-    font-weight: 600;
-    font-size: 100%;
-  }
-
   h1 {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 
   h2 {
@@ -96,7 +103,7 @@
     list-style: square;
   }
 
-  img{
+  img {
     vertical-align: baseline;
   }
 

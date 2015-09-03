@@ -10,11 +10,12 @@
 var fse = require('fs-extra');
 var path = require('ydr-utils').path;
 var cache = require('ydr-utils').cache;
+var dato = require('ydr-utils').dato;
+var xss = require('ydr-utils').xss;
 var marked = require('marked');
 var REG_TEXT_LINK = /^\[([^\]]*)]\((.*?)\)?$/;
 var REG_MD = /\/(index|readme)\.md$/i;
-var markedRender = new marked.Renderer();
-marked.setOptions({renderer: markedRender});
+var REG_EXTEND = /\.md$/i;
 
 
 /**
@@ -22,7 +23,7 @@ marked.setOptions({renderer: markedRender});
  * @param bookroot
  * @returns {Object}
  */
-exports.getFiles = function (bookroot) {
+var getFiles = function (bookroot) {
     var configs = cache.get('app.configs');
     var summaryCode = fse.readFileSync(path.join(bookroot, 'summary.md'), 'utf8');
     var summaryTokens = marked.lexer(summaryCode);
@@ -36,14 +37,10 @@ exports.getFiles = function (bookroot) {
                 return;
             }
 
-            var name = matches[1];
             var file = matches[2];
 
             file = path.join(bookroot, file);
-            summaryFiles.push({
-                name: name,
-                file: file
-            });
+            summaryFiles.push(file);
         }
     });
 
@@ -54,6 +51,23 @@ exports.getFiles = function (bookroot) {
 };
 
 
+var REG_HREF = /<a([^>]*?)\shref="(.*?)">/g;
+/**
+ * 修正 a href
+ * @param content
+ * @returns {string|void|XML}
+ */
+var fixHref = function (content) {
+    return content.replace(REG_HREF, function (source, prev, href) {
+        return '<a' + prev + ' href="' +
+            href
+                .replace(REG_MD, '/')
+                .replace(REG_EXTEND, '') +
+            '">';
+    });
+};
+
+
 /**
  * 构建路由
  * @param app
@@ -61,30 +75,44 @@ exports.getFiles = function (bookroot) {
  * @param bookroot
  */
 exports.buildRouters = function (app, controller, bookroot) {
-    var ret = exports.getFiles(bookroot);
+    var ret = getFiles(bookroot);
     var summaryFiles = ret.files;
     var summaryCode = ret.code;
+    var data = fse.readJsonSync(path.join(bookroot, './data.json'));
+    var indexFile = path.join(bookroot, './readme.md');
+    var indexCode = fse.readFileSync(indexFile, 'utf8');
+    var indexContent = xss.mdRender(indexCode, {
+        headingLink: true
+    }).html;
 
-    summaryCode = marked(summaryCode);
-    app.get('/', controller('', '/', {
-        sidebar: summaryCode,
-        content: marked(fse.readFileSync(path.join(bookroot, './readme.md'), 'utf8'))
-    }));
-    summaryFiles.forEach(function (item) {
-        var name = item.name;
-        var file = item.file;
+    indexContent = fixHref(indexContent);
+    var summaryContent = xss.mdRender(summaryCode, {
+        at: false,
+        favicon: false,
+        headingLink: false
+    }).html;
+    summaryContent = fixHref(summaryContent);
+    app.get('/', controller('/', dato.extend({
+        sidebar: summaryContent,
+        content: indexContent
+    }, data)));
+    summaryFiles.forEach(function (file) {
         var uri = path.relative(bookroot, file);
         var content = fse.readFileSync(file, 'utf8');
 
         uri = path.join('/', uri);
         uri = path.toURI(uri);
-        uri = uri.replace(REG_MD, '/');
-        content = marked(content);
+        uri = uri
+            .replace(REG_MD, '/')
+            .replace(REG_EXTEND, '');
+        content = xss.mdRender(content).html;
+        content = fixHref(content);
 
-        app.get(uri, controller(name, uri, {
-            sidebar: summaryCode,
+        console.log(uri);
+        app.get(uri, controller(uri, dato.extend({
+            sidebar: summaryContent,
             content: content
-        }));
+        }, data)));
     });
 };
 
