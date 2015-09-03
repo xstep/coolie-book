@@ -18,28 +18,30 @@ html, body {
     right: 0;
     left: 300px; }
 
-.sidebar a {
-  display: block;
-  color: #5F5F5F;
-  line-height: 34px;
-  padding: 0 10px; }
-  .sidebar a:hover {
-    text-decoration: none;
-    color: #444;
-    background: #eee; }
-
-.sidebar-title {
-  font-size: 30px;
-  text-align: center; }
-  .sidebar-title a {
+.sidebar {
+  background: #fafafa; }
+  .sidebar a {
+    display: block;
+    color: #5F5F5F;
+    line-height: 34px;
+    padding: 0 10px; }
+    .sidebar a:hover {
+      text-decoration: none;
+      color: #444;
+      background: #eee; }
+  .sidebar-title {
+    font-size: 30px;
+    text-align: center; }
+    .sidebar-title a {
+      background: #eee;
+      line-height: 90px; }
+  .sidebar li ul {
+    margin-left: 2em; }
+  .sidebar li.active a,
+  .sidebar li.active a:hover {
     background: #eee;
-    line-height: 90px; }
-
-.sidebar li ul {
-  margin-left: 2em; }
+    color: #222; }
 
 .content {
   padding: 20px;
-  max-width: 850px;
-  margin-left: auto;
-  margin-right: auto; }
+  max-width: 850px; }

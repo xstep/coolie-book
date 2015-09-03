@@ -82,6 +82,11 @@ exports.buildRouters = function (app, controller, bookroot) {
     var ret = getFiles(bookroot);
     var summaryFiles = ret.files;
     var summaryCode = ret.code;
+    var summaryContent = xss.mdRender(summaryCode, {
+        at: false,
+        favicon: false,
+        headingLink: false
+    }).html;
     var data = fse.readJsonSync(path.join(bookroot, './data.json'));
     var indexFile = path.join(bookroot, './readme.md');
     var indexCode = fse.readFileSync(indexFile, 'utf8');
@@ -89,13 +94,9 @@ exports.buildRouters = function (app, controller, bookroot) {
         headingLink: true
     }).html;
 
-    indexContent = fixHref(indexContent);
-    var summaryContent = xss.mdRender(summaryCode, {
-        at: false,
-        favicon: false,
-        headingLink: false
-    }).html;
     summaryContent = fixHref(summaryContent);
+    indexContent = fixHref(indexContent);
+
     app.get('/', controller('', '/', dato.extend({
         sidebar: summaryContent,
         content: indexContent
@@ -111,10 +112,11 @@ exports.buildRouters = function (app, controller, bookroot) {
         uri = uri
             .replace(REG_MD, '/')
             .replace(REG_EXTEND, '/');
-        content = xss.mdRender(content).html;
+        content = xss.mdRender(content, {
+            headingLink: true
+        }).html;
         content = fixHref(content);
 
-        console.log(uri);
         app.get(uri, controller(name, uri, dato.extend({
             sidebar: summaryContent,
             content: content

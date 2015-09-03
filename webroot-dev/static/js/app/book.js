@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * book
  * @author ydr.me
  * @create 2015-09-03 18:31
  */
@@ -20,9 +20,9 @@ define(function (require, exports, module) {
         var $navLink = selector.query('#nav a');
 
         $navLink.forEach(function ($link) {
-            var href = $link.href;
+            var href = attribute.attr($link, 'href');
 
-            navMap[href] = selector.parent($link);
+            navMap[href] = selector.parent($link)[0];
         });
     };
 
@@ -33,7 +33,7 @@ define(function (require, exports, module) {
         var $nav = navMap[pathname];
 
         attribute.removeClass($navs, className);
-        attribute.addClass($nav, className)
+        attribute.addClass($nav, className);
     };
 
     app.buildNav();

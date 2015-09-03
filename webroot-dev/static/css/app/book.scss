@@ -28,6 +28,8 @@ html, body {
 }
 
 .sidebar {
+  background: #fafafa;
+
   a {
     display: block;
     color: #5F5F5F;
@@ -55,14 +57,22 @@ html, body {
     ul {
       margin-left: 2em;
     }
+
+    &.active {
+      a {
+        &,
+        &:hover {
+          background: #eee;
+          color: #222;
+        }
+      }
+    }
   }
 }
 
 .content {
   padding: 20px;
   max-width: 850px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 
