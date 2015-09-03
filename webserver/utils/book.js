@@ -12,6 +12,7 @@ var path = require('ydr-utils').path;
 var cache = require('ydr-utils').cache;
 var marked = require('marked');
 var REG_TEXT_LINK = /^\[([^\]]*)]\((.*?)\)?$/;
+var REG_MD = /\/(index|readme)\.md$/i;
 var markedRender = new marked.Renderer();
 marked.setOptions({renderer: markedRender});
 
@@ -19,7 +20,7 @@ marked.setOptions({renderer: markedRender});
 /**
  * 获取文件
  * @param bookroot
- * @returns {Array}
+ * @returns {Object}
  */
 exports.getFiles = function (bookroot) {
     var configs = cache.get('app.configs');
@@ -31,7 +32,7 @@ exports.getFiles = function (bookroot) {
         if (token.type === 'text') {
             var matches = token.text.match(REG_TEXT_LINK);
 
-            if(!matches){
+            if (!matches) {
                 return;
             }
 
@@ -46,7 +47,10 @@ exports.getFiles = function (bookroot) {
         }
     });
 
-    return summaryFiles;
+    return {
+        files: summaryFiles,
+        code: summaryCode
+    };
 };
 
 
@@ -57,9 +61,16 @@ exports.getFiles = function (bookroot) {
  * @param bookroot
  */
 exports.buildRouters = function (app, controller, bookroot) {
-    var files = exports.getFiles(bookroot);
+    var ret = exports.getFiles(bookroot);
+    var summaryFiles = ret.files;
+    var summaryCode = ret.code;
 
-    files.forEach(function (item) {
+    summaryCode = marked(summaryCode);
+    app.get('/', controller('', '/', {
+        sidebar: summaryCode,
+        content: marked(fse.readFileSync(path.join(bookroot, './readme.md'), 'utf8'))
+    }));
+    summaryFiles.forEach(function (item) {
         var name = item.name;
         var file = item.file;
         var uri = path.relative(bookroot, file);
@@ -67,8 +78,13 @@ exports.buildRouters = function (app, controller, bookroot) {
 
         uri = path.join('/', uri);
         uri = path.toURI(uri);
+        uri = uri.replace(REG_MD, '/');
         content = marked(content);
-        app.get(uri, controller(name, uri, content));
+
+        app.get(uri, controller(name, uri, {
+            sidebar: summaryCode,
+            content: content
+        }));
     });
 };
 

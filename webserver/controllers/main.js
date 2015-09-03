@@ -16,11 +16,9 @@ exports.getIndex = function (req, res, next) {
 
 
 // book
-exports.book = function (name, uri, content) {
+exports.book = function (name, uri, data) {
     return function (req, res, next) {
-        res.render('layout.html', {
-            content: content
-        });
+        res.render('book.html', data);
     };
 };
 

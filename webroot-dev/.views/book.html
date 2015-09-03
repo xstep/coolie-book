@@ -17,22 +17,35 @@
     <meta name="keywords" content="关键词1,关键词2">
     <meta name="description" content="描述语句">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <title>layout.html</title>
+    <title>coolie 官方指南</title>
 
     <!--coolie-->
-    <link rel="stylesheet" href="/static/css/common/0-"/>
+    <link rel="stylesheet" href="/static/css/common/0-normalize.css"/>
+    <link rel="stylesheet" href="/static/css/common/1-base.css"/>
+    <link rel="stylesheet" href="/static/css/common/2-font-icon.css"/>
+    <link rel="stylesheet" href="/static/css/common/2-unit-typo.css"/>
+    <!--/coolie-->
+
+    <!--coolie-->
+    <link rel="stylesheet" href="/static/css/app/book.css"/>
     <!--/coolie-->
 </head>
 <body ontouchstart="">
 
 
+<div class="body clearfix">
+    <div class="body-sidebar pull-left">
+        <div class="sidebar">{{=sidebar}}</div>
+    </div>
+    <div class="body-content">
+        <div class="content typo">{{=content}}</div>
+    </div>
+</div>
 
-{{=content}}
 
 
-
-<div style="display: none;">
-    <script src="http://s95.cnzz.com/stat.php?id=1255219323&web_id=1255219323" language="JavaScript"></script>
+<div class="none">
+    <script src="http://s95.cnzz.com/stat.php?id=1255219323&web_id=1255219323"></script>
 </div>
 
 

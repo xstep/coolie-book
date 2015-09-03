@@ -28,8 +28,6 @@ module.exports = function (next, app) {
     app.use(controllers.middleware.readCache);
     app.all(controllers.middleware.checkLogin);
 
-    app.get('/', controllers.main.getIndex);
-
     book.buildRouters(app, controllers.main.book, configs.bookroot);
 
     // test
