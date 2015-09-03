@@ -16,8 +16,9 @@ exports.getIndex = function (req, res, next) {
 
 
 // book
-exports.book = function (uri, data) {
+exports.book = function (name, uri, data) {
     return function (req, res, next) {
+        data.pageName = name;
         res.render('book.html', data);
     };
 };

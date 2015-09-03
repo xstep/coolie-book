@@ -37,10 +37,14 @@ var getFiles = function (bookroot) {
                 return;
             }
 
+            var name = matches[1];
             var file = matches[2];
 
             file = path.join(bookroot, file);
-            summaryFiles.push(file);
+            summaryFiles.push({
+                name: name,
+                file: file
+            });
         }
     });
 
@@ -62,7 +66,7 @@ var fixHref = function (content) {
         return '<a' + prev + ' href="' +
             href
                 .replace(REG_MD, '/')
-                .replace(REG_EXTEND, '') +
+                .replace(REG_EXTEND, '/') +
             '">';
     });
 };
@@ -92,11 +96,13 @@ exports.buildRouters = function (app, controller, bookroot) {
         headingLink: false
     }).html;
     summaryContent = fixHref(summaryContent);
-    app.get('/', controller('/', dato.extend({
+    app.get('/', controller('', '/', dato.extend({
         sidebar: summaryContent,
         content: indexContent
     }, data)));
-    summaryFiles.forEach(function (file) {
+    summaryFiles.forEach(function (item) {
+        var name = item.name;
+        var file = item.file;
         var uri = path.relative(bookroot, file);
         var content = fse.readFileSync(file, 'utf8');
 
@@ -104,12 +110,12 @@ exports.buildRouters = function (app, controller, bookroot) {
         uri = path.toURI(uri);
         uri = uri
             .replace(REG_MD, '/')
-            .replace(REG_EXTEND, '');
+            .replace(REG_EXTEND, '/');
         content = xss.mdRender(content).html;
         content = fixHref(content);
 
         console.log(uri);
-        app.get(uri, controller(uri, dato.extend({
+        app.get(uri, controller(name, uri, dato.extend({
             sidebar: summaryContent,
             content: content
         }, data)));
