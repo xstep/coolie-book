@@ -292,6 +292,24 @@ define(function (require, exports, module) {
 
 
     /**
+     * 设置元素可见
+     * @param $ele
+     */
+    exports.show = function ($ele) {
+        exports.css($ele, 'display', see.getDisplay($ele));
+    };
+
+
+    /**
+     * 设置元素不可见
+     * @param $ele
+     */
+    exports.hide = function ($ele) {
+        exports.css($ele, 'display', 'none');
+    };
+
+
+    /**
      * 设置、获取元素的滚动条高度
      * @param ele {HTMLElement|Node|Window|Document|Object} 元素
      * @param [top] {Number} 高度
@@ -884,7 +902,7 @@ define(function (require, exports, module) {
             }
 
             // 切换显隐
-            return _swap(ele, function () {
+            return see.swap(ele, function () {
                 // get
                 if (argsLength === 1) {
                     var key2 = /w/.test(key) ? 'Width' : 'Height';
@@ -949,31 +967,6 @@ define(function (require, exports, module) {
         } else {
             css = number.parseFloat(exports.css(ele, key), 0);
             exports.css(ele, key, css + deleta);
-        }
-    }
-
-    /**
-     * 切换显隐状态来计算元素尺寸
-     * @param {HTMLElement|Node} ele 元素
-     * @param {Function} doWhat 做
-     * @private
-     */
-    function _swap(ele, doWhat) {
-        var eles;
-        var ret;
-
-        if (see.visibility(ele) === 'visible') {
-            return doWhat(ele);
-        } else {
-            eles = see.visibility(ele, 'visible');
-
-            ret = doWhat(ele);
-
-            dato.each(eles, function (index, ele) {
-                ele.style.display = ele['-alien-core-dom-see-display'] || 'block';
-            });
-
-            return ret;
         }
     }
 
