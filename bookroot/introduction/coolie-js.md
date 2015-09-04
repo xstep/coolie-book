@@ -21,8 +21,8 @@ require.min.js |  16 个（baseUrl/paths/bundles/shim/map/packages/nodeIdCompat/
 # 能强
 coolie 使用的模块方案是：
 
-## 开发环境
-开发环境下，使用的是 CMD 方案：
+## 构建之前
+构建之前，使用的是 CMD 方案：
 ```
 define(function(require, exports, module){
     var mod = require('./mod.js');
@@ -32,11 +32,11 @@ define(function(require, exports, module){
 ```
 因为，目前没有比这个更简单、更直观的书写方式。
 
-## 生产环境
-生产环境下，coolie 会构建成 AMD 的形式。
+## 构建之后
+构建之后，coolie 会构建成 AMD 的形式，模块 ID 和依赖都显示声明了。
 ```
-define('1'/*注意点1*/, ['0']/*注意点2*/, function(r/*注意点3*/, e, m){
-    var mod = r/*注意点4*/('0'/*注意点5*/);
+define('0'/*注意点1*/, ['1']/*注意点2*/, function(r/*注意点3*/, e, m){
+    var mod = r/*注意点4*/('1'/*注意点5*/);
     
     m.exports = 'mod';
 });
@@ -52,7 +52,7 @@ webpack 的做法是将模块放到一个数组里`[function(){}, function(){}]`
 3. `function` 里的参数也可以压缩的哦，因为构建之后模块的 ID 和依赖都是显性的，
 `require`参数是可以压缩的哦，也不是通过`function.toString`来分析依赖的哦。
 4. `require`变量被压缩成了`r`。
-5. 这里的依赖模块 ID 也变成了`0`了哦。
+5. 这里的依赖模块 ID 也变成了`1`了哦。
 
 
 

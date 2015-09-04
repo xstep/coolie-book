@@ -89,7 +89,47 @@ plugin 直接的协调工具，那么这个工具还是不足称之为构建工�
 通用化，不是普适性。而是在通用化的基础上，开发一些扩展接口，具备高级扩展能力。
 
 
-## 7、
+## 7、静态分析，与后端无关
+因为大部分前端资源本身就是静态的，当前可以进行静态分析。对 html、css、js 的静态分析，
+进行资源移动、整合、压缩、版本管理，而不是借助后端能力才能完成。比如：
 
+```
+<!--coolie-->
+<link rel="stylesheet" href="1.css">
+<link rel="stylesheet" href="2.css">
+<link rel="stylesheet" href="3.css">
+<link rel="stylesheet" href="4.css">
+<!--/coolie-->
 
+<!--coolie-->
+<script src="1.js"></script>
+<script src="2.js"></script>
+<script src="3.js"></script>
+<script src="4.js"></script>
+<!--/coolie-->
+
+=>
+
+<link rel="stylesheet" href="/path/to/xxoo.css">
+<script src="/path/to/xxoo.js"></script>
+```
+
+再比如 js 模块的依赖
+
+```
+define(function(require, exports, module){
+    require('1.js');
+    require('2.png', 'image');
+    require('3.css', 'css');
+    require('4.html', 'html');
+});
+
+=>
+
+define('0', ['1', '2', '3', '4'], ...);
+// 1 => 1.js
+// 2 => 2.png
+// 3 => 3.css
+// 4 => 4.html
+```
 
