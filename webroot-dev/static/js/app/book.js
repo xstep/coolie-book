@@ -19,19 +19,19 @@ define(function (require, exports, module) {
     var $navAction = selector.query('#navAction')[0];
     var $main = selector.query('#main')[0];
     var $content = selector.query('#content')[0];
+    var $nav = selector.query('#nav')[0];
     var history = window.history;
     var APP = window.APP;
     var app = {};
     var navMap = {};
     var lastURL = location.pathname;
     var navActive = false;
+    var activeClass = 'active';
 
 
     // 实现 nav
     app.buildNav = function () {
-        var $nav = selector.query('#nav')[0];
         var $navLinks = selector.query('#nav a');
-        var activeClass = 'active';
 
         $navLinks.forEach(function ($link) {
             var href = attribute.attr($link, 'href');
@@ -39,27 +39,23 @@ define(function (require, exports, module) {
             navMap[href] = selector.parent($link)[0];
         });
 
-        event.on($navAction, 'click', controller.toggle(function () {
-            attribute.addClass($nav, activeClass);
-            navActive = true;
-        }, function () {
-            navActive = false;
-            attribute.removeClass($nav, activeClass);
-        }));
+        event.on($navAction, 'click', function () {
+            attribute[(navActive ? 'remove' : 'add') + 'Class']($nav, activeClass);
+            navActive = !navActive;
+        });
     };
 
     // 监听 pathname
     app.listenNav = function () {
         var pathname = location.pathname;
-        var className = 'active';
-        var $nav = navMap[pathname];
+        var $navItem = navMap[pathname];
 
-        attribute.removeClass($navs, className);
-        attribute.addClass($nav, className);
+        attribute.removeClass($navs, activeClass);
+        attribute.addClass($navItem, activeClass);
 
         if (navActive) {
-            event.dispatch($navAction, 'click');
-            //$navAction.dispatchEvent(new Event('click'));
+            attribute.removeClass($nav, activeClass);
+            navActive = false;
         }
     };
 
