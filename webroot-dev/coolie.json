@@ -25,7 +25,7 @@
   },
   "copy": [],
   "dest": {
-    "dirname": "../dest/",
+    "dirname": "../webroot-pro/",
     "host": "http://7xljwa.com1.z0.glb.clouddn.com/@/coolie-book/",
     "versionLength": 32
   }
