@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
- - 文件描述
+ - book
  - @author ydr.me
  - @create 2015-09-02 18:25
  -->
@@ -29,6 +29,12 @@
     <!--coolie-->
     <link rel="stylesheet" href="/static/css/app/book.css"/>
     <!--/coolie-->
+
+    <script>
+        var APP = {
+            title: '{{=title}}'
+        };
+    </script>
 </head>
 <body ontouchstart="">
 
@@ -37,11 +43,11 @@
     <div class="body-sidebar pull-left">
         <div class="sidebar">
             <h1 class="sidebar-title"><a href="/">{{=title}}</a></h1>
-            <div id="nav">{{=sidebar}}</div>
+            <nav class="sidebar-nav" id="nav">{{=sidebar}}</nav>
         </div>
     </div>
-    <div class="body-main">
-        <div class="content typo">{{=content}}</div>
+    <div class="body-main" id="main">
+        <div class="content typo" id="content">{{=content}}</div>
     </div>
 </div>
 

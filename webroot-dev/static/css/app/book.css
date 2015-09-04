@@ -9,39 +9,57 @@ html, body {
   .body-main {
     position: absolute;
     top: 0;
-    bottom: 0;
-    overflow: auto; }
+    bottom: 0; }
   .body-sidebar {
     width: 300px;
-    left: 0; }
+    left: 0;
+    overflow: hidden; }
   .body-main {
     right: 0;
-    left: 300px; }
+    left: 300px;
+    overflow: auto; }
 
-.sidebar {
-  background: #fafafa; }
-  .sidebar a {
-    display: block;
-    color: #5F5F5F;
-    line-height: 34px;
-    padding: 0 10px; }
-    .sidebar a:hover {
-      text-decoration: none;
-      color: #444;
-      background: #eee; }
-  .sidebar-title {
-    font-size: 30px;
-    text-align: center; }
-    .sidebar-title a {
-      background: #eee;
-      line-height: 90px; }
-  .sidebar li ul {
-    margin-left: 2em; }
-  .sidebar li.active a,
-  .sidebar li.active a:hover {
-    background: #eee;
-    color: #222; }
+.sidebar a {
+  display: block;
+  color: #5F5F5F;
+  line-height: 34px;
+  padding: 0 10px; }
+  .sidebar a:hover {
+    color: #444;
+    background: #eee; }
+  .sidebar a:link,
+  .sidebar a:visited,
+  .sidebar a:hover,
+  .sidebar a:active {
+    text-decoration: none; }
+
+.sidebar-title {
+  font-size: 30px;
+  text-align: center; }
+  .sidebar-title a,
+  .sidebar-title a:hover {
+    background: #555;
+    color: #fff;
+    line-height: 60px;
+    font-weight: normal; }
+
+.sidebar-nav {
+  background: #fafafa;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto; }
+
+.sidebar li ul {
+  margin-left: 2em; }
+
+.sidebar li.active > a,
+.sidebar li.active > a:hover {
+  background: #eee;
+  color: #222; }
 
 .content {
   padding: 20px;
-  max-width: 850px; }
+  max-width: 1000px; }
