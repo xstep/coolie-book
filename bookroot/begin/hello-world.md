@@ -217,8 +217,8 @@ coolie.config({
 ```
 
 - 在文件开头，打上构建工具的版本和的构建时间。
-- 增加了`debug`参数，值为 false（[详细参考点这里](./coolie-config.js.md)）。
-- 增加了`version`属性，值为`index.js`的版本（[详细参考点这里](./coolie-config.js.md)）。
+- 增加了`debug`参数，值为 false（[详细参考点这里](./coolie-config-js.md)）。
+- 增加了`version`属性，值为`index.js`的版本（[详细参考点这里](./coolie-config-js.md)）。
 
 ## index.js
 新的`index.js`重命名为`index.4f60ff2579e7b55f2e1ca87ba2221fde.js`。

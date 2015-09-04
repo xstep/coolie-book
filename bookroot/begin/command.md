@@ -107,7 +107,7 @@ coolie.config({
     "base": "./app/"
 }).use();
 ```
-关于各个参数的解释，[后文会详细说到](./coolie-config.js.md)。
+关于各个参数的解释，[后文会详细说到](./coolie-config-js.md)。
 
 
 # coolie json [path]
