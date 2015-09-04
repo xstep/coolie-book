@@ -1,0 +1,11 @@
+{
+  "access_key": "Qf49VRkvUyaXW-lw3pjFTnI2cWhe9j57vng9rqm4",
+  "secret_key": "ap274cEMBO2SDyqPFxQG0ZbYfN-Q_xYzbpIobFCj",
+  "bucket": "fed-community",
+  "src": "./webroot-pro/static/",
+  "upload": [
+    "./**/*.*"
+  ],
+  "dest": "/coolie-book/static/",
+  "parallel": 10
+}
