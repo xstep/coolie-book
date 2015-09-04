@@ -2,7 +2,7 @@
   "name": "coolie-book",
   "version": "0.2.0",
   "private": true,
-  "description": "coolie-book",
+  "description": "coolie 官方指南",
   "scripts": {
     "start": "node ./clis/start.js",
     "release": "rm -rf ./webroot-pro && coolie build webroot-dev && 7niu upload && git add webroot-pro && git commit -am 'release' && git push"
@@ -16,7 +16,8 @@
   "main": "index.js",
   "keywords": [
     "cloudcome",
-    "ydr.me"
+    "ydr.me",
+    "coolie"
   ],
   "author": {
     "name": "cloudcome",
