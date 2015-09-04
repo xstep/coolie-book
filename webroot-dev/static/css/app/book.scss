@@ -2,6 +2,9 @@ html, body {
   height: 100%;
 }
 
+$title-size-large: 60px;
+$title-size-small: 40px;
+
 .body {
   position: relative;
   height: 100%;
@@ -18,19 +21,30 @@ html, body {
   &-sidebar {
     width: $width;
     left: 0;
-    overflow: hidden;
+
+    @media (max-width: 650px) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: auto;
+      bottom: auto;
+      z-index: 2;
+    }
   }
 
   &-main {
     right: 0;
     left: $width;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @media (max-width: 650px) {
+      left: 0;
+    }
   }
 }
 
 .sidebar {
-  $title-size: 60px;
-
   a {
     display: block;
     color: #5F5F5F;
@@ -59,8 +73,13 @@ html, body {
       &:hover {
         background: #555;
         color: #fff;
-        line-height: $title-size;
+        line-height: $title-size-large;
         font-weight: normal;
+
+        @media (max-width: 650px) {
+          line-height: $title-size-small;
+          font-size: 20px;
+        }
       }
     }
   }
@@ -68,11 +87,29 @@ html, body {
   &-nav {
     background: #fafafa;
     position: absolute;
-    top: $title-size;
+    top: $title-size-large;
     left: 0;
     right: 0;
     bottom: 0;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @media (max-width: 650px) {
+      position: fixed;
+      top: $title-size-small;
+      z-index: 3;
+      width: 50%;
+      min-width: 300px;
+      border-right: 1px solid #EEE;
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      -webkit-transition: all 300ms;
+      transition: all 300ms;
+    }
+
+    &.active{
+      -webkit-transform: translateX(0);
+    }
   }
 
   li {
@@ -84,10 +121,33 @@ html, body {
       & > a {
         &,
         &:hover {
-          background: #eee;
-          color: #222;
+          background: #555;
+          color: #FFF;
         }
       }
+    }
+  }
+
+  &-action {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 40px;
+    padding: 8px 16px;
+
+    @media (max-width: 650px) {
+      display: block;
+    }
+
+    i {
+      width: 100%;
+      height: 2px;
+      background-color: #FFF;
+      display: block;
+      margin-top: 4px;
+      border-radius: 1px;
     }
   }
 }
@@ -95,6 +155,9 @@ html, body {
 .content {
   padding: 20px;
   max-width: 1000px;
+
+  @media (max-width: 650px) {
+    margin-top: $title-size-small;
+    padding: 5px;
+  }
 }
-
-

@@ -16,6 +16,7 @@ define(function (require, exports, module) {
     var controller = require('../alien/utils/controller.js');
     var Prettify = require('../alien/ui/prettify/index.js');
     var $navs = selector.query('#nav li');
+    var $navAction = selector.query('#navAction')[0];
     var $main = selector.query('#main')[0];
     var $content = selector.query('#content')[0];
     var history = window.history;
@@ -23,16 +24,28 @@ define(function (require, exports, module) {
     var app = {};
     var navMap = {};
     var lastURL = location.pathname;
+    var navActive = false;
+
 
     // 实现 nav
     app.buildNav = function () {
+        var $nav = selector.query('#nav')[0];
         var $navLinks = selector.query('#nav a');
+        var activeClass = 'active';
 
         $navLinks.forEach(function ($link) {
             var href = attribute.attr($link, 'href');
 
             navMap[href] = selector.parent($link)[0];
         });
+
+        event.on($navAction, 'click', controller.toggle(function () {
+            attribute.addClass($nav, activeClass);
+            navActive = true;
+        }, function () {
+            navActive = false;
+            attribute.removeClass($nav, activeClass);
+        }));
     };
 
     // 监听 pathname
@@ -43,6 +56,10 @@ define(function (require, exports, module) {
 
         attribute.removeClass($navs, className);
         attribute.addClass($nav, className);
+
+        if (navActive) {
+            event.dispatch($navAction, 'click');
+        }
     };
 
     // 获取页面
