@@ -56,6 +56,7 @@ var getFiles = function (bookroot) {
 
 
 var REG_HREF = /<a([^>]*?)\shref="(.*?)">/g;
+var REG_HTTP = /^(https?:)?\/\//;
 /**
  * 修正 a href
  * @param content
@@ -66,7 +67,7 @@ var fixHref = function (content, srcFile) {
     var configs = cache.get('app.configs');
 
     return content.replace(REG_HREF, function (source, prev, href) {
-        if(srcFile){
+        if (srcFile && !REG_HTTP.test(href)) {
             var hrefFile = path.join(path.dirname(srcFile), href);
             var hrefRelative = path.relative(configs.bookroot, hrefFile);
 
