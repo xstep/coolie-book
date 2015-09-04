@@ -59,10 +59,20 @@ var REG_HREF = /<a([^>]*?)\shref="(.*?)">/g;
 /**
  * 修正 a href
  * @param content
+ * @param [srcFile]
  * @returns {string|void|XML}
  */
-var fixHref = function (content) {
+var fixHref = function (content, srcFile) {
+    var configs = cache.get('app.configs');
+
     return content.replace(REG_HREF, function (source, prev, href) {
+        if(srcFile){
+            var hrefFile = path.join(path.dirname(srcFile), href);
+            var hrefRelative = path.relative(configs.bookroot, hrefFile);
+
+            href = '/' + hrefRelative;
+        }
+
         return '<a' + prev + ' href="' +
             href
                 .replace(REG_MD, '/')
@@ -115,7 +125,7 @@ exports.buildRouters = function (app, controller, bookroot) {
         content = xss.mdRender(content, {
             headingLink: true
         }).html;
-        content = fixHref(content);
+        content = fixHref(content, file);
 
         app.get(uri, controller(name, uri, dato.extend({
             sidebar: summaryContent,

@@ -37,7 +37,7 @@ data-main="main.js"></script>
 - data-main 属性：定义了入口模块的地址，相对于 coolie-config.js 里的 base 属性
 
 coolie.cli 在找到入口后，会根据依赖链一直找到依赖终点，形成了一长串的模块集合，
-然后将这些模块合并起来，通过生成的[资源引用关系地图](./relationship-map.json.md)可以知道
+然后将这些模块合并起来，通过生成的[资源引用关系地图](./relationship-map-json.md)可以知道
 当前入口模块到底依赖了哪些模块。
 
 

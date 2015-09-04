@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="/static/css/xxxxooooo1.css"/>
 <link rel="stylesheet" href="/static/css/xxxxooooo2.css"/>
 ```
-分不清谁是谁了，通过[资源引用关系地图](./relationship-map.json.md)看的一清二楚？
+分不清谁是谁了，通过[资源引用关系地图](./relationship-map-json.md)看的一清二楚？
 
 
 # 引用的资源路径
