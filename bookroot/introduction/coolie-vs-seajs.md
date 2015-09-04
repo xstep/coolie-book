@@ -16,7 +16,7 @@ coolie.url
 coolie.dirname
 coolie.modules
 ```
-其中配置，更是缩减到只有 4 个（[关于coolie的配置参考这里](../begin/coolie-config.js.md)）。
+其中配置，更是缩减到只有 4 个（[关于coolie的配置参考这里](../begin/coolie-config-js.md)）。
 
 ## 支持
 同时，经过对 seajs 的二次封装，已经实现了完善的版本管理、分块加载、文本/JSON加载、图标加载等。
