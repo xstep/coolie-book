@@ -3,7 +3,7 @@
 ➜ coolie
 
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
@@ -29,7 +29,7 @@ coolie book          => 打开 coolie book
 ➜  coolie book
 
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
@@ -43,14 +43,14 @@ coolie book          => 打开 coolie book
 ➜  coolie version
 
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
-       local version => 0.22.4
+       local version => 0.22.8
         check update => wait a moment...
            coolie.js => 1.1.1
-          coolie.cli => 0.20.4
+          coolie.cli => 0.22.8
 ```
 
 
@@ -61,7 +61,7 @@ coolie book          => 打开 coolie book
 ➜  coolie pull
 
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
@@ -78,7 +78,7 @@ coolie book          => 打开 coolie book
 ➜  coolie config
 
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
@@ -116,7 +116,7 @@ coolie.config({
 ➜  coolie json
 
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
@@ -229,7 +229,7 @@ coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认
 ➜  coolie build
 
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
@@ -270,7 +270,6 @@ coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认
                         build 0 js file(s),
                         build 3 html file(s),
                         build 6 css file(s),
-                        build 0 resource file(s),
                         past 208 ms
 ```
 如上，前端构建的时候，分为 5 个步骤：
@@ -283,7 +282,7 @@ coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认
 
 我们来看看生成后的`coolie-config.a08fb1c42a015ae88579ff31af1593bd.js`是怎样的（为了便于阅读，已将压缩文件格式化）：
 ```
-*coolie@0.22.4*/
+/*coolie@0.22.8*/
 coolie.config({
     base:"./app/",
     debug:!1,

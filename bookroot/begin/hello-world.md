@@ -115,15 +115,8 @@ define(function () {
 ```
 ➜ coolie build
 
-
 ╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
-║   The front-end development builder.    ║
-╚═════════════════════════════════════════╝
-
-
-╔═════════════════════════════════════════╗
-║   coolie@0.22.4                         ║
+║   coolie@0.22.8                         ║
 ║   The front-end development builder.    ║
 ╚═════════════════════════════════════════╝
 
@@ -154,7 +147,6 @@ define(function () {
                         build 0 js file(s),
                         build 1 html file(s),
                         build 0 css file(s),
-                        build 0 resource file(s),
                         past 98 ms
 ```
 
@@ -178,7 +170,6 @@ define(function () {
 # html
 *为了阅读，已经折行处理了。*
 ```
-
 <!DOCTYPE html>
 <html>
 <head lang="zh-cn"> 
@@ -192,7 +183,7 @@ data-config="./coolie-config.0e49540baa0842bd9b2a250a6fb643ed.js"
 data-main="index.js"></script>
 
 </body></html>
-<!--coolie@0.22.4-->
+<!--coolie@0.22.8-->
 ```
 
 - 在文件末尾打上构建工具的版本和的构建时间。
@@ -205,7 +196,7 @@ data-main="index.js"></script>
 
 *为了便于阅读，已经折行处理了。*
 ```
-/*coolie@0.22.4*/
+/*coolie@0.22.8*/
 coolie.config({
     base:"./",
     debug:!1,
@@ -225,7 +216,7 @@ coolie.config({
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@0.22.4*/
+/*coolie@0.22.8*/
 define("0",[],function(){alert("hello world")});
 ```
 
@@ -246,8 +237,9 @@ define("0",[],function(){alert("hello world")});
 ```
 这个文件，按照构建的 HTML 文件分开，分别标识了每个 HTML 文件里引用的入口 JS 文件，依赖的 JS 模块和引用的 CSS 文件。
 
+因为构建之后，静态资源路径都替换为了绝对路径，所有的绝对路径，都相对于构建的根目录。
 
-因为构建之后，静态资源路径都替换为了绝对路径，因此你需要启动一个 HTTP 服务器（sts:<https://www.npmjs.com/package/sts>）才可以预览。
+另，也可以启动一个静态的 HTTP 服务器（sts:<https://www.npmjs.com/package/sts>）来浏览。
 
 
 
