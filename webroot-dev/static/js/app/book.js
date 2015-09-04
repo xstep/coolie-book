@@ -59,6 +59,7 @@ define(function (require, exports, module) {
 
         if (navActive) {
             event.dispatch($navAction, 'click');
+            //$navAction.dispatchEvent(new Event('click'));
         }
     };
 
