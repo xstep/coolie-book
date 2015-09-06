@@ -61,7 +61,7 @@ var update = function (callback) {
     cmds.push('cd ' + path.join(__dirname, '../'));
     cmds.push('pwd');
     //cmds.push('git branch');
-    cmds.push('git pull');
+    cmds.push('git pull coding');
     cmds.push('npm install --registry=https://r.cnpmjs.org');
 
     exec(cmds, callback);

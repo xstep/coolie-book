@@ -5,7 +5,13 @@
 
 coolie 的安装很简单。全局条件下，安装即可：
 ```
-npm install -g coolie
+sudo npm i -g coolie
+```
+
+如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来安装。
+
+```
+sudo npm i -g coolie --registry=https://r.cnpmjs.org
 ```
 
 安装完成后，来调戏下他吧：
@@ -27,3 +33,13 @@ coolie book          => 打开 coolie book
 
 
 
+# 更新
+```
+sudo npm up -g coolie
+```
+
+如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来更新。
+
+```
+sudo npm up -g coolie --registry=https://r.cnpmjs.org
+```

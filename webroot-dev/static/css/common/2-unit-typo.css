@@ -115,7 +115,8 @@
     padding: 10px;
     border: 1px solid #DDD;
     border-radius: 6px;
-    word-wrap: normal; }
+    word-wrap: normal;
+    overflow: auto; }
   .typo pre code {
     background: transparent;
     margin: 0;

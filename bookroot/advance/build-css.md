@@ -5,16 +5,16 @@
 不需要在样式文件里`import`了，放心大胆的将样式链接直接写在页面上：
 ```
 <!--coolie-->
-<link rel="stylesheet" href="/static/css/libs/0-normalize.css"/>
-<link rel="stylesheet" href="/static/css/libs/1-base.css"/>
-<link rel="stylesheet" href="/static/css/libs/2-unit-grid.css"/>
-<link rel="stylesheet" href="/static/css/libs/2-unit-badge.css"/>
-<link rel="stylesheet" href="/static/css/libs/2-unit-ipt.css"/>
-<link rel="stylesheet" href="/static/css/libs/2-unit-btn.css"/>
-<link rel="stylesheet" href="/static/css/libs/2-unit-form.css"/>
-<link rel="stylesheet" href="/static/css/libs/2-unit-text.css"/>
-<link rel="stylesheet" href="/static/css/libs/2-unit-table.css"/>
-<link rel="stylesheet" href="/static/css/libs/3-font-icon.css"/>
+<link rel="stylesheet" href="/static/css/common/0-normalize.css"/>
+<link rel="stylesheet" href="/static/css/common/1-base.css"/>
+<link rel="stylesheet" href="/static/css/common/2-unit-grid.css"/>
+<link rel="stylesheet" href="/static/css/common/2-unit-badge.css"/>
+<link rel="stylesheet" href="/static/css/common/2-unit-ipt.css"/>
+<link rel="stylesheet" href="/static/css/common/2-unit-btn.css"/>
+<link rel="stylesheet" href="/static/css/common/2-unit-form.css"/>
+<link rel="stylesheet" href="/static/css/common/2-unit-text.css"/>
+<link rel="stylesheet" href="/static/css/common/2-unit-table.css"/>
+<link rel="stylesheet" href="/static/css/common/3-font-icon.css"/>
 <!--/coolie-->
 
 <!--coolie-->
@@ -66,11 +66,11 @@ css 文件里的资源引用路径，与引用样式文件的 html 文件路径�
 
 ```
 .demo1{
-    background: url("../res/demo1.png");
+    background: url("../res/xxxxx00000.png");
 }
 
 .demo2{
-    background: url("../res/demo2.png");
+    background: url("../res/xxxxx11111.png");
 }
 ```
 
