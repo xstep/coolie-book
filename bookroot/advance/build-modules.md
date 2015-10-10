@@ -3,10 +3,11 @@
 coolie 模块构建包括以下几个方面：
 
 - 智能分析模块依赖。
-- 构建后的相同模块有唯一的标示符（如 1 或 2 或 3），便于分块构建。
-- 智能分析依赖的模块类型，如JS、CSS、HTML、JSON、图片等，并进行相应的构建。
+- 分配模块唯一的三十六进制 ID。
+- 智能分析依赖的模块类型（JS、CSS、HTML、JSON、图片），并进行相应的构建。
 - 智能分析依赖模块内的依赖，如 HTML 模块里引用的样式、图片，CSS 模块里引用的图片。
-- 智能分析分块构建依赖的公共模块，并进行分块处理。
+- 智能分析分块构建依赖的公共模块，并进行分块构建。
+- 智能分析分块构建依赖的异步模块，并进行增量构建。
 - 几近完美的模块压缩、合并。
 
 在了解 coolie 模块构建方面，需要注意：
@@ -30,7 +31,7 @@ coolie 模块构建包括以下几个方面：
 
 **同时**，需要在 HTML 文件里引用它
 ```
-<script coolie ... data-main="入口模块URL">
+<script coolie ... data-main="入口模块URI">
 ```
 
 - 如果入口模块未引用，那么会警告被构建的入口文件未被使用。
@@ -39,6 +40,35 @@ coolie 模块构建包括以下几个方面：
 
 
 
+# 异步模块
+每一个异步模块都会分配一个独一无二的 ID。
+```
+require.async('./pages/page1.js');
+
+=>
+
+r.async("1");
+```
+
+每一个异步模块，在调用的时候都会再次执行。即：
+```
+// pages/page1.js
+define(function(){
+    alert('1');
+});
+```
+
+```
+// app.js
+define(function(require){
+    require.async('./pages/page1.js');
+    // => alert 1
+    require.async('./pages/page1.js');
+    // => alert 1
+});
+```
+
+**须知：`require.async` 调用了两次 `pages/page1.js`，就会执行两次，这与`require`的结果是不一样的。**
 
 
 # 引用资源路径关系
