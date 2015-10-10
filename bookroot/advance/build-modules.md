@@ -70,6 +70,8 @@ define(function(require){
 
 **须知：`require.async` 调用了两次 `pages/page1.js`，就会执行两次，这与`require`的结果是不一样的。**
 
+异步模块在构建之后，会默认放在`async`目录下。
+
 
 # 引用资源路径关系
 如这样一个 css 模块：

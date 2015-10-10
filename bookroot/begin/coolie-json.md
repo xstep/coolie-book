@@ -146,7 +146,7 @@ static/js/path2/1.js   |
 static/js/path2/2.js --
 ```
 
-生成的 chunk 模块会默认放在 chunk 目录下。
+生成的 chunk 模块会默认放在`chunk`目录下。
 
 
 **进阶提示**
