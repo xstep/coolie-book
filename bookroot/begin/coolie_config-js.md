@@ -1,42 +1,96 @@
-`coolie.json`（前端构建配置文件）相对于`coolie-config.js`（前端模块加载器配置文件）来说要复杂的多，
+`coolie.config.js`（前端开发构建工具 coolie cli 的配置文件）相对于
+`coolie-config.js`（前端模块加载器 coolie.js 的配置文件）来说要复杂的多，
 不过不必紧张，可以使用
 ```
-coolie json
+coolie init -c
 ```
-[自动生成](./command.md)。
+
+[coolie cli 配置文件自动生成](./command.md)。
 
 ```
-{
-  "js": {
-    "main": [
-      "./static/js/app/**/*.js"
-    ],
-    "coolie-config.js": "./static/js/coolie-config.js",
-    "dest": "./static/js/",
-    "chunk": []
-  },
-  "css": {
-    "dest": "./static/css/",
-    "minify": {
-      "compatibility": "ie7"
-    }
-  },
-  "html": {
-    "src": [
-      "./views/**/*.html"
-    ],
-    "minify": true
-  },
-  "resource": {
-    "dest": "./static/res/",
-    "minify": true
-  },
-  "copy": [],
-  "dest": {
-    "dirname": "../dest/",
-    "host": ""
-  }
-}
+/**
+ * ======================================================
+ * coolie 构建配置文件 `coolie.config.js`
+ * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
+ * 当前配置文件所在的目录为构建的根目录
+ * 更多内容访问 http://coolie.ydr.me
+ * @author ydr.me
+ * =======================================================
+ */
+
+'use strict';
+
+module.exports = function (coolie) {
+    // coolie 配置
+    coolie.config({
+        // 是否在构建之前清空目标目录
+        clean: true,
+
+        // js 构建
+        js: {
+            // 入口模块
+            main: [
+                './static/js/app/**'
+            ],
+            // coolie-config.js 路径
+            'coolie-config.js': './static/js/coolie-config.js',
+            // js 文件保存目录
+            dest: './static/js/',
+            // 分块配置
+            chunk: []
+        },
+
+        // html 构建
+        html: {
+            // html 文件
+            src: [
+                './views/html/**'
+            ],
+            // 是否压缩
+            minify: true
+        },
+
+        // css 构建
+        css: {
+            // css 文件保存目录
+            dest: './static/css/',
+            // css 压缩配置
+            minify: {
+                compatibility: 'ie7'
+            }
+        },
+
+        // 资源
+        resource: {
+            // 资源保存目录
+            dest: './static/res/',
+            // 是否压缩
+            minify: true
+        },
+
+        // 原样复制文件
+        copy: [],
+
+        // 目标配置
+        dest: {
+            // 目标目录
+            dirname: '../dest/',
+            // 目标根域
+            host: '',
+            // 版本号长度
+            versionLength: 32
+        }
+    });
+
+    // 使用 coolie 中间件
+    // coolie.use(require('coolie-*'));
+
+    // 自定义 coolie 中间件
+    //coolie.use(function (options) {
+    //    // do sth.
+    //    return options;
+    //});
+};
 ```
 
 **申明**
@@ -66,7 +120,6 @@ JS 压缩采用的是 uglify2。
 - `!`：排除匹配
 
 **进阶阅读**
-- [注释的特殊处理](../advance/comments.md)
 - [npm: glob](https://www.npmjs.com/package/glob)
 - [npm: uglify-js](https://www.npmjs.com/package/uglify-js)
 
@@ -198,7 +251,6 @@ CSS 文件的构建的相关配置。如：
 
 **进阶阅读**
 
-- [注释的特殊处理](../advance/comments.md)
 - [npm: clean-css](https://www.npmjs.com/package/clean-css)
 
 
@@ -231,9 +283,7 @@ HTML 文件的构建的相关配置。
 
 **进阶阅读**
 
-- [注释的特殊处理](../advance/comments.md)
-- [coolie 标签属性](../advance/attribute-coolie.md)
-- [coolieignore 标签属性](../advance/attribute-coolieignore.md)
+- [html 注释标记处理](../advance/build-html.md)
 
 
 # resource
