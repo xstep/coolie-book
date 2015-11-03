@@ -38,12 +38,10 @@
     "howdo": "^2.0.2",
     "marked": "^0.3.5",
     "pm2": "^0.14.7",
-    "ydr-utils": "^22.43.5"
-  },
-  "peerDependencies": {
     "fs-extra": "^0.24.0",
     "ydr-utils": "^22.43.3"
   },
+  "peerDependencies": {},
   "devDependencies": {
     "supervisor": "^0.7.1"
   },

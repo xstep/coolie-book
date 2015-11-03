@@ -25,11 +25,11 @@ var REG_EXTEND = /\.md$/i;
  */
 var getFiles = function (bookroot) {
     var configs = cache.get('app.configs');
-    var summaryCode = fse.readFileSync(path.join(bookroot, 'summary.md'), 'utf8');
-    var summaryTokens = marked.lexer(summaryCode);
-    var summaryFiles = [];
+    var indexCode = fse.readFileSync(path.join(bookroot, 'index.md'), 'utf8');
+    var indexTokens = marked.lexer(indexCode);
+    var indexFiles = [];
 
-    summaryTokens.forEach(function (token) {
+    indexTokens.forEach(function (token) {
         if (token.type === 'text') {
             var matches = token.text.match(REG_TEXT_LINK);
 
@@ -41,7 +41,7 @@ var getFiles = function (bookroot) {
             var file = matches[2];
 
             file = path.join(bookroot, file);
-            summaryFiles.push({
+            indexFiles.push({
                 name: name,
                 file: file
             });
@@ -49,8 +49,8 @@ var getFiles = function (bookroot) {
     });
 
     return {
-        files: summaryFiles,
-        code: summaryCode
+        files: indexFiles,
+        code: indexCode
     };
 };
 
