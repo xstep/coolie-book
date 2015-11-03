@@ -20,6 +20,7 @@ module.exports = {
         }
     },
     "files": [
+        './bookroot/**',
         './webroot-dev/static/**',
         './webroot-dev/.views/**',
         './webserver/**'

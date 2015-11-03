@@ -21,6 +21,7 @@ $title-size-small: 40px;
   &-sidebar {
     width: $width;
     left: 0;
+    box-shadow: 0px 0 10px #D4D4D4;
 
     @media (max-width: 650px) {
       position: fixed;
@@ -48,12 +49,11 @@ $title-size-small: 40px;
   a {
     display: block;
     color: #5F5F5F;
-    line-height: 34px;
-    padding: 0 10px;
+    line-height: 40px;
+    padding: 0 16px;
 
     &:hover {
-      color: #444;
-      background: #eee;
+      background: #F3F3F3;
     }
 
     &:link,
@@ -67,12 +67,15 @@ $title-size-small: 40px;
   &-title {
     font-size: 30px;
     text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 3px 14px -9px #888;
 
     a {
       &,
       &:hover {
-        background: #555;
-        color: #fff;
+        background: #FAFAFA;
+        color: #737373;
         line-height: $title-size-large;
         font-weight: normal;
 
@@ -107,8 +110,13 @@ $title-size-small: 40px;
       transition: all 300ms;
     }
 
-    &.active{
+    &.active {
       -webkit-transform: translateX(0);
+    }
+
+    a {
+      border-bottom: 2px solid #FAFAFA;
+      font-size: 14px;
     }
   }
 
@@ -121,8 +129,8 @@ $title-size-small: 40px;
       & > a {
         &,
         &:hover {
-          background: #555;
-          color: #FFF;
+          border-bottom-color: #DCDCDC;
+          background: #F3F3F3;
         }
       }
     }
@@ -153,7 +161,7 @@ $title-size-small: 40px;
 }
 
 .content {
-  padding: 20px;
+  padding: 30px;
   max-width: 1000px;
 
   @media (max-width: 650px) {
@@ -161,3 +169,4 @@ $title-size-small: 40px;
     padding: 5px;
   }
 }
+
