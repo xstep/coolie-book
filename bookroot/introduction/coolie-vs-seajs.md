@@ -21,7 +21,7 @@ coolie.modules
 ## 支持
 同时，经过对 seajs 的二次封装，已经实现了完善的版本管理、分块加载、文本/JSON加载、图标加载等。
 
-- 版本管理`coolie.config.version`细粒度配置每一个模块的版本号（构建工具自动生成）。
+- 版本管理`coolie.config.version`配置分块模块和异步模块的版本信息（构建工具自动生成）。
 - 分块加载，构建工具分块构建之后，模块加载进行分块加载，达到公共模块最高利用率。
 - 文本/JSON加载`require('some.txt', 'text')`和`require('some.json', 'json')`。
 - 图片加载`require('some.jpg', 'image')`。
