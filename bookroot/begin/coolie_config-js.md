@@ -330,7 +330,7 @@ HTML 文件的构建的相关配置。
 ```
 
 ## dest.host
-`string`。绑定的网络地址，通常为分布到 CDN 环境的地址，如：
+`string`。绑定的网络地址，通常为分布到 CDN 环境的地址，
 ```
 "dest": {
   "dirname": "../webroot-pro",
