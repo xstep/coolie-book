@@ -58,6 +58,7 @@ var getFiles = function (bookroot) {
 var REG_HREF = /<a([^>]*?)\shref="(.*?)">/g;
 var REG_HTTP = /^(https?:)?\/\//;
 var REG_HASH = /^#/;
+var REG_ABSOLUTE = /^\//;
 /**
  * 修正 a href
  * @param content
@@ -68,14 +69,20 @@ var fixHref = function (content, srcFile) {
     var configs = cache.get('app.configs');
 
     return content.replace(REG_HREF, function (source, prev, href) {
-        if (srcFile && !REG_HTTP.test(href) && !REG_HASH.test(href)) {
-            var hrefFile = path.join(path.dirname(srcFile), href);
-            var hrefRelative = path.relative(configs.bookroot, hrefFile);
+        var attr = '';
 
-            href = '/' + hrefRelative;
+        if (srcFile && !REG_HTTP.test(href) && !REG_HASH.test(href)) {
+            if(!REG_ABSOLUTE.test(href)){
+                var hrefFile = path.join(path.dirname(srcFile), href);
+                var hrefRelative = path.relative(configs.bookroot, hrefFile);
+
+                href = '/' + hrefRelative;
+            }
+
+            attr = ' class="j-pjax" ';
         }
 
-        return '<a' + prev + ' href="' +
+        return '<a' + prev + attr + ' href="' +
             href
                 .replace(REG_MD, '/')
                 .replace(REG_EXTEND, '/') +
