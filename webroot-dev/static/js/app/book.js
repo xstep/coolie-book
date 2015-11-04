@@ -1,4 +1,4 @@
-/*!
+/**
  * book
  * @author ydr.me
  * @create 2015-09-03 18:31
@@ -22,7 +22,6 @@ define(function (require, exports, module) {
     var $nav = selector.query('#nav')[0];
     var history = window.history;
     var APP = window.APP;
-    var app = {};
     var navMap = {};
     var lastURL = location.pathname;
     var navActive = false;
@@ -30,7 +29,7 @@ define(function (require, exports, module) {
 
 
     // 实现 nav
-    app.buildNav = function () {
+    var buildNav = function () {
         var $navLinks = selector.query('#nav a');
 
         $navLinks.forEach(function ($link) {
@@ -46,7 +45,7 @@ define(function (require, exports, module) {
     };
 
     // 监听 pathname
-    app.listenNav = function () {
+    var listenNav = function () {
         var pathname = location.pathname;
         var $navItem = navMap[pathname];
 
@@ -59,18 +58,25 @@ define(function (require, exports, module) {
         }
     };
 
+    var buildProgress = (function () {
+        var $progress = selector.query('#progress')[0];
+        return function () {
+
+        };
+    }());
+
     // 获取页面
-    app.getPage = function (url) {
+    var getPage = function (url) {
         xhr.ajax({
             url: url,
             cache: true
         }).on('success', function (json) {
             attribute.html($content, json.content);
             document.title = (json.pageName ? json.pageName + ' - ' : '') + APP.title;
-            app.listenNav();
+            listenNav();
             controller.nextFrame(function () {
                 attribute.scrollTop($main, 0);
-                app.buildPrettify();
+                buildPrettify();
             });
         }).on('error', function () {
             alert('页面内容获取失败');
@@ -78,7 +84,7 @@ define(function (require, exports, module) {
     };
 
     // 实现页面
-    app.buildPage = function () {
+    var buildPage = function () {
         var $nav = selector.query('#nav')[0];
 
         event.on($nav, 'click', 'a', function () {
@@ -89,7 +95,7 @@ define(function (require, exports, module) {
             }
 
             history.pushState({}, null, url);
-            app.getPage(url);
+            getPage(url);
             return false;
         });
 
@@ -101,17 +107,17 @@ define(function (require, exports, module) {
             }
 
             lastURL = url;
-            app.getPage(url);
+            getPage(url);
         });
     };
 
     // 语法高亮
-    app.buildPrettify = function () {
-        new Prettify('#main pre');
+    var buildPrettify = function () {
+        return new Prettify('#main pre');
     };
 
-    app.buildNav();
-    app.buildPage();
-    app.buildPrettify();
-    app.listenNav();
+    buildNav();
+    buildPage();
+    buildPrettify();
+    listenNav();
 });

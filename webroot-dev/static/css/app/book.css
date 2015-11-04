@@ -1,6 +1,17 @@
 html, body {
   height: 100%; }
 
+.progress {
+  position: fixed;
+  height: 2px;
+  background: #31ac48;
+  top: 0;
+  left: 0;
+  width: 0;
+  z-index: 3;
+  -webkit-transition: all 400ms;
+  transition: all 400ms; }
+
 .body {
   position: relative;
   height: 100%;

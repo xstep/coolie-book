@@ -7,6 +7,18 @@ html, body {
 $title-size-large: 60px;
 $title-size-small: 40px;
 
+.progress {
+  position: fixed;
+  height: 2px;
+  background: $foreground-success-color-hover;
+  top: 0;
+  left: 0;
+  width: 0;
+  z-index: 3;
+  -webkit-transition: all 400ms;
+  transition: all 400ms;
+}
+
 .body {
   position: relative;
   height: 100%;
@@ -129,7 +141,7 @@ $title-size-small: 40px;
 
     &.active {
       & > a {
-        &:after{
+        &:after {
           content: '';
           position: absolute;
           width: 4px;
