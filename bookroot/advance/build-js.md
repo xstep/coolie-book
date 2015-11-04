@@ -36,7 +36,7 @@ data-main="main.js"></script>
 - data-config 属性：定义了前端模块加载器的配置文件地址，相对于 src 属性
 - data-main 属性：定义了入口模块的地址，相对于 coolie-config.js 里的 base 属性
 
-coolie.cli 在找到入口后，会根据依赖链一直找到依赖终点，形成了一长串的模块集合，
+coolie cli 在找到入口后，会根据依赖链一直找到依赖终点，形成了一长串的模块集合，
 然后将这些模块合并起来，通过生成的[资源引用关系地图](./relationship-map-json.md)可以知道
 当前入口模块到底依赖了哪些模块。
 
@@ -74,7 +74,7 @@ require('some.css', 'css');
 require('some.html', 'html');
 require('some.png', 'image');
 ```
-其中，`text`、`css`、`html`和`image`都是非脚本模块，但是可以被 coolie.js 正常引用，也可以被 coolie.cli 正常构建。
+其中，`text`、`css`、`html`和`image`都是非脚本模块，但是可以被 coolie.js 正常引用，也可以被 coolie cli 正常构建。
 如：
 在当前目录下有一个`some.txt`文本，内容为：
 ```

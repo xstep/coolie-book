@@ -38,7 +38,7 @@ coolie book          => 打开 coolie book
 
 
 # coolie version
-显示输出当前本地 coolie 的版本号，以及在线的 coolie.js（前端模块加载器） 和 coolie.cli（前端构建工具） 的最新版本。
+显示输出当前本地 coolie 的版本号，以及在线的 coolie.js（前端模块加载器） 和 coolie cli（前端构建工具） 的最新版本。
 ```
 ➜  coolie version
 
@@ -50,7 +50,7 @@ coolie book          => 打开 coolie book
        local version => 0.22.8
         check update => wait a moment...
            coolie.js => 1.1.1
-          coolie.cli => 0.22.8
+          coolie cli => 0.22.8
 ```
 
 
@@ -217,7 +217,7 @@ coolie.config({
 
 
 # coolie build [path]
-coolie.cli 最核心的命令，在指定目录执行前端构建操作，默认为当前目录。
+coolie cli 最核心的命令，在指定目录执行前端构建操作，默认为当前目录。
 
 当前项目的目录结构为：
 ```

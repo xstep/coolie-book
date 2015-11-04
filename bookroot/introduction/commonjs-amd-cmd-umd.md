@@ -39,7 +39,7 @@ define(function(require, exports, module){
 而加上 define 包装也和 nodejs 端的代码形成了一定的区分。
 
 在开发环境中，coolie.js（前端模块加载器） 使用的就是这种规范，它的轻盈使你的编写更加顺畅、自由，无须为模块的定义伤脑筋。
-而在生产环境中，coolie.cli（前端开发构建工具）将会将模块合并，此时遵循的 AMD 规范。
+而在生产环境中，coolie cli（前端开发构建工具）将会将模块合并，此时遵循的 AMD 规范。
 
 
 # umd
