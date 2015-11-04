@@ -1,3 +1,5 @@
+@import "../varible";
+
 html, body {
   height: 100%;
 }
@@ -115,7 +117,7 @@ $title-size-small: 40px;
     }
 
     a {
-      border-bottom: 2px solid #FAFAFA;
+      position: relative;
       font-size: 14px;
     }
   }
@@ -127,10 +129,14 @@ $title-size-small: 40px;
 
     &.active {
       & > a {
-        &,
-        &:hover {
-          border-bottom-color: #DCDCDC;
-          background: #F3F3F3;
+        &:after{
+          content: '';
+          position: absolute;
+          width: 4px;
+          top: 0;
+          bottom: 0;
+          background: $foreground-primary-color;
+          right: 0;
         }
       }
     }

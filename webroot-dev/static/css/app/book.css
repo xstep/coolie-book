@@ -86,16 +86,20 @@ html, body {
   .sidebar-nav.active {
     -webkit-transform: translateX(0); }
   .sidebar-nav a {
-    border-bottom: 2px solid #FAFAFA;
+    position: relative;
     font-size: 14px; }
 
 .sidebar li ul {
   margin-left: 2em; }
 
-.sidebar li.active > a,
-.sidebar li.active > a:hover {
-  border-bottom-color: #DCDCDC;
-  background: #F3F3F3; }
+.sidebar li.active > a:after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  top: 0;
+  bottom: 0;
+  background: #0e90d2;
+  right: 0; }
 
 .sidebar-action {
   display: none;
