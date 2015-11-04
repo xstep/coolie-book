@@ -60,13 +60,32 @@ define(function (require, exports, module) {
 
     var buildProgress = (function () {
         var $progress = selector.query('#progress')[0];
-        return function () {
+        var nextFrame = 0;
 
+        return {
+            start: function () {
+                attribute.css($progress, {
+                    opacity: 1,
+                    width: 0
+                });
+                controller.clearFrame(nextFrame);
+                nextFrame = controller.nextFrame(function () {
+                    attribute.css($progress, 'width', '10%');
+                });
+            },
+            done: function () {
+                attribute.css($progress, 'width', '100%');
+                controller.clearFrame(nextFrame);
+                nextFrame = controller.nextFrame(function () {
+                    attribute.css($progress, 'opacity', 0);
+                });
+            }
         };
     }());
 
     // 获取页面
     var getPage = function (url) {
+        buildProgress.start();
         xhr.ajax({
             url: url,
             cache: true
@@ -80,6 +99,8 @@ define(function (require, exports, module) {
             });
         }).on('error', function () {
             alert('页面内容获取失败');
+        }).on('finish', function () {
+            buildProgress.done();
         });
     };
 
