@@ -32,17 +32,17 @@ sudo npm install -g coolie --registry=https://r.cnpmjs.org
 ╚═══════════════════════════════════════════════════╝
 
 1. Command
-   build             >> build a front-end project
-   book              >> open coolie book in default browser
-   install <name>    >> install a coolie module
-   init              >> initial configuration file
-   help              >> show help information
-   version           >> show version information
+   build                  >> build a front-end project
+   book                   >> open coolie book in default browser
+   install <module>       >> install a coolie module
+   init                   >> initial configuration file
+   help                   >> show help information
+   version                >> show version information
 
 2. Options
-   -d --dirname      >> specified a directory
-   -j --coolie.js    >> initial configuration file of `coolie.js`
-   -c --"coolie cli" >> initial configuration file of `coolie cli`
+   -d --dirname           >> specified a directory
+   -j --coolie.js         >> initial configuration file of `coolie.js`
+   -c --"coolie cli"      >> initial configuration file of `coolie cli`
 ```
 
 
