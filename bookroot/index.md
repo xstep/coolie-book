@@ -5,7 +5,7 @@
     - [coolie-vs-seajs](/introduction/coolie-vs-seajs.md)
     - [commonjs、amd、cmd、umd](/introduction/commonjs-amd-cmd-umd.md)
     - [coolie-config.js](/introduction/coolie-config-js.md)
-    - [coolie.config.js](/introduction/coolie_config-js.md)
+    - [coolie.config.js](/introduction/coolie.config-js.md)
     - [coolie cli](/introduction/coolie-cli.md)
     - [模块化开发](/introduction/modules-development.md)
     - [前端构建](/introduction/front-end-build.md)
