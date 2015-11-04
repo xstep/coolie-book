@@ -50,6 +50,36 @@ type: "love"
 // 绑定了手机
 type: 'bindPhone',
 phone: '12312341234'
+
+// 活动信息
+"type": "activity",
+"activityId": "7472937",
+"title": "【单身狂欢】你过来，我有个恋爱想跟你谈一下",
+"batchIndex": 0,
+"batchList": [
+    {
+        "id": 8474361,
+        "activityId": 7472937,
+        "beginTime": 1447171200000,
+        "endTime": 1447343999999,
+        "deadline": 1446998399999,
+        "paymentCategory": 0,
+        "amount": 280,
+        "prepaymentAmount": 0,
+        "appliedPeoples": 16,
+        "maxPeoples": 0,
+        "remainingPeoples": null,
+        "clubId": 1005,
+        "state": 1,
+        "waitPayOrder": false,
+        "male": 0.5,
+        "female": 0.5
+    }
+],
+"startAddress": "杭州武林广场",
+"startAddressList": [],
+"destination": "临安 浙西天池",
+"cover": "活动封面"
 ```
 
 
@@ -65,39 +95,32 @@ phone: '12312341234'
 ```
 navigation.show
 [{
-    type: "report",
-    data: {}
-}, {
     type: "share",
-    data: {}
+    data: {
+        title: "分享的标题",
+        desc: "分享的描述",
+        link: "分享的链接",
+        img: "分享的图片",
+        type: "activity"、"article",【可选】
+        id: 活动ID、文章ID【可选】
+    }
+}, {
+    type: "report",
+    data: {
+        id: 活动ID、文章ID,
+        type: "activity"、"article"
+    }
 }]
 ```
 
 
 
 # 3、分享
-## 3.1、自定义分享数据【已废弃】
-```
-share.data
-
-{
-    title: "分享的标题",
-    desc: "分享的描述",
-    link: "分享的链接",
-    img: "分享的图片"
-}
-```
-
-## 3.2、打开分享窗口
+## 3.1、打开分享窗口
 ```
 share.open
 ```
 
-
-## 3.3、关闭分享窗口
-```
-share.close
-```
 
 # 4、地理位置【未实现】
 ## 4.1、获取当前地理、行政位置
@@ -157,6 +180,9 @@ geolocation.map
 - 报名人列表页
     - type: "applyList"
     - id: 123（活动批次 ID）
+- 报名结果页
+    - type: "applyResult"
+    - orderCode: "123"
 
 ```
 location.redirect
@@ -169,7 +195,7 @@ location.redirect
 ```
 
 
-## 5.2、关闭当前页面
+## 5.2、关闭当前页面【未实现】
 ```
 // 关闭当前页面，清空历史记录，跳转到 APP 主页
 location.close
@@ -187,7 +213,7 @@ location.fullscreen
 ```
 
 
-## 5.3、web 页浏览完整
+## 5.3、web 页浏览完整【AOS专有】
 设置为 true 时，表示页面的终点，安卓手机点击物理键返回时将返回开始页面，对 iPhone 无效
 ```
 location.finished
@@ -284,7 +310,7 @@ media.picture
 ```
 
 
-## 7.3、选择图片
+## 7.3、选择图片【未实现】
 ```
 media.img
 
@@ -300,7 +326,7 @@ media.img
 ```
 
 
-## 7.4、上传图片
+## 7.4、上传图片【未实现】
 ```
 media.upload
 
@@ -329,7 +355,7 @@ media.upload
 }
 ```
 
-## 7.5、复制文本
+## 7.5、复制文本【未实现】
 ```
 media.copy
 
@@ -340,8 +366,25 @@ media.copy
 ```
 
 
+## 7.6、聊天
+```
+media.chat
+
+{
+    // 对方的用户 ID
+    userId: 123,
+    // 对方的昵称
+    nickname: '昵称',
+    // 对方的头像
+    avatar: 'http://...',
+    // 活动 ID，可选
+    activityId: 456
+}
+```
+
+
 # 8、设备
-## 8.1、获取设备所连接的网络环境
+## 8.1、获取设备所连接的网络环境【未实现】
 ```
 device.network
 =>
@@ -353,7 +396,7 @@ device.network
 }
 ```
 
-## 8.2、获取设备系统信息
+## 8.2、获取设备系统信息【未实现】
 ```
 device.system
 =>
@@ -362,7 +405,7 @@ device.system
         name: "ios",
         version: "8.1.1"
     },
-    dangke: {
+    dangkr: {
         version: "1.0.0",
         id: "APP ID"
     },
@@ -510,7 +553,6 @@ dangkr://activity/?id=123
 
 ## 12.2 个人主页
 ```
-dangkr://user/?id=123&isLeader=true
 dangkr://user/?id=123
 ```
 
@@ -523,4 +565,3 @@ dangkr://club/?id=123
 ```
 dangkr://article/?id=123
 ```
-

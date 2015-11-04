@@ -61,8 +61,8 @@ define(function (require, exports, module) {
         mimeType: null,
         // 延时请求时间
         delay: 0,
-        // 请求超时时间，15秒
-        timeout: 150000
+        // 请求超时时间，10秒
+        timeout: 10000
     };
     var XHR = klass.extends(Emitter).create({
         constructor: function (options) {
@@ -146,19 +146,19 @@ define(function (require, exports, module) {
                 }
             };
 
-            xhr.onabort = function () {
-                var err = new Error('transmission has aborted');
-
-                err.type = 'abort';
-                oncallback(err);
-            };
-
-            xhr.ontimeout = function () {
-                var err = new Error('transmission has timeout');
-
-                err.type = 'timeout';
-                oncallback(err);
-            };
+            //xhr.onabort = function () {
+            //    var err = new Error('transmission has aborted');
+            //
+            //    err.type = 'abort';
+            //    oncallback(err);
+            //};
+            //
+            //xhr.ontimeout = function () {
+            //    var err = new Error('transmission has timeout');
+            //
+            //    err.type = 'timeout';
+            //    oncallback(err);
+            //};
 
             xhr.onerror = oncallback;
 

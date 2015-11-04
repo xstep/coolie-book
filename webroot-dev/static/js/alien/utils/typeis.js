@@ -15,7 +15,6 @@ define(function (require, exports, module) {
     var REG_URL = /^https?:\/\/([a-z\d-]+\.)+[a-z]{2,5}(:[1-9]\d{0,4})?(\/|\/[\w#!:.?+=&%@!\-\/]+)?$/i;
     var REG_EMAIL = /^\w+[-+.\w]*@([a-z\d-]+\.)+[a-z]{2,5}$/i;
     var REG_INVALID = /invalid/i;
-    var REG_ELEMENT = /element/;
 
 
     /**
@@ -114,14 +113,15 @@ define(function (require, exports, module) {
             return 'document';
         } else if (object === null) {
             return 'null';
+        } else if (object !== object) {
+            return 'nan';
         }
 
         var ret = Object.prototype.toString.call(object).slice(8, -1).toLowerCase();
 
-        if (REG_ELEMENT.test(ret)) {
+        // android 5.0+ element 对象的 toString 不为 [Object HTMLElement...]
+        if (object.nodeType === 1 && object.nodeName) {
             return 'element';
-        } else if (isNaN(object) && ret === 'number') {
-            return 'nan';
         }
 
         return ret;
@@ -129,26 +129,43 @@ define(function (require, exports, module) {
     var i = 0;
     var jud = 'string number function object undefined null nan element regexp boolean array window document global'.split(' ');
     var makeStatic = function (tp) {
+        var tp2 = tp.replace(/^./, function (firstLetter) {
+            return firstLetter.toUpperCase();
+        });
         /**
          * 快捷判断
          * @name typeis
          * @property string {Function}
+         * @property String {Function}
          * @property number {Function}
+         * @property Number {Function}
          * @property function {Function}
+         * @property Function {Function}
          * @property object {Function}
+         * @property Object {Function}
          * @property undefined {Function}
+         * @property Undefined {Function}
          * @property null {Function}
+         * @property Null {Function}
          * @property nan {Function}
+         * @property Nan {Function}
          * @property element {Function}
+         * @property Element {Function}
          * @property regexp {Function}
+         * @property Regexp {Function}
          * @property boolean {Function}
+         * @property Boolean {Function}
          * @property array {Function}
+         * @property Array {Function}
          * @property window {Function}
+         * @property Window {Function}
          * @property document {Function}
+         * @property Document {Function}
          * @property global {Function}
+         * @property Global {Function}
          * @returns {boolean}
          */
-        typeis[tp] = function (obj) {
+        typeis[tp] = typeis[tp2] = function (obj) {
             return typeis(obj) === tp;
         };
     };
@@ -256,26 +273,9 @@ define(function (require, exports, module) {
     typeis.node = function (anything) {
         return !!anything &&
             typeis.number(anything.nodeType) && anything.nodeType > 0 && anything.nodeType < 13 &&
-            'nodeName' in anything && 'nodeValue' in anything;
+            'nodeName' in anything;
     };
 
 
-    /**
-     * @name string
-     * @name number
-     * @name function
-     * @name object
-     * @name undefined
-     * @name null
-     * @name nan
-     * @name element
-     * @name regexp
-     * @name boolean
-     * @name array
-     * @name window
-     * @name document
-     * @name global
-     * @type {Function}
-     */
     module.exports = typeis;
 });

@@ -27,7 +27,7 @@ define(function (require, exports, module) {
     var modification = require('../../core/dom/modification.js');
     var animation = require('../../core/dom/animation.js');
     var event = require('../../core/event/touch.js');
-    var Touch = require('../../libs/touch.js');
+    var Touch = require('../touch/index.js');
     var ui = require('../');
     var dato = require('../../utils/dato.js');
     var number = require('../../utils/number.js');
@@ -66,6 +66,7 @@ define(function (require, exports, module) {
             the._direction = options.axis.indexOf('x') > -1 ? 'X' : 'Y';
             the._increase = options.axis.indexOf('-') > -1 ? -1 : 1;
             the._offset = 0;
+            the.className = 'banner';
             the._initNode();
             the.resize(options);
             the._initEvent();

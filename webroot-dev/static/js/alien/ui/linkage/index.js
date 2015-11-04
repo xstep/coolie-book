@@ -69,9 +69,11 @@ define(function (require, exports, module) {
             the._hasPlaceholder = the._options.placeholder && the._options.placeholder.text;
             the._defaultVal = the._hasPlaceholder ? the._options.placeholder.value : '';
             the._values = [];
-            the._cache = {};
+            // 缓存，支持重写
+            the.cache = {};
             the._changeIndex = -1;
             the.destroyed = false;
+            the.className = 'linkage';
             the._initNode();
             the._initEvent();
             // 初始加载第一级
@@ -214,8 +216,8 @@ define(function (require, exports, module) {
             }
 
             // 有缓存值
-            if (index && the._cache[prevIndex]) {
-                var cacheList = the._cache[prevIndex][prevValue];
+            if (index && the.cache[prevIndex]) {
+                var cacheList = the.cache[prevIndex][prevValue];
 
                 if (cacheList) {
                     return callback(null, cacheList.slice(the._hasPlaceholder ? 1 : 0));
@@ -275,9 +277,12 @@ define(function (require, exports, module) {
                 if (index && options.cache) {
                     var prevIndex = index - 1;
                     var prevValue = the._values[prevIndex];
-                    // 上一个选中的子级
-                    the._cache[prevIndex] = the._cache[prevIndex] || {};
-                    the._cache[prevIndex][prevValue] = list;
+
+                    if(prevValue){
+                        // 上一个选中的子级
+                        the.cache[prevIndex] = the.cache[prevIndex] || {};
+                        the.cache[prevIndex][prevValue] = list;
+                    }
                 }
             } else {
                 list = [];
@@ -290,7 +295,7 @@ define(function (require, exports, module) {
             dato.each(list, function (i, item) {
                 var text = item[options.textName];
                 var value = item[options.valueName] + '';
-                var isSelected = selectedValue === value;
+                var isSelected = !!selectedValue && selectedValue === value;
 
                 if (isSelected) {
                     isFind = true;
@@ -324,14 +329,13 @@ define(function (require, exports, module) {
                 if (options.hideEmpty) {
                     attribute.css($select, 'display', '');
                 }
-
-                attribute.html($select, selectOptions);
             }
 
-            if (!the._unChangeNext) {
-                the.emit('change', index, selectedValue);
+            attribute.html($select, selectOptions);
+            the.emit('change', index, selectedValue);
 
-                var nextIndex = index + 1;
+            if (!the._unChangeNext) {
+                var  nextIndex = index + 1;
                 if (nextIndex < the._length) {
                     the._cleanValues(nextIndex);
                     the.change(nextIndex);

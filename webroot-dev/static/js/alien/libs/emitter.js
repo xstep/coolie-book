@@ -37,6 +37,7 @@ define(function (require, exports, module) {
             the._emitterCallbacks = [];
             // 监听的事件长度
             the._emitterLimit = 999;
+            the.className = 'emitter';
         },
         /**
          * 添加事件回调
@@ -196,8 +197,12 @@ define(function (require, exports, module) {
     /**
      * 事件传输
      * @param source {Object} 事件来源
-     * @param target {Object} 事件目的
+     * @param target {Object} 事件目标
      * @param [types] {Array} 允许和禁止的事件类型
+     *
+     * @example
+     * name 与 ['name'] 匹配
+     * name 与 ['!name'] 不匹配
      */
     Emitter.pipe = function (source, target, types) {
         source.on(function () {

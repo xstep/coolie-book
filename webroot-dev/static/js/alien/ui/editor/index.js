@@ -98,6 +98,7 @@ define(function (require, exports, module) {
             the._id = alienIndex++;
             the._$ele = selector.query($ele)[0];
             the._options = dato.extend({}, defaults, options);
+            the.className = 'editor';
             the._calStoreId();
 
             if (isMobile && the._options.isAdaptMobile) {
@@ -152,7 +153,7 @@ define(function (require, exports, module) {
             the._initEvent();
 
             if (the._options.canBackup) {
-                controller.nextTick(the._initValue, the);
+                controller.nextTick(the._initValue.bind(the));
             }
         },
 

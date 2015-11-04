@@ -23,12 +23,12 @@
 
  //【现在】
  var A = klass.create({
- constructor: function(){},
- abc: '123'
+     constructor: function(){},
+     abc: '123'
  });
  var B = klass.extends(A).create({
- constructor: function(){},
- def: '456'
+     constructor: function(){},
+     def: '456'
  });
  ===============================*/
 
@@ -72,12 +72,7 @@ define(function (require, exports, module) {
      */
     var inherit = function (constructor, superConstructor, isCopyStatic) {
         constructor.super_ = superConstructor;
-
-        var F = function () {
-            // ignore
-        };
-        F.prototype = new superConstructor();
-        constructor.prototype = new F;
+        constructor.prototype = Object.create(superConstructor.prototype);
 
         if (isCopyStatic) {
             dato.extend(true, constructor, superConstructor);
@@ -183,7 +178,7 @@ define(function (require, exports, module) {
      * @param isInheritStatic
      * @returns {Class}
      */
-    exports.extends = function (superConstructor, isInheritStatic) {
+    exports.extends = exports.inherit = function (superConstructor, isInheritStatic) {
         return new Class(null, superConstructor, isInheritStatic);
     };
 
