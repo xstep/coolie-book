@@ -128,20 +128,6 @@ a:focus {
   outline-offset: -2px;
 }
 
-img{
-  max-width: 100%;
-  height: auto;
-  vertical-align: top;
-
-  &.favicon{
-    width: 16px !important;
-    height: 16px !important;
-    max-width: none !important;
-    max-height: none !important;
-    vertical-align: middle;
-  }
-}
-
 .row::before,
 .row::after,
 [class*=avg-]::before,
