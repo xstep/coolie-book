@@ -1,12 +1,12 @@
 `coolie.config.js`（前端开发构建工具 coolie cli 的配置文件）相对于
 `coolie-config.js`（前端模块加载器 coolie.js 的配置文件）来说要复杂的多，
-不过不必紧张，可以使用
+不过不必紧张，同样可以使用命令
 ```
 coolie init -c
 ```
+自动生成。
 
-[coolie cli 配置文件自动生成](./command.md)。
-
+生成的文件内容为：
 ```
 /**
  * ======================================================
@@ -100,7 +100,7 @@ module.exports = function (coolie) {
 - `dest`路径/目录都是相对于生产目录的。
 
 
-下面逐一介绍下 coolie.json 配置文件的各个配置项。
+下面逐一介绍下配置文件的各个配置项。
 
 # js
 JS 文件构建的相关配置。如：
@@ -199,13 +199,12 @@ static/js/path2/1.js   |
 static/js/path2/2.js --
 ```
 
-生成的 chunk 模块会默认放在`chunk`目录下。
+生成的 chunk 模块会默认放在`chunk`（会自动计算，如果`chunk`存在，则会生成`chunk1`目录）目录下。
 
 
 **进阶提示**
 1. 只有被指定的 chunk 模块才会进入 chunk 分析。
-2. 当**有两个及以上的入口模块**时，并且只有被两个及以上的入口模块引用的 chunk 模块引用才会被抽离出来。
-3. 当**有且只有一个入口模块**时，指定的 chunk 模块都会被抽离。
+2. 只有被两个及以上的入口模块引用的 chunk 模块引用才会被抽离出来。
 
 如：
 ```
@@ -348,5 +347,21 @@ HTML 文件的构建的相关配置。
 }
 ```
 
+## coolie.use
+coolie 现已中间件。比如以下场合：
 
+- 将`<img data-original="/path/to/img.png"`的`data-original`属性值进行资源管理，
+  则需要中间件来支持，因为 coolie 默认没有对非标准的属性进行处理。
+- 将`{{include "path/to/template.html"}}`语句进行解析并替换为对应的模板内容，也需要
+  中间件来支持，因为 coolie 没有对非标准的 html 文本做处理。
 
+以上两个场合现已有中间件发布。
+
+- coolie-img-data-original\[未发布]
+- coolie-html-include\[未发布]
+
+在使用第三方中间件时，coolie 会对中间件进行预先校验，如果不符合规范，则会抛出警告。
+
+**进阶阅读**
+
+[如何开发 coolie 中间件](../develop/middleware.md)
