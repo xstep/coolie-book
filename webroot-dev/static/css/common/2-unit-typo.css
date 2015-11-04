@@ -116,7 +116,8 @@
     border: 1px solid #DDD;
     border-radius: 6px;
     word-wrap: normal;
-    overflow: auto; }
+    overflow: auto;
+    line-height: 1.4; }
   .typo pre code {
     background: transparent;
     margin: 0;

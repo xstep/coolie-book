@@ -5,41 +5,55 @@
 
 coolie 的安装很简单。全局条件下，安装即可：
 ```
-sudo npm i -g coolie
+sudo npm install -g coolie
 ```
 
 如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来安装。
 
 ```
-sudo npm i -g coolie --registry=https://r.cnpmjs.org
+sudo npm install -g coolie --registry=https://r.cnpmjs.org
 ```
 
 安装完成后，来调戏下他吧：
 ```
 ➜ coolie
 
-╔═════════════════════════════════════════╗
-║   coolie@0.22.8                         ║
-║   The front-end development builder.    ║
-╚═════════════════════════════════════════╝
+                               oooo   o8o
+                               `888   `"'
+  .ooooo.   .ooooo.   .ooooo.   888  oooo   .ooooo.
+ d88' `"Y8 d88' `88b d88' `88b  888  `888  d88' `88b
+ 888       888   888 888   888  888   888  888ooo888
+ 888   .o8 888   888 888   888  888   888  888    .o
+ `Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o `Y8bod8P'
 
-coolie version       => 输出版本号
-coolie build [path]  => 在指定目录根据`coolie.json`执行前端构建
-coolie json [path]   => 在指定目录生成`coolie.json`
-coolie pull [path]   => 下载 coolie.min.js 到指定目录
-coolie config [path] => 在指定目录生成`coolie-config.js`
-coolie book          => 打开 coolie book
+╔═══════════════════════════════════════════════════╗
+║   coolie@1.0.0                                    ║
+║   The front-end development builder.              ║
+╚═══════════════════════════════════════════════════╝
+
+1. Command
+   build             >> build a front-end project
+   book              >> open coolie book in default browser
+   install <name>    >> install a coolie module
+   init              >> initialize `coolie.js` or `coolie cli` config file
+   help              >> show help info
+   version           >> show version info
+
+2. Options
+   -d --dirname      >> specified a directory
+   -j --coolie.js    >> initialize `coolie.js` config file
+   -c --"coolie cli" >> initialize `coolie cli` config file
 ```
 
 
 
 # 更新
 ```
-sudo npm up -g coolie
+sudo npm update -g coolie
 ```
 
 如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来更新。
 
 ```
-sudo npm up -g coolie --registry=https://r.cnpmjs.org
+sudo npm update -g coolie --registry=https://r.cnpmjs.org
 ```
