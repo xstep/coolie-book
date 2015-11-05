@@ -56,3 +56,7 @@ npm install -SD coolie-img-data-original
 coolie.use(require('coolie-img-data-original'));
 ```
 
+
+## 开发者
+[开发 coolie 中间件](/develop/middleware.md)。
+
