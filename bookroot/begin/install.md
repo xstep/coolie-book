@@ -18,18 +18,18 @@ sudo npm install -g coolie --registry=https://r.cnpmjs.org
 ```
 ➜ coolie
 
-                               oooo   o8o
-                               `888   `"'
-  .ooooo.   .ooooo.   .ooooo.   888  oooo   .ooooo.
- d88' `"Y8 d88' `88b d88' `88b  888  `888  d88' `88b
- 888       888   888 888   888  888   888  888ooo888
- 888   .o8 888   888 888   888  888   888  888    .o
- `Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o `Y8bod8P'
+                                  oooo    o8o
+                                  `888    `"'
+  .ooooo.    .ooooo.    .ooooo.    888   oooo    .ooooo.
+ d88' `"Y8  d88' `88b  d88' `88b   888   `888   d88' `88b
+ 888        888   888  888   888   888    888   888ooo888
+ 888   .o8  888   888  888   888   888    888   888    .o
+ `Y8bod8P'  `Y8bod8P'  `Y8bod8P'  o888o  o888o  `Y8bod8P'
 
-╔═══════════════════════════════════════════════════╗
-║   coolie@1.0.0                                    ║
-║   The front-end development builder.              ║
-╚═══════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════╗
+║   coolie@1.0.0                                       ║
+║   The front-end development builder.                 ║
+╚══════════════════════════════════════════════════════╝
 
 1. Command
    build                  >> build a front-end project
@@ -43,6 +43,7 @@ sudo npm install -g coolie --registry=https://r.cnpmjs.org
    -d --dirname           >> specified a directory
    -j --coolie.js         >> initial configuration file of `coolie.js`
    -c --"coolie cli"      >> initial configuration file of `coolie cli`
+
 ```
 
 
