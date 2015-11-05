@@ -107,8 +107,7 @@ define(function (require, exports, module) {
     // 实现页面
     var buildPage = function () {
         var $nav = selector.query('#nav')[0];
-
-        event.on($nav, 'click', 'a', function () {
+        var onclick = function () {
             var url = attribute.attr(this, 'href');
 
             if (location.pathname === url) {
@@ -118,7 +117,10 @@ define(function (require, exports, module) {
             history.pushState({}, null, url);
             getPage(url);
             return false;
-        });
+        };
+
+        event.on($nav, 'click', 'a', onclick);
+        event.on(document, 'click', '.j-pjax', onclick);
 
         event.on(window, 'popstate', function (eve) {
             var url = location.pathname;
