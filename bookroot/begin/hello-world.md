@@ -5,10 +5,6 @@
 ```
 .
 ├── dev
-│   ├── coolie-config.js
-│   ├── coolie.js
-│   ├── coolie.json
-│   ├── coolie.min.js
 │   ├── index.html
 │   └── index.js
 └── pro
@@ -18,8 +14,10 @@
 # 下载模块加载器
 切换到 dev 目录：
 ```
-coolie pull
+coolie install coolie
 ```
+来下载模块加载器。
+
 
 # html
 先写个页面`index.html`
@@ -37,7 +35,7 @@ coolie pull
 <!--2. 引用了 coolie.min.js-->
 <!--3. 增加了 data-config 属性-->
 <!--4. 增加了 data-main 属性-->
-<script coolie src="./coolie.min-1.1.1.js"
+<script coolie src="./coolie.min.js"
         data-config="./coolie-config.js"
         data-main="index.js"></script>
 
@@ -52,9 +50,9 @@ coolie pull
 
 
 # js
-接上文，至少需要新建两个文件。
 
 ## coolie-config.js
+使用`coolie init -j`生成 `coolie-config.js`，修改`base`项：
 很简单
 ```
 coolie.config({
@@ -72,39 +70,10 @@ define(function () {
 });
 ```
 
-# coolie.json
+# coolie.config.js
+使用 coolie init -c 生成，并修改为：
 ```
-{
-  "js": {
-    "main": [
-      "./index.js"
-    ],
-    "coolie-config.js": "./coolie-config.js",
-    "dest": "./",
-    "chunk": []
-  },
-  "css": {
-    "dest": "./static/css/",
-    "minify": {
-      "compatibility": "ie7"
-    }
-  },
-  "html": {
-    "src": [
-      "./index.html"
-    ],
-    "minify": true
-  },
-  "resource": {
-    "dest": "./static/res/"
-  },
-  "copy": [],
-  "dest": {
-    "dirname": "../pro/",
-    "host": "",
-    "versionLength": 32
-  }
-}
+
 ```
 
 - `js.src`：入口文件，即 index.js
