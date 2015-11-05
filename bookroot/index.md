@@ -26,6 +26,7 @@
     - [静态资源构建](/advance/build-resource.md)
     - [使用 coolie 中间件](/advance/middleware.md)
     - [发布到生产环境](/advance/publish-production.md)
+    - [常见问题](/advance/questions.md)
 - [版本](/version/readme.md)
     - [1.x](/version/1.x.md)
     - [0.x](/version/0.x.md)
