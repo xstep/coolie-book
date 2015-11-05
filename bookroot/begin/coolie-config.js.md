@@ -4,30 +4,16 @@
 ```
 coolie init -j
 ```
-生成：
-```
-
-                               oooo   o8o
-                               `888   `"'
-  .ooooo.   .ooooo.   .ooooo.   888  oooo   .ooooo.
- d88' `"Y8 d88' `88b d88' `88b  888  `888  d88' `88b
- 888       888   888 888   888  888   888  888ooo888
- 888   .o8 888   888 888   888  888   888  888    .o
- `Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o `Y8bod8P'
-
-╔═══════════════════════════════════════════════════╗
-║   coolie@1.0.0                                    ║
-║   The front-end development builder.              ║
-╚═══════════════════════════════════════════════════╝
-
-        init success >> /path/to/coolie-config.js
-```
-
 生成文件内容：
 ```
 /**
+ * ======================================================
+ * coolie.js 配置文件 `coolie-config.js`
+ * 使用 `coolie.init -j` 生成 `coolie-config.js` 文件模板
  * 前端模块加载器配置文件
+ * @link http://coolie.ydr.me/begin/coolie-config.js/
  * @author ydr.me
+ * ======================================================
  */
 
 coolie.config({

@@ -3,15 +3,16 @@
 # 准备
 先准备以下目录
 ```
-. demo
-|-- dev 开发环境
-|   |-- coolie.json
-|   |-- coolie.min-1.1.1.js
-|   |-- coolie-config.js
-|   |-- index.html
-|   `-- index.js
-`-- pro 生成环境
-    `-- 空
+.
+├── dev
+│   ├── coolie-config.js
+│   ├── coolie.js
+│   ├── coolie.json
+│   ├── coolie.min.js
+│   ├── index.html
+│   └── index.js
+└── pro
+    └── 空
 ```
 
 # 下载模块加载器

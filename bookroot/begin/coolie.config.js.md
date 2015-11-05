@@ -10,10 +10,10 @@ coolie init -c
 ```
 /**
  * ======================================================
- * coolie 构建配置文件 `coolie.config.js`
+ * coolie cli 配置文件 `coolie.config.js`
  * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
- * 更多内容访问 http://coolie.ydr.me
+ * @link http://coolie.ydr.me/begin/coolie.config.js/
  * @author ydr.me
  * =======================================================
  */
@@ -44,7 +44,7 @@ module.exports = function (coolie) {
         html: {
             // html 文件
             src: [
-                './views/html/**'
+                './views/**'
             ],
             // 是否压缩
             minify: true
