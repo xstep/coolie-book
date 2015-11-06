@@ -3,7 +3,7 @@
 # 准备
 先准备以下目录
 ```
-.
+demo
 ├── dev
 │   ├── index.html
 │   └── index.js
@@ -185,9 +185,9 @@ module.exports = function (coolie) {
 
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo1/dev/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo1/dev
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo1/pro/
+       coolie config >> /demo/dev/coolie.config.js
+         src dirname >> /demo/dev
+        dest dirname >> /demo/pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -215,7 +215,7 @@ module.exports = function (coolie) {
 
 我们来看看构建之后的目录结构：
 ```
-.
+demo
 ├── dev
 │   ├── coolie-config.js
 │   ├── coolie.config.js
