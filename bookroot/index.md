@@ -8,7 +8,6 @@
     - [coolie cli](/introduction/coolie-cli.md)
     - [coolie.config.js](/introduction/coolie.config.js.md)
     - [模块化开发](/introduction/modules-development.md)
-    - [前端构建](/introduction/front-end-build.md)
     - [coolie 优势](/introduction/advantage.md)
 - [入门](/begin/readme.md)
     - [安装](/begin/install.md)
