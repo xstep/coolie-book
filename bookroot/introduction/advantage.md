@@ -37,7 +37,7 @@ define(function(require, exports, module){
 ```
 生产环境（构建之后）生成性能最优的 [amd 规范](/introdution/commonjs-amd-cmd-umd.md)：
 ```
-define("0",[],function(r){r("1")});
+define("0",["1"],function(r){r("1")});
 ```
 
 
