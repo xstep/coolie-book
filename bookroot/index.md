@@ -3,6 +3,7 @@
     - [模块化开发](/introduction/module-development.md)
     - [模块化规范](/introduction/module-definition.md)
     - [模块类型](/introduction/module-type.md)
+    - [异步模块](/introduction/module-build.md)
     - [异步模块](/introduction/async-module.md)
     - [模块分块](/introduction/module-chunk.md)
     - [模块加载器](/introduction/module-loader.md)
