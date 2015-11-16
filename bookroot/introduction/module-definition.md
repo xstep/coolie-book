@@ -1,41 +1,14 @@
-在前端模块化规范提出的年代，很多规范应运而生，目前主流的就有四种。下面逐一介绍。
+coolie 遵循的是 [CMD 规范][cmd link]。
 
 
-# commonJS
-运行在 node 端。
-```
-var fs = require('fs');
+# CMD 规范
+CMD 最先是由 seajs 提出的，是 commonJS 规范的前端实现。
+与 commonJS 的表现是一致的，即：依赖就近，顺序执行。
 
-fs.readFile('file.md');
-```
-以上是一个典型的遵循了 commonJS 规范的 nodejs 代码。一个文件就是一个独立的模块，同时也可以加模块发布到 
-[npm](https://npmjs.com/) 上，
-便于管理、开源和使用，同时 npm 也做好了比较规矩的版本管理，算是一个比较完美的模块化开发方式，因此只需要你用过 nodejs，
-那么你对前端模块化的要求将会更加强烈。
-
-**特点：同步加载，同步执行，非常适合本地模块，即在 NodeJS 端。**
+而 AMD 是无法保证的，它是并行加载，加载完成即执行，
+没法保证顺序，如果要保证顺序，则需要添加配置。
 
 
-# AMD
-
-运行在浏览器端，使用`define`包装。
-```
-define('index.js', [
-    './xhr.js'
-], function(xhr){
-    xhr.ajax(...);
-});
-```
-以上是一个典型的遵循了 AMD 规范的浏览器代码，需要手动指定模块的名字和依赖，非常麻烦。
-
-**特点：依赖前置，模块没有被用到就已经执行了，这是非常不好的体验。**
-
-链接：
-- [AMD (中文版)](https://github.com/amdjs/amdjs-api/wiki/AMD-(%E4%B8%AD%E6%96%87%E7%89%88))
-
-
-# CMD
-CMD 是 AMD 和 commonJS 的一个变种，也是运行在浏览器端。
 ```
 define(function(require, exports, module){
     var xhr = require('./xhr.js');
@@ -43,46 +16,13 @@ define(function(require, exports, module){
     xhr.ajax(...);
 });
 ```
-相比较 AMD 规范来说，CMD 来的简单轻巧，依赖关系也非常明了，
-而加上 define 包装也和 nodejs 端的代码形成了一定的区分。
-
-**特点，与 Commonjs 类似，依赖就近，模块用到即运行。**
-
-在开发环境中，coolie.js（前端模块加载器） 使用的就是这种规范，它的轻盈使你的编写更加顺畅、自由，无须为模块的定义伤脑筋。
-而在生产环境中，coolie cli（前端开发构建工具）将会将模块合并，此时依然遵循的是 AMD 规范，不会影响代码的运行结果。
 
 链接：
-- [CMD（英文版）](https://github.com/cmdjs/specification/blob/master/draft/module.md)
+- [commonJS 1.0][commonjs link]
+- [AMD (中文版)][amd link]
+- [CMD 规范][cmd link]
 
 
-# umd
-正因为，出现了 AMD、CMD、commonJS、global/window 等多个规范，所以需要对四者做出一些兼容，umd 规范诞生了。
-
-```
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD
-        define(['index.js'], factory);
-    } else if (typeof define === 'function') {
-        // CMD
-        define(factory);
-    } else if (typeof exports === 'object') {
-        // Node, CommonJS-like
-        module.exports = factory(require('jquery'));
-    } else {
-        // Browser globals (root is window)
-        root.returnExports = factory(root.jQuery);
-    }
-}(this, function ($) {
-    // methods
-    function myFunc(){};
-
-    // exposed public method
-    return myFunc;
-}));
-```
-使用 UMD 包装的代码，可以不用改写就可以直接运行在 node 和 浏览器，以及众多模块加载器下，当然代码会相对多很多。
-UMD 规范相对前三者来说，更多的是一种妥协，但不失为是一种变通。在 JS 官方组织的模块化规范成熟之前，这也许是一种最保守的写法。
-
-
-
+[commonjs link]: http://wiki.commonjs.org/wiki/Modules/1.0
+[amd link]: https://github.com/amdjs/amdjs-api/wiki/AMD-(%E4%B8%AD%E6%96%87%E7%89%88)
+[cmd link]: https://github.com/cmdjs/specification/blob/master/draft/module.md
