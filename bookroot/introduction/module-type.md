@@ -5,6 +5,23 @@ coolie.js 默认就支持`js`、`html`、`css`、`image`、`text`和`json`六中
 并且支持模块类型出口定义，如`html`模块出口为一个 url，或者一个`image`模块出口为 base64。
 
 使用方法：
+```
+require(modulePath[, modulePipeline]);
+```
+
+- `modulePath`：模块路径，即模块的相对路径，相对于当前（宿主）模块
+- `modulePipeline`：模块管道，模块的入口类型和模块的出口类型（如`image|base64`，即入口模块是图片，出口转换为 base64 编码），
+默认的入口、出口类型都为 js
+
+默认的模块类型出口为：
+- js：js
+- css：text
+- text：text
+- html：text
+- image：url
+- json：js
+
+示例：
 
 ```
 require('some.js');
