@@ -28,7 +28,7 @@ coolie 属于通用级别的前端工程化解决方案，与工程类型无关�
 仅仅需要一点点配置，就可以省去你的大量的 grunt、gulp、webpack 代码。
 
 
-# 开发 cmd，生产 amd
+# 开发 CMD，生产 CMD
 开发环境（构建之前）下使用最为人性化的 [cmd 规范](/introdution/commonjs-amd-cmd-umd.md)：
 ```
 define(function(require, exports, module){
