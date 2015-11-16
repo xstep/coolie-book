@@ -5,10 +5,6 @@ coolie 遵循的是 [CMD 规范][cmd link]。
 CMD 最先是由 seajs 提出的，是 commonJS 规范的前端实现。
 与 commonJS 的表现是一致的，即：依赖就近，顺序执行。
 
-而 AMD 是无法保证的，它是并行加载，加载完成即执行，
-没法保证顺序，如果要保证顺序，则需要添加配置。
-
-
 ```
 define(function(require, exports, module){
     var xhr = require('./xhr.js');
@@ -16,6 +12,12 @@ define(function(require, exports, module){
     xhr.ajax(...);
 });
 ```
+
+- AMD 是无法保证执行顺序的，它是并行加载，加载完成即执行。
+没法保证顺序，如果要保证顺序，则需要添加配置。
+- commonJS 则需要通过编译或者 eval 包装执行。
+
+
 
 链接：
 - [commonJS 1.0][commonjs link]
