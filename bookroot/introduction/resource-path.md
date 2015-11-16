@@ -1,0 +1,46 @@
+# 资源路径分为以下几种
+
+- 静态路径：使用`http://`、`https://`、`ftp://`、`ftps://`和`//`（自动适应协议）标记的资源。
+- 绝对路径：资源相对根目录，使用`/`标记的资源。
+- 相对路径：资源相对于当前文件，使用`./`标记和直接文件名的资源。
+    
+在前端构建的时候，遇到资源路径时，会进行以下处理：
+
+- 静态路径：自动跳过。
+- 绝对、相对路径：复制或合并或压缩或合并压缩指定资源到指定目录。
+
+coolie 在处理资源时，会将资源的路径转为绝对路径。
+
+```
+<img src="/src/path/to/image1.png"/>
+<img src="./path/to/image2.png"/>
+
+=>
+
+<img src="/dest/res/image1.png"/>
+<img src="/dest/res/image2.png"/>
+```
+
+如果加上目标域`http://cdn.com/`，则：
+```
+<img src="/src/path/to/image1.png"/>
+<img src="./path/to/image2.png"/>
+
+=>
+
+<img src="http://cdn.com/dest/res/image1.png"/>
+<img src="http://cdn.com/dest/res/image2.png"/>
+```
+
+
+添加`coolieignore`以忽略资源构建
+```
+<img src="/src/path/to/image1.png" coolieignore/>
+<img src="./path/to/image2.png"/>
+
+=>
+
+<img src="/src/path/to/image1.png"/>
+<img src="/dest/res/image2.png"/>
+```
+
