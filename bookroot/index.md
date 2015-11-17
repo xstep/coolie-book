@@ -11,6 +11,7 @@
     - [资源路径策略](/introduction/resource-path.md)
     - [内容压缩策略](/introduction/content-compression.md)
     - [版本管理策略](/introduction/version-management.md)
+    - [资源关系图](/introduction/resource-relationship-map.md)
     - [coolie 优势](/introduction/advantage.md)
 - [教程](/guide/readme.md)
     - [安装](/guide/install.md)

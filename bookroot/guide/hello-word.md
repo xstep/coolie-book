@@ -73,14 +73,14 @@ demo
 ## coolie-config.js
 `coolie-config.js`是`coolie.js`（模块加载器）的配置文件，不必担心，配置非常的简单。
 
-使用`coolie init -j`生成`coolie-config.js`，修改`base`项：
+使用`coolie init -j`生成文件模板，修改`base`项：
 ```
 /**
  * ======================================================
  * coolie.js 配置文件 `coolie-config.js`
  * 使用 `coolie.init -j` 生成 `coolie-config.js` 文件模板
  * 前端模块加载器配置文件
- * @link http://coolie.ydr.me/begin/coolie-config.js/
+ * @link http://coolie.ydr.me/development/coolie-config.js/
  * @author ydr.me
  * ======================================================
  */
@@ -91,25 +91,32 @@ coolie.config({
 }).use();
 ```
 
-- `base`地址相对于模块加载器（即：coolie.js 的文件 URL 地址）
-- `use`表示启动入口文件。
+- `base`：入口模块的参考目录，相对于模块加载器（即：coolie.js 的文件 URL 地址）。
+- `use`：启动入口文件。
+
 
 ## index.js
+写一个 Hello World 模块。
 ```
 define(function () {
     alert('hello world');
 });
 ```
 
-# coolie.config.js
-使用 coolie init -c 生成，并修改为：
+
+
+# `coolie.config.js`
+
+`coolie.config.js`是 coolie cli（前端构建工具）的配置文件。
+使用`coolie init -c`生成文件模板，并修改为：
+
 ```
 /**
  * ======================================================
  * coolie cli 配置文件 `coolie.config.js`
  * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
- * @link http://coolie.ydr.me/begin/coolie.config.js/
+ * @link http://coolie.ydr.me/development/coolie.config.js/
  * @author ydr.me
  * =======================================================
  */
@@ -191,18 +198,47 @@ module.exports = function (coolie) {
 
 - `js.src`：入口文件，即 index.js
 - `html.src`：需要构建的 HTML，即 index.html
-- `dest.dirname`：构建的目标目录，即上层的 dest 目录
+- `dest.dirname`：构建的目标目录，即上层的 pro 目录
+
+
+# 运行
+当前的目录结构为：
+```
+demo
+├── dev
+│   ├── coolie-config.js // 模块加载器配置文件
+│   ├── coolie.config.js // 前端构建工具配置文件
+│   ├── coolie.js        // 模块加载器
+│   ├── coolie.min.js
+│   ├── index.html
+│   └── index.js         // 入口模块
+└── pro
+    └── 空
+```
+
+在构建之前，来运行一下。使用 [sts 工具](https://www.npmjs.com/package/sts)（也可以是其他静态网站工具），以 dev 目录为网站的根目录启动。
+```
+cd dev
+sts
+                sts => A static server is running.
+                open => http://192.168.2.134:51960
+```
+
+![](http://s.ydr.me/@/res/20151117155557878661226090 =474x215)
+
+如上图，如愿的弹出了“hello world”警告框。
+
 
 # 构建
-目前，源代码什么都是没有被构建的，我们来尝试构建一下看看。
+我们来尝试构建一下，看看会发生什么。切到到 dev 目录执行：
+
 ```
 ➜ coolie build
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.2                                       ║
+║   coolie@1.0.0                                       ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
-
 
                  1/6 >> parse coolie config
        coolie config >> /demo/dev/coolie.config.js
@@ -230,10 +266,9 @@ module.exports = function (coolie) {
                  6/6 >> generate a resource relationship map
                    √ >> ../pro/coolie-map.json
 
-       build success >> past 325ms
+       build success >> past 311ms
 ```
-
-我们来看看构建之后的目录结构：
+看着屏幕上的日志刷刷而过，别眨眼，来看看构建之后的目录结构：
 ```
 demo
 ├── dev
@@ -251,8 +286,10 @@ demo
     └── index.html
 ```
 
+看着构建之后的文件，是不是觉得一个都不认识了？别急，往下看。
+
 # html
-*为了阅读，已经折行处理了。*
+切换到 pro 目录，打开 index.html（此处为了演示，已做折行处理）：
 ```
 <!DOCTYPE html>
 <html>
@@ -267,21 +304,23 @@ data-config="~/79f9ed3283181085347bfea15ac65773.js"
 data-main="4f60ff2579e7b55f2e1ca87ba2221fde.js" ></script> 
 
 </body></html>
-<!--coolie@1.0.2-->
+<!--coolie@1.0.0-->
 ```
 
+注意点：
 - 在文件末尾打上构建工具的版本和的构建时间。
 - `script`上的`coolie`属性也被去掉了。
 - `data-config`属性也被重写了。
 - `data-main`属性也被重写了。
 
 # js
+来看下构建之后的 js 文件。
 ## coolie-config.js
-构建之后的前端模块加载器配置文件为`79f9ed3283181085347bfea15ac65773.js`。
+根据 html 里的代码指示，我们可以知道`coolie.js`构建之后的文件为`79f9ed3283181085347bfea15ac65773.js`。
 
 *为了便于阅读，已经折行处理了。*
 ```
-/*coolie@1.0.2*/
+/*coolie@1.0.0*/
 coolie.config({
     base:"./",
     async:"async/",
@@ -292,7 +331,9 @@ coolie.config({
 }).use();
 ```
 
-- 在文件开头，打上构建工具的版本和的构建时间。
+注意点：
+- 在文件开头，打上构建工具的版本。
+- 增加了`async`、`chunk`目录。
 - 增加了`debug`参数，值为 false（[详细参考点这里](/begin/coolie-config-js.md)）。
 - 增加了`version`属性，当前为空，主要记录 chunk、async 模块的版本号。
 
@@ -301,16 +342,17 @@ coolie.config({
 
 *为了阅读，已经折行处理了。*
 ```
-/*coolie@1.0.2*/
+/*coolie@1.0.0*/
 define("0",[],function(){alert("hello world")});
 ```
 
+注意点：
 - 在文件开头，打上构建工具的版本和的构建时间。
 - 代码进行了压缩，并且加上了模块的 ID 为 “0”。
 
 
 # coolie-map.json
-`coolie-map.json`是新生成的文件。
+`coolie-map.json`是新生成的文件：
 ```
 {
   "/index.html": {
@@ -329,9 +371,6 @@ define("0",[],function(){alert("hello world")});
 ```
 这个文件，按照构建的 HTML 文件分开，分别标识了每个 HTML 文件里引用的入口 JS 文件，依赖的 JS 模块和引用的 CSS 文件。
 
-因为构建之后，静态资源路径都替换为了绝对路径，所有的绝对路径，都相对于构建的根目录。
-
-另，可以启动一个静态的 HTTP 服务器（sts:<https://www.npmjs.com/package/sts>）来浏览。
 
 
 
