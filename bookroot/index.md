@@ -32,6 +32,8 @@
     - [Wordpress 项目构建](/sample/wordpress-project.md)
 - [开发](/development/readme.md)
     - [模块加载器 API](/development/coolie.js.md)
+    - [模块加载器配置文件 API](/development/coolie-config.js.md)
+    - [前端构建工具配置文件 API](/development/coolie.config.js.md)
     - [前端构建工具 API](/development/coolie-cli.md)
     - [前端构建工具中间件](/development/coolie-middleware.md)
     - [未来规划](/development/feature.md)
