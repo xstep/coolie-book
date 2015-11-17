@@ -223,6 +223,7 @@ sts
                 sts => A static server is running.
                 open => http://192.168.2.134:51960
 ```
+会使用默认浏览器打开 index.html。
 
 ![](http://s.ydr.me/@/res/20151117155557878661226090 =474x215)
 
@@ -352,7 +353,7 @@ define("0",[],function(){alert("hello world")});
 
 
 # coolie-map.json
-`coolie-map.json`是新生成的文件：
+`coolie-map.json`是新生成的文件（[资源关系图](/introduction/resource-relationship-map.md)）：
 ```
 {
   "/index.html": {
@@ -369,8 +370,23 @@ define("0",[],function(){alert("hello world")});
   }
 }
 ```
-这个文件，按照构建的 HTML 文件分开，分别标识了每个 HTML 文件里引用的入口 JS 文件，依赖的 JS 模块和引用的 CSS 文件。
+
+很明显，记录了`index.html`引用的入口模块的构建前后信息。
 
 
+# 再运行
+切换到 pro 目录，执行：
+```
+cd pro
+sts
+```
+会使用默认浏览器打开 index.html。
+
+![](http://s.ydr.me/@/res/20151117155557878661226090 =474x215)
+
+同样，警告框如期而至。
 
 
+# 总结
+这仅仅是 coolie 构建很小的一部分，以构建模块为起点，讲述了 coolie cli 的工作结果。
+如果你对此抱有兴趣，不凡往后面的章节继续阅读体验，逐渐介绍 coolie 是如何面对大工程、复杂工程的。

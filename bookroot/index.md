@@ -41,5 +41,4 @@
 - [版本](/version/readme.md)
     - [1.x](/version/1.x.md)
     - [0.x](/version/0.x.md)
-- [贡献](/contribute/readme.md)
-- [参考](/reference/readme.md)
+- [参考](/thanks/readme.md)
