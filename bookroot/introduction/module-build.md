@@ -34,12 +34,12 @@ define('./main.js',[
     './long/long/long/path/to/module1.js',
     './long/long/long/path/to/module2.js'
 ],function(r,e,m){
-    var m = r('./long/long/long/path/to/module1.js');
-    var n = r('./long/long/long/path/to/module2.js');
-    alert(m+n);
+    var a = r('./long/long/long/path/to/module1.js');
+    var b = r('./long/long/long/path/to/module2.js');
+    alert(a+b);
 })
-define('./long/long/long/path/to/module1.js',[],function(r,e,m){r.exports='module1'})
-define('./long/long/long/path/to/module2.js',[],function(r,e,m){r.exports='module2'})
+define('./long/long/long/path/to/module1.js',[],function(r,e,m){m.exports='module1'})
+define('./long/long/long/path/to/module2.js',[],function(r,e,m){m.exports='module2'})
 ```
 
 ## coolie cli 构建
@@ -49,12 +49,12 @@ define('0',[
     '1',
     '2'
 ],function(r,e,m){
-    var m = r('1');
-    var n = r('2');
-    alert(m+n);
+    var a=r('1');
+    var b=r('2');
+    alert(a+b);
 })
-define('1',[],function(r,e,m){r.exports='module1'})
-define('2',[],function(r,e,m){r.exports='module2'})
+define('1',[],function(r,e,m){m.exports='module1'})
+define('2',[],function(r,e,m){m.exports='module2'})
 ```
 相比普通的合并构建，约节省了 50% 的代码。当项目依赖的模块数量增加后，节省的字节数是多么恐怖！
 
