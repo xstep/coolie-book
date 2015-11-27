@@ -4,6 +4,22 @@
 - `**`：多层级目录
 - [更多](https://www.npmjs.com/package/glob)
 
+coolie 前端构建的配置文件以下配置是支持 glob 路径的：
+
+- `js.main`
+- `html.src`
+- `copy`
+
+这些配置，既可以是 glob 字符串，也可以是 glob 字符串数组。
+
+```
+js.main: [
+    "/path1/**",
+    "/path2/**"
+]
+```
+
+
 ## 示例1
 ```
 /path/to/*
