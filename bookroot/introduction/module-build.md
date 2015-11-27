@@ -70,6 +70,9 @@ define('2',[],function(r,e,m){m.exports='module2'})
 
 
 
+[支持的模块类型](./module-type.md)
+
+
 
 
 
