@@ -14,6 +14,7 @@
     - [版本管理策略](/introduction/version-management.md)
     - [资源关系图](/introduction/resource-relationship-map.md)
     - [coolie 优势](/introduction/advantage.md)
+    - [常见问题](/introduction/common-problems.md)
 - [教程](/guide/readme.md)
     - [安装](/guide/install.md)
     - [命令](/guide/command.md)

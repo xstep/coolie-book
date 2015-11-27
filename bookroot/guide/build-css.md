@@ -54,5 +54,24 @@ CSS 构建也特别的简单。
 <!--/coolie-->
 ```
 
+这种开发模式下，css 的目录结构可以这么分：
+
+```
+css
+├── app
+│   ├── page1.css
+│   ├── page2.css
+│   └── readme.md
+├── common
+│   ├── 0-normalize.css
+│   ├── 1-base.css
+│   └── 2-alert.css
+├── modules
+│   ├── module1.css
+│   ├── module2.css
+│   └── readme.md
+└── readme.md
+```
+
 
 [构建策略说明](/introdution/content-compression.md)。

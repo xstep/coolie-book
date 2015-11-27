@@ -31,8 +31,8 @@ coolie 是前端工程的构建方案，以页面（html）为导向，JS 和 CS
         ],
         "async": [
             {
-                "src": "/static/js/app/app1.js",
-                "dest": "../dest/static/js/app/app1_file_version.js",
+                "src": "/static/js/async/app1.js",
+                "dest": "../dest/static/js/async/app1_file_version.js",
                 "deps": [
                     "/static/js/libs1/1.js",
                     "/static/js/libs1/2.js"
