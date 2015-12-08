@@ -15,6 +15,7 @@ define(function (require, exports, module) {
     var alert = require('../alien/widgets/alert.js');
     var controller = require('../alien/utils/controller.js');
     var Prettify = require('../alien/ui/prettify/index.js');
+
     var $navs = selector.query('#nav li');
     var $navAction = selector.query('#navAction')[0];
     var $main = selector.query('#main')[0];

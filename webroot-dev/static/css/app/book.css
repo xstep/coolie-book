@@ -54,6 +54,11 @@ html, body {
   .sidebar a:hover,
   .sidebar a:active {
     text-decoration: none; }
+  .sidebar a[href="#"], .sidebar a[href="#"]:link, .sidebar a[href="#"]:visited, .sidebar a[href="#"]:hover, .sidebar a[href="#"]:active {
+    background: #f7f7f7;
+    color: #000;
+    cursor: default;
+    pointer-events: none; }
 
 .sidebar-title {
   font-size: 30px;

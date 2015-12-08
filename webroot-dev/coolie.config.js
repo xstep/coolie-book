@@ -66,7 +66,7 @@ module.exports = function (coolie) {
             // 目标目录
             dirname: '../webroot-pro/',
             // 目标根域
-            host: 'http://s.ydr.me/@/coolie-book/',
+            host: 'https://dn-s7.qbox.me/@/coolie-book/',
             // 版本号长度
             versionLength: 32
         }

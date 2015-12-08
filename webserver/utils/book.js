@@ -1,4 +1,4 @@
-/*!
+/**
  * book
  * @author ydr.me
  * @create 2015-09-02 17:30
@@ -13,9 +13,11 @@ var cache = require('ydr-utils').cache;
 var dato = require('ydr-utils').dato;
 var xss = require('ydr-utils').xss;
 var marked = require('marked');
+
 var REG_TEXT_LINK = /^\[([^\]]*)]\((.*?)\)?$/;
 var REG_MD = /\/(index|readme)\.md$/i;
 var REG_EXTEND = /\.md$/i;
+var REG_HASH = /^#/;
 
 
 /**
@@ -39,6 +41,10 @@ var getFiles = function (bookroot) {
 
             var name = matches[1];
             var file = matches[2];
+
+            if (REG_HASH.test(file)) {
+                return;
+            }
 
             file = path.join(bookroot, file);
             indexFiles.push({
@@ -72,7 +78,7 @@ var fixHref = function (content, srcFile) {
         var attr = '';
 
         if (srcFile && !REG_HTTP.test(href) && !REG_HASH.test(href)) {
-            if(!REG_ABSOLUTE.test(href)){
+            if (!REG_ABSOLUTE.test(href)) {
                 var hrefFile = path.join(path.dirname(srcFile), href);
                 var hrefRelative = path.relative(configs.bookroot, hrefFile);
 
@@ -123,6 +129,7 @@ exports.buildRouters = function (app, controller, bookroot) {
     summaryFiles.forEach(function (item) {
         var name = item.name;
         var file = item.file;
+
         var uri = path.relative(bookroot, file);
         var content = fse.readFileSync(file, 'utf8');
 

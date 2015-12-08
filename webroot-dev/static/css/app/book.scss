@@ -76,6 +76,15 @@ $title-size-small: 40px;
     &:active {
       text-decoration: none;
     }
+
+    &[href="#"]{
+      &,&:link,&:visited,&:hover,&:active{
+        background: #f7f7f7;
+        color: #000;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
   }
 
   &-title {
