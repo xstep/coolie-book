@@ -16,7 +16,7 @@
 - [webpack](https://www.npmjs.com/package/webpack)
 
 
-# Developer
+# Developers
 
 感谢以下开发者：
 
