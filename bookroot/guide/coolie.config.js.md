@@ -172,36 +172,6 @@ JS 压缩采用的是 uglify2。
 ## js.chunk
 `array`。模块化分块地址列表，支持通配符。
 
-```
-"chunk": [
-    "./static/js/libs/**/*",
-    "./static/js/3rd/**/*",
-    [
-        "./static/js/path1/**/*",
-        "./static/js/path2/**/*"
-    ]
-]
-```
-如上，被引用的 libs 模块和 3rd 模块，都会被单独抽出来打包成两个文件，一个文件存放 libs 模块，一个文件存放 3rd 模块。
-即：
-```
-static/js/libs/1.js【被引用2次】 --
-static/js/libs/2.js【被引用3次】   |-> 模块合并成 0.xxxx.js
-static/js/libs/3.js【被引用4次】 --
-
-static/js/3rd/1.js【被引用2次】 --
-static/js/3rd/2.js【被引用2次】   |-> 模块合并成 1.xxxx.js
-static/js/3rd/3.js【被引用2次】 --
-
-static/js/path1/1.js【被引用1次】
-static/js/path1/2.js【被引用0次】 
-static/js/path1/3.js【被引用2次】 --
-static/js/path2/1.js【被引用2次】   |-> 模块合并成 2.xxxx.js
-static/js/path2/2.js【被引用2次】 --
-```
-
-
-如上，`static/js/path1/1.js`只被引用1次、`static/js/path1/2.js`没有被引用过，都不会被合并到分块模块内。
 
 
 **进阶提示**

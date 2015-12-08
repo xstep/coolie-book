@@ -1,80 +1,41 @@
-# 模块分块【画图详细描述】
-
+# 模块分块策略
 
 coolie cli 默认会将入口模块及其依赖模块都合并在一个文件里，
 如果一些模块几乎被全站使用了，那么就可以考虑独立出来，
 而不需将这些公共模块重复加载。例：
 
-```
-libs/path1/a.js
-libs/path1/b.js
-libs/path1/c.js
 
-libs/path2/a.js
-libs/path2/b.js
-libs/path2/c.js
-libs/path2/d.js
 ```
-
-配置以下规则
-```
-chunk: [
-    // 第 0 个 chunk
-    'libs/path1/**',
-    // 第 1 个 chunk
-    'libs/path2/**'
+"chunk": [
+    "./static/js/libs/**/*",      // 分组0
+    "./static/js/3rd/**/*",       // 分组1
+    [                             // 分组2
+        "./static/js/path1/**/*",
+        "./static/js/path2/**/*"
+    ]
 ]
 ```
+如上，被引用的 libs 模块和 3rd 模块，都会被单独抽出来打包成两个文件，一个文件存放 libs 模块，一个文件存放 3rd 模块。
 
-假设有这么一个模块：
-```
-// libs/path1/a.js
-define(function(){
-    // code...
-});
+![](http://s.ydr.me/@/res/20151208215211734517094432 =1033x1046)
 
-// main.js
-define(function(require){
-    require('libs/path1/a.js');
-});
-```
+如上：
 
-默认构建结果：
+- `/static/js/path1/1.js`被引用0次，`static/js/path1/2.js`被引用1次，都不会被合并到分块模块内
+- 模块分块按照规则进行分组合并，而不是全部合并在一起
+
+
+注意：**其中被引用次数，指的是被不同的入口模块引用的次数**，如：
 ```
-// file_version_1.js
-define('0',['1'],function(r){r('1')});
-define('1',[],function(r){});
+app1.js => p1.js => a.js
+        => p2.js => a.js
+app2.js => b.js
 ```
 
-按如上分块规则，构建之后：
-```
-// file_version_2.js
-define('0',['1'],function(r){r('1')});
-coolie.chunk(['0']);
-```
-和
-```
-// 0.file_version.js
-define('1',[],function(r){});
-```
-
-其中，`coolie.chunk`表示加载 chunk 模块，其语法为：
-```
-coolie.chunk(chunkIdArray);
-```
-
-因此，`coolie.chunk(['0'])`表示加载 id 为 0 的 chunk 模块，即：
-```
-chunk: [
-    // 第 0 个 chunk
-    'libs/path1/**',   // <== 该路径下的模块
-    // 第 1 个 chunk
-    'libs/path2/**'
-]
-```
+如上，虽然`a.js`被`p1.js`和`p2.js`分别引用了两次，但只被一个入口模块（即：`app1.js`）引用一次。
+因此，`a.js`不会被纳入分块列表中，即使有分块规则满足。
 
 
 
-# 模块分块策略
-目前，符合分块规则的模块，只有被引用 2 次及以上，才会被单独分块出来。
+
 
