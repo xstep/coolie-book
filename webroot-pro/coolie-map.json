@@ -3,7 +3,7 @@
     "main": [
       {
         "src": "/static/js/app/book.js",
-        "dest": "../webroot-pro/static/js/app/b9fd79bed89ddf9f8bd172a40bcffb33.js",
+        "dest": "../webroot-pro/static/js/app/fe343cd8ec772edd2b1b0d269684812d.js",
         "deps": [
           "/static/js/alien/core/communication/xhr.js",
           "/static/js/alien/utils/typeis.js",
@@ -17,8 +17,8 @@
           "/static/js/alien/libs/emitter.js",
           "/static/js/alien/core/dom/selector.js",
           "/static/js/alien/utils/random.js",
-          "/static/js/alien/core/navigator/compatible.js",
           "/static/js/alien/utils/string.js",
+          "/static/js/alien/core/navigator/compatible.js",
           "/static/js/alien/core/dom/attribute.js",
           "/static/js/alien/utils/matrix.js",
           "/static/js/alien/core/dom/see.js",
@@ -36,6 +36,7 @@
           "/static/js/alien/libs/queue.js",
           "/static/js/alien/ui/mask/style.css",
           "/static/js/alien/ui/window/index.js",
+          "/static/js/alien/core/dom/keyframes.js",
           "/static/js/alien/ui/window/style.css",
           "/static/js/alien/libs/template.js",
           "/static/js/alien/core/event/drag.js",
@@ -72,7 +73,7 @@
         ]
       },
       {
-        "dest": "../webroot-pro/static/css/4a8b038d613c9830c7fe3574be82d02f.css",
+        "dest": "../webroot-pro/static/css/20fb1cc1d595f0709096d81d8584f727.css",
         "deps": [
           {
             "src": "/static/css/app/book.css",

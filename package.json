@@ -1,12 +1,12 @@
 {
   "name": "coolie-book",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "coolie 官方指南",
   "scripts": {
     "start": "node ./clis/start.js",
     "live": "browser-sync start --config bs-config.js",
-    "release": "rm -rf ./webroot-pro && coolie build -d webroot-dev && 7niu upload && git add webroot-pro && git commit -am 'release' && git push"
+    "release": "coolie build -d webroot-dev && 7niu upload && git add webroot-pro && git commit -am 'release' && git push"
   },
   "preferGlobal": false,
   "bin": {},
