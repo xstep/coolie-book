@@ -32,12 +32,15 @@ define(function (require, exports, module) {
     var modification = require('../../core/dom/modification.js');
     var attribute = require('../../core/dom/attribute.js');
     var event = require('../../core/event/touch.js');
-    var normalClass = 'alien-ui-pagination-normal';
+    var namespace = 'alien-ui-pagination';
+    var normalClass = namespace + '-normal';
     var defaults = {
         addClass: '',
         max: 1,
         page: 1,
-        size: 3
+        size: 3,
+        // 是否自动渲染
+        auto: false
     };
     var Pagination = ui.create({
         constructor: function ($parent, options) {
@@ -66,32 +69,29 @@ define(function (require, exports, module) {
          */
         _initEvent: function () {
             var the = this;
+            var options = the._options;
 
-            event.on(the._$ele, 'click', '.' + normalClass, the._onpage.bind(the));
-        },
+            event.on(the._$ele, 'click', '.' + normalClass, the._onpage = function () {
+                var page = attribute.data(this, 'page');
+                page = number.parseInt(page, 1);
 
+                if (page !== the._options.page) {
+                    the._options.page = page;
 
-        /**
-         * 翻页回调
-         * @param eve
-         * @private
-         */
-        _onpage: function (eve) {
-            var the = this;
-            var page = attribute.data(eve.target, 'page');
+                    /**
+                     * 页码变化后
+                     * @event change
+                     * @param page {Number} 变化后的页码
+                     */
+                    the.emit('change', page);
 
-            page = number.parseInt(page, 1);
-
-            if (page !== the._options.page) {
-                the._options.page = page;
-
-                /**
-                 * 页码变化后
-                 * @event change
-                 * @param page {Number} 变化后的页码
-                 */
-                the.emit('change', page);
-            }
+                    if (options.auto) {
+                        the.render({
+                            page: page
+                        });
+                    }
+                }
+            });
         },
 
 

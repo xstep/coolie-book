@@ -290,6 +290,10 @@ define(function (require, exports, module) {
                     return;
                 }
 
+                if (m < options.range[0].getMonth() || m > options.range[1].getMonth()) {
+                    return;
+                }
+
                 if (y === the._choose.year && m === the._choose.month && d === the._choose.date) {
                     return;
                 }

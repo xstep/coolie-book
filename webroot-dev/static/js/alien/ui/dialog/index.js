@@ -10,7 +10,6 @@ define(function (require, exports, module) {
      * @module ui/dialog/
      * @requires ui/mask/
      * @requires ui/window/
-     * @requires ui/scrollbar/
      * @requires utils/dato
      * @requires utils/typeis
      * @requires core/dom/selector
@@ -26,9 +25,9 @@ define(function (require, exports, module) {
 
     var Mask = require('../mask/');
     var Window = require('../window/');
-    var Scrollbar = require('../scrollbar/');
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
+    var allocation = require('../../utils/allocation.js');
     var controller = require('../../utils/controller.js');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
@@ -52,6 +51,7 @@ define(function (require, exports, module) {
         left: 'center',
         top: 'center',
         title: '无标题对话框',
+        template: '',
         addClass: '',
         duration: 234,
         easing: {
@@ -62,16 +62,36 @@ define(function (require, exports, module) {
         canDrag: true,
         modal: true,
         hideClose: false,
+        // 远程地址
         remote: null,
+        // iframe 高度
         remoteHeight: 400,
+        // 默认自动分配
         zIndex: null
     };
     var Dialog = ui.create({
         constructor: function ($content, options) {
             var the = this;
+            var args = allocation.args(arguments);
+
+            // new Dailog(null, options);
+            // new Dailog(options);
+            // new Dailog();
+            if (args.length === 0 || typeis.null(args[0]) || typeis.object(args[0])) {
+                options = args[args.length - 1];
+                $content = null;
+            }
+
+            options = the._options = dato.extend(true, {}, defaults, options);
+
+            if (!$content) {
+                $content = modification.create('div', {
+                    id: alienClass + '-content-' + alienIndex
+                });
+                modification.insert($content, $body);
+            }
 
             the._$content = selector.query($content)[0];
-            options = the._options = dato.extend(true, {}, defaults, options);
             the.destroyed = false;
             the.className = 'dialog';
 
@@ -96,15 +116,10 @@ define(function (require, exports, module) {
             the._id = alienIndex++;
             the._$window = the._window.getNode();
             the._initNode();
-
-            if (options.modal) {
-                the._scrollbar = new Scrollbar(the._$window);
-            }
-
             the._initEvent();
 
-            if (options.remote) {
-                the.setRemote(options.remote);
+            if (options.template) {
+                the._$content.innerHTML = options.template;
             }
 
             the._isReady = false;
@@ -185,10 +200,6 @@ define(function (require, exports, module) {
 
             // 对话框打开
             the._window.on('open', function () {
-                if (the._scrollbar) {
-                    the._scrollbar.resize();
-                }
-
                 the._isReady = true;
             }).on('close', function () {
                 the._isReady = false;
@@ -238,6 +249,11 @@ define(function (require, exports, module) {
          */
         setRemote: function (url) {
             var the = this;
+
+            if (url === the._lastRemote) {
+                return the;
+            }
+
             var options = the._options;
             var $iframe = modification.create('iframe', {
                 src: url,
@@ -247,6 +263,7 @@ define(function (require, exports, module) {
                 }
             });
 
+            the._lastRemote = url;
             the._$body.innerHTML = '';
             $iframe.onload = function () {
                 $iframe.onload = null;
@@ -257,7 +274,7 @@ define(function (require, exports, module) {
                 $iframe.onerror = null;
                 the.resize();
             };
-            modification.insert($iframe, the._$body, 'beforeend');
+            modification.insert($iframe, the._$body);
 
             return the;
         },
@@ -281,9 +298,14 @@ define(function (require, exports, module) {
          */
         open: function (callback) {
             var the = this;
+            var options = the._options;
 
             if (the._mask) {
                 the._mask.open();
+            }
+
+            if (options.remote) {
+                the.setRemote(options.remote);
             }
 
             the._window.open(callback);

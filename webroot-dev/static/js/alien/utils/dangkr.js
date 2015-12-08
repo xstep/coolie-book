@@ -63,19 +63,19 @@ define(function (require, exports, module) {
     var noop = function () {
         // ignore
     };
-    var netMap = {
+    var networkMap = {
         '-1': 'unknow',
         0: 'none',
         1: 'wap',
         2: 'wifi'
     };
-    // IOS: systemName/%@; systemVersion/%@; deviceVersion/%@; dangkr/1.1.5/%@
-    // AOS: navigator.userAgent + "; dangkr/1.1.5/1"
+    // IOS: systemName/%@; systemVersion/%@; deviceVersion/%@; dangkr/1.1.5/%@; deviceId/%@
+    // AOS: navigator.userAgent + "; dangkr/1.1.5/1; deviceId/123"
     var ua = navigator.userAgent;
-    var REG_END = /;([^;]*)$/;
+    var REG_DANGKR = /dangk(?:e|r)\/([\d.]+)\/(\d)/;
     var isIOS = /iphone|ipad|ipod/i.test(navigator.appVersion || ua);
     var isDangkr = /\bdangk(e|r)\b/i.test(ua);
-    var dkuaList = (ua.match(REG_END) || ['', ''])[1].split('/');
+    var dkuaList = ua.match(REG_DANGKR) || ['', '1.0.0', '-1'];
     var namespace = 'WebViewJavascriptBridge';
     var webViewJavascriptBridge = null;
     //var singleInstance = null;
@@ -101,7 +101,7 @@ define(function (require, exports, module) {
             //the._brokenCallbacks = [];
             the._asyncCallbacks = {};
             the._andCallbacks = {};
-            the._oneceCallbackList = ['media.input'];
+            the._oneceCallbackList = ['media.input', 'media.upload'];
             the._invokeList = [];
             the._initEvent();
         },
@@ -531,14 +531,25 @@ define(function (require, exports, module) {
         /**
          * 改变导航栏标题
          * @param [data] {String} 数据
-         * @param [callback] {Function} 回调
          * @returns {*}
          *
          * @example
          * .navigationTitle('动态页面标题');
          */
-        navigationTitle: function (data, callback) {
-            return this._navigation('title', data || document.title, callback);
+        navigationTitle: function (data) {
+            document.title = data || document.title;
+
+            var iframe = modification.create('iframe', {
+                src: '/favicon.ico'
+            });
+
+            iframe.onload = iframe.onerror = function () {
+                controller.nextFrame(function () {
+                    modification.remove(iframe);
+                    iframe = null;
+                });
+            };
+            modification.insert(iframe, document.body);
         },
 
 
@@ -722,7 +733,7 @@ define(function (require, exports, module) {
 
 
         /**
-         * 获取详细地理位置信息，包括经纬度、行政位置、国家、省份、城市
+         * 获取详细地理位置信息，包括经纬度、城市
          * @param [callback] {Function} 回调
          */
         geolocationGet: function (callback) {
@@ -927,21 +938,28 @@ define(function (require, exports, module) {
 
 
         /**
-         * 选择图片
-         * @param [data] {Object} 数据
-         * @param [callback] {Function} 回调
-         */
-        mediaImg: function (data, callback) {
-            return this._media('img', data, callback);
-        },
-
-
-        /**
          * 上传图片
          * @param [data] {Object} 数据
          * @param [callback] {Function} 回调
          */
         mediaUpload: function (data, callback) {
+            var the = this;
+            var args = allocation.args(arguments);
+
+            if (args.length === 1) {
+                callback = args[0];
+                data = {
+                    minify: true
+                };
+            }
+
+            var event = 'media.upload';
+
+            if (the._isAndroid) {
+                the.when(event, callback);
+                callback = null;
+            }
+
             return this._media('upload', data, callback);
         },
 
@@ -968,24 +986,6 @@ define(function (require, exports, module) {
          */
         _device: function (method, data, callback) {
             return this.invoke('device.' + method, data, callback);
-        },
-
-
-        /**
-         * 获取设备所连接的网络
-         * @param [callback] {Function} 回调
-         */
-        deviceNetwork: function (callback) {
-            return this._device('network', callback);
-        },
-
-
-        /**
-         * 获取设备的系统信息
-         * @param [callback] {Function} 回调
-         */
-        deviceSystem: function (callback) {
-            return this._device('system', callback);
         },
 
 
@@ -1093,11 +1093,26 @@ define(function (require, exports, module) {
     });
     var dangkr = new Dangkr();
 
+    /**
+     * 获取 ua 信息
+     * @param name
+     * @param dft
+     * @returns {*}
+     */
+    var getInfoFromUA = function (name, dft) {
+        var reg = new RegExp(name + '\\/([^;]+)');
+
+        return (ua.match(reg) || ['', dft])[1];
+    };
+
     dangkr.tokenKey = '-dkToken-';
     dangkr.isDangkr = isDangkr;
     dangkr.defaults = defaults;
-    dangkr.version = dkuaList[1] || '1.1.0';
-    dangkr.network = dkuaList[2] ? netMap[dkuaList[2]] : 'unknow';
-    dangkr.platform = isIOS ? 'ios' : 'aos';
+    dangkr.version = dkuaList[1];
+    dangkr.network = networkMap[dkuaList[2]];
+    dangkr.systemName = getInfoFromUA('systemName', 'aos');
+    dangkr.systemVersion = getInfoFromUA('systemVersion', 'aos');
+    dangkr.deviceVersion = getInfoFromUA('deviceVersion', 'aos');
+    dangkr.deviceId = getInfoFromUA('deviceId', 'aos');
     module.exports = dangkr;
 });

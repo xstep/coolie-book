@@ -1,8 +1,7 @@
-/*!
+/**
  * 类的创建与继承
  * @author ydr.me
  * @create 2014-10-04 15:09
- * @compatible ie8
  */
 
 /*===============================
@@ -23,12 +22,12 @@
 
  //【现在】
  var A = klass.create({
-     constructor: function(){},
-     abc: '123'
+ constructor: function(){},
+ abc: '123'
  });
  var B = klass.extends(A).create({
-     constructor: function(){},
-     def: '456'
+ constructor: function(){},
+ def: '456'
  });
  ===============================*/
 
@@ -44,6 +43,8 @@ define(function (require, exports, module) {
 
     var dato = require('./dato.js');
     var typeis = require('./typeis.js');
+
+    var classId = 0;
 
     /**
      * 单继承
@@ -65,14 +66,20 @@ define(function (require, exports, module) {
      *     this.sth = 123;
      * };
      *
-     * klass.inherit(Child, Father);
+     * inherit(Child, Father);
      *
      * // 这里开始写子类的原型方法
      * Child.prototype.fn = fn;
      */
     var inherit = function (constructor, superConstructor, isCopyStatic) {
         constructor.super_ = superConstructor;
-        constructor.prototype = Object.create(superConstructor.prototype);
+
+        if (Object.setPrototypeOf) {
+            // https://github.com/nodejs/node/blob/master/lib/util.js#L764
+            Object.setPrototypeOf(constructor.prototype, superConstructor.prototype);
+        } else {
+            constructor.prototype = Object.create(superConstructor.prototype);
+        }
 
         if (isCopyStatic) {
             dato.extend(true, constructor, superConstructor);
@@ -103,7 +110,7 @@ define(function (require, exports, module) {
         prototypes.constructor = null;
 
         var superConstructorIsAFn = typeis.function(superConstructor);
-        var c = function () {
+        var Class = function () {
             var the = this;
             var args = arguments;
 
@@ -111,15 +118,16 @@ define(function (require, exports, module) {
                 superConstructor.apply(the, args);
             }
 
+            the.__classId__ = classId++;
             con.apply(the, args);
         };
 
         if (superConstructorIsAFn) {
-            inherit(c, superConstructor, isInheritStatic);
+            inherit(Class, superConstructor, isInheritStatic);
         }
 
         dato.each(prototypes, function (key, val) {
-            c.prototype[key] = val;
+            Class.prototype[key] = val;
         });
 
         /**
@@ -127,15 +135,15 @@ define(function (require, exports, module) {
          * @type {Function}
          * @private
          */
-        c.prototype.__constructor__ = con;
+        Class.prototype.__constructor__ = con;
 
         /**
          * 输出的 constructor
          * @type {Function}
          */
-        c.prototype.constructor = c;
+        Class.prototype.constructor = Class;
 
-        return c;
+        return Class;
     };
 
 
@@ -178,7 +186,7 @@ define(function (require, exports, module) {
      * @param isInheritStatic
      * @returns {Class}
      */
-    exports.extends = exports.inherit = function (superConstructor, isInheritStatic) {
+    exports.extends = function (superConstructor, isInheritStatic) {
         return new Class(null, superConstructor, isInheritStatic);
     };
 

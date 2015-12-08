@@ -25,6 +25,7 @@ define(function (require, exports, module) {
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
+    var keyframes = require('../../core/dom/keyframes.js');
     var event = require('../../core/event/base.js');
     var animation = require('../../core/dom/animation.js');
     var style = require('./style.css', 'css');
@@ -33,6 +34,17 @@ define(function (require, exports, module) {
     var alienIndex = 0;
     var alienBaseClass = 'alien-ui';
     var alienClass = alienBaseClass + '-window';
+    var shakeKeyframes = keyframes.create({
+        '0,1': {
+            translateX: 0
+        },
+        '0.1,0.3,0.5,0.7,0.9': {
+            translateX: -10
+        },
+        '0.2,0.4,0.6,0.8': {
+            translateX: 10
+        }
+    });
     var noop = function () {
         // ignore
     };
@@ -40,8 +52,6 @@ define(function (require, exports, module) {
     var defaults = {
         parentNode: $body,
         width: '90%',
-        minWidth: 300,
-        maxWidth: 900,
         height: 'auto',
         top: 'center',
         right: null,
@@ -119,36 +129,27 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
             var size = {};
-            var pre = attribute.css(the._$window, ['width', 'height']);
             var hasMask = selector.closest(the._$window, '.' + alienBaseClass + '-mask')[0];
 
             attribute.css(the._$window, {
                 display: 'block',
                 width: options.width,
-                minWidth: options.minWidth,
-                maxWidth: options.maxWidth,
                 height: options.height,
                 position: hasMask ? 'absolute' : 'fixed',
                 scale: 1
             });
             size.width = attribute.outerWidth(the._$window);
             size.height = attribute.outerHeight(the._$window);
-            attribute.css(the._$window);
 
             if (options.width === 'height' && options.height === 'width') {
                 size.width = size.height = Math.max(size.width, size.height);
+                size.type = 1;
             } else if (options.width === 'height') {
                 size.width = size.height;
+                size.type = 2;
             } else if (options.height === 'width') {
                 size.height = size.width;
-            }
-
-            if (!REG_AUTO_OR_100_PERCENT.test(options.width)) {
-                attribute.css(the._$window, 'width', pre.width);
-            }
-
-            if (!REG_AUTO_OR_100_PERCENT.test(options.height)) {
-                attribute.css(the._$window, 'height', pre.height);
+                size.type = 3;
             }
 
             the.size = size;
@@ -190,9 +191,6 @@ define(function (require, exports, module) {
             if (options.bottom !== null) {
                 pos.bottom = options.bottom;
             }
-
-            pos.width = the.size.width;
-            pos.height = the.size.height;
 
             return pos;
         },
@@ -246,18 +244,34 @@ define(function (require, exports, module) {
 
                 var to = the._getPos();
 
+                switch (the.size.type) {
+                    case 1:
+                        to.width = the.size.width;
+                        to.height = the.size.height;
+                        break;
+
+                    case 2:
+                        to.width = the.size.width;
+                        break;
+
+                    case 3:
+                        to.height = the.size.height;
+                        break;
+                }
+
+
                 the.visible = true;
                 dato.extend(to, {
                     opacity: 0,
                     zIndex: ui.getZindex(),
                     scale: 0.9,
-                    translateY: '6%'
+                    marginTop: options.minOffset
                 });
                 attribute.css(the._$window, to);
                 animation.transition(the._$window, {
                     scale: 1,
                     opacity: 1,
-                    translateY: 0
+                    marginTop: 0
                 }, {
                     duration: options.duration,
                     easing: options.easing.open
@@ -379,7 +393,7 @@ define(function (require, exports, module) {
 
                 attribute.css(the._$window, {
                     display: 'none',
-                    translateY: 0
+                    marginTop: 0
                 });
 
                 callback.call(the);
@@ -398,7 +412,7 @@ define(function (require, exports, module) {
                 animation.transition(the._$window, {
                     scale: 0.9,
                     opacity: 0,
-                    translateY: '-6%'
+                    marginTop: options.minOffset
                 }, {
                     direction: 'reverse',
                     duration: options.duration,
@@ -438,18 +452,10 @@ define(function (require, exports, module) {
          */
         shake: function () {
             var the = this;
-            var className = alienClass + '-shake';
 
-            if (the._shakeTimeid) {
-                clearTimeout(the._shakeTimeid);
-                attribute.removeClass(the._$window, className);
-            }
-
-            attribute.addClass(the._$window, className);
-            the._shakeTimeid = setTimeout(function () {
-                the._shakeTimeid = 0;
-                attribute.removeClass(the._$window, className);
-            }, 500);
+            animation.keyframes(the._$window, shakeKeyframes, {
+                duration: 500
+            });
 
             return the;
         },

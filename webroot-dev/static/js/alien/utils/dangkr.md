@@ -55,7 +55,39 @@ phone: '12312341234'
 "type": "activity",
 "activityId": "7472937",
 "title": "【单身狂欢】你过来，我有个恋爱想跟你谈一下",
-"batchIndex": 0,
+"cover": "活动封面""batchIndex": 0,
+activityId: 456,
+"activity": {
+    title: '活动标题',
+    // 活动封面
+    cover: '...',
+    // 开始地址
+    startAddress: '浙江省 嘉兴市 1111111111',
+    // 目的地
+    destination: '浙江省 嘉兴市 1111111111',
+    // 领队ID
+    captainId: 2096,
+    // 领队昵称
+    captainNickname: '行者无疆',
+    // 领队头像
+    captainAvatar: '...',
+    // 活动类型
+    types: ['垂钓']
+    // 活动亮点
+    spot: '。。。',
+    // 活动价格
+    amount: 100,
+    // 定金价格
+    prepaymentAmount: 0,
+    applyConfig: {
+        needEmergencyContact: false
+        needGender: true
+        needIdentification: false
+        needMobile: true
+        needNickname: true
+        needRealName: false
+    }
+},
 "batchList": [
     {
         "id": 8474361,
@@ -71,15 +103,21 @@ phone: '12312341234'
         "remainingPeoples": null,
         "clubId": 1005,
         "state": 1,
-        "waitPayOrder": false,
-        "male": 0.5,
-        "female": 0.5
+        "waitPayOrder": false
     }
 ],
-"startAddress": "杭州武林广场",
-"startAddressList": [],
-"destination": "临安 浙西天池",
-"cover": "活动封面"
+"startAddressList": [{
+     countryName: '中国',
+     provinceName: '浙江省',
+     cityName: '杭州市',
+     address: '地址'
+ }],
+"destinationAddress": {
+    countryName: '中国',
+    provinceName: '浙江省',
+    cityName: '杭州市',
+    address: '地址'
+}
 ```
 
 
@@ -119,31 +157,31 @@ navigation.show
 ## 3.1、打开分享窗口
 ```
 share.open
+
+data: {
+     title: "分享的标题",
+     desc: "分享的描述",
+     link: "分享的链接",
+     img: "分享的图片",
+     type: "activity"、"article",【可选】
+     id: 活动ID、文章ID【可选】
+}
 ```
 
 
-# 4、地理位置【未实现】
-## 4.1、获取当前地理、行政位置
+# 4、地理位置
+## 4.1、获取当前地理、行政位置【1.7实现】
 ```
 geolocation.get
 =>
 {
     longitude: "经度",
     latitude: "纬度",
-    altitude: "高度",
-    accuracy: "经纬精度",
-    altitudeAccuracy: "高度精度",
-    heading: "角度",
-    speed: "速度",
-    country: "国家",
-    city: "城市",
-    region: "区县",
-    street: "街道",
-    address: "详细地址"
+    city: "城市"
 }
 ```
 
-## 4.2、调用本地地图
+## 4.2、调用本地地图【未实现】
 ```
 geolocation.map
 
@@ -165,14 +203,11 @@ geolocation.map
 
 # 5、页面位置
 ## 5.1、跳转
-- 领队主页
-    - type: "captain"
-    - id: 123（领队 ID）
 - 俱乐部主页
     - type: "club"
     - id: 123（俱乐部 ID）
 - 个人主页
-    - type: "applyer"
+    - type: "user"
     - id: 123（个人 ID）
 - 活动想去列表
     - type: "loveList"
@@ -310,52 +345,26 @@ media.picture
 ```
 
 
-## 7.3、选择图片【未实现】
-```
-media.img
-
-{
-    // 选择图片数量，默认为1
-    limit: 1
-}
-
-=>
-{
-    list: ["图片本地标识，仅用于展示，待用于上传"]
-}
-```
-
-
-## 7.4、上传图片【未实现】
+## 7.3、上传图片【1.7实现】
 ```
 media.upload
-
-// 指定宽度、高度、资源
+<=
 {
-    width: 100,
-    height: 100,
-    src: "本地图片标识"
+    // 是否压缩原图，默认压缩
+    minify: true
 }
 
-// 最大宽度、高度
-{
-    maxWidth: 100,
-    maxHeight: 100,
-    // 宽高比
-    ratio: 1,
-    // 最大容量，单位 B
-    maxSize: 100
-}
+上传过程中，显示 loading，结束后隐藏 loading，上传失败显示错误消息
+IOS 直接回调
+AOS 发送 media.upload 事件
 
 =>
 {
-    url: "http://img......",
-    width: 100,
-    height: 100
+    url: "http://img......"
 }
 ```
 
-## 7.5、复制文本【未实现】
+## 7.4、复制文本【未实现】
 ```
 media.copy
 
@@ -366,7 +375,7 @@ media.copy
 ```
 
 
-## 7.6、聊天
+## 7.5、聊天
 ```
 media.chat
 
@@ -378,7 +387,60 @@ media.chat
     // 对方的头像
     avatar: 'http://...',
     // 活动 ID，可选
-    activityId: 456
+    activityId: 456,
+    // 活动信息
+    activity: {
+        activityId: 456,
+        title: '活动标题',
+        // 活动封面
+        cover: '...',
+        // 开始地址
+        startAddress: '浙江省 嘉兴市 1111111111',
+        // 目的地
+        destination: '浙江省 嘉兴市 1111111111',
+        // 领队ID
+        captainId: 2096,
+        // 领队昵称
+        captainNickname: '行者无疆',
+        // 领队头像
+        captainAvatar: '...',
+        // 活动类型
+        types: ['垂钓']
+        // 活动亮点
+        spot: '。。。',
+        // 活动价格
+        amount: 100,
+        // 定金价格
+        prepaymentAmount: 0,
+        applyConfig: {
+           needEmergencyContact: false
+           needGender: true
+           needIdentification: false
+           needMobile: true
+           needNickname: true
+           needRealName: false
+        }
+    },
+    // 当前批次信息
+    batch: {
+        // 批次ID
+        id: 123,
+        beginTime: 1443110400000,
+        endTime: 1443455999999,
+        deadTime: 1443455999999,
+        // 支付类型:1=在线全额，2=在线预付，0=线下支付
+        paymentCategory: 0,
+        // 价格
+        amount: 0,
+        // 预支付价格
+        prepaymentAmount: 0,
+        appliedPeoples: 0,
+        maxPeoples: 10.
+        remainingPeoples: 9,
+        clubdId: 1021,
+        state: 4,
+        waitPayOrder: false
+    }
 }
 ```
 
@@ -564,4 +626,17 @@ dangkr://club/?id=123
 ## 12.4 文章详情页
 ```
 dangkr://article/?id=123
+```
+
+
+# ua
+ua 字符串格式为：
+```
+// AOS: 原有 UA + 附加 UA
+// IOS: 附加 UA
+```
+附加 UA 格式为为（为了显示，做折行处理）
+```
+"systemName/{系统名称，如 ios、aos}; systemVersion/{系统版本，如 9.1、5.1} deviceVersion/{设备版本}，
+如 iPhone 5s，xiaomi 4s}; dangkr/{荡客版本}/{网络类型}; deviceId/{设备ID}"
 ```

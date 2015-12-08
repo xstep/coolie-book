@@ -32,7 +32,6 @@ define(function (require, exports, module) {
     var modification = require('../../core/dom/modification.js');
     var event = require('../../core/event/touch.js');
     var Validation = require('../../libs/validation.js');
-    require('../../libs/validation-rules.js')(Validation);
     require('./validation-rules.js')(Validation);
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
@@ -101,17 +100,14 @@ define(function (require, exports, module) {
                 .on('invalid', function (err, path) {
                     the.emit('invalid', err, the._pathMap[path]);
                 })
-                .on('error', function (path) {
-                    the.emit('error', the._pathMap[path]);
-                })
-                .on('success', function () {
-                    the.emit('success');
+                .on('error', function (err, path) {
+                    the.emit('error', err, the._pathMap[path]);
                 })
                 .before('validate', function (path) {
                     the.emit('beforevalidate', the._pathMap[path]);
                 })
-                .after('validate', function (path) {
-                    the.emit('aftervalidate', the._pathMap[path]);
+                .on('validate', function (path) {
+                    the.emit('validate', the._pathMap[path]);
                 });
             the._parseItems();
 
@@ -132,7 +128,6 @@ define(function (require, exports, module) {
             var the = this;
             var data = {};
             var list = $input ? [] : the._$inputs;
-
 
             if ($input) {
                 var inputType = the._getType($input);
@@ -415,7 +410,7 @@ define(function (require, exports, module) {
             // required => type => minLength => maxLength => pattern => data
 
             if (attribute.attr(eleInput, 'required')) {
-                the._validation.addRule(path, 'required');
+                the._validation.addRule(path, 'required', true);
             }
 
             var min = attribute.attr(eleInput, 'min');
