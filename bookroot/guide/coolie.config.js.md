@@ -179,8 +179,8 @@ JS 压缩采用的是 uglify2。
 - 生成的 chunk 模块会默认放在`chunk`（会自动计算，如果`chunk`存在，则会生成`chunk1`目录，如果`chunk1`也存在，则会生成`chunk2`目录，以此类推）目录下。
 - 只有被指定的 chunk 模块才会进入 chunk 分析。
 - 只有被两个及以上的入口模块引用的 chunk 模块引用才会被抽离出来。
-
-[详细指导点这里](./build-chunk-module.md)。
+- [模块分块策略](/introduction/module-chunk.md)。
+- [模块构建指导](./build-chunk-module.md)。
 
 
 
