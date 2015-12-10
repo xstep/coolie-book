@@ -92,7 +92,36 @@ window.onload = function(){
 <!--/coolie-->
 ```
 
-## 初始化配置
+
+
+此时的目录结构为：
+```
+coolie-demo2
+├── dest
+└── src
+    ├── 1.js
+    ├── 2.js
+    └── index.html
+
+3 directories, 3 files
+```
+
+
+
+## 构建前运行
+使用 [sts](https://www.npmjs.com/package/sts) 执行：
+```
+➜  cd src
+➜  sts
+                 sts >> A static server is running.
+                open >> http://192.168.0.162:62019
+```
+
+![](http://s.ydr.me/@/res/20151210160446617400855164 =420x156)
+
+
+
+## 构建配置
 
 使用`coolie init -cj`生成`coolie.config.js`（用来标识模块加载器的配置，虽然这里没有用到，但还是需要的）和`coolie-config.js`：
 ```
@@ -103,8 +132,8 @@ window.onload = function(){
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo2/src/coolie.config.js
-        init success >> /Users/cloudcome/development/localhost/coolie-demo2/src/coolie-config.js
+        init success >> /path/to/coolie-demo2/src/coolie.config.js
+        init success >> /path/to/coolie-demo2/src/coolie-config.js
 ```
 
 修改`coolie.config.js`为：
@@ -195,31 +224,20 @@ module.exports = function (coolie) {
 };
 ```
 
-
 此时的目录结构为：
+
 ```
 coolie-demo2
 ├── dest
 └── src
     ├── 1.js
     ├── 2.js
-    ├── coolie-config.js  # 模块加载器的配置文件
-    ├── coolie.config.js  # 前端构建工具配置文件
+    ├── coolie-config.js
+    ├── coolie.config.js
     └── index.html
 
 3 directories, 5 files
 ```
-
-## 构建前运行
-使用 [sts](https://www.npmjs.com/package/sts) 执行：
-```
-➜  cd src
-➜  sts
-                 sts >> A static server is running.
-                open >> http://192.168.0.162:62019
-```
-
-![](http://s.ydr.me/@/res/20151210160446617400855164 =420x156)
 
 
 ## 前端构建
@@ -234,9 +252,9 @@ coolie-demo2
 
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo2/src/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo2/src
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo2/dest/
+       coolie config >> /path/to/coolie-demo2/src/coolie.config.js
+         src dirname >> /path/to/coolie-demo2/src
+        dest dirname >> /path/to/coolie-demo2/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
