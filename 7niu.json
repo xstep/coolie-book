@@ -1,7 +1,7 @@
 {
   "access_key": "Qf49VRkvUyaXW-lw3pjFTnI2cWhe9j57vng9rqm4",
   "secret_key": "ap274cEMBO2SDyqPFxQG0ZbYfN-Q_xYzbpIobFCj",
-  "bucket": "fed-community",
+  "bucket": "static",
   "src": "./webroot-pro/static/",
   "upload": [
     "./**/*.*"

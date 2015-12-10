@@ -1,25 +1,55 @@
-# JS 构建
+# JS 合并
 
-JS 构建特别的简单。
+详细参考 [内容压缩策略](/introduction/content-compression.md)。
 
-```
-<!--page1.html-->
 
-<!--coolie-->
-<script src="path/to/module1.js"></script>
-<script src="path/to/module2.js"></script>
-<script src="path/to/module3.js"></script>
-<script src="path/to/module4.js"></script>
-<!--/coolie-->
-```
+# JS 压缩
 
-构建为
+JS 压缩采用的是 uglifyjs，默认配置为：
 
 ```
-<!--page1.html-->
-
-<link href="/js/content_version.js">
+{
+    // 连续单语句，逗号分开
+    // 如： alert(1);alert(2); => alert(1),alert(2)
+    sequences: false,
+    // 重写属性
+    // 如：foo['bar'] => foo.bar
+    properties: false,
+    // 删除无意义代码
+    dead_code: false,
+    // 移除`debugger;`
+    drop_debugger: true,
+    // 使用以下不安全的压缩
+    unsafe: false,
+    // 不安全压缩
+    unsafe_comps: false,
+    // 压缩if表达式
+    conditionals: true,
+    // 压缩条件表达式
+    comparisons: true,
+    // 压缩常数表达式
+    evaluate: true,
+    // 压缩布尔值
+    booleans: true,
+    // 压缩循环
+    loops: true,
+    // 移除未使用变量
+    unused: false,
+    // 函数声明提前
+    hoist_funs: true,
+    // 变量声明提前
+    hoist_vars: false,
+    // 压缩 if return if continue
+    if_return: true,
+    // 合并连续变量省略
+    join_vars: true,
+    // 小范围连续变量压缩
+    cascade: true,
+    // 显示警告语句
+    warnings: false,
+    // 全局变量，会在构建之后，删除
+    global_defs: {
+        DEBUG: false
+    }
+}
 ```
-
-
-[构建策略说明](/introdution/content-compression.md)。

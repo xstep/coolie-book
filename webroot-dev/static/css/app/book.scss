@@ -171,6 +171,7 @@ $title-size-small: 40px;
     width: 60px;
     height: 40px;
     padding: 8px 16px;
+    z-index: 2;
 
     @media (max-width: 650px) {
       display: block;
@@ -179,9 +180,9 @@ $title-size-small: 40px;
     i {
       width: 100%;
       height: 2px;
-      background-color: #FFF;
+      background-color: #808080;
       display: block;
-      margin-top: 4px;
+      margin-top: 5px;
       border-radius: 1px;
     }
   }
