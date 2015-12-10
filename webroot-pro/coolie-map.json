@@ -2,49 +2,49 @@
   "/.views/book.html": {
     "main": [
       {
-        "src": "/static/js/app/book.js",
-        "dest": "../webroot-pro/static/js/app/fe343cd8ec772edd2b1b0d269684812d.js",
+        "src": "../webroot-dev/static/js/app/book.js",
+        "dest": "/static/js/app/fe343cd8ec772edd2b1b0d269684812d.js",
         "deps": [
-          "/static/js/alien/core/communication/xhr.js",
-          "/static/js/alien/utils/typeis.js",
-          "/static/js/alien/utils/dato.js",
-          "/static/js/alien/utils/number.js",
-          "/static/js/alien/utils/class.js",
-          "/static/js/alien/utils/url.js",
-          "/static/js/alien/utils/querystring.js",
-          "/static/js/alien/utils/hashbang.js",
-          "/static/js/alien/utils/allocation.js",
-          "/static/js/alien/libs/emitter.js",
-          "/static/js/alien/core/dom/selector.js",
-          "/static/js/alien/utils/random.js",
-          "/static/js/alien/utils/string.js",
-          "/static/js/alien/core/navigator/compatible.js",
-          "/static/js/alien/core/dom/attribute.js",
-          "/static/js/alien/utils/matrix.js",
-          "/static/js/alien/core/dom/see.js",
-          "/static/js/alien/core/event/touch.js",
-          "/static/js/alien/3rd/fastclick.js",
-          "/static/js/alien/core/event/base.js",
-          "/static/js/alien/widgets/alert.js",
-          "/static/js/alien/ui/index.js",
-          "/static/js/alien/core/dom/modification.js",
-          "/static/js/alien/ui/msg/index.js",
-          "/static/js/alien/ui/mask/index.js",
-          "/static/js/alien/core/dom/animation.js",
-          "/static/js/alien/utils/easing.js",
-          "/static/js/alien/utils/controller.js",
-          "/static/js/alien/libs/queue.js",
-          "/static/js/alien/ui/mask/style.css",
-          "/static/js/alien/ui/window/index.js",
-          "/static/js/alien/core/dom/keyframes.js",
-          "/static/js/alien/ui/window/style.css",
-          "/static/js/alien/libs/template.js",
-          "/static/js/alien/core/event/drag.js",
-          "/static/js/alien/ui/msg/template.html",
-          "/static/js/alien/ui/msg/style.css",
-          "/static/js/alien/ui/prettify/index.js",
-          "/static/js/alien/ui/prettify/style.css",
-          "/static/js/alien/3rd/prettify.js"
+          "../webroot-dev/static/js/alien/core/communication/xhr.js",
+          "../webroot-dev/static/js/alien/utils/typeis.js",
+          "../webroot-dev/static/js/alien/utils/dato.js",
+          "../webroot-dev/static/js/alien/utils/number.js",
+          "../webroot-dev/static/js/alien/utils/class.js",
+          "../webroot-dev/static/js/alien/utils/url.js",
+          "../webroot-dev/static/js/alien/utils/querystring.js",
+          "../webroot-dev/static/js/alien/utils/hashbang.js",
+          "../webroot-dev/static/js/alien/utils/allocation.js",
+          "../webroot-dev/static/js/alien/libs/emitter.js",
+          "../webroot-dev/static/js/alien/core/dom/selector.js",
+          "../webroot-dev/static/js/alien/utils/random.js",
+          "../webroot-dev/static/js/alien/utils/string.js",
+          "../webroot-dev/static/js/alien/core/navigator/compatible.js",
+          "../webroot-dev/static/js/alien/core/dom/attribute.js",
+          "../webroot-dev/static/js/alien/utils/matrix.js",
+          "../webroot-dev/static/js/alien/core/dom/see.js",
+          "../webroot-dev/static/js/alien/core/event/touch.js",
+          "../webroot-dev/static/js/alien/3rd/fastclick.js",
+          "../webroot-dev/static/js/alien/core/event/base.js",
+          "../webroot-dev/static/js/alien/widgets/alert.js",
+          "../webroot-dev/static/js/alien/ui/index.js",
+          "../webroot-dev/static/js/alien/core/dom/modification.js",
+          "../webroot-dev/static/js/alien/ui/msg/index.js",
+          "../webroot-dev/static/js/alien/ui/mask/index.js",
+          "../webroot-dev/static/js/alien/core/dom/animation.js",
+          "../webroot-dev/static/js/alien/utils/easing.js",
+          "../webroot-dev/static/js/alien/utils/controller.js",
+          "../webroot-dev/static/js/alien/libs/queue.js",
+          "../webroot-dev/static/js/alien/ui/mask/style.css",
+          "../webroot-dev/static/js/alien/ui/window/index.js",
+          "../webroot-dev/static/js/alien/core/dom/keyframes.js",
+          "../webroot-dev/static/js/alien/ui/window/style.css",
+          "../webroot-dev/static/js/alien/libs/template.js",
+          "../webroot-dev/static/js/alien/core/event/drag.js",
+          "../webroot-dev/static/js/alien/ui/msg/template.html",
+          "../webroot-dev/static/js/alien/ui/msg/style.css",
+          "../webroot-dev/static/js/alien/ui/prettify/index.js",
+          "../webroot-dev/static/js/alien/ui/prettify/style.css",
+          "../webroot-dev/static/js/alien/3rd/prettify.js"
         ]
       }
     ],
@@ -52,35 +52,38 @@
     "js": [],
     "css": [
       {
-        "dest": "../webroot-pro/static/css/90fa9ffbb8a1130f5701d5d6c52f140b.css",
+        "dest": "/static/css/90fa9ffbb8a1130f5701d5d6c52f140b.css",
         "deps": [
           {
-            "src": "/static/css/common/0-normalize.css",
+            "src": "../webroot-dev/static/css/common/0-normalize.css",
             "res": []
           },
           {
-            "src": "/static/css/common/1-base.css",
+            "src": "../webroot-dev/static/css/common/1-base.css",
             "res": []
           },
           {
-            "src": "/static/css/common/2-unit-typo.css",
+            "src": "../webroot-dev/static/css/common/2-unit-typo.css",
             "res": []
           },
           {
-            "src": "/static/css/common/2-unit-img.css",
+            "src": "../webroot-dev/static/css/common/2-unit-img.css",
             "res": []
           }
         ]
       },
       {
-        "dest": "../webroot-pro/static/css/20fb1cc1d595f0709096d81d8584f727.css",
+        "dest": "/static/css/2a99feb1f8e70c88679425929a469cdd.css",
         "deps": [
           {
-            "src": "/static/css/app/book.css",
+            "src": "../webroot-dev/static/css/app/book.css",
             "res": []
           }
         ]
       }
+    ],
+    "res": [
+      "../webroot-dev/favicon.ico"
     ]
   }
 }
