@@ -121,7 +121,7 @@ coolie-demo2
 
 
 
-## 构建配置
+## 前端构建配置
 
 使用`coolie init -cj`生成`coolie.config.js`（用来标识模块加载器的配置，虽然这里没有用到，但还是需要的）和`coolie-config.js`：
 ```
@@ -162,6 +162,7 @@ module.exports = function (coolie) {
         // js 构建
         js: {
             // 入口模块
+            //【1】
             main: [],
             // coolie-config.js 路径
             'coolie-config.js': 'coolie-config.js',
@@ -175,6 +176,7 @@ module.exports = function (coolie) {
         html: {
             // html 文件
             src: [
+                //【2】
                 'index.html'
             ],
             // 是否压缩
@@ -200,7 +202,9 @@ module.exports = function (coolie) {
         },
 
         // 原样复制文件
-        copy: [],
+        copy: [
+            //【3】
+        ],
 
         // 目标配置
         dest: {
@@ -223,6 +227,12 @@ module.exports = function (coolie) {
     //});
 };
 ```
+
+修改点：
+
+- 【1】：去除了入口文件路径
+- 【2】：修改了 html 文件路径
+- 【3】：去除了原样复制文件配置
 
 此时的目录结构为：
 
