@@ -125,15 +125,15 @@ coolie-demo2
 
 使用`coolie init -cj`生成`coolie.config.js`（用来标识模块加载器的配置，虽然这里没有用到，但还是需要的）和`coolie-config.js`：
 ```
-➜  src  coolie init -cj
+➜  coolie init -cj
 
 ╔══════════════════════════════════════════════════════╗
 ║   coolie@1.0.17                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /path/to/coolie-demo2/src/coolie.config.js
-        init success >> /path/to/coolie-demo2/src/coolie-config.js
+        init success >> /coolie-demo2/src/coolie.config.js
+        init success >> /coolie-demo2/src/coolie-config.js
 ```
 
 修改`coolie.config.js`为：
@@ -165,6 +165,7 @@ module.exports = function (coolie) {
             //【1】
             main: [],
             // coolie-config.js 路径
+            //【2】
             'coolie-config.js': 'coolie-config.js',
             // js 文件保存目录
             dest: './static/js/',
@@ -231,8 +232,9 @@ module.exports = function (coolie) {
 修改点：
 
 - 【1】：去除了入口文件路径
-- 【2】：修改了 html 文件路径
-- 【3】：去除了原样复制文件配置
+- 【2】：修改了模块加载器配置文件的路径
+- 【3】：修改了 html 文件路径
+- 【4】：去除了原样复制文件配置
 
 此时的目录结构为：
 
@@ -262,9 +264,9 @@ coolie-demo2
 
 
                  1/6 >> parse coolie config
-       coolie config >> /path/to/coolie-demo2/src/coolie.config.js
-         src dirname >> /path/to/coolie-demo2/src
-        dest dirname >> /path/to/coolie-demo2/dest/
+       coolie config >> /coolie-demo2/src/coolie.config.js
+         src dirname >> /coolie-demo2/src
+        dest dirname >> /coolie-demo2/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -323,7 +325,8 @@ coolie-demo2
 
 
 ## 分析构建结果
-通过两次弹窗内容，就可以知道构建之后的内容是经过压缩了。来看看构建之后的资源地图`coolie-map.json`：
+通过两次弹窗内容，就可以知道构建之后的内容是经过压缩了。来看看构建之后的资源地图
+`coolie-map.json`（[详细介绍点这里](/introduction/resource-relationship-map.md)）：
 ```
 {
   "/index.html": {
@@ -342,6 +345,9 @@ coolie-demo2
   }
 }
 ```
+
+标记了`index.html`引入了`static/js/06f5f56a93baa9089b10b901861c36dd.js`文件，
+并且该文件是由`1.js`和`2.js`合并而来。
 
 看看`index.html`：
 ```
