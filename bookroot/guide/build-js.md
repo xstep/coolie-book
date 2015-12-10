@@ -53,3 +53,51 @@ JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模�
     }
 }
 ```
+
+# demo
+
+新建一个 demo2 目录：
+```
+demo2
+└── src
+```
+
+写 2 个 JS 文件，分别为 `1.js` 和 `2.js`：
+```
+// 1.js
+window.onload = function(){
+    alert('hello');
+};
+```
+
+```
+// 2.js
+window.onload = function(){
+    alert(window.onload.toString());
+};
+```
+
+在来个`index.html`:
+```
+
+```
+
+当前目录结构为：
+```
+.
+├── dest
+│   ├── coolie-map.json
+│   ├── index.html
+│   └── static
+│       └── js
+│           ├── 06f5f56a93baa9089b10b901861c36dd.js
+│           └── 79f9ed3283181085347bfea15ac65773.js
+└── src
+    ├── 1.js
+    ├── 2.js
+    ├── coolie-config.js
+    ├── coolie.config.js
+    └── index.html
+```
+
+
