@@ -278,7 +278,7 @@ coolie-demo3
 ➜  coolie build
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.17                                      ║
+║   coolie@1.0.19                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
@@ -308,7 +308,7 @@ coolie-demo3
                  6/6 >> generate a resource relationship map
                    √ >> ../dest/coolie-map.json
 
-       build success >> past 134ms
+       build success >> past 127ms
 ```
 
 构建之后的目录结构为：
@@ -357,14 +357,14 @@ coolie-demo3
     "js": [],
     "css": [
       {
-        "dest": "../dest/static/css/55c90fffc925a0abebdc406feaf0e53c.css",
+        "dest": "/static/css/55c90fffc925a0abebdc406feaf0e53c.css",
         "deps": [
           {
-            "src": "/1.css",
+            "src": "../src/1.css",
             "res": []
           },
           {
-            "src": "/2.css",
+            "src": "../src/2.css",
             "res": []
           }
         ]

@@ -253,10 +253,10 @@ coolie-demo2
 ## 前端构建
 执行构建：
 ```
-➜  src  coolie build
+➜  coolie build
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.17                                      ║
+║   coolie@1.0.19                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
@@ -286,7 +286,7 @@ coolie-demo2
                  6/6 >> generate a resource relationship map
                    √ >> ../dest/coolie-map.json
 
-       build success >> past 120ms
+       build success >> past 151ms
 ```
 
 构建之后的目录结构为：
@@ -306,8 +306,7 @@ coolie-demo2
     ├── coolie.config.js
     └── index.html
 
-4 directories, 9 files
-```
+4 directories, 9 files```
 
 ## 构建后运行
 切换到`dest`目录再次执行：
@@ -332,10 +331,10 @@ coolie-demo2
     "async": [],
     "js": [
       {
-        "dest": "../dest/static/js/06f5f56a93baa9089b10b901861c36dd.js",
+        "dest": "/static/js/06f5f56a93baa9089b10b901861c36dd.js",
         "deps": [
-          "/1.js",
-          "/2.js"
+          "../src/1.js",
+          "../src/2.js"
         ]
       }
     ],
@@ -348,6 +347,7 @@ coolie-demo2
 并且该文件是由`1.js`和`2.js`合并而来。
 
 看看`index.html`：
+
 ```
 <!doctype html><meta charset="utf8"> <script src="/static/js/06f5f56a93baa9089b10b901861c36dd.js"></script>
 <!--coolie@1.0.17-->
