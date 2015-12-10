@@ -43,7 +43,7 @@ coolie install coolie
 </html>
 ```
 
-1. `coolie`属性：表明该 script 是 coolie cli（前端开发构建工具） 的管辖范围
+1. `coolie`属性：表明该 script 是 coolie-cli（前端开发构建工具） 的管辖范围
 2. `coolie.min.js`：前端模块加载器
 3. `data-config`属性：前端模块加载器配置文件
 4. `data-main`属性：模块入口文件地址，相对于`data-config.js`里的`base`属性，后文说的
@@ -86,7 +86,7 @@ define(function () {
 ```
 /**
  * ======================================================
- * coolie cli 配置文件 `coolie.config.js`
+ * coolie-cli 配置文件 `coolie.config.js`
  * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
  * @link http://coolie.ydr.me/begin/coolie.config.js/

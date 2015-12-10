@@ -1,4 +1,4 @@
-`coolie.config.js`（前端开发构建工具 coolie cli 的配置文件）相对于
+`coolie.config.js`（前端开发构建工具 coolie-cli 的配置文件）相对于
 `coolie-config.js`（前端模块加载器 coolie.js 的配置文件）来说要复杂的多，
 不过不必紧张，同样可以使用命令
 ```
@@ -10,7 +10,7 @@ coolie init -c
 ```
 /**
  * ======================================================
- * coolie cli 配置文件 `coolie.config.js`
+ * coolie-cli 配置文件 `coolie.config.js`
  * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
  * @link http://coolie.ydr.me/begin/coolie.config.js/

@@ -62,7 +62,7 @@ demo
 </html>
 ```
 
-1. `coolie`属性：表明该 script 是 coolie cli（前端开发构建工具） 的管辖范围
+1. `coolie`属性：表明该 script 是 coolie-cli（前端开发构建工具） 的管辖范围
 2. `coolie.min.js`：前端模块加载器
 3. `data-config`属性：前端模块加载器配置文件
 4. `data-main`属性：模块入口文件地址，相对于`data-config.js`里的`base`属性，后文说的
@@ -107,13 +107,13 @@ define(function () {
 
 # `coolie.config.js`
 
-`coolie.config.js`是 coolie cli（前端构建工具）的配置文件。
+`coolie.config.js`是 coolie-cli（前端构建工具）的配置文件。
 使用`coolie init -c`生成文件模板，并修改为：
 
 ```
 /**
  * ======================================================
- * coolie cli 配置文件 `coolie.config.js`
+ * coolie-cli 配置文件 `coolie.config.js`
  * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
  * @link http://coolie.ydr.me/development/coolie.config.js/
@@ -388,5 +388,5 @@ sts
 
 
 # 总结
-这仅仅是 coolie 构建很小的一部分，以构建模块为起点，讲述了 coolie cli 的工作结果。
+这仅仅是 coolie 构建很小的一部分，以构建模块为起点，讲述了 coolie-cli 的工作结果。
 如果你对此抱有兴趣，不凡往后面的章节继续阅读体验，逐渐介绍 coolie 是如何面对大工程、复杂工程的。

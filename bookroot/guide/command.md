@@ -27,7 +27,7 @@
 2. Options
    -d --dirname           >> specified a directory
    -j --coolie.js         >> initial configuration file of `coolie.js`
-   -c --"coolie cli"      >> initial configuration file of `coolie cli`
+   -c --"coolie-cli"      >> initial configuration file of `coolie-cli`
 
 ```
 
@@ -68,7 +68,7 @@ coolie.json
 初始化配置文件。目前支持初始化以下配置文件：
 
 - 前端模块加载器（`coolie.js`）的配置文件，使用`-j`或`--coolie.js`参数
-- 前端开发构建工具（`coolie cli`）的配置文件，使用`-c`或`--"coolie cli"`参数
+- 前端开发构建工具（`coolie-cli`）的配置文件，使用`-c`或`--"coolie-cli"`参数
 
 
 # coolie help

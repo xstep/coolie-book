@@ -42,7 +42,7 @@ sudo npm install -g coolie --registry=https://r.cnpmjs.org
 2. Options
    -d --dirname           >> specified a directory
    -j --coolie.js         >> initial configuration file of `coolie.js`
-   -c --"coolie cli"      >> initial configuration file of `coolie cli`
+   -c --"coolie-cli"      >> initial configuration file of `coolie-cli`
 
 ```
 
