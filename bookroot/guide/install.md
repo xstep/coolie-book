@@ -35,7 +35,7 @@ npm install -g coolie
 如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来安装。
 
 ```
-npm install -g coolie --registry=https://r.cnpmjs.org
+npm install -g coolie --registry=http://registry.npm.taobao.org
 ```
 
 安装完成后，来调戏下他吧：
@@ -66,7 +66,7 @@ npm install -g coolie --registry=https://r.cnpmjs.org
 2. Options
    -d --dirname           >> specified a directory
    -j --coolie.js         >> initial configuration file of `coolie.js`
-   -c --"coolie-cli"      >> initial configuration file of `coolie-cli`
+   -c --coolie-cli        >> initial configuration file of `coolie-cli`
 
 ```
 
