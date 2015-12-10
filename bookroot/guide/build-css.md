@@ -81,8 +81,6 @@ css
 ```
 
 
-[构建策略说明](/introdution/content-compression.md)。
-
 
 # demo
 ## 初始化目录
@@ -95,7 +93,7 @@ coolie-demo3
 ```
 
 ## 初始化文件
-新建`1.css`和`2.css`：
+在 src 目录下，新建`1.css`和`2.css`：
 ```
 /*1.css*/
 body{
@@ -123,6 +121,17 @@ body{
 <h1>coolie-demo3</h1>
 ```
 
+此时目录结构为：
+```
+coolie-demo3
+└── src
+    ├── 1.css
+    ├── 2.css
+    └── index.html
+
+1 directories, 3 files
+```
+
 
 ## 构建前运行
 使用 [sts](https://www.npmjs.com/package/sts) 执行：
@@ -147,8 +156,8 @@ body{
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /path/to/coolie-demo3/src/coolie.config.js
-        init success >> /path/to/coolie-demo3/src/coolie-config.js
+        init success >> /coolie-demo3/src/coolie.config.js
+        init success >> /coolie-demo3/src/coolie-config.js
 ```
 
 修改`coolie.config.js`为：
@@ -365,4 +374,6 @@ coolie-demo3
 }
 ```
 
+标记了`index.html`引入了`static/css/55c90fffc925a0abebdc406feaf0e53c.css`文件，
+并且该文件是由`1.css`和`2.css`文件合并而来，并且`1.css`和`2.css`依赖的资源文件都为空。
 

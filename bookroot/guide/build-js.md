@@ -61,7 +61,7 @@ JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模�
 coolie-demo2
 └── src
 
-2 directories, 0 files
+1 directories, 0 files
 ```
 
 
@@ -97,13 +97,12 @@ window.onload = function(){
 此时的目录结构为：
 ```
 coolie-demo2
-├── dest
 └── src
     ├── 1.js
     ├── 2.js
     └── index.html
 
-3 directories, 3 files
+1 directories, 3 files
 ```
 
 
@@ -240,7 +239,6 @@ module.exports = function (coolie) {
 
 ```
 coolie-demo2
-├── dest
 └── src
     ├── 1.js
     ├── 2.js
@@ -248,7 +246,7 @@ coolie-demo2
     ├── coolie.config.js
     └── index.html
 
-3 directories, 5 files
+1 directories, 5 files
 ```
 
 
