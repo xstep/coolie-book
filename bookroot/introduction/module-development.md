@@ -21,14 +21,4 @@
 - 分工自治，模块自主管理。
 
 
-# 组件化
-前端目前的又一个难题就是组件，模块组件是一条可发展之路。
-比如一个 banner 组件：
-```
-banner
-├── index.js
-├── style.css <= style.scss
-├── arrow.png
-└── template.html
-```
-模块组件入口是`index.js`，然后自主管理自己的模块，如样式、图片、模板等等。
+
