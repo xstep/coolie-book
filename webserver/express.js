@@ -14,11 +14,8 @@ var express = require('express');
 //var sessionParser = require('express-session');
 var Template = require('ydr-utils').Template;
 var cache = require('ydr-utils').cache;
-var date = require('ydr-utils').date;
 
-Template.addFilter('dateFormat', function (val, format) {
-    return date.format(format || 'YYYY年MM月DD日 HH:mm:ss', val);
-});
+
 
 module.exports = function (next) {
     var app = express();

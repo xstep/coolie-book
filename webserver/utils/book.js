@@ -63,7 +63,6 @@ var getFiles = function (bookroot) {
 
 var REG_HREF = /<a([^>]*?)\shref="(.*?)">/g;
 var REG_HTTP = /^(https?:)?\/\//;
-var REG_HASH = /^#/;
 var REG_ABSOLUTE = /^\//;
 /**
  * 修正 a href
@@ -138,6 +137,13 @@ exports.buildRouters = function (app, controller, bookroot) {
         uri = uri
             .replace(REG_MD, '/')
             .replace(REG_EXTEND, '/');
+        var toc = xss.mdTOC(content);
+
+        toc = '<div class="toc"><p class="toc-title">TOC</p>' + xss.mdRender(toc, {
+                favicon: false,
+                at: false,
+                headingLink: false
+            }).html + '</div>';
         content = xss.mdRender(content, {
             headingLink: true
         }).html;
@@ -145,7 +151,7 @@ exports.buildRouters = function (app, controller, bookroot) {
 
         app.get(uri, controller(name, uri, dato.extend({
             sidebar: summaryContent,
-            content: content
+            content: toc + content
         }, data)));
     });
 };
