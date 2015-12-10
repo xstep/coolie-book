@@ -82,3 +82,14 @@ css
 
 
 [构建策略说明](/introdution/content-compression.md)。
+
+
+# demo
+
+新建`coolie-demo3`目录：
+```
+coolie-demo3
+└── src
+```
+
+如法炮制的新建
