@@ -210,6 +210,7 @@ coolie-demo2
 3 directories, 5 files
 ```
 
+## 构建前运行
 使用 [sts](https://www.npmjs.com/package/sts) 执行：
 ```
 ➜  cd src
@@ -221,6 +222,7 @@ coolie-demo2
 ![](http://s.ydr.me/@/res/20151210160446617400855164 =420x156)
 
 
+## 前端构建
 执行构建：
 ```
 ➜  src  coolie build
@@ -279,6 +281,7 @@ coolie-demo2
 4 directories, 9 files
 ```
 
+## 构建后运行
 切换到`dest`目录再次执行：
 ```
 ➜  cd ../dest
@@ -291,7 +294,7 @@ coolie-demo2
 ![](http://s.ydr.me/@/res/20151210160722747529803842 =420x153)
 
 
-
+## 分析构建结果
 通过两次弹窗内容，就可以知道构建之后的内容是经过压缩了。来看看构建之后的资源地图`coolie-map.json`：
 ```
 {

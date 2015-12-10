@@ -85,11 +85,13 @@ css
 
 
 # demo
-
+## 初始化目录
 新建`coolie-demo3`目录：
 ```
 coolie-demo3
 └── src
+
+2 directories, 0 files
 ```
 
-如法炮制的新建
+如法炮制的新建p
