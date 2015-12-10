@@ -53,3 +53,5 @@ require('some.json', 'json|text');
 ```
 
 
+`require.async`为异步模块，[详细点这里](./async-module.md)
+

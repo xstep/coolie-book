@@ -1,39 +1,23 @@
 # 异步模块
-
 ```
 if (isIE8) {
-    require.async('compatible-ie8.js');
+    require.async('compatible-ie8.js', function(exports){
+        // ...
+    });
 } else if (isIE6) {
-    require.async('compatible-ie6.js');
+    require.async('compatible-ie6.js', function(exports){
+        // ...
+    });
 } else {
-    require.async('compatible-es5.js');
+    require.async('compatible-es5.js', function(exports){
+        // ...
+    });
 }
 ```
 
 这是很常见的需求。根据不同的情况，加载不同的模块。
 
-coolie 在构建之前会分析所有依赖的异步模块，然后依次标记全局ID。
+如上，模块`compatible-ie8.js`、`compatible-ie6.js`和`compatible-es5.js`这 3 个模块
+不会在页面同步载入，而是在代码运行到此处时才会异步加载。
 
-
-```
-if (isIE8) {
-    require.async('1');
-} else if (isIE6) {
-    require.async('2');
-} else {
-    require.async('3');
-}
-```
-
-然后将异步模块和同步模块一起构建。
-
-```
-if (a) {
-    r.async('1');
-} else if (b) {
-    r.async('2');
-} else {
-    r.async('3');
-}
-```
 
