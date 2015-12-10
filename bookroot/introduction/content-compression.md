@@ -45,7 +45,7 @@ coolie cli 构建之后
 ```
 <!--page1.html-->
 
-<link href="/js/content_version.js">
+<script href="/js/content_version.js"></script>
 ```
 
 

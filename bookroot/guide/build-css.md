@@ -1,26 +1,33 @@
-# CSS 构建
+# CSS 合并
 
-CSS 构建也特别的简单。
+详细参考 [内容压缩策略](/introduction/content-compression.md)。
 
-```
-<!--page1.html-->
 
-<!--coolie-->
-<link href="path/to/module1.css">
-<link href="path/to/module2.css">
-<link href="path/to/module3.css">
-<link href="path/to/module4.css">
-<!--/coolie-->
-```
-
-构建为
+# CSS 压缩
+CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块，默认配置为：
 
 ```
-<!--page1.html-->
-
-<link href="/css/content_version.css">
+{
+    // 高级优化
+    advanced: false,
+    // 属性合并
+    aggressiveMerging: false,
+    // 兼容性，“ie7”、“ie8”、“*”（ie9+）
+    compatibility: 'ie7',
+    // 调试信息
+    debug: false,
+    // 断行
+    keepBreaks: false,
+    // 注释
+    keepSpecialComments: 0,
+    // 媒体查询合并
+    mediaMerging: true,
+    // url 检查
+    rebase: false,
+    // 资源地图
+    sourceMap: false
+}
 ```
-
 
 
 # CSS 模块化

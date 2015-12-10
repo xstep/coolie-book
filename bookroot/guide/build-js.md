@@ -5,7 +5,7 @@
 
 # JS 压缩
 
-JS 压缩采用的是 uglifyjs，默认配置为：
+JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模块，默认配置为：
 
 ```
 {
