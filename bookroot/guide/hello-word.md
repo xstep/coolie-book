@@ -73,7 +73,7 @@ coolie-demo1
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo1/src/coolie.config.js
+        init success >> /coolie-demo1/src/coolie.config.js
 ```
 
 并修改为：
@@ -179,165 +179,88 @@ module.exports = function (coolie) {
 
 
 
-# 构建
-我们来尝试构建一下，看看会发生什么。切到到 dev 目录执行：
+# 前端构建
+我们来尝试在`src`目录下执行前端构建，看看会发生什么。
 
 ```
-➜ coolie build
+➜  coolie build
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.0                                       ║
+║   coolie@1.0.22                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
+
                  1/6 >> parse coolie config
-       coolie config >> /demo/dev/coolie.config.js
-         src dirname >> /demo/dev
-        dest dirname >> /demo/pro/
+       coolie config >> /coolie-demo1/src/coolie.config.js
+         src dirname >> /coolie-demo1/src
+        dest dirname >> /coolie-demo1/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
 
                  3/6 >> build main module
-                   √ >> /index.js
+           build app >> no main modules
 
                  4/6 >> override coolie-config.js
-                   √ >> base: "./"
-                   √ >> async: "async/"
-                   √ >> chunk: "chunk/"
-                   √ >> version: "{}"
-                   √ >> callbacks: 0
-                   √ >> ../pro/79f9ed3283181085347bfea15ac65773.js
+      overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
-                   √ >> /coolie.min.js
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
-                   √ >> ../pro/coolie-map.json
+                   √ >> ../dest/coolie-map.json
 
-       build success >> past 311ms
+       build success >> past 53ms
 ```
-看着屏幕上的日志刷刷而过，别眨眼，来看看构建之后的目录结构：
+
+啊，喂，看着屏幕上的日志刷刷而过，别眨眼，来看看构建之后的目录结构：
+
 ```
-demo
-├── dev
-│   ├── coolie-config.js
-│   ├── coolie.config.js
-│   ├── coolie.js
-│   ├── coolie.min.js
-│   ├── index.html
-│   └── index.js
-└── pro
-    ├── 4f60ff2579e7b55f2e1ca87ba2221fde.js
-    ├── 79f9ed3283181085347bfea15ac65773.js
-    ├── 8c17fee661f27cd74a8ac8b785593c3d.js
-    ├── coolie-map.json
+coolie-demo1
+├── dest
+│   ├── coolie-map.json
+│   └── index.html
+└── src
+    ├── coolie.config.js
     └── index.html
+
+2 directories, 4 files
 ```
 
-看着构建之后的文件，是不是觉得一个都不认识了？别急，往下看。
 
-# html
-切换到 pro 目录，打开 index.html（此处为了演示，已做折行处理）：
+# 前端构建后运行
+构建给不给力，来看看构建之后的运行结果吧：
 ```
-<!DOCTYPE html>
-<html>
-<head> 
-<meta charset="UTF-8"> 
-<title>index.html</title>
-</head>
-<body> 
+➜  cd ../dest
+➜  sts
+                 sts >> A static server is running.
+                open >> http://192.168.0.167:63613
 
-<script src="/8c17fee661f27cd74a8ac8b785593c3d.js"  
-data-config="~/79f9ed3283181085347bfea15ac65773.js" 
-data-main="4f60ff2579e7b55f2e1ca87ba2221fde.js" ></script> 
-
-</body></html>
-<!--coolie@1.0.0-->
 ```
 
-注意点：
-- 在文件末尾打上构建工具的版本和的构建时间。
-- `script`上的`coolie`属性也被去掉了。
-- `data-config`属性也被重写了。
-- `data-main`属性也被重写了。
+![](http://s.ydr.me/@/res/20151214154946097880495328 =332x140)
 
-# js
-来看下构建之后的 js 文件。
-## coolie-config.js
-根据 html 里的代码指示，我们可以知道`coolie.js`构建之后的文件为`79f9ed3283181085347bfea15ac65773.js`。
-
-*为了便于阅读，已经折行处理了。*
-```
-/*coolie@1.0.0*/
-coolie.config({
-    base:"./",
-    async:"async/",
-    chunk:"chunk/",
-    debug:!1,
-    cache:!0,
-    version:{}
-}).use();
-```
-
-注意点：
-- 在文件开头，打上构建工具的版本。
-- 增加了`async`、`chunk`目录。
-- 增加了`debug`参数，值为 false（[详细参考点这里](/begin/coolie-config-js.md)）。
-- 增加了`version`属性，当前为空，主要记录 chunk、async 模块的版本号。
-
-## index.js
-新的`index.js`重命名为`4f60ff2579e7b55f2e1ca87ba2221fde.js`。
-
-*为了阅读，已经折行处理了。*
-```
-/*coolie@1.0.0*/
-define("0",[],function(){alert("hello world")});
-```
-
-注意点：
-- 在文件开头，打上构建工具的版本和的构建时间。
-- 代码进行了压缩，并且加上了模块的 ID 为 “0”。
+如释重负，运行结果一模一样。
 
 
-# coolie-map.json
-`coolie-map.json`是新生成的文件（[资源关系图](/introduction/resource-relationship-map.md)）：
+# 前端构建后分析
+仔细对比下构建前后的目录结果，基本是相同的，不同的是：
+
+- 构建之前有`coolie.config.js`，构建之后没有了
+- 构建之后由`coolie-map.json`，构建之前并没有
+
+来看看`coolie-map.json`：
 ```
 {
   "/index.html": {
-    "main": [
-      {
-        "src": "/index.js",
-        "dest": "../pro/4f60ff2579e7b55f2e1ca87ba2221fde.js",
-        "deps": []
-      }
-    ],
+    "main": [],
     "async": [],
     "js": [],
-    "css": []
+    "css": [],
+    "res": []
   }
 }
 ```
 
-很明显，记录了`index.html`引用的入口模块的构建前后信息。
-
-
-# 再运行
-切换到 pro 目录，执行：
-```
-cd pro
-sts
-```
-会使用默认浏览器打开 index.html。
-
-![](http://s.ydr.me/@/res/20151117155557878661226090 =474x215)
-
-同样，警告框如期而至。
-
-
-# 总结
-这仅仅是 coolie 构建很小的一部分，以构建模块为起点，讲述了 coolie-cli 的工作结果。
-如果你对此抱有兴趣，不凡往后面的章节继续阅读体验，逐渐介绍 coolie 是如何面对大工程、复杂工程的。
-
-
+`coolie-map.json`是资源地图信息，标记了每个页面依赖了哪些资源，[详细分析点这里](/introduction/resource-relationship-map.md)。
