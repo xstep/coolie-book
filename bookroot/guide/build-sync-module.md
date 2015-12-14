@@ -99,10 +99,59 @@ define(function (require, exports, module){
 index.js => date.js
 ```
 
+然后，来新建`index.html`：
+```
+<!doctype html>
+<meta charset="utf-8">
+
+<!--注意：-->
+<!--1. 这里的 script 标签多了 coolie 属性-->
+<!--2. 引用了 coolie.min.js-->
+<!--3. 增加了 data-config 属性-->
+<!--4. 增加了 data-main 属性-->
+<script coolie src="./coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="index.js"></script>
+```
+
+1. `coolie`属性：表明该 script 是 coolie-cli（前端开发构建工具） 的管辖范围
+2. `coolie.min.js`：前端模块加载器
+3. `data-config`属性：前端模块加载器配置文件
+4. `data-main`属性：模块入口文件地址，相对于`data-config.js`里的`base`属性（[详细点这里](./coolie-config.js.md)）
+
+此时，目录结构为：
+```
+coolie-demo5
+└── src
+    ├── coolie-config.js
+    ├── coolie.js
+    ├── coolie.min.js
+    ├── date.js
+    ├── index.html
+    └── index.js
+
+1 directory, 6 files
+```
 
 
 ## 前端构建前运行
+在`src`目录下，使用[sts](https://www.npmjs.com/package/sts)执行：
+```
+➜  sts
+                 sts >> A static server is running.
+                open >> http://192.168.0.167:52983
+```
+
+![](http://s.ydr.me/@/res/20151214170821341124760909 =565x379)
+
+如上图：
+
+
+
 ## 前端构建配置
+
+
+
 ## 前端构建
 ## 前端构建后运行
 ## 分析构建结果
