@@ -24,15 +24,8 @@ coolie-demo1
 
 ```
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>index.html</title>
-</head>
-<body>
-    <h1>Hello world</h1>
-</body>
-</html>
+<meta charset="utf-8">
+<h1>Hello World</h1>
 ```
 
 
@@ -264,3 +257,12 @@ coolie-demo1
 ```
 
 `coolie-map.json`是资源地图信息，标记了每个页面依赖了哪些资源，[详细分析点这里](/introduction/resource-relationship-map.md)。
+
+
+我们再来看看`index.html`：
+```
+<!DOCTYPE html><meta charset="utf-8"><h1>Hello World</h1>
+<!--coolie@1.0.22-->
+```
+
+很明显，`index.html`已经被压缩了，并且打上了 coolie 的标记。
