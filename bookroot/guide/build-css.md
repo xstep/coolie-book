@@ -147,31 +147,31 @@ coolie-demo3
 
 
 ## 前端构建配置
-使用`coolie init -cj`生成`coolie.config.js`（用来标识模块加载器的配置，虽然这里没有用到，但还是需要的）和`coolie-config.js`：
+使用`coolie init -cj`生成`coolie.config.js`（前端构建工具的配置文件）：
 ```
-➜  coolie init -cj
+➜  coolie init -c
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.17                                      ║
+║   coolie@1.0.22                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
         init success >> /coolie-demo3/src/coolie.config.js
-        init success >> /coolie-demo3/src/coolie-config.js
 ```
 
 修改`coolie.config.js`为：
+
 ```
 /**
  * ======================================================
- * coolie cli 配置文件 `coolie.config.js`
- * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
+ * coolie-cli 配置文件 `coolie.config.js`
+ * 使用 `coolie init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
  *
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
- * @version 1.0.17
- * @create 2015-12-10 16:52:26
+ * @version 1.0.22
+ * @create 2015-12-14 16:26:00
  * =======================================================
  */
 
@@ -187,11 +187,11 @@ module.exports = function (coolie) {
         js: {
             // 入口模块
             main: [
-                // 【1】
+                //【1】
             ],
             // coolie-config.js 路径
             //【2】
-            'coolie-config.js': 'coolie-config.js',
+            'coolie-config.js': null,
             // js 文件保存目录
             dest: './static/js/',
             // 分块配置
@@ -255,7 +255,7 @@ module.exports = function (coolie) {
 ```
 
 - 【1】：去除了入口文件路径
-- 【2】：修改了模块加载器配置文件的路径
+- 【2】：取消了模块加载器配置文件的路径
 - 【3】：修改了 html 文件路径
 - 【4】：去除了原样复制文件配置
 
@@ -265,11 +265,10 @@ coolie-demo3
 └── src
     ├── 1.css
     ├── 2.css
-    ├── coolie-config.js
     ├── coolie.config.js
     └── index.html
 
-1 directory, 5 files
+1 directory, 4 files
 ```
 
 ## 前端构建
@@ -278,28 +277,24 @@ coolie-demo3
 ➜  coolie build
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.19                                      ║
+║   coolie@1.0.22                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo3/src/coolie.config.js
-         src dirname >> /coolie-demo3/src
-        dest dirname >> /coolie-demo3/dest/
+       coolie config >> /Users/cloudcome/development/localhost/coolie-demo3/src/coolie.config.js
+         src dirname >> /Users/cloudcome/development/localhost/coolie-demo3/src
+        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo3/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
 
                  3/6 >> build main module
+           build app >> no main modules
 
                  4/6 >> override coolie-config.js
-                   √ >> base: "./app/"
-                   √ >> async: "../async/"
-                   √ >> chunk: "../chunk/"
-                   √ >> version: "{}"
-                   √ >> callbacks: 0
-                   √ >> ../dest/static/js/24616b212302c8e5984c601490408085.js
+      overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
                    √ >> /static/css/55c90fffc925a0abebdc406feaf0e53c.css
@@ -308,7 +303,7 @@ coolie-demo3
                  6/6 >> generate a resource relationship map
                    √ >> ../dest/coolie-map.json
 
-       build success >> past 127ms
+       build success >> past 99ms
 ```
 
 构建之后的目录结构为：
@@ -318,18 +313,15 @@ coolie-demo3
 │   ├── coolie-map.json
 │   ├── index.html
 │   └── static
-│       ├── css
-│       │   └── 55c90fffc925a0abebdc406feaf0e53c.css
-│       └── js
-│           └── 24616b212302c8e5984c601490408085.js
+│       └── css
+│           └── 55c90fffc925a0abebdc406feaf0e53c.css
 └── src
     ├── 1.css
     ├── 2.css
-    ├── coolie-config.js
     ├── coolie.config.js
     └── index.html
 
-5 directories, 9 files
+4 directories, 7 files
 ```
 
 
