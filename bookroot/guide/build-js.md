@@ -261,9 +261,9 @@ coolie-demo2
 
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo2/src/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo2/src
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo2/dest/
+       coolie config >> /coolie-demo2/src/coolie.config.js
+         src dirname >> /coolie-demo2/src
+        dest dirname >> /coolie-demo2/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
