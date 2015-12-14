@@ -4,40 +4,22 @@
 # 准备
 先准备以下目录
 ```
-demo
-├── dev
-│   ├── index.html
-│   └── index.js
-└── pro
-    └── 空
-```
-如上，`demo`目录里，留了两个文件夹`dev`和`pro`：
+coolie-demo1
+├── dest
+└── src
 
-- `dev`：开发环境根目录
-- `pro`：生产环境根目录
-
-
-# 下载模块加载器
-先下载模块加载器来保证我们的模块可以正常运行。切换到 dev 目录，使用命令
-```
-coolie install coolie
-```
-来下载模块加载器，下载完成后，`coolie.js`和`coolie.min.js`会保存在`dev`根目录下。
-
-```
-demo
-├── dev
-│   ├── coolie.js
-│   ├── coolie.min.js
-│   ├── index.html
-│   └── index.js
-└── pro
-    └── 空
+2 directories, 0 files
 ```
 
+- `src`：构建之前的项目根目录（后面的 demo 与之相同）
+- `dest`：构建之后的项目根目录（后面的 demo 与之相同）
 
 
-# html 文件
+接下来，我们就在`src`目录下开始写代码了。
+
+
+
+# 页面文件
 将`index.html`文件内容填写如下：
 
 ```
@@ -48,76 +30,65 @@ demo
     <title>index.html</title>
 </head>
 <body>
-
-<!--注意：-->
-<!--1. 这里的 script 标签多了 coolie 属性-->
-<!--2. 引用了 coolie.min.js-->
-<!--3. 增加了 data-config 属性-->
-<!--4. 增加了 data-main 属性-->
-<script coolie src="./coolie.min.js"
-        data-config="./coolie-config.js"
-        data-main="index.js"></script>
-
+    <h1>Hello world</h1>
 </body>
 </html>
 ```
 
-1. `coolie`属性：表明该 script 是 coolie-cli（前端开发构建工具） 的管辖范围
-2. `coolie.min.js`：前端模块加载器
-3. `data-config`属性：前端模块加载器配置文件
-4. `data-main`属性：模块入口文件地址，相对于`data-config.js`里的`base`属性，后文说的
 
-
-# js 文件
-
-## coolie-config.js
-`coolie-config.js`是`coolie.js`（模块加载器）的配置文件，不必担心，配置非常的简单。
-
-使用`coolie init -j`生成文件模板，修改`base`项：
+# 前端构建前运行
+当前的目录结构为：
 ```
-/**
- * ======================================================
- * coolie.js 配置文件 `coolie-config.js`
- * 使用 `coolie.init -j` 生成 `coolie-config.js` 文件模板
- * 前端模块加载器配置文件
- * @link http://coolie.ydr.me/development/coolie-config.js/
- * @author ydr.me
- * ======================================================
- */
+coolie-demo1
+├── dest
+└── src
+    └── index.html
 
-coolie.config({
-    // 入口模块基准路径，相对于当前文件
-    base: './'
-}).use();
+2 directories, 1 files
 ```
 
-- `base`：入口模块的参考目录，相对于模块加载器（即：coolie.js 的文件 URL 地址）。
-- `use`：启动入口文件。
+使用 [sts 工具](https://www.npmjs.com/package/sts)，在`src`目录下运行：
 
-
-## index.js
-写一个 Hello World 模块。
 ```
-define(function () {
-    alert('hello world');
-});
+➜  sts
+                 sts >> A static server is running.
+                open >> http://172.22.255.75:62290
 ```
 
+会使用默认浏览器打开`index.html`。
 
 
-# `coolie.config.js`
+![](http://s.ydr.me/@/res/20151214152903647429769113 =322x137)
 
-`coolie.config.js`是 coolie-cli（前端构建工具）的配置文件。
-使用`coolie init -c`生成文件模板，并修改为：
+
+
+# 前端构建配置文件
+下面，我们来尝试下构建之后的效果。
+首先要配置前端构建配置文件，使用`coolie init -c`生成文件模板:
+```
+➜  coolie init -c
+
+╔══════════════════════════════════════════════════════╗
+║   coolie@1.0.22                                      ║
+║   The front-end development builder.                 ║
+╚══════════════════════════════════════════════════════╝
+
+        init success >> /Users/cloudcome/development/localhost/coolie-demo1/src/coolie.config.js
+```
+
+并修改为：
 
 ```
 /**
  * ======================================================
  * coolie-cli 配置文件 `coolie.config.js`
- * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
+ * 使用 `coolie init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
- * @link http://coolie.ydr.me/development/coolie.config.js/
+ *
+ * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
+ * @version 1.0.22
+ * @create 2015-12-14 15:32:19
  * =======================================================
  */
 
@@ -133,12 +104,13 @@ module.exports = function (coolie) {
         js: {
             // 入口模块
             main: [
-                './index.js'
+                //【1】
             ],
             // coolie-config.js 路径
-            'coolie-config.js': './coolie-config.js',
+            //【2】
+            'coolie-config.js': null,
             // js 文件保存目录
-            dest: './',
+            dest: './static/js/',
             // 分块配置
             chunk: []
         },
@@ -147,7 +119,8 @@ module.exports = function (coolie) {
         html: {
             // html 文件
             src: [
-                './index.html'
+                //【3】
+                'index.html'
             ],
             // 是否压缩
             minify: true
@@ -156,7 +129,7 @@ module.exports = function (coolie) {
         // css 构建
         css: {
             // css 文件保存目录
-            dest: './',
+            dest: './static/css/',
             // css 压缩配置
             minify: {
                 compatibility: 'ie7'
@@ -166,18 +139,20 @@ module.exports = function (coolie) {
         // 资源
         resource: {
             // 资源保存目录
-            dest: './',
+            dest: './static/res/',
             // 是否压缩
             minify: true
         },
 
         // 原样复制文件
-        copy: [],
+        copy: [
+            //【4】
+        ],
 
         // 目标配置
         dest: {
             // 目标目录
-            dirname: '../pro/',
+            dirname: '../dest/',
             // 目标根域
             host: '',
             // 版本号长度
@@ -196,38 +171,12 @@ module.exports = function (coolie) {
 };
 ```
 
-- `js.src`：入口文件，即 index.js
-- `html.src`：需要构建的 HTML，即 index.html
-- `dest.dirname`：构建的目标目录，即上层的 pro 目录
+- 【1】入口模块路径设置为空
+- 【2】模块加载器配置文件设置为空
+- 【3】需要构建的 HTML 文件，即`index.html`
+- 【4】需要复制的文件设置为空
 
 
-# 运行
-当前的目录结构为：
-```
-demo
-├── dev
-│   ├── coolie-config.js // 模块加载器配置文件
-│   ├── coolie.config.js // 前端构建工具配置文件
-│   ├── coolie.js        // 模块加载器
-│   ├── coolie.min.js
-│   ├── index.html
-│   └── index.js         // 入口模块
-└── pro
-    └── 空
-```
-
-在构建之前，来运行一下。使用 [sts 工具](https://www.npmjs.com/package/sts)（也可以是其他静态网站工具），以 dev 目录为网站的根目录启动。
-```
-cd dev
-sts
-                sts => A static server is running.
-                open => http://192.168.2.134:51960
-```
-会使用默认浏览器打开 index.html。
-
-![](http://s.ydr.me/@/res/20151117155557878661226090 =474x215)
-
-如上图，如愿的弹出了“hello world”警告框。
 
 
 # 构建
