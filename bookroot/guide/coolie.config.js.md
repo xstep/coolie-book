@@ -136,7 +136,7 @@ JS 压缩采用的是 uglify2。
 
 ## js.coolie-config.js
 `string`。coolie.js 的配置文件（前端模块化加载器配置文件）的路径，
-因为构建操作需要改写配置文件，所以这个选项是必须的。如：
+因为构建操作需要改写配置文件。如：
 ```
 "js": {
     "main": [
@@ -145,6 +145,8 @@ JS 压缩采用的是 uglify2。
     "coolie-config.js": "./static/js/coolie-config.js"
 }
 ```
+
+`js.coolie-config.js`可以为空，当项目里没有使用到模块加载器时。
 
 
 ## js.dest

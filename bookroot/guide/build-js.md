@@ -84,7 +84,7 @@ window.onload = function(){
 在来个`index.html`:
 ```
 <!doctype html>
-<meta charset="utf8">
+<meta charset="utf-8">
 
 <!--coolie-->
 <script src="1.js"></script>
@@ -122,31 +122,30 @@ coolie-demo2
 
 ## 前端构建配置
 
-使用`coolie init -cj`生成`coolie.config.js`（用来标识模块加载器的配置，虽然这里没有用到，但还是需要的）和`coolie-config.js`：
+使用`coolie init -c`生成`coolie.config.js`（前端构建工具的配置文件）：
 ```
-➜  coolie init -cj
+➜  coolie init -c
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.17                                      ║
+║   coolie@1.0.22                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
         init success >> /coolie-demo2/src/coolie.config.js
-        init success >> /coolie-demo2/src/coolie-config.js
 ```
 
 修改`coolie.config.js`为：
 ```
 /**
  * ======================================================
- * coolie cli 配置文件 `coolie.config.js`
- * 使用 `coolie.init -c` 生成 `coolie.config.js` 文件模板
+ * coolie-cli 配置文件 `coolie.config.js`
+ * 使用 `coolie init -c` 生成 `coolie.config.js` 文件模板
  * 当前配置文件所在的目录为构建的根目录
  *
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
- * @version 1.0.17
- * @create 2015-12-10 16:18:29
+ * @version 1.0.22
+ * @create 2015-12-14 16:17:27
  * =======================================================
  */
 
@@ -161,11 +160,12 @@ module.exports = function (coolie) {
         // js 构建
         js: {
             // 入口模块
-            //【1】
-            main: [],
+            main: [
+                //【1】
+            ],
             // coolie-config.js 路径
             //【2】
-            'coolie-config.js': 'coolie-config.js',
+            'coolie-config.js': null,
             // js 文件保存目录
             dest: './static/js/',
             // 分块配置
@@ -176,7 +176,7 @@ module.exports = function (coolie) {
         html: {
             // html 文件
             src: [
-                //【2】
+                //【3】
                 'index.html'
             ],
             // 是否压缩
@@ -203,7 +203,7 @@ module.exports = function (coolie) {
 
         // 原样复制文件
         copy: [
-            //【3】
+            //【4】
         ],
 
         // 目标配置
@@ -231,7 +231,7 @@ module.exports = function (coolie) {
 修改点：
 
 - 【1】：去除了入口文件路径
-- 【2】：修改了模块加载器配置文件的路径
+- 【2】：去除了模块加载器配置文件的路径
 - 【3】：修改了 html 文件路径
 - 【4】：去除了原样复制文件配置
 
@@ -242,11 +242,10 @@ coolie-demo2
 └── src
     ├── 1.js
     ├── 2.js
-    ├── coolie-config.js
     ├── coolie.config.js
     └── index.html
 
-1 directories, 5 files
+1 directories, 4 files
 ```
 
 
@@ -256,28 +255,24 @@ coolie-demo2
 ➜  coolie build
 
 ╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.19                                      ║
+║   coolie@1.0.22                                      ║
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo2/src/coolie.config.js
-         src dirname >> /coolie-demo2/src
-        dest dirname >> /coolie-demo2/dest/
+       coolie config >> /Users/cloudcome/development/localhost/coolie-demo2/src/coolie.config.js
+         src dirname >> /Users/cloudcome/development/localhost/coolie-demo2/src
+        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo2/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
 
                  3/6 >> build main module
+           build app >> no main modules
 
                  4/6 >> override coolie-config.js
-                   √ >> base: "./app/"
-                   √ >> async: "../async/"
-                   √ >> chunk: "../chunk/"
-                   √ >> version: "{}"
-                   √ >> callbacks: 0
-                   √ >> ../dest/static/js/24616b212302c8e5984c601490408085.js
+      overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
                    √ >> /static/js/06f5f56a93baa9089b10b901861c36dd.js
@@ -286,7 +281,7 @@ coolie-demo2
                  6/6 >> generate a resource relationship map
                    √ >> ../dest/coolie-map.json
 
-       build success >> past 151ms
+       build success >> past 118ms
 ```
 
 构建之后的目录结构为：
@@ -297,16 +292,15 @@ coolie-demo2
 │   ├── index.html
 │   └── static
 │       └── js
-│           ├── 06f5f56a93baa9089b10b901861c36dd.js
-│           └── 24616b212302c8e5984c601490408085.js
+│           └── 06f5f56a93baa9089b10b901861c36dd.js
 └── src
     ├── 1.js
     ├── 2.js
-    ├── coolie-config.js
     ├── coolie.config.js
     └── index.html
 
-4 directories, 9 files```
+4 directories, 7 files
+```
 
 ## 构建后运行
 切换到`dest`目录再次执行：
@@ -338,7 +332,8 @@ coolie-demo2
         ]
       }
     ],
-    "css": []
+    "css": [],
+    "res": []
   }
 }
 ```
@@ -349,15 +344,15 @@ coolie-demo2
 看看`index.html`：
 
 ```
-<!doctype html><meta charset="utf8"> <script src="/static/js/06f5f56a93baa9089b10b901861c36dd.js"></script>
-<!--coolie@1.0.17-->
+<!doctype html><meta charset="utf-8"> <script src="/static/js/06f5f56a93baa9089b10b901861c36dd.js"></script>
+<!--coolie@1.0.22-->
 ```
 
 代码经过压缩，并且合并了之前标记的`1.js`和`2.js`为`06f5f56a93baa9089b10b901861c36dd.js`。
 
 看看`06f5f56a93baa9089b10b901861c36dd.js`：
 ```
-/*coolie@1.0.17*/
+/*coolie@1.0.22*/
 window.onload=function(){alert("hello")};
 window.onload=function(){alert(window.onload.toString())};
 ```
