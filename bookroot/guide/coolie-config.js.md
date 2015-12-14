@@ -2,7 +2,14 @@
 使用
 
 ```
-coolie init -j
+➜  coolie init -j
+
+╔══════════════════════════════════════════════════════╗
+║   coolie@1.0.22                                      ║
+║   The front-end development builder.                 ║
+╚══════════════════════════════════════════════════════╝
+
+        init success >> /coolie-demo5/src/coolie-config.js
 ```
 
 生成配置文件模板
@@ -11,10 +18,13 @@ coolie init -j
 /**
  * ======================================================
  * coolie.js 配置文件 `coolie-config.js`
- * 使用 `coolie.init -j` 生成 `coolie-config.js` 文件模板
+ * 使用 `coolie init -j` 生成 `coolie-config.js` 文件模板
  * 前端模块加载器配置文件
+ *
  * @link http://coolie.ydr.me/guide/coolie-config.js/
  * @author ydr.me
+ * @version 1.0.22
+ * @create 2015-12-14 16:43:22
  * ======================================================
  */
 
