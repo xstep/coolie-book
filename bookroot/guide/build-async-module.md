@@ -370,8 +370,123 @@ module.exports = function (coolie) {
        build success >> past 467ms
 ```
 
+从实时打印的构建日志来看：
+
+- 构建的入口模块不止`index.js`，还有`pages/a.js`、`pages/b.js`和`pages/404.js`
+- 构建之后的版本信息，多了`async/1.js`、`async/2.js`和`async/3.js`
+
+此时的目录结构为：
+```
+coolie-demo7
+├── dest
+│   ├── coolie-map.json
+│   ├── index.html
+│   └── static
+│       └── js
+│           ├── 6189c51ccb17bcd5eda1bd5710b1854b.js
+│           ├── 770e249d8e38d50e8237f52ea5a5d216.js
+│           ├── async
+│           │   ├── 1.afe948d32200ecb81c4afe43d7afed45.js
+│           │   ├── 2.141ae7e19078fca1a1e954507d545dcd.js
+│           │   └── 3.d6bd0d7db45a9639d6c4e60697312b7f.js
+│           └── f7701ee7c175f381696a96d48f86d84d.js
+└── src
+    ├── coolie-config.js
+    ├── coolie.config.js
+    ├── coolie.js
+    ├── coolie.min.js
+    ├── index.html
+    ├── index.js
+    └── pages
+        ├── 404.js
+        ├── a.js
+        └── b.js
+
+6 directories, 17 files
+```
+
+从目录结构也可以看出，原来的`pages`目录已经不存在了，替换为了`static/js/async`目录。
+
 
 ## 前端构建后运行
+切换到 dest 目录，使用[sts](https://www.npmjs.com/package/sts)执行：
+```
+➜  cd ../dest
+➜  sts
+                 sts >> A static server is running.
+                open >> http://192.168.0.182:60305
+```
+
+![](http://s.ydr.me/@/res/20151215211809774557246544 =693x377)
+
+表现的情况与构建之前是一致的，唯一不同的时候控制台打印的日志要少很多。
+
+
 ## 分析构建结果
+首先分析下`coolie-map.json`（[深度解析点这里](/introduction/resource-relationship-map.md)）：
+```
+{
+  "/index.html": {
+    "main": [
+      {
+        "src": "../src/index.js",
+        "dest": "/static/js/6189c51ccb17bcd5eda1bd5710b1854b.js",
+        "deps": []
+      }
+    ],
+    "async": [
+      {
+        "src": "../src/pages/a.js",
+        "dest": "/static/js/async/1.afe948d32200ecb81c4afe43d7afed45.js",
+        "deps": []
+      },
+      {
+        "src": "../src/pages/b.js",
+        "dest": "/static/js/async/2.141ae7e19078fca1a1e954507d545dcd.js",
+        "deps": []
+      },
+      {
+        "src": "../src/pages/404.js",
+        "dest": "/static/js/async/3.d6bd0d7db45a9639d6c4e60697312b7f.js",
+        "deps": []
+      }
+    ],
+    "js": [],
+    "css": [],
+    "res": []
+  }
+}
+```
+
+可见的是，内容比之前的 demo 要多，最主要的是 async 里有一个数组，数组里展示是异步模块的信息。
+
+接下来，看看入口模块（`6189c51ccb17bcd5eda1bd5710b1854b.js`）:
+```
+/*coolie@1.0.22*/
+define("0",[],function(n,a,s){var o=function(a){"#a"===location.hash?n.async("1",function(n){n()}):"#b"===location.hash?n.async("2",function(n){n()}):n.async("3",function(n){n()})};window.onhashchange=o;setTimeout(o)});
+```
+
+简单的看了下，入口模块竟然只有一个模块，三个异步没有被打包进来（这也是异步模块的特点）。
+
+```
+function(require, exports, module)
+function(n,       a,       s)
+```
+
+上下一一对比，异步模块载入的方法应该是`n.async()`，通过搜索可以找到：
+
+```
+n.async("1",function(
+n.async("2",function(
+n.async("3",function(
+```
+
+构建前后的一一对比，路径与 ID 的对应关系为：
+```
+pages/a.js => 1
+pages/b.js => 2
+pages/404.js => 3
+```
+
 
 
