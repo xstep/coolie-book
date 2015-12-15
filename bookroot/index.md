@@ -35,6 +35,7 @@
     - [PHP 项目构建](/sample/php-project.md)
     - [Wordpress 项目构建](/sample/wordpress-project.md)
     - [项目发布](/sample/project-release.md)
+    - [最佳实践](/sample/best-practices.md)
 - [文档](#)
     - [模块加载器文档](/document/coolie.js.md)
     - [模块加载器配置文档](/document/coolie-config.js.md)

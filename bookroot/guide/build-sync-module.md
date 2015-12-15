@@ -438,6 +438,3 @@ coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,version
 ```
 配置文件里多了很多配置信息，[详细点这里阅读](/document/coolie-config.js.md)。
 
-
-
-
