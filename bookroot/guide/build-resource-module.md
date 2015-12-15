@@ -70,7 +70,7 @@ define(function (require, exports, module){
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo6/src/coolie.config.js
+        init success >> /coolie-demo6/src/coolie.config.js
 ```
 修改其内容为：
 ```
@@ -149,7 +149,7 @@ coolie-demo6
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo6/src/coolie.config.js
+        init success >> /coolie-demo6/src/coolie.config.js
 ```
 
 修改配置文件（`coolie.config.js`）为：
@@ -265,9 +265,9 @@ module.exports = function (coolie) {
 
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo6/src/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo6/src
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo6/dest/
+       coolie config >> /coolie-demo6/src/coolie.config.js
+         src dirname >> /coolie-demo6/src
+        dest dirname >> /coolie-demo6/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -389,5 +389,5 @@ template.html => 2
 样式里的`background:url`里的图片文件也已经经过了版本管理（`b4b6ccfbd5e0990f7b0a40f536fbc98b.png`）。
 - html 模块构建之后导出的依然是一个文本，内容就是 html 代码。
 
-
+其他的文件，这里就赘述了。
 
