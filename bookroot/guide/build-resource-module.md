@@ -343,7 +343,51 @@ coolie-demo6
 ## 分析构建结果
 首先看看构建之后的 coolie-map.json（[资源关系解读](/introduction/resource-relationship-map.md)）:
 ```
+{
+  "/index.html": {
+    "main": [
+      {
+        "src": "../src/index.js",
+        "dest": "/static/js/ccebc30a2e2df1176071a73b0041818b.js",
+        "deps": [
+          "../src/style.css",
+          "../src/template.html"
+        ]
+      }
+    ],
+    "async": [],
+    "js": [],
+    "css": [],
+    "res": []
+  }
+}
+```
+
+构建了`index.html`，该页面引用了`index.js`模块，
+并且该模块构建之后的文件名为`ccebc30a2e2df1176071a73b0041818b.js`，
+该入口模块引用了`style.css`和`template.html`两个模块。
+
+我们来看下入口模块`ccebc30a2e2df1176071a73b0041818b.js`的内容：
+```
+/*coolie@1.0.22*/
+define("0",["1","2"],function(e,t,n){var d=e("1"),m=document.createElement("style");m.innerHTML=d;document.head.appendChild(m);var l=e("2");document.getElementById("demo").innerHTML=l});
+define("1",[],function(y,d,r){r.exports="body{background:url(/static/res/b4b6ccfbd5e0990f7b0a40f536fbc98b.png);color:#AF00FF;font-size:60px}"});
+define("2",[],function(y,d,r){r.exports="<h1>Hello coolie</h1>"});
+```
+
+从上可知模块 ID 的对应关系：
 
 ```
+index.js => 0
+style.css => 1
+template.html => 2
+```
+
+注意看下两个资源模块：
+
+- 样式模块构建之后导出的是一个样式文本，
+样式里的`background:url`里的图片文件也已经经过了版本管理（`b4b6ccfbd5e0990f7b0a40f536fbc98b.png`）。
+- html 模块构建之后导出的依然是一个文本，内容就是 html 代码。
+
 
 
