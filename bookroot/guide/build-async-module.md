@@ -317,8 +317,60 @@ module.exports = function (coolie) {
 };
 ```
 
+- 【1】：修改了入口模块路径为`index.js`
+- 【2】：修改了模块加载器配置文件路径为`coolie-config.js`
+- 【3】：修改了 html 路径为`index.html`
+- 【4】：去除了需要复制的文件路径
+
 
 ## 前端构建
+在 src 目录下，执行：
+```
+➜  src  coolie build
+
+╔══════════════════════════════════════════════════════╗
+║   coolie@1.0.22                                      ║
+║   The front-end development builder.                 ║
+╚══════════════════════════════════════════════════════╝
+
+
+                 1/6 >> parse coolie config
+       coolie config >> /Users/cloudcome/development/localhost/coolie-demo7/src/coolie.config.js
+         src dirname >> /Users/cloudcome/development/localhost/coolie-demo7/src
+        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo7/dest/
+
+                 2/6 >> copy files
+          copy files >> no files are copied
+
+                 3/6 >> build main module
+                   √ >> /index.js
+                   √ >> /pages/a.js
+                   √ >> /pages/b.js
+                   √ >> /pages/404.js
+
+                 4/6 >> override coolie-config.js
+                   √ >> base: "./"
+                   √ >> async: "async/"
+                   √ >> chunk: "chunk/"
+                   √ >> version: "{
+                          "async/1.js": "afe948d32200ecb81c4afe43d7afed45",
+                          "async/2.js": "141ae7e19078fca1a1e954507d545dcd",
+                          "async/3.js": "d6bd0d7db45a9639d6c4e60697312b7f"
+                        }"
+                   √ >> callbacks: 0
+                   √ >> ../dest/static/js/f7701ee7c175f381696a96d48f86d84d.js
+
+                 5/6 >> build html
+                   √ >> /coolie.js
+                   √ >> /index.html
+
+                 6/6 >> generate a resource relationship map
+                   √ >> ../dest/coolie-map.json
+
+       build success >> past 467ms
+```
+
+
 ## 前端构建后运行
 ## 分析构建结果
 
