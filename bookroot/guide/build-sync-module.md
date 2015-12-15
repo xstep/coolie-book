@@ -430,3 +430,14 @@ define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFul
 - `src`：原始的资源被版本管理了
 - `data-config`：配置文件的路径也被修改了
 - `data-main`：入口模块的文件名也变化了
+
+接下来，看看配置文件（79f9ed3283181085347bfea15ac65773.js）吧：
+```
+/*coolie@1.0.22*/
+coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,version:{}}).use();
+```
+配置文件里多了很多配置信息，[详细点这里阅读](/document/coolie-config.js.md)。
+
+
+
+
