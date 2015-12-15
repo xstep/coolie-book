@@ -1,5 +1,5 @@
-/*!
- * 文件描述
+/**
+ * webserver index
  * @author ydr.me
  * @create 2015-04-29 14:23
  */
@@ -7,11 +7,13 @@
 
 'use strict';
 
+var howdo = require('howdo');
+var cache = require('ydr-utils').cache;
+
+var splitLog = require('./split-log.js');
 var express = require('./express.js');
 var routers = require('./routers.js');
-var howdo = require('howdo');
 var configs = require('../configs.js');
-var cache = require('ydr-utils').cache;
 var pkg = require('../package.json');
 
 cache.config({
@@ -22,6 +24,7 @@ cache.set('app.configs', configs);
 
 module.exports = function () {
     howdo
+        .task(splitLog)
         .task(express)
         .task(routers)
         .follow(function (err, app) {

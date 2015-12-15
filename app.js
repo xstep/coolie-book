@@ -7,4 +7,12 @@
 
 'use strict';
 
-require('./webserver/')();
+var buildConsole = require('ydr-utils').console;
+
+var configs = require('./configs.js');
+
+buildConsole({
+    whiteList: configs.console
+});
+
+require('./webserver/index.js')();
