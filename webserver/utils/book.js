@@ -137,13 +137,16 @@ exports.buildRouters = function (app, controller, bookroot) {
         uri = uri
             .replace(REG_MD, '/')
             .replace(REG_EXTEND, '/');
-        var toc = xss.mdTOC(content);
+        var toc = xss.mdTOC(content).trim();
 
-        toc = '<div class="toc"><p class="toc-title">TOC</p>' + xss.mdRender(toc, {
-                favicon: false,
-                at: false,
-                headingLink: false
-            }).html + '</div>';
+        if(toc){
+            toc = '<div class="toc"><p class="toc-title">TOC</p>' + xss.mdRender(toc, {
+                    favicon: false,
+                    at: false,
+                    headingLink: false
+                }).html + '</div>';
+        }
+
         content = xss.mdRender(content, {
             headingLink: true
         }).html;

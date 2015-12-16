@@ -1,5 +1,3 @@
-# 前端构建配置
-
 前端构建配置就是 coolie-cli 的配置文件，文件命名为`coolie.config.js`，使用
 
 ```
@@ -95,4 +93,6 @@ module.exports = function (coolie) {
 ```
 
 
-[前端构建工具配置文档](/document/coolie.config.js.md)
+- [前端构建工具文档](/document/coolie-cli.md)
+- [前端构建工具配置文档](/document/coolie.config.js.md)
+- [前端构建工具中间件文档](/document/coolie-middleware.js.md)

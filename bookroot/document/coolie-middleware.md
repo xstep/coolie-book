@@ -1,5 +1,7 @@
-# coolie 中间件文档
+**coolie 中间件目前处于测试阶段。**
 
+
+# html 中间件
 ```
 src html => middleware1 => ... => middlewareN => dest html
 ```
@@ -15,5 +17,4 @@ function coolieMiddleware(options){
 ```
 
 通过对象引用的方式，改变`options`对象的值来实现中间件的传递。
-
 
