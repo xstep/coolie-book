@@ -120,9 +120,9 @@ coolie-demo8
 ## 初始化文件
 本 demo 要的是，显示今天的年月日。分别在 libs 目录下新建
 
-- libs/year.js
-- libs/month.js
-- libs/date.js
+- src/static/js/libs/year.js
+- src/static/js/libs/month.js
+- src/static/js/libs/date.js
 
 三个 js 分别输出当前的年、月、日。
 
@@ -155,8 +155,8 @@ define(function (require, exports, module){
 
 然后，在 app 目录下，新建两个 js ，分别属性今天的年、月和年、月、日。
 
-- app/year-month.js
-- app/year-month-date.js
+- src/static/js/app/year-month.js
+- src/static/js/app/year-month-date.js
 
 year-month.js:
 ```
@@ -164,7 +164,7 @@ define(function (require, exports, module){
 	var year = require('../libs/year.js');
 	var month = require('../libs/month.js');
 
-	alert('today is ' + year + '-' + month);
+	alert('today is ' + year() + '-' + month());
 });
 ```
 
@@ -175,7 +175,7 @@ define(function (require, exports, module){
 	var month = require('../libs/month.js');
 	var date = require('../libs/date.js');
 
-	alert('today is ' + year + '-' + month + '-' + date);
+	alert('today is ' + year() + '-' + month() + '-' + date());
 });
 ```
 
@@ -212,12 +212,207 @@ define(function (require, exports, module){
 不需要修改配置文件，因为默认的配置文件的`base`就是指向`app`目录。
 
 
-新建两个 html 分别执行两个入口模块。
+返回 src 目录，新建两个 html 分别执行两个入口模块：
+
+- src/year-month.html
+- src/year-month-date.html
+
+year-month.html：
+```
+<!doctype html>
+<meta charset="utf-8">
+<script coolie src="/static/js/coolie.js"
+data-config="coolie-config.js"
+data-main="year-month.js"></script>
+```
+
+
+year-month-date.html：
+```
+<!doctype html>
+<meta charset="utf-8">
+<script coolie src="/static/js/coolie.js"
+data-config="coolie-config.js"
+data-main="year-month-date.js"></script>
+```
+
+此时的目录结构为：
+```
+coolie-demo8
+└── src                                    // 开发目录
+    ├── static                             // 静态目录
+    │   └── js                             // JS 目录
+    │       ├── app                        // 入口模块目录
+    │       │   ├── year-month-date.js
+    │       │   └── year-month.js
+    │       ├── coolie-config.js
+    │       ├── coolie.js
+    │       ├── coolie.min.js
+    │       └── libs                        // 脚本库模块
+    │           ├── date.js
+    │           ├── month.js
+    │           └── year.js
+    ├── year-month-date.html
+    └── year-month.html
+
+5 directories, 10 files
+```
 
 
 ## 前端构建前运行
+在`src`目录下，使用[sts](https://www.npmjs.com/package/sts)执行：
+```
+➜  sts
+                 sts >> A static server is running.
+                open >> http://172.22.255.75:58920
+```
+
+然后打开`year-month.html`
+
+![](http://s.ydr.me/@/res/20151216110411312095878217 =509x405)
+
+
+继续打开`year-month-date.html`
+
+![](http://s.ydr.me/@/res/20151216110522999782889018 =533x433)
+
+
+显然，执行是正确的。当然，此时是没有任何分块和公共模块的，
+需要怎样抽象公共模块，继续往下看。
+
+
 ## 前端构建配置
+在写配置之前，考虑下哪些模块可以作为公共模块。
+
+
+从全局来看，`date.js`只被入口模块使用了一次，没必要作为公共模块，
+`year.js`和`month.js`的使用率是 100%，有必要作为公共模块。
+
+那么，就将`year.js`和`month.js`合并一起作为公共模块。
+
+在 src 目录下，初始化配置文件：
+```
+➜  coolie init -c
+
+╔══════════════════════════════════════════════════════╗
+║   coolie@1.0.22                                      ║
+║   The front-end development builder.                 ║
+╚══════════════════════════════════════════════════════╝
+
+        init success >> /Users/cloudcome/development/localhost/coolie-demo8/src/coolie.config.js
+```
+
+修改配置文件为：
+```
+/**
+ * ======================================================
+ * coolie-cli 配置文件 `coolie.config.js`
+ * 使用 `coolie init -c` 生成 `coolie.config.js` 文件模板
+ * 当前配置文件所在的目录为构建的根目录
+ *
+ * @link http://coolie.ydr.me/guide/coolie.config.js/
+ * @author ydr.me
+ * @version 1.0.22
+ * @create 2015-12-16 11:09:23
+ * =======================================================
+ */
+
+'use strict';
+
+module.exports = function (coolie) {
+    // coolie 配置
+    coolie.config({
+        // 是否在构建之前清空目标目录
+        clean: true,
+
+        // js 构建
+        js: {
+            // 入口模块
+            main: [
+                './static/js/app/**'
+            ],
+            // coolie-config.js 路径
+            'coolie-config.js': './static/js/coolie-config.js',
+            // js 文件保存目录
+            dest: './static/js/',
+            // 分块配置
+            chunk: [
+                //【1】
+                [
+                    'year.js',
+                    'month.j'
+                ]
+            ]
+        },
+
+        // html 构建
+        html: {
+            // html 文件
+            src: [
+                //【2】
+                '*.html'
+            ],
+            // 是否压缩
+            minify: true
+        },
+
+        // css 构建
+        css: {
+            // css 文件保存目录
+            dest: './static/css/',
+            // css 压缩配置
+            minify: {
+                compatibility: 'ie7'
+            }
+        },
+
+        // 资源
+        resource: {
+            // 资源保存目录
+            dest: './static/res/',
+            // 是否压缩
+            minify: true
+        },
+
+        // 原样复制文件
+        copy: [
+            //【3】
+        ],
+
+        // 目标配置
+        dest: {
+            // 目标目录
+            dirname: '../dest/',
+            // 目标根域
+            host: '',
+            // 版本号长度
+            versionLength: 32
+        }
+    });
+
+    // 使用 coolie 中间件
+    // coolie.use(require('coolie-*'));
+
+    // 自定义 coolie 中间件
+    //coolie.use(function (options) {
+    //    // do sth.
+    //    return options;
+    //});
+};
+```
+
+- 【1】：修改了 chunk 配置，配置数组里添加了一项，该项是个数组，包含了`year.js`和`month.js`
+- 【2】：修改了 html 配置，修改为`*.html`表示构建所有的 html 后缀文件
+- 【3】：去除了复制文件路径
+
+
 ## 前端构建
+在 src 目录下，执行：
+```
+
+```
+
+
 ## 前端构建后运行
 ## 分析构建结果
 
