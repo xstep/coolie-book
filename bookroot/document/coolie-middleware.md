@@ -1,4 +1,4 @@
-**coolie 中间件目前处于测试阶段。**
+**coolie 中间件目前正处于测试阶段。**
 
 
 # html 中间件
@@ -18,3 +18,7 @@ function coolieMiddleware(options){
 
 通过对象引用的方式，改变`options`对象的值来实现中间件的传递。
 
+
+# pre 类型中间件
+# on 类型中间件
+# post 类型中间件
