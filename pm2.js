@@ -94,6 +94,18 @@ var exec = function (cmds, callback) {
 };
 
 
+
+// npm install
+var npmInstall = function (callback) {
+    var cmds = [];
+
+    cmds.push('cd ' + CWD);
+    cmds.push(INSTALL_MODULES);
+
+    exec(cmds, callback);
+};
+
+
 var start = function () {
     var pm2 = require('pm2');
     var howdo = require('howdo');
@@ -112,16 +124,6 @@ var start = function () {
         cmds.push('cd ' + CWD);
         cmds.push('git branch');
         cmds.push('git pull');
-
-        exec(cmds, callback);
-    };
-
-
-    // npm install
-    var npmInstall = function (callback) {
-        var cmds = [];
-
-        cmds.push(INSTALL_MODULES);
 
         exec(cmds, callback);
     };
@@ -216,7 +218,7 @@ if (isDirectory(pm2PackageDir)) {
 else {
     console.log('ready to install node modules...');
     console.log(JSON.stringify(pkg.dependencies, null, 4));
-    exec(INSTALL_MODULES, start);
+    npmInstall(start);
 }
 
 
