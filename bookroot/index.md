@@ -17,7 +17,6 @@
     - [常见问题](/introduction/common-problems.md)
 - [教程](#)
     - [安装](/guide/install.md)
-    - [命令](/guide/command.md)
     - [前端构建配置](/guide/coolie.config.js.md)
     - [Hello World](/guide/hello-word.md)
     - [JS 构建](/guide/build-js.md)
