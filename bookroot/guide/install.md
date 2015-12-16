@@ -80,6 +80,6 @@ npm update -g coolie
 如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来更新。
 
 ```
-sudo npm update -g coolie --registry=https://r.cnpmjs.org
+sudo npm update -g coolie --registry=http://registry.npm.taobao.org
 ```
 
