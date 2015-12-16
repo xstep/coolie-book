@@ -108,8 +108,8 @@ define(function (require, exports, module){
 
       install coolie >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
         unzip coolie >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2015121520475600.zip
-         coolie file >> /Users/cloudcome/development/localhost/coolie-demo7/src/coolie.js
-         coolie file >> /Users/cloudcome/development/localhost/coolie-demo7/src/coolie.min.js
+         coolie file >> /coolie-demo7/src/coolie.js
+         coolie file >> /coolie-demo7/src/coolie.min.js
 ```
 
 然后初始化模块加载器配置文件`coolie-config.js`：
@@ -121,7 +121,7 @@ define(function (require, exports, module){
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo7/src/coolie-config.js
+        init success >> /coolie-demo7/src/coolie-config.js
 ```
 
 修改模块加载器配置文件为：
@@ -219,7 +219,7 @@ coolie-demo7
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo7/src/coolie.config.js
+        init success >> /coolie-demo7/src/coolie.config.js
 ```
 
 修改配置文件为：
@@ -335,9 +335,9 @@ module.exports = function (coolie) {
 
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo7/src/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo7/src
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo7/dest/
+       coolie config >> /coolie-demo7/src/coolie.config.js
+         src dirname >> /coolie-demo7/src
+        dest dirname >> /coolie-demo7/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -502,5 +502,17 @@ pages/404.js => 3
 coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,version:{"async/1.js":"afe948d32200ecb81c4afe43d7afed45","async/2.js":"141ae7e19078fca1a1e954507d545dcd","async/3.js":"d6bd0d7db45a9639d6c4e60697312b7f"}}).use();
 ```
 
+从文件内容可见，`version`属性下多了 3 个属性值：
+```
+version: {
+    "async/1.js":"afe948d32200ecb81c4afe43d7afed45",
+    "async/2.js":"141ae7e19078fca1a1e954507d545dcd",
+    "async/3.js":"d6bd0d7db45a9639d6c4e60697312b7f"
+}
+```
+
+
+当异步加载`n.async("1",function(`的时候，coolie 会先查找异步目录，`async:"async/"`下的`1.js`，
+然后去`version`里查找是否有对应的版本号，最终找到的文件就是`async/1.afe948d32200ecb81c4afe43d7afed45.js`。
 
 
