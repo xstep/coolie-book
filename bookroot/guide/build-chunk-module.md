@@ -193,8 +193,8 @@ define(function (require, exports, module){
 
       install coolie >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
         unzip coolie >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2015121610520100.zip
-         coolie file >> /Users/cloudcome/development/localhost/coolie-demo8/src/static/js/coolie.js
-         coolie file >> /Users/cloudcome/development/localhost/coolie-demo8/src/static/js/coolie.min.js
+         coolie file >> /coolie-demo8/src/static/js/coolie.js
+         coolie file >> /coolie-demo8/src/static/js/coolie.min.js
 ```
 
 继续在 js 目录下新建模块加载器配置文件：
@@ -206,7 +206,7 @@ define(function (require, exports, module){
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo8/src/static/js/coolie-config.js
+        init success >> /coolie-demo8/src/static/js/coolie-config.js
 ```
 
 不需要修改配置文件，因为默认的配置文件的`base`就是指向`app`目录。
@@ -299,7 +299,7 @@ coolie-demo8
 ║   The front-end development builder.                 ║
 ╚══════════════════════════════════════════════════════╝
 
-        init success >> /Users/cloudcome/development/localhost/coolie-demo8/src/coolie.config.js
+        init success >> /coolie-demo8/src/coolie.config.js
 ```
 
 修改配置文件为：
@@ -418,9 +418,9 @@ module.exports = function (coolie) {
 
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo8/src/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo8/src
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo8/dest/
+       coolie config >> /coolie-demo8/src/coolie.config.js
+         src dirname >> /coolie-demo8/src
+        dest dirname >> /coolie-demo8/dest/
 
                  2/6 >> copy files
           copy files >> no files are copied
