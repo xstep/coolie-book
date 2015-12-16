@@ -488,5 +488,19 @@ pages/b.js => 2
 pages/404.js => 3
 ```
 
+不止是同步模块的路径会被压缩，连异步模块的路径也会被压缩。
+
+接下来去看看`index.html`：
+```
+<!doctype html><meta charset="utf-8"><style>#demo{border:1px solid #ccc;padding:10px;font-size:20px}</style> <div id="demo"></div> <p><a href="#a">pages/a</a></p><p><a href="#b">pages/b</a></p><p><a href="#c">pages/c</a></p><p><a href="#d">pages/d</a></p> <script src="/static/js/770e249d8e38d50e8237f52ea5a5d216.js"  data-config="~/static/js/f7701ee7c175f381696a96d48f86d84d.js" data-main="6189c51ccb17bcd5eda1bd5710b1854b.js" ></script>
+<!--coolie@1.0.22-->
+```
+
+从`data-config`属性可知，构建之后的配置文件为`f7701ee7c175f381696a96d48f86d84d.js`:
+```
+/*coolie@1.0.22*/
+coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,version:{"async/1.js":"afe948d32200ecb81c4afe43d7afed45","async/2.js":"141ae7e19078fca1a1e954507d545dcd","async/3.js":"d6bd0d7db45a9639d6c4e60697312b7f"}}).use();
+```
+
 
 
