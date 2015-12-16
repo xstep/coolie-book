@@ -5,12 +5,13 @@
 - 会敲简单命令
 - 保持学习的心态
 
-在安装 coolie 之前，你需要安装 nodejs（官网：<https://nodejs.org/>） 环境。
+在安装 coolie 之前，你需要安装 nodejs
+（官网：<https://nodejs.org/>，淘宝镜像：<http://npm.taobao.org/mirrors/node>） 环境。
 无论是 mac 还是 pc 用户，都可以直接下载安装包可视化安装。
 
 安装完成之后，打开命令行窗口，输入
 ```
-node -v
+➜  node -v
 ```
 会显示当前安装的 node 版本号
 ```
@@ -18,7 +19,7 @@ v4.2.1
 ```
 输入
 ```
-npm -v
+➜  npm -v
 ```
 会输出当前安装的 npm 版本号
 ```
@@ -32,7 +33,7 @@ coolie 的安装很简单。全局条件下（`-g`参数表示`global`，义为�
 npm install -g coolie
 ```
 
-如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来安装。
+如果长时间无反应，也可以使用[淘宝源](https://npm.taobao.org/)来安装。
 
 ```
 npm install -g coolie --registry=http://registry.npm.taobao.org
@@ -77,7 +78,7 @@ npm install -g coolie --registry=http://registry.npm.taobao.org
 npm update -g coolie
 ```
 
-如果长时间无反应，也可以使用[淘宝源](http://cnpmjs.org/)来更新。
+如果长时间无反应，也可以使用[淘宝源](https://npm.taobao.org/)来更新。
 
 ```
 sudo npm update -g coolie --registry=http://registry.npm.taobao.org
