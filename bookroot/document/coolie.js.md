@@ -3,13 +3,7 @@
 # coolie.config(<configs>)
 配置模块加载器的各项参数，[详细文档点这里](./coolie-config.js.md)。
 
-## coolie.config>base
-配置入口模块的基准路径：
-```
-coolie.config({
-    base: "./path/to/app"
-});
-```
+
 
 # coolie.use([moduleId])
 执行模块加载器。其中入口模块 id 可以省略，由 html 里的`data-main`属性指定，指定入口模块常用于单元测试。
