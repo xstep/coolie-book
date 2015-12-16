@@ -339,8 +339,8 @@ module.exports = function (coolie) {
             chunk: [
                 //【1】
                 [
-                    'year.js',
-                    'month.j'
+                    'static/js/libs/year.js',
+                    'static/js/libs/month.js'
                 ]
             ]
         },
@@ -407,13 +407,210 @@ module.exports = function (coolie) {
 
 
 ## 前端构建
-在 src 目录下，执行：
+在 src 目录下，执行前端构建：
 ```
+➜  coolie build
+
+╔══════════════════════════════════════════════════════╗
+║   coolie@1.0.22                                      ║
+║   The front-end development builder.                 ║
+╚══════════════════════════════════════════════════════╝
+
+
+                 1/6 >> parse coolie config
+       coolie config >> /Users/cloudcome/development/localhost/coolie-demo8/src/coolie.config.js
+         src dirname >> /Users/cloudcome/development/localhost/coolie-demo8/src
+        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo8/dest/
+
+                 2/6 >> copy files
+          copy files >> no files are copied
+
+                 3/6 >> build main module
+                   √ >> /static/js/app/year-month-date.js
+                   √ >> /static/js/app/year-month.js
+
+                 4/6 >> override coolie-config.js
+                   √ >> base: "./app/"
+                   √ >> async: "../async/"
+                   √ >> chunk: "../chunk/"
+                   √ >> version: "{
+                          "../chunk/0.js": "d2f1d7c36aa7dd4588172993b6548c6d"
+                        }"
+                   √ >> callbacks: 0
+                   √ >> ../dest/static/js/bc44e15feeb306edcce80b4b1610020b.js
+
+                 5/6 >> build html
+                   √ >> /static/js/coolie.js
+                   √ >> /year-month-date.html
+                   √ >> /year-month.html
+
+                 6/6 >> generate a resource relationship map
+                   √ >> ../dest/coolie-map.json
+
+       build success >> past 408ms
 
 ```
+
+从构建日志可以看出，确实多了一个 chunk 信息。先来看看构建之后的目录结构：
+```
+coolie-demo8
+├── dest
+│   ├── coolie-map.json
+│   ├── static
+│   │   └── js
+│   │       ├── 770e249d8e38d50e8237f52ea5a5d216.js
+│   │       ├── app
+│   │       │   ├── 7360332894b3009f2fdcccd54379c803.js
+│   │       │   └── a7cf45b293111cea21c02ba730b534aa.js
+│   │       ├── bc44e15feeb306edcce80b4b1610020b.js
+│   │       └── chunk
+│   │           └── 0.d2f1d7c36aa7dd4588172993b6548c6d.js
+│   ├── year-month-date.html
+│   └── year-month.html
+└── src
+    ├── coolie.config.js
+    ├── static
+    │   └── js
+    │       ├── app
+    │       │   ├── year-month-date.js
+    │       │   └── year-month.js
+    │       ├── coolie-config.js
+    │       ├── coolie.js
+    │       ├── coolie.min.js
+    │       └── libs
+    │           ├── date.js
+    │           ├── month.js
+    │           └── year.js
+    ├── year-month-date.html
+    └── year-month.html
+
+10 directories, 19 files
+```
+
+从目录结构也很容易看到，确实多了一个 chunk 目录，里面有一个 chunk 模块。
 
 
 ## 前端构建后运行
+切换到 dest 目录，使用[sts](https://www.npmjs.com/package/sts)执行：
+```
+➜  cd ../dest
+➜  sts
+                 sts >> A static server is running.
+                open >> http://192.168.0.185:60728
+
+```
+
+然后打开`year-month.html`：
+
+![](http://s.ydr.me/@/res/20151216112025472255258586 =610x574)
+
+- 【1】：加载了入口模块
+- 【2】：加载了分块模块
+
+
+继续打开`year-month-date.html`：
+
+![](http://s.ydr.me/@/res/20151216112245225008227927 =514x551)
+
+
+- 【1】：加载了入口模块
+- 【2】：加载了分块模块
+
+从两张图，可以明显的看出来【2】确实成为了公共模块。
+
+
+
 ## 分析构建结果
+
+首先看下`coolie-map.json`（[深度解析点这里](/introduction/resource-relationship-map.md)）：
+
+```
+{
+  "/year-month-date.html": {
+    "main": [
+      {
+        "src": "../src/static/js/app/year-month-date.js",
+        "dest": "/static/js/app/a7cf45b293111cea21c02ba730b534aa.js",
+        "deps": [
+          "../src/static/js/libs/year.js",
+          "../src/static/js/libs/month.js",
+          "../src/static/js/libs/date.js"
+        ]
+      }
+    ],
+    "async": [],
+    "js": [],
+    "css": [],
+    "res": []
+  },
+  "/year-month.html": {
+    "main": [
+      {
+        "src": "../src/static/js/app/year-month.js",
+        "dest": "/static/js/app/7360332894b3009f2fdcccd54379c803.js",
+        "deps": [
+          "../src/static/js/libs/year.js",
+          "../src/static/js/libs/month.js"
+        ]
+      }
+    ],
+    "async": [],
+    "js": [],
+    "css": [],
+    "res": []
+  }
+}
+```
+
+
+从内容可以看出来各自页面引用的入口模块，以及他们的依赖关系。
+来分别看看构建之后的两个入口模块：
+
+a7cf45b293111cea21c02ba730b534aa.js：
+```
+/*coolie@1.0.22*/
+define("0",["1","2","3"],function(s,i,a){var e=s("1"),t=s("2"),l=s("3");alert("today is "+e()+"-"+t()+"-"+l())});
+define("3",[],function(e,n,t){t.exports=function(){return(new Date).getDate()}});
+coolie.chunk(["0"]);
+```
+
+这里最明显的变化就是在代码的最后一行添加了`coolie.chunk`，参数是一个数组，数组只有一项`"0"`。
+从字面可以理解，coolie 加载了 chunk 模块 ID 为 0 的 chunk 模块。
+
+从代码上看，确实没有了`year.js`和`month.js`的痕迹，只有`date.js`的代码。
+
+
+7360332894b3009f2fdcccd54379c803.js：
+```
+/*coolie@1.0.22*/
+define("0",["1","2"],function(i,s,a){var e=i("1"),n=i("2");alert("today is "+e()+"-"+n())});
+coolie.chunk(["0"]);
+```
+
+这里的代码就更简单了，只有一个入口模块，和一个`coolie.chunk`， `year.js`和`month.js`是公共模块，自然不在代码里。
+
+
+最后来看看 chunk 模块吧：
+
+0.d2f1d7c36aa7dd4588172993b6548c6d.js：
+```
+/*coolie@1.0.22*/
+define("1",[],function(e,n,t){t.exports=function(){return(new Date).getFullYear()}});
+define("2",[],function(n,e,t){t.exports=function(){return(new Date).getMonth()+1}});
+```
+
+chunk 模块是一个模块片段，包含了`year.js`和`month.js`的内容。
+
+至此，完整的加载方式如下：
+
+```
+year-month.html => chunk0
+                         => year + month  
+                => year + month
+                   
+year-month-date.html => date + chunk0
+                                     => year + month
+                     => date + year + month
+```
 
 
