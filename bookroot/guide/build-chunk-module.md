@@ -180,10 +180,11 @@ define(function (require, exports, module){
 ```
 
 从上面的代码结构和文件划分，可以明显的看出来，`year.js`、`month.js`、`date.js`是可以作为公共模块来处理的。
-按此不表，先下载模块加载器：
+按此不表，切换到 js 目录，下载模块加载器：
 
 ```
-➜  src  coolie install coolie
+➜  cd static/js
+➜  coolie install coolie
 
 ╔══════════════════════════════════════════════════════╗
 ║   coolie@1.0.22                                      ║
@@ -192,9 +193,23 @@ define(function (require, exports, module){
 
       install coolie >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
         unzip coolie >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2015121610520100.zip
-         coolie file >> /Users/cloudcome/development/localhost/coolie-demo8/src/coolie.js
-         coolie file >> /Users/cloudcome/development/localhost/coolie-demo8/src/coolie.min.js
+         coolie file >> /Users/cloudcome/development/localhost/coolie-demo8/src/static/js/coolie.js
+         coolie file >> /Users/cloudcome/development/localhost/coolie-demo8/src/static/js/coolie.min.js
 ```
+
+继续在 js 目录下新建模块加载器配置文件：
+```
+➜  coolie init -j
+
+╔══════════════════════════════════════════════════════╗
+║   coolie@1.0.22                                      ║
+║   The front-end development builder.                 ║
+╚══════════════════════════════════════════════════════╝
+
+        init success >> /Users/cloudcome/development/localhost/coolie-demo8/src/static/js/coolie-config.js
+```
+
+不需要修改配置文件，因为默认的配置文件的`base`就是指向`app`目录。
 
 
 新建两个 html 分别执行两个入口模块。
