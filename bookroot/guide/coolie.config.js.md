@@ -93,3 +93,6 @@ module.exports = function (coolie) {
     //});
 };
 ```
+
+
+[前端构建工具配置文档](/document/coolie.config.js.md)
