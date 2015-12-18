@@ -21,8 +21,8 @@ coolie —— 前端开发**构建工具**与前端**模块加载器**组合的�
 - coolie 官方指南：<https://github.com/cloudcome/coolie-book>
 - 前端模块加载器：<https://github.com/cloudcome/coolie>
 - 前端构建工具：<https://github.com/cloudcome/nodejs-coolie>
-- 作者：<http://ydr.me/>
-- 社区支持：<https://FrontEndDev.org/>
+- 作者：<https://ydr.me/>
+- 社区支持：<http://FrontEndDev.org/>
 
 
 **诚然，在本书编写的过程中，难免会有疏漏、错误、偏颇的地方，欢迎斧正。**
