@@ -41,7 +41,7 @@
     "later": "^1.2.0",
     "marked": "^0.3.5",
     "pm2": "^0.14.7",
-    "ydr-utils": "^35.2.3"
+    "ydr-utils": "^36.0.4"
   },
   "peerDependencies": {},
   "devDependencies": {
