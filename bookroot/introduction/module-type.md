@@ -11,6 +11,14 @@ require(modulePath[, modulePipeline]);
 - `modulePipeline`：模块管道，模块的入口类型和模块的出口类型（如`image|base64`，即入口模块是图片，出口转换为 base64 编码），
 默认的入口、出口类型都为 js
 
+如：
+```
+require('some.css', 'css|style');
+
+// 标记 some.css 模块为 css 模块
+// 但模块的出口是 style，即会被自动插入到 DOM 中
+```
+
 默认的模块类型出口为：
 
 - js：js
