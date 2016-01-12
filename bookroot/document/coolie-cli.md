@@ -1,5 +1,5 @@
 前端构建工具指的是`coolie-cli`，基于 nodejs，是系统工具，安装之后会注册全局命令`coolie`。
-工具全部源码均已开源（仓库：<https://github.com/cloudcome/nodejs-coolie>）。
+工具全部源码均已开源（仓库：<https://github.com/cooliejs/coolie-cli>）。
 
 coolie-cli 是前端构建工具，是前端工程化解决方案，不是编译工具
 （常见问题：[什么是编译，什么是构建](/introduction/common-problems/#heading-1-1)）。
@@ -61,7 +61,7 @@ coolie.json
 
 - [alien](https://github.com/cloudcome/alien) 
 - [donkey](https://github.com/cloudcome/donkey) 
-- [coolie](https://github.com/cloudcome/coolie) 
+- [coolie](https://github.com/cooliejs/coolie.js) 
 
 
 # coolie init

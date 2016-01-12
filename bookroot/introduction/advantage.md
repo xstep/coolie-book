@@ -116,13 +116,13 @@ coolie 定位于通用级的前端工程化解决方案，将会长期发展下�
 coolie 的相关问题、建议、意见可以在中英社区里提出：
 
 - 中文 <http://frontenddev.org/question/>
-- 英文 <https://github.com/cloudcome/nodejs-coolie/issues>
+- 英文 <https://github.com/cooliejs/coolie-cli/issues>
 
 
 # 代码开源，安全保障
 
-- 前端模块加载器 <https://github.com/cloudcome/coolie>
-- 前端开发构建工具 <https://github.com/cloudcome/nodejs-coolie>
+- 前端模块加载器 <https://github.com/cooliejs/coolie.js>
+- 前端开发构建工具 <https://github.com/cooliejs/coolie-cli>
 
 
 # 企业产品，质量保障

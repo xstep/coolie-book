@@ -61,7 +61,7 @@ coolie.json
 
 - [alien](https://github.com/cloudcome/alien) 
 - [donkey](https://github.com/cloudcome/donkey) 
-- [coolie](https://github.com/cloudcome/coolie) 
+- [coolie](https://github.com/cooliejs/coolie.js) 
 
 
 # coolie init

@@ -27,11 +27,11 @@ coolie 这个单词有点儿意思，中英同音并且同义，义指“苦力�
 无法简单化，无法通用化。
 
 ## 起步
-从2014年10月21日起，开始新建了一款通用化的[前端模块加载器 coolie](https://github.com/cloudcome/coolie)（遵循 CMD 规范）。
+从2014年10月21日起，开始新建了一款通用化的[前端模块加载器 coolie](https://github.com/cooliejs/coolie.js)（遵循 CMD 规范）。
 coolie 的使用就和 nodejs 几乎一致，都是通过使用物理相对路径来标识依赖的模块，
 这种标识方法在 webstorm 里开发非常的舒畅，因为 webstorm 有对 require 的路径检查。
 
-同日，新建了[前端模块构建工具](https://github.com/cloudcome/nodejs-coolie)，
+同日，新建了[前端模块构建工具](https://github.com/cooliejs/coolie-cli)，
 为了与前端模块加载器 coolie 保持一种配套关系，也命名为 coolie。在当时，该工具的定义只是一款
 纯粹的模块构建工具，是一款模块打包工具，在这个层面上，有很多工具与之类似，如 webpack、spm、r.js 等。
 但这些工具，都没有 coolie 来的简单（coolie 的强大之处本书后文会描述到）。
@@ -70,7 +70,7 @@ coolie 深入整个工程，分析到每一个被用到、被依赖到的地方�
 
 
 # coolie 地址
-- **coolie.js**（前端模块加载器）：<https://github.com/cloudcome/coolie>
+- **coolie.js**（前端模块加载器）：<https://github.com/cooliejs/coolie.js>
 - **coolie-cli**（前端开发构建工具）：<https://www.npmjs.com/package/coolie>
 
 
