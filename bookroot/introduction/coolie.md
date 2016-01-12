@@ -71,7 +71,7 @@ coolie 深入整个工程，分析到每一个被用到、被依赖到的地方�
 
 # coolie 地址
 - **coolie.js**（前端模块加载器）：<https://github.com/cooliejs/coolie.js>
-- **coolie-cli**（前端开发构建工具）：<https://www.npmjs.com/package/coolie>
+- **coolie-cli**（前端开发构建工具）：<https://github.com/cooliejs/coolie-cli>
 
 
 
