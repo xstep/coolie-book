@@ -22,7 +22,21 @@
 
 替换进度，默认为 `pre-html`（详细参考[前端构建工具中间件文档](../document/coolie-middleware.md)）。
 
-# repo
+
+
+# 使用
+```
+// 在 coolie.config.js 中添加
+coolie.use(require('coolie-html-attr-resource')({
+    attributeName: 'data-original',
+    tagName: 'img',
+    progress: 'pre-html'
+}));
+```
+
+
+
+# github
 
 <https://github.com/cooliejs/coolie-html-attr-resource>
 
