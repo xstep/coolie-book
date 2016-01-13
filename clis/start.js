@@ -17,7 +17,6 @@ var configs = require('../configs.js');
 
 var NPM_REGISTRY = 'http://registry.npm.taobao.org';
 var ROOT = path.join(__dirname, '../');
-var PM2_JSON = path.join(ROOT, 'pm2.json');
 var COLOR_MAP = {
     danger: [31, 39],
     success: [32, 39],
@@ -83,6 +82,8 @@ var logNormal = function () {
  */
 var exec = function (cmds, callback) {
     cmds = typeof(cmds) === 'string' ? [cmds] : cmds;
+    var command = cmds.join(' && ');
+    logNormal(command);
 
     var point = 1;
     process.stdout.write('.');
@@ -92,7 +93,7 @@ var exec = function (cmds, callback) {
         point++;
     }, 1000);
 
-    childProcess.exec(cmds.join('&&'), function (err, stdout, stderr) {
+    childProcess.exec(command, function (err, stdout, stderr) {
         clearInterval(interval);
         process.stdout.clearLine();
         process.stdout.write('\n');
@@ -146,6 +147,30 @@ var now = function () {
 };
 
 
+// 更新代码
+var gitPull = function (callback) {
+    logNormal('1/3');
+    exec([
+        'cd ' + ROOT,
+        'git branch',
+        'git pull -f'
+    ], function () {
+        logSuccess(now(), 'git pull success');
+        callback();
+    });
+};
+
+
+// 更新代码
+var installNodeModules = function (callback) {
+    logNormal('2/3');
+    exec('npm install --registry=' + NPM_REGISTRY, function () {
+        logSuccess(now(), 'install node modules success');
+        callback();
+    });
+};
+
+
 // 本地启动
 var startLocal = function (callback) {
     var supervisor = require('supervisor');
@@ -166,32 +191,15 @@ var startLocal = function (callback) {
 // pm2 启动
 var startPM2 = function (callback) {
     exec([
-        'pm2 start ' + PM2_JSON,
+        'pm2 start pm2.json',
         'pm2 show ' + pkg.name
     ], callback);
 };
 
 
-// 更新代码
-var gitPull = function (callback) {
-    exec('git pull', function () {
-        logSuccess(now(), 'git pull success');
-        callback();
-    });
-};
-
-
-// 更新代码
-var installNodeModules = function (callback) {
-    exec('npm install --registry=' + NPM_REGISTRY, function () {
-        logSuccess(now(), 'install node modules success');
-        callback();
-    });
-};
-
-
 // 启动
 var start = function () {
+    logNormal('3/3');
     if (configs.env === 'local') {
         startLocal(function () {
             logSuccess(now(), 'listen changing success');
@@ -204,14 +212,40 @@ var start = function () {
 };
 
 
-logWarning('');
-logWarning('=========================================================================');
-logWarning('nodejs version:', process.versions.node);
-logWarning('nodejs environment:', configs.env);
-logWarning('nodejs project:', pkg.name + '@' + pkg.version);
-logWarning('project home:', ROOT);
-logWarning('=========================================================================');
-logWarning('');
+var banner = function () {
+    var list = [];
+    var padding = 4;
+    list.push('nodejs version     │ ' + process.versions.node);
+    list.push('nodejs environment │ ' + configs.env);
+    list.push('nodejs project     │ ' + pkg.name + '@' + pkg.version);
+    list.push('project home       │ ' + ROOT);
+    var maxLength = 0;
+    list.forEach(function (item) {
+        if (item.length > maxLength) {
+            maxLength = item.length;
+        }
+    });
+
+    maxLength += padding;
+
+    var fixed = function (str, maxLength, padding) {
+        return str + new Array(maxLength - str.length).join(padding);
+    };
+
+    var theadLeft = '┌─────────────────────┬';
+    var tfootLeft = '└─────────────────────┴';
+    var thead = fixed(theadLeft, maxLength + padding - 1, '─') + '┐';
+    var tfoot = fixed(tfootLeft, maxLength + padding - 1, '─') + '┘';
+
+    logWarning(thead);
+    list.forEach(function (item) {
+        logWarning('│  ' + fixed(item, maxLength, ' ') + '│');
+    });
+    logWarning(tfoot);
+};
+
+
+banner();
 
 // 更新代码安装模块并启动
 gitPull(function () {
