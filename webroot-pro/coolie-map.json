@@ -3,7 +3,7 @@
     "main": [
       {
         "src": "../webroot-dev/static/js/app/book.js",
-        "dest": "/static/js/app/fe343cd8ec772edd2b1b0d269684812d.js",
+        "dest": "/static/js/app/240d237c08c5a51100c97e70ddc0da4d.js",
         "deps": [
           "../webroot-dev/static/js/alien/core/communication/xhr.js",
           "../webroot-dev/static/js/alien/utils/typeis.js",
