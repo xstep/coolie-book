@@ -10,7 +10,17 @@
 
 
 # 配置
+## `attributeName`
 
+指定非标准属性，默认为 `data-original`。
+
+## `tagName`
+
+指定标签名，默认为 `img`。
+
+## `progress`
+
+替换进度，默认为 `pre-html`（详细参考[前端构建工具中间件文档](../document/coolie-middleware.md)）。
 
 # repo
 
