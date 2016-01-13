@@ -120,8 +120,7 @@ var exec = function (cmds, callback) {
         }
 
         if (stderr) {
-            logDanger(stderr);
-            return process.exit(1);
+            logWarning(stderr);
         }
 
         logSuccess(stdout);
