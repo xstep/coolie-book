@@ -251,7 +251,6 @@ var banner = function () {
         logWarning('│  ' + fixed(item, maxLength, ' ') + '│');
     });
     logWarning(tfoot);
-    logNormal();
 };
 
 
