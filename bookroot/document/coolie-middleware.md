@@ -51,3 +51,9 @@ function coolieMiddlewareSample (options){
 }
 ```
 
+
+# API
+每一个中间件的上下文都是当前构建的 coolie 对象，该对象上包装了以下接口：
+
+## matchHTML
+
