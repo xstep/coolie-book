@@ -111,11 +111,12 @@ define(function (require, exports, module) {
             });
 
             options.body = fd;
-
-            Emitter.pipe(xhr, the);
+            the._xhr = xhr(options);
+            Emitter.pipe(the._xhr, the);
         }
     });
 
+    klass.transfer(xhr.constructor, Upload, '_xhr');
     module.exports = function (options) {
         return new Upload(options);
     };

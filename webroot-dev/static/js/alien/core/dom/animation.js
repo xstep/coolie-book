@@ -54,8 +54,6 @@ define(function (require, exports, module) {
     //var css = 'transition-property';
     //var transitionendEventPrefix = compatible.css3(css).replace(css, '').replace(/-/g, '');
     //var transitionendEventType = transitionendEventPrefix ? transitionendEventPrefix + 'TransitionEnd' : 'transitionend';
-    //var animationendEventType = compatible.html5('onanimationend', window, true);
-    //var animationiterationEventType = compatible.html5('onanimationiteration', window, true);
     var animationendEventType = 'webkitAnimationEnd oanimationend msAnimationEnd mozAnimationEnd animationend';
     //var animationiterationEventType = 'webkitAnimationIteration oAnimationIteration msAnimationIteration mozAnimationIteration animationiteration';
     var transitionendEventType = 'webkitTransitionEnd oTransitionEnd msTransitionEnd mozTransitionEnd transitionend';
@@ -171,7 +169,7 @@ define(function (require, exports, module) {
      * css3 transition 动画
      * @param $ele {HTMLElement|String} 元素
      * @param to {Object} 动画终点样式
-     * @param options {Object} 配置
+     * @param [options] {Object} 配置
      * @param [options.duration=567] {Number} 动画时间
      * @param [options.delay=0] {Number} 开始动画延迟时间
      * @param [options.easing="in-out"] {String} 动画缓冲类型
@@ -213,7 +211,7 @@ define(function (require, exports, module) {
          */
         queue.shift();
         queue.push(transition($ele, to, options), callback);
-        queue.begin();
+        queue.start();
     };
 
 
@@ -310,7 +308,7 @@ define(function (require, exports, module) {
          */
         queue.shift();
         queue.push(keyframes($ele, name, options), callback);
-        queue.begin();
+        queue.start();
     };
 
 
@@ -498,7 +496,7 @@ define(function (require, exports, module) {
          */
         queue.shift();
         queue.push(scrollTo($ele, to, options), callback);
-        queue.begin();
+        queue.start();
     };
 });
 

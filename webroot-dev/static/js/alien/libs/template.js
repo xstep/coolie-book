@@ -17,6 +17,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
+
     var dato = require('../utils/dato.js');
     var string = require('../utils/string.js');
     var typeis = require('../utils/typeis.js');
@@ -58,20 +59,18 @@ define(function (require, exports, module) {
     };
     var increase = 0;
     var filters = {};
+
+    var generatorVar = function () {
+        return '__' + (increase++) + '__';
+    };
+
     var Template = klass.create({
         constructor: function (template, options) {
-            this._options = dato.extend(true, {}, configs, options);
-            this._init(String(template));
-            this.className = 'template';
-        },
+            var the = this;
 
-        /**
-         * 生成一个变量
-         * @returns {string}
-         * @private
-         */
-        _generatorVar: function () {
-            return namespace + increase++;
+            the.className = 'template';
+            the._options = dato.extend(true, {}, configs, options);
+            the._init(String(template));
         },
 
 
@@ -86,8 +85,8 @@ define(function (require, exports, module) {
 
             exp = exp.replace(REG_F, '');
             return '(function(){try{' +
-                'if(' + the._selfVarible + '.typeis.empty(' + exp + ') && ' + the._selfVarible + '.options.debug){return String(' + exp + ');}\n' +
-                'return ' + exp + '}catch(e){return ' + the._selfVarible + '.options.debug?e.message:"";}}())';
+                'if(' + the._selfVarible + '.typeis.empty(' + exp + ') && ' + the._selfVarible + '.options.debug){return String(' + exp + ');}' +
+                'return ' + exp + '}catch(e){return ' + the._selfVarible + '.options.debug?e.message:""}}())';
         },
 
 
@@ -99,8 +98,12 @@ define(function (require, exports, module) {
          */
         _init: function (template) {
             var the = this;
-            var _var = the._generatorVar();
-            var selfVarible = the._generatorVar();
+            var options = the._options;
+            var _var = generatorVar();
+            var selfVarible = generatorVar();
+            var _forKey = generatorVar();
+            var _evalKey = generatorVar();
+            var dataVarible = generatorVar();
             var fnStr = 'var ' + _var + '="";\n';
             var output = [];
             var parseTimes = 0;
@@ -110,6 +113,13 @@ define(function (require, exports, module) {
             var inExp = false;
 
             fnStr += 'var ' + selfVarible + '=this;\n';
+            fnStr += 'var ' + _evalKey + '="";\n' +
+                'for(var ' + _forKey + ' in ' + dataVarible + '){\n' +
+                    /**/'\tif(/^[a-z$_]/i.test(' + _forKey + ')){\n' +
+                    /**//**/'\t\t' + _evalKey + '+="var "+' + _forKey + '+"=' + dataVarible + '[\'"+' + _forKey + '+"\'];";\n' +
+                    /**/'\t}\n' +
+                '}\n' +
+                'eval(' + _evalKey + ');\n\n';
             the._template = {
                 escape: string.escapeHTML,
                 filters: {}
@@ -215,7 +225,7 @@ define(function (require, exports, module) {
                     }
                     // /list
                     else if ($0 === '/list') {
-                        output.push('}, this);\n' + _var + '+=' + $1 + ';');
+                        output.push('});\n' + _var + '+=' + $1 + ';');
                     }
                     // var
                     else if (the._hasPrefix($0, 'var')) {
@@ -254,8 +264,28 @@ define(function (require, exports, module) {
                 }
             });
 
-            fnStr += output.join('\n') + 'return ' + _var + ';\n';
-            the.fn = fnStr;
+            fnStr += output.join(';\n') + '\nreturn ' + _var + ';\n';
+
+            var fn;
+
+            try {
+                /* jshint evil: true */
+                fn = new Function(dataVarible, 'try{\n\n' +
+                    fnStr +
+                    '\n\n}catch(err){\n' +
+                    'return '+the._selfVarible+'.options.debug?err.message:"";\n' +
+                    '}\n');
+            } catch (err) {
+                fn = function () {
+                    return options.debug ? err.message : '';
+                };
+            }
+
+            //fn.toString = function () {
+            //    return fnStr;
+            //};
+            fn.context = the;
+            the.compiler = fn;
 
             return the;
         },
@@ -284,15 +314,12 @@ define(function (require, exports, module) {
         render: function (data) {
             var the = this;
             var options = the._options;
-            var _var = the._generatorVar();
-            var vars = [];
-            var fn;
             var existFilters = dato.extend(true, {}, filters, the._template.filters);
             var self = dato.extend(true, {}, {
                 each: function (obj) {
                     var args = allocation.args(arguments);
 
-                    if (typeis(obj) === 'string') {
+                    if (typeis.String(obj)) {
                         args[0] = [];
                     }
 
@@ -306,9 +333,6 @@ define(function (require, exports, module) {
             var ret;
 
             data = data || {};
-            dato.each(data, function (key) {
-                vars.push('var ' + key + '=' + _var + '["' + key + '"];\n');
-            });
 
             dato.each(the._useFilters, function (filter) {
                 if (!existFilters[filter]) {
@@ -317,25 +341,10 @@ define(function (require, exports, module) {
             });
 
             try {
-                /* jshint evil: true */
-                fn = new Function(_var, 'try{\n' +
-                    vars.join('') +
-                    this.fn +
-                    '\n}catch(err){\n' +
-                    'return this.options.debug?err.message:"";\n' +
-                    '}');
-            } catch (err) {
-                fn = function () {
-                    return options.debug ? err.message : '';
-                };
-            }
-
-            try {
-                ret = fn.call(self, data);
+                ret = the.compiler.call(self, data);
             } catch (err) {
                 ret = options.debug ? err.message : '';
             }
-
 
             ret = String(ret);
             ret = options.compress ? _cleanHTML(ret) : ret;
@@ -365,7 +374,7 @@ define(function (require, exports, module) {
         filter: function (name, callback, isOverride) {
             var instanceFilters = this._template.filters;
 
-            if (typeis(name) !== 'string') {
+            if (!typeis.String(name)) {
                 throw new Error('filter name must be a string');
             }
 
@@ -374,7 +383,7 @@ define(function (require, exports, module) {
                 throw new Error('override a exist instance filter');
             }
 
-            if (typeis(callback) !== 'function') {
+            if (!typeis.Function(name)) {
                 throw new Error('filter callback must be a function');
             }
 
@@ -395,7 +404,7 @@ define(function (require, exports, module) {
          * // => return test filter function
          */
         getFilter: function (name) {
-            return typeis(name) === 'string' ?
+            return typeis.String(name) ?
                 this._template.filters[name] :
                 this._template.filters;
         },
@@ -465,7 +474,7 @@ define(function (require, exports, module) {
             }
 
             exp = this._wrapSafe(exp);
-            return (unEscape ? '(' : 'this.escape(') + exp + ')';
+            return (unEscape ? '(' : the._selfVarible + '.escape(') + exp + ')';
         },
 
 
@@ -496,9 +505,9 @@ define(function (require, exports, module) {
             var the = this;
             var matches = str.trim().match(REH_LIST);
             var parse;
-            var randomKey1 = this._generatorVar();
-            var randomKey2 = this._generatorVar();
-            var randomVal = this._generatorVar();
+            var randomKey1 = generatorVar();
+            var randomKey2 = generatorVar();
+            var randomVal = generatorVar();
 
             if (!matches) {
                 throw new Error('parse error ' + str);
@@ -510,7 +519,7 @@ define(function (require, exports, module) {
                 val: matches[4] ? matches[4] : matches[2]
             };
 
-            return 'this.each(' + the._wrapSafe(parse.list) + ', function(' + randomKey1 + ', ' + randomVal + '){' +
+            return the._selfVarible +'.each(' + the._wrapSafe(parse.list) + ', function(' + randomKey1 + ', ' + randomVal + '){' +
                 'var ' + parse.key + ' = ' + randomKey1 + ';\n' +
                 'var ' + parse.val + '=' + randomVal + ';\n';
         },
@@ -612,7 +621,7 @@ define(function (require, exports, module) {
      * @param {Boolean} [isOverride=false] 是否强制覆盖，默认 false
      * @static
      */
-    Template.filter = Template.addFilter = function (name, callback, isOverride) {
+    Template.filter = function (name, callback, isOverride) {
         if (typeis(name) !== 'string') {
             throw new Error('filter name must be a string');
         }

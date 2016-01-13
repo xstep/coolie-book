@@ -1,4 +1,4 @@
-/*!
+/**
  * 遮罩
  * @author ydr.me
  * @create 2015-01-11 13:06
@@ -20,6 +20,7 @@ define(function (require, exports, module) {
 
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
+    var allocation = require('../../utils/allocation.js');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
@@ -46,6 +47,12 @@ define(function (require, exports, module) {
     var Mask = ui.create({
         constructor: function ($cover, options) {
             var the = this;
+            var args = allocation.args(arguments);
+
+            if (typeis.plainObject(args[0])) {
+                options = args[0];
+                $cover = win;
+            }
 
             the._$cover = selector.query($cover)[0];
             the._$cover = _isSimilar2Window(the._$cover) ? win : the._$cover;
@@ -128,7 +135,7 @@ define(function (require, exports, module) {
                 maskWindowList.push(the);
 
                 if (options.fixed && attribute.height(body) > attribute.height(win)) {
-                    attribute.addClass(body, alienClass + '-overflow');
+                    attribute.addClass([html, body], alienClass + '-overflow');
                 }
             }
 
@@ -200,7 +207,7 @@ define(function (require, exports, module) {
             }
 
             if (!maskWindowLength) {
-                attribute.removeClass(body, alienClass + '-overflow');
+                attribute.removeClass([html, body], alienClass + '-overflow');
             }
 
             return the;
@@ -330,7 +337,7 @@ define(function (require, exports, module) {
      * @private
      */
     function _isSimilar2Window($ele) {
-        return $ele === win || $ele === doc ||
+        return !$ele || $ele === win || $ele === doc ||
             $ele === html || $ele === body || !$ele;
     }
 });

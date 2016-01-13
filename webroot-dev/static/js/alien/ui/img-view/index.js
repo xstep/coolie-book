@@ -1,4 +1,4 @@
-/*!
+/**
  * 图片查看器
  * @author ydr.me
  * @create 2015-01-04 21:43
@@ -16,6 +16,7 @@ define(function (require, exports, module) {
      * @requires core/dom/attribute
      * @requires core/dom/modification
      * @requires core/event/base
+     * @requires libs/hotkey
      * @requires libs/template
      * @requires utils/dato
      * @requires utils/number
@@ -32,7 +33,8 @@ define(function (require, exports, module) {
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
     var animation = require('../../core/dom/animation.js');
-    var event = require('../../core/event/hotkey.js');
+    var event = require('../../core/event/base.js');
+    var Hotkey = require('../../ui/hotkey/index.js');
     var Template = require('../../libs/template.js');
     var template = require('./template.html', 'html');
     var style = require('./style.css', 'css');
@@ -41,6 +43,7 @@ define(function (require, exports, module) {
     var typeis = require('../../utils/typeis.js');
     var controller = require('../../utils/controller.js');
     var howdo = require('../../utils/howdo.js');
+    var loader = require('../../utils/loader.js');
     var arrowLeft = require('./arrow-left.png', 'image');
     var arrowRight = require('./arrow-right.png', 'image');
     var tpl = new Template(template);
@@ -131,6 +134,7 @@ define(function (require, exports, module) {
          */
         _initEvent: function () {
             var the = this;
+            the._hotkey = new Hotkey(document);
 
             // 打开
             the._window.on('open', function () {
@@ -158,7 +162,7 @@ define(function (require, exports, module) {
                     the._show();
                 }
             });
-            event.on(doc, 'left', the._onprev);
+            the._hotkey.on('left', the._onprev);
 
             // 下一张
             event.on(the._$next, 'click', the._onnext = function () {
@@ -170,7 +174,7 @@ define(function (require, exports, module) {
                     the._show();
                 }
             });
-            event.on(doc, 'right', the._onnext);
+            the._hotkey.on('right', the._onnext);
 
             // 单击序列
             event.on(the._$navList, 'click', '*', function () {
@@ -198,7 +202,7 @@ define(function (require, exports, module) {
                     the._renderContent();
                 });
             });
-            event.on(doc, 'esc', the._onclose);
+            the._hotkey.on('esc', the._onclose);
         },
 
 
@@ -223,30 +227,44 @@ define(function (require, exports, module) {
          * @private
          */
         _load: function (src, callback) {
-            var img = new Image();
+            //var img = new Image();
             var index = this._index;
 
-            img.src = src;
-            callback = callback || noop;
+            loader.img(src, function (err) {
+                if (err) {
+                    return callback(err);
+                }
 
-            if (img.complete) {
-                callback(null, {
+                callback(err, {
                     index: index,
                     src: src,
-                    width: img.width,
-                    height: img.height
+                    width: this.width,
+                    height: this.height
                 });
-            } else {
-                img.onload = function () {
-                    callback(null, {
-                        index: index,
-                        src: src,
-                        width: img.width,
-                        height: img.height
-                    });
-                };
-                img.onerror = callback;
-            }
+            });
+
+            //
+            //img.src = src;
+            //callback = callback || noop;
+            //
+            //if (img.complete) {
+            //    callback(null, {
+            //        index: index,
+            //        src: src,
+            //        width: img.width,
+            //        height: img.height
+            //    });
+            //} else {
+            //    img.onload = function () {
+            //        callback(null, {
+            //            index: index,
+            //            src: src,
+            //            width: img.width,
+            //            height: img.height
+            //        });
+            //    };
+            //    img.onerror = callback;
+            //}
         },
 
 

@@ -1,4 +1,4 @@
-/*!
+/**
  * UI 类基础
  * @author ydr.me
  * @create 2014-11-11 20:07
@@ -112,4 +112,11 @@ define(function (require, exports, module) {
     exports.importStyle = function (styleText, selector) {
         return modification.importStyle.apply(modification, arguments);
     };
+    modification.importStyle(
+        '*,*:before,*:after{' +
+            /**/'-webkit-box-sizing: border-box;' +
+            /**/'-moz-box-sizing: border-box;' +
+            /**/'-ms-box-sizing: border-box;' +
+            /**/'box-sizing: border-box;' +
+        '}');
 });

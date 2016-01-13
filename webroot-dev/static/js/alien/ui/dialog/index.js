@@ -146,7 +146,7 @@ define(function (require, exports, module) {
             var $pos = modification.create('#comment', alienClass + '-' + the._id);
 
             the._$dialog = node;
-            the._$header = nodes[0];
+            the._eHeader = nodes[0];
             the._$title = nodes[1];
             the._$close = nodes[2];
             the._$body = nodes[3];
@@ -163,7 +163,16 @@ define(function (require, exports, module) {
          * @returns {*|node}
          */
         getNode: function () {
-            return this._$dialog;
+            return this._$body;
+        },
+
+
+        /**
+         * 获取遮罩对象
+         * @returns {Mask|exports|module.exports|*}
+         */
+        getMask: function () {
+            return this._mask;
         },
 
 

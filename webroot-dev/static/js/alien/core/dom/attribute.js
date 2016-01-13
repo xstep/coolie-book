@@ -1,4 +1,4 @@
-/*!
+/**
  * 核心 dom 属性器
  * @author ydr.me
  * 2014-09-16 18:30
@@ -269,7 +269,11 @@ define(function (require, exports, module) {
 
                 var fix = exports.fixCss(key, val);
 
-                if (fix.key && REG_TRANSFORM_KEY.test(fix.key)) {
+                if (!fix.key) {
+                    return;
+                }
+
+                if (REG_TRANSFORM_KEY.test(fix.key)) {
                     transformKey = fix.key;
                     _setEleTransform(ele, key, val);
 
@@ -294,9 +298,10 @@ define(function (require, exports, module) {
     /**
      * 设置元素可见
      * @param $ele
+     * @param [display]
      */
-    exports.show = function ($ele) {
-        exports.css($ele, 'display', see.getDisplay($ele));
+    exports.show = function ($ele, display) {
+        exports.css($ele, 'display', display || see.getDisplay($ele));
     };
 
 

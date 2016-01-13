@@ -1,4 +1,4 @@
-/*!
+/**
  * main
  * @author ydr.me
  * @create 2015-04-29 15:13
@@ -25,6 +25,7 @@ exports.book = function (name, uri, data) {
         if (isAjax) {
             return res.json({
                 title: data.title,
+                pageName: data.pageName,
                 content: data.content
             });
         }
