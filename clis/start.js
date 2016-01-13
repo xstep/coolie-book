@@ -241,14 +241,14 @@ var banner = function () {
         return str + new Array(maxLength - str.length).join(padding);
     };
 
-    var theadLeft = '┌─────────────────────┬';
-    var tfootLeft = '└─────────────────────┴';
-    var thead = fixed(theadLeft, maxLength + padding - 1, '─') + '┐';
-    var tfoot = fixed(tfootLeft, maxLength + padding - 1, '─') + '┘';
+    var theadLeft = '┌────────────────────┬';
+    var tfootLeft = '└────────────────────┴';
+    var thead = fixed(theadLeft, maxLength + padding - 2, '─') + '┐';
+    var tfoot = fixed(tfootLeft, maxLength + padding - 2, '─') + '┘';
 
     logWarning(thead);
     list.forEach(function (item) {
-        logWarning('│  ' + fixed(item, maxLength, ' ') + '│');
+        logWarning('│ ' + fixed(item, maxLength, ' ') + '│');
     });
     logWarning(tfoot);
 };
