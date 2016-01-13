@@ -53,7 +53,7 @@ function coolieMiddlewareSample(options) {
 
 
 # API
-每一个中间件的上下文（`this`）都是当前构建的 coolie 对象：
+每一个中间件的上下文（`this`）都是当前构建的 `coolie` 对象：
 
 ```
 function coolieMiddlewareSample(options) {
