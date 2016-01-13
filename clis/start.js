@@ -15,6 +15,7 @@ var childProcess = require('child_process');
 var pkg = require('../package.json');
 var configs = require('../configs.js');
 
+var startTime = Date.now();
 var NPM_REGISTRY = 'http://registry.npm.taobao.org';
 var ROOT = path.join(__dirname, '../');
 var COLOR_MAP = {
@@ -128,7 +129,6 @@ var now = function () {
     };
 
     return ''.concat(
-        '[',
         fix(d.getFullYear()),
         '-',
         fix(d.getMonth() + 1),
@@ -141,21 +141,20 @@ var now = function () {
         ':',
         fix(d.getSeconds()),
         '.',
-        fix(d.getMilliseconds()),
-        ']'
+        fix(d.getMilliseconds())
     );
 };
 
 
 // 更新代码
 var gitPull = function (callback) {
-    logNormal('1/3');
+    logNormal('\n\n───────────[ 1/3 ]───────────');
     exec([
         'cd ' + ROOT,
         'git branch',
-        'git pull -f'
+        'git pull' + (configs.env === 'local' ? '' : ' -f')
     ], function () {
-        logSuccess(now(), 'git pull success');
+        logSuccess('git pull success');
         callback();
     });
 };
@@ -163,9 +162,9 @@ var gitPull = function (callback) {
 
 // 更新代码
 var installNodeModules = function (callback) {
-    logNormal('2/3');
+    logNormal('\n\n───────────[ 2/3 ]───────────');
     exec('npm install --registry=' + NPM_REGISTRY, function () {
-        logSuccess(now(), 'install node modules success');
+        logSuccess('install node modules success');
         callback();
     });
 };
@@ -199,14 +198,23 @@ var startPM2 = function (callback) {
 
 // 启动
 var start = function () {
-    logNormal('3/3');
+    logNormal('\n\n───────────[ 3/3 ]───────────');
+
+    var done = function () {
+        logNormal('');
+        logNormal('past ' + (Date.now() - startTime) + 'ms');
+        logNormal('');
+    };
+
     if (configs.env === 'local') {
         startLocal(function () {
-            logSuccess(now(), 'listen changing success');
+            logSuccess('listen changing success');
+            done();
         });
     } else {
         startPM2(function () {
-            logSuccess(now(), 'pm2 start success');
+            logSuccess('pm2 start success');
+            done();
         });
     }
 };
@@ -215,6 +223,7 @@ var start = function () {
 var banner = function () {
     var list = [];
     var padding = 4;
+    list.push('start time         │ ' + now());
     list.push('nodejs version     │ ' + process.versions.node);
     list.push('nodejs environment │ ' + configs.env);
     list.push('nodejs project     │ ' + pkg.name + '@' + pkg.version);
@@ -242,6 +251,7 @@ var banner = function () {
         logWarning('│  ' + fixed(item, maxLength, ' ') + '│');
     });
     logWarning(tfoot);
+    logNormal();
 };
 
 
