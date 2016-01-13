@@ -15,10 +15,9 @@ var childProcess = require('child_process');
 var pkg = require('../package.json');
 var configs = require('../configs.js');
 
-var INSTALL_MODULES = 'npm install --registry=http://registry.npm.taobao.org';
+var NPM_REGISTRY = 'http://registry.npm.taobao.org';
 var ROOT = path.join(__dirname, '../');
 var PM2_JSON = path.join(ROOT, 'pm2.json');
-var NODE_MODULES_DIR = path.join(ROOT, 'node_modules');
 
 
 /**
@@ -58,20 +57,32 @@ var exec = function (cmds, callback) {
 
 
 /**
- * 检查目录是否为目录
- * @param dir
- * @returns {boolean}
+ * 输出当前时间字符串
+ * @returns {string}
  */
-var isDirectory = function (dir) {
-    var stat;
+var now = function () {
+    var d = new Date();
+    var fix = function (n) {
+        return (n < 10 ? '0' : '') + n;
+    };
 
-    try {
-        stat = fs.statSync(dir);
-    } catch (err) {
-        return false;
-    }
-
-    return stat.isDirectory();
+    return ''.concat(
+        '[',
+        fix(d.getFullYear()),
+        '-',
+        fix(d.getMonth() + 1),
+        '-',
+        fix(d.getDate()),
+        ' ',
+        fix(d.getHours()),
+        ':',
+        fix(d.getMinutes()),
+        ':',
+        fix(d.getSeconds()),
+        '.',
+        fix(d.getMilliseconds()),
+        ']'
+    );
 };
 
 
@@ -94,14 +105,35 @@ var startLocal = function (callback) {
 
 // pm2 启动
 var startPM2 = function (callback) {
-    exec('pm2 start ' + PM2_JSON, callback);
+    exec([
+        'pm2 start ' + PM2_JSON,
+        'pm2 show ' + pkg.name
+    ], callback);
+};
+
+
+// 更新代码
+var gitPull = function (callback) {
+    exec('git pull', function () {
+        console.log('\x1b[32m', now(), 'git pull success', '\x1b[0m');
+        callback();
+    });
+};
+
+
+// 更新代码
+var installNodeModules = function (callback) {
+    exec('npm install --registry=' + NPM_REGISTRY, function () {
+        console.log('\x1b[32m', now(), 'install node modules success', '\x1b[0m');
+        callback();
+    });
 };
 
 
 // 启动
 var start = function () {
     var done = function () {
-
+        console.log('\x1b[32m', now(), 'start success', '\x1b[0m');
     };
 
     if (configs.env === 'local') {
@@ -112,8 +144,19 @@ var start = function () {
 };
 
 
-if (isDirectory(NODE_MODULES_DIR)) {
-    exec(INSTALL_MODULES, start);
-} else {
-    start();
-}
+console.log('');
+console.log('');
+console.log('=========================================================================');
+console.log('nodejs environment:', configs.env);
+console.log('nodejs project:', pkg.name + '@' + pkg.version);
+console.log('project home:', ROOT);
+console.log('=========================================================================');
+console.log('');
+console.log('');
+
+// 更新代码安装模块并启动
+gitPull(function () {
+    installNodeModules(function () {
+        start();
+    });
+});

@@ -40,7 +40,6 @@
     "howdo": "^2.0.2",
     "later": "^1.2.0",
     "marked": "^0.3.5",
-    "pm2": "^0.14.7",
     "ydr-utils": "^36.0.4"
   },
   "peerDependencies": {},

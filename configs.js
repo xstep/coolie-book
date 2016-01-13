@@ -10,6 +10,7 @@
 var path = require('path');
 // dev/test/pro
 var env = process.env.ENVIRONMENT || 'local';
+env = 'pro';
 var webroot = env === 'local' ? 'dev' : 'pro';
 
 module.exports = {
