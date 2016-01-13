@@ -96,14 +96,22 @@ var exec = function (cmds, callback) {
     var point = 1;
     process.stdout.write('.');
     var interval = setInterval(function () {
-        process.stdout.cursorTo(point);
+        try {
+            process.stdout.cursorTo(point);
+        } catch (err) {
+            // ignore
+        }
         process.stdout.write('.');
         point++;
     }, 1000);
 
     childProcess.exec(command, function (err, stdout, stderr) {
         clearInterval(interval);
-        process.stdout.clearLine();
+        try {
+            process.stdout.clearLine();
+        } catch (err) {
+            // ignore
+        }
         process.stdout.write('\n');
 
         if (err) {
@@ -242,11 +250,13 @@ var start = function () {
 var banner = function () {
     var list = [];
     var padding = 4;
+
     list.push('start time         │ ' + now());
     list.push('nodejs version     │ ' + process.versions.node);
     list.push('nodejs environment │ ' + configs.env);
     list.push('nodejs project     │ ' + pkg.name + '@' + pkg.version);
     list.push('project home       │ ' + ROOT);
+
     var maxLength = 0;
     list.forEach(function (item) {
         if (item.length > maxLength) {
