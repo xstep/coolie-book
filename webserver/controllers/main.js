@@ -18,7 +18,7 @@ exports.getIndex = function (req, res, next) {
 // book
 exports.book = function (name, uri, data) {
     return function (req, res, next) {
-        var isAjax = req.headers['x-request-with'] === 'XMLHttpRequest';
+        var isAjax = req.headers['x-requested-with'] === 'XMLHttpRequest';
 
         data.pageName = name;
 
