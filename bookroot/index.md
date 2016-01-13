@@ -44,6 +44,7 @@
     - [前端构建工具文档](/document/coolie-cli.md)
     - [前端构建工具配置文档](/document/coolie.config.js.md)
     - [前端构建工具中间件文档](/document/coolie-middleware.md)
+    - [posthtml](/document/posthtml.md)
 - [版本](#)
     - [1.x](/version/1.x.md)
     - [0.x](/version/0.x.md)
