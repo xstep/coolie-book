@@ -124,10 +124,7 @@ var exec = function (cmds, callback) {
         }
 
         logSuccess(stdout);
-
-        if (typeof callback === 'function') {
-            callback();
-        }
+        callback();
     });
 };
 
