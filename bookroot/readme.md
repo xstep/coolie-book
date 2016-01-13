@@ -1,4 +1,4 @@
-# ![](https://dn-fed.qbox.me/@/res/20151116153436044827080372 =144x48)
+# ![](https://avatars3.githubusercontent.com/u/16667072?v=3&s=200 =100x100)
 coolie —— 前端开发**构建工具**与前端**模块加载器**组合的工程化解决方案。
 
 
