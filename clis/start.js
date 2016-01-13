@@ -18,6 +18,62 @@ var configs = require('../configs.js');
 var NPM_REGISTRY = 'http://registry.npm.taobao.org';
 var ROOT = path.join(__dirname, '../');
 var PM2_JSON = path.join(ROOT, 'pm2.json');
+var COLOR_MAP = {
+    danger: [31, 39],
+    success: [32, 39],
+    warning: [33, 39]
+};
+
+
+/**
+ * 打印 danger 消息
+ * @param msg
+ * @returns {*}
+ */
+var logDanger = function (msg) {
+    var args = Array.prototype.slice.call(arguments);
+    args.unshift('\x1b[' + COLOR_MAP.danger[0] + 'm');
+    args.push('\x1b[' + COLOR_MAP.danger[1] + 'm');
+
+    return console.log.apply(console, args);
+};
+
+
+/**
+ * 打印 success 消息
+ * @param msg
+ * @returns {*}
+ */
+var logSuccess = function (msg) {
+    var args = Array.prototype.slice.call(arguments);
+    args.unshift('\x1b[' + COLOR_MAP.success[0] + 'm');
+    args.push('\x1b[' + COLOR_MAP.success[1] + 'm');
+
+    return console.log.apply(console, args);
+};
+
+
+/**
+ * 打印 warning 消息
+ * @param msg
+ * @returns {*}
+ */
+var logWarning = function (msg) {
+    var args = Array.prototype.slice.call(arguments);
+    args.unshift('\x1b[' + COLOR_MAP.warning[0] + 'm');
+    args.push('\x1b[' + COLOR_MAP.warning[1] + 'm');
+
+    return console.log.apply(console, args);
+};
+
+
+/**
+ * 打印普通消息
+ * @returns {*}
+ */
+var logNormal = function () {
+    return console.log.apply(configs, arguments);
+};
 
 
 /**
@@ -42,12 +98,16 @@ var exec = function (cmds, callback) {
         process.stdout.write('\n');
 
         if (err) {
-            console.log(err.message);
+            logDanger(err.message);
             return process.exit(1);
         }
 
-        console.log(stdout);
-        console.log(stderr);
+        if (stderr) {
+            logDanger(stderr);
+            return process.exit(1);
+        }
+
+        logSuccess(stdout);
 
         if (typeof callback === 'function') {
             callback();
@@ -115,7 +175,7 @@ var startPM2 = function (callback) {
 // 更新代码
 var gitPull = function (callback) {
     exec('git pull', function () {
-        console.log('\x1b[32m', now(), 'git pull success', '\x1b[0m');
+        logSuccess(now(), 'git pull success');
         callback();
     });
 };
@@ -124,7 +184,7 @@ var gitPull = function (callback) {
 // 更新代码
 var installNodeModules = function (callback) {
     exec('npm install --registry=' + NPM_REGISTRY, function () {
-        console.log('\x1b[32m', now(), 'install node modules success', '\x1b[0m');
+        logSuccess(now(), 'install node modules success');
         callback();
     });
 };
@@ -132,27 +192,26 @@ var installNodeModules = function (callback) {
 
 // 启动
 var start = function () {
-    var done = function () {
-        console.log('\x1b[32m', now(), 'start success', '\x1b[0m');
-    };
-
     if (configs.env === 'local') {
-        startLocal(done);
+        startLocal(function () {
+            logSuccess(now(), 'listen changing success');
+        });
     } else {
-        startPM2(done);
+        startPM2(function () {
+            logSuccess(now(), 'pm2 start success');
+        });
     }
 };
 
 
-console.log('');
-console.log('');
-console.log('=========================================================================');
-console.log('nodejs environment:', configs.env);
-console.log('nodejs project:', pkg.name + '@' + pkg.version);
-console.log('project home:', ROOT);
-console.log('=========================================================================');
-console.log('');
-console.log('');
+logWarning('');
+logWarning('=========================================================================');
+logWarning('nodejs version:', process.versions.node);
+logWarning('nodejs environment:', configs.env);
+logWarning('nodejs project:', pkg.name + '@' + pkg.version);
+logWarning('project home:', ROOT);
+logWarning('=========================================================================');
+logWarning('');
 
 // 更新代码安装模块并启动
 gitPull(function () {
