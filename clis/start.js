@@ -10,6 +10,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var util = require('util');
 var childProcess = require('child_process');
 
 var pkg = require('../package.json');
@@ -23,6 +24,7 @@ var COLOR_MAP = {
     success: [32, 39],
     warning: [33, 39]
 };
+var isDebug = process.argv[2] === '--debug';
 
 
 /**
@@ -34,8 +36,9 @@ var logDanger = function (msg) {
     var args = Array.prototype.slice.call(arguments);
     args.unshift('\x1b[' + COLOR_MAP.danger[0] + 'm');
     args.push('\x1b[' + COLOR_MAP.danger[1] + 'm');
+    args.push('\n');
 
-    return console.log.apply(console, args);
+    return process.stdout.write(util.format.apply(util, args));
 };
 
 
@@ -48,8 +51,9 @@ var logSuccess = function (msg) {
     var args = Array.prototype.slice.call(arguments);
     args.unshift('\x1b[' + COLOR_MAP.success[0] + 'm');
     args.push('\x1b[' + COLOR_MAP.success[1] + 'm');
+    args.push('\n');
 
-    return console.log.apply(console, args);
+    return process.stdout.write(util.format.apply(util, args));
 };
 
 
@@ -62,8 +66,9 @@ var logWarning = function (msg) {
     var args = Array.prototype.slice.call(arguments);
     args.unshift('\x1b[' + COLOR_MAP.warning[0] + 'm');
     args.push('\x1b[' + COLOR_MAP.warning[1] + 'm');
+    args.push('\n');
 
-    return console.log.apply(console, args);
+    return process.stdout.write(util.format.apply(util, args));
 };
 
 
@@ -72,7 +77,9 @@ var logWarning = function (msg) {
  * @returns {*}
  */
 var logNormal = function () {
-    return console.log.apply(configs, arguments);
+    var args = Array.prototype.slice.call(arguments);
+    args.push('\n');
+    return process.stdout.write(util.format.apply(util, args));
 };
 
 
@@ -187,6 +194,13 @@ var startLocal = function (callback) {
 };
 
 
+// debug 启动
+var startDebug = function (callback) {
+    require('../app.js');
+    callback();
+};
+
+
 // pm2 启动
 var startPM2 = function (callback) {
     exec([
@@ -206,7 +220,12 @@ var start = function () {
         logNormal('');
     };
 
-    if (configs.env === 'local') {
+    if (isDebug) {
+        startDebug(function () {
+            logSuccess('debug start success');
+            done();
+        });
+    } else if (configs.env === 'local') {
         startLocal(function () {
             logSuccess('listen changing success');
             done();
