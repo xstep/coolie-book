@@ -99,7 +99,7 @@ coolie.matchHTML({
 构建单个 css 路径。
 
 - `url<String>`：需要构建的 URL，一般为本地的相对 url。
-- `file<String>`：该 URL 所在的文件，即该 css 在哪个文件被使用。
+- `file<String>`：该 css 在哪个文件被使用。
 - `[options]<Object>`：其他配置。
 
 示例，构建`./css/style.css`：
@@ -115,7 +115,40 @@ if (!ret) {
 ```
 
 ## `buildJSPath(url, file[, options])`
+构建单个 js 路径。
 
+- `url<String>`：需要构建的 URL，一般为本地的相对 url。
+- `file<String>`：该 js 在哪个文件被使用。
+- `[options]<Object>`：其他配置。
+
+示例，构建`./js/app.js`：
+```
+var ret = coolie.buildCSSPath('./js/app.js', '/path/to/html/page.html');
+
+if (!ret) {
+    // 构建失败
+}
+
+// ret
+// ret.url 构建之后的 url
+```
 
 ## `buildResPath(url, file[, options])`
+构建单个资源路径。
+
+- `url<String>`：需要构建的 URL，一般为本地的相对 url。
+- `file<String>`：该资源在哪个文件被使用。
+- `[options]<Object>`：其他配置。
+
+示例，构建`./img/logo.png`：
+```
+var ret = coolie.buildCSSPath('./img/logo.js', '/path/to/html/page.html');
+
+if (!ret) {
+    // 构建失败
+}
+
+// ret
+// ret.url 构建之后的 url
+```
 
