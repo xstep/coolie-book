@@ -1,24 +1,53 @@
-**coolie 中间件目前正处于测试阶段。**
+**Beta 阶段**
 
+--------------------
 
-# html 中间件
+# 介绍
+coolie-cli 中间件作用于构建工具构建的不同阶段。
+中间件必须是一个同步函数，该函数在构建阶段会接受到一个配置参数`options`：
+
 ```
-src html => middleware1 => ... => middlewareN => dest html
+function coolieMiddlewareSample (options){
+    // ... do
+}
 ```
 
-每一个 coolie 中间件都会接收到这样的参数。
-```
-function coolieMiddleware(options){
-    // 传入的代码
-    options.code += ' <!-- by some middleware -->';
+中间件忽略处理，需要原样返回 options 对象。
 
+```
+function coolieMiddlewareSample (options){
+    // ignore
     return options;
 }
 ```
 
-通过对象引用的方式，改变`options`对象的值来实现中间件的传递。
 
 
-# pre 类型中间件
-# on 类型中间件
-# post 类型中间件
+# options
+
+## options.progress
+
+构建阶段，目前有值:
+
+- `pre-html`：构建 html 文件之前
+- `post-html`：构建 html 文件之后
+
+## options.code
+
+当前的源代码，用于中间件处理。
+
+
+# sample
+给每个 html 文件末尾都加上当前时间戳。
+
+```
+function coolieMiddlewareSample (options){
+    if(options.progress !== 'post-html') {
+        return options;
+    }
+    
+    options.code += Date.now();
+    return options;
+}
+```
+
