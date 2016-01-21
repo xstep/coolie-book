@@ -38,6 +38,7 @@
     - [最佳实践](/sample/best-practices.md)
 - [中间件](#)
     - [coolie-html-attr-resource](/middleware/coolie-html-attr-resource.md)
+    - [coolie-html-tag-template](/middleware/coolie-html-tag-template.md)
 - [开发文档](#)
     - [模块加载器文档](/document/coolie.js.md)
     - [模块加载器配置文档](/document/coolie-config.js.md)
