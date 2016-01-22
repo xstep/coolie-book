@@ -1,5 +1,4 @@
 ```
-
 var dato = require('ydr-utils').dato;
 
 var pkg = require('./package.json');
