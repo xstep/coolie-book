@@ -11,13 +11,15 @@ var path = require('path');
 // dev/test/pro
 var env = process.env.ENVIRONMENT || 'local';
 var webroot = env === 'local' ? 'dev' : 'pro';
+var root = __dirname;
 
 module.exports = {
     port: 18083,
     env: env,
-    bookroot: path.join(__dirname, './bookroot'),
-    webroot: path.join(__dirname, './webroot-' + webroot),
-    //webroot: path.join(__dirname, './webroot-pro'),
+    root: root,
+    bookroot: path.join(root, './bookroot'),
+    webroot: path.join(root, './webroot-' + webroot),
+    //webroot: path.join(root, './webroot-pro'),
     cookie: {
         secret: 'xiaomaolv'
     },
