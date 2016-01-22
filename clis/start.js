@@ -1,7 +1,7 @@
 /**
  * 启动文件
  * @author ydr.me
- * @create 2014-12-02 22:59
+ * @create 2016年01月13日14:27:23
  */
 
 
@@ -19,56 +19,46 @@ var configs = require('../configs.js');
 var startTime = Date.now();
 var NPM_REGISTRY = 'http://registry.npm.taobao.org';
 var ROOT = path.join(__dirname, '../');
-var COLOR_MAP = {
-    danger: [31, 39],
-    success: [32, 39],
-    warning: [33, 39]
-};
 var isDebug = process.argv[2] === '--debug';
 
 
 /**
+ * 包装器
+ * @param color
+ * @param args
+ */
+var wrapper = function (color, args) {
+    var str = util.format.apply(util, args);
+
+    str = util.format('\x1b[' + util.inspect.colors[color][0] + 'm%s\x1b[' + util.inspect.colors[color][1] + 'm\n', str);
+    process.stdout.write(str);
+};
+
+
+/**
  * 打印 danger 消息
- * @param msg
  * @returns {*}
  */
-var logDanger = function (msg) {
-    var args = Array.prototype.slice.call(arguments);
-    args.unshift('\x1b[' + COLOR_MAP.danger[0] + 'm');
-    args.push('\x1b[' + COLOR_MAP.danger[1] + 'm');
-    args.push('\n');
-
-    return process.stdout.write(util.format.apply(util, args));
+var logDanger = function () {
+    wrapper('red', arguments);
 };
 
 
 /**
  * 打印 success 消息
- * @param msg
  * @returns {*}
  */
 var logSuccess = function (msg) {
-    var args = Array.prototype.slice.call(arguments);
-    args.unshift('\x1b[' + COLOR_MAP.success[0] + 'm');
-    args.push('\x1b[' + COLOR_MAP.success[1] + 'm');
-    args.push('\n');
-
-    return process.stdout.write(util.format.apply(util, args));
+    wrapper('green', arguments);
 };
 
 
 /**
  * 打印 warning 消息
- * @param msg
  * @returns {*}
  */
 var logWarning = function (msg) {
-    var args = Array.prototype.slice.call(arguments);
-    args.unshift('\x1b[' + COLOR_MAP.warning[0] + 'm');
-    args.push('\x1b[' + COLOR_MAP.warning[1] + 'm');
-    args.push('\n');
-
-    return process.stdout.write(util.format.apply(util, args));
+    wrapper('yellow', arguments);
 };
 
 
@@ -77,9 +67,7 @@ var logWarning = function (msg) {
  * @returns {*}
  */
 var logNormal = function () {
-    var args = Array.prototype.slice.call(arguments);
-    args.push('\n');
-    return process.stdout.write(util.format.apply(util, args));
+    return process.stdout.write(util.format.apply(util, arguments) + '\n');
 };
 
 
@@ -157,9 +145,33 @@ var now = function () {
 };
 
 
+/**
+ * 路径是否为文件夹
+ * @param _path
+ * @returns {*}
+ */
+var isDirectory = function (_path) {
+    var stat;
+
+    try {
+        stat = fs.statSync(_path);
+    } catch (err) {
+        return false;
+    }
+
+    return stat.isDirectory();
+};
+
+
 // 更新代码
 var gitPull = function (callback) {
     logNormal('\n\n───────────[ 1/3 ]───────────');
+
+    if (!isDirectory(path.join(ROOT, '.git'))) {
+        logWarning('fatal: Not a git repository (or any of the parent directories): .git');
+        return callback();
+    }
+
     exec([
         'cd ' + ROOT,
         'git branch',
@@ -188,7 +200,7 @@ var startLocal = function (callback) {
 
     args.push(__filename);
     args.push('-w');
-    args.push('./webserver/,./bookroot/');
+    args.push('./webserver/');
     args.push('-e');
     args.push('js,md');
     args.push('app.js');
@@ -220,7 +232,7 @@ var start = function () {
 
     var done = function () {
         logNormal('');
-        logNormal('past ' + (Date.now() - startTime) + 'ms');
+        logSuccess('past ' + (Date.now() - startTime) + 'ms');
         logNormal('');
     };
 
