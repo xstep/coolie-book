@@ -68,12 +68,20 @@ function coolieMiddlewareSample(options) {
 coolie 对象上包装了以下接口：
 
 
-## `matchHTML([conditions,] transform)`
-匹配 html 并做相应转换（`conditions`、`transform` 语法参考 [posthtml](./posthtml.md) 一节）。
-`conditions`可选，默认为全部标签。
+## `matchHTML(conditions, transform)`
+匹配 html 并做相应转换。
 
-- `[conditions]<Object>`：匹配条件，可选，默认为全部标签。
-- `transform<Function>`：转换。
+
+### `conditions<Object>`
+匹配条件
+
+- `conditions.tag<String|Array>`，比如单个（`"a"`）或多个标签（`["a", "b"]`），使用`*`表示所有标签（**此时仅能匹配非闭合标签**）
+- `conditions.attrs<Object>`，匹配属性，允许使用字符串和正则表达式
+- `conditions.closed<Boolean>`，默认自动匹配，指定是否为闭合标签（`<a></a>`为闭合标签）
+
+### `transform<Function>`
+转换方法会接收到一个参数`node`，表示当前匹配到的节点，需要返回`node`信息（不能重写）
+
 
 示例，匹配所有 `a` 标签，并加上 `target="_blank"`
 ```
@@ -81,10 +89,6 @@ coolie.matchHTML({
     tag: 'a'
 }, function (node) {
     // <a></a>
-    if (!node.attrs) {
-        return node;
-    }
-
     // <a href="#"></a>
     if (!node.attrs.href || node.attrs.href[0] === '#') {
         return node;

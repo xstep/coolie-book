@@ -14,7 +14,7 @@
 - [seajs](https://www.npmjs.com/package/seajs)
 - [fis](https://www.npmjs.com/package/fis)
 - [webpack](https://www.npmjs.com/package/webpack)
-- [posthtml](https://github.com/posthtml/posthtml)
+- [posthtml](https://www.npmjs.com/package/posthtml)
 
 
 # Developers
