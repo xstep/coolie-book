@@ -70,15 +70,16 @@
 ➜  cd webroot-dev
 ➜  coolie init -c
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
-        init success >> /coolie-demo1/src/coolie.config.js
+        init success >> /coolie-demo1/webroot-dev/coolie.config.js
 ```
 
-并修改为：
+可以简单的看看这个文件，然后修改为：
 
 ```
 /**
@@ -89,8 +90,8 @@
  *
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
- * @version 1.0.22
- * @create 2015-12-14 15:32:19
+ * @version 1.6.4
+ * @create 2016-01-25 20:27:23
  * =======================================================
  */
 
@@ -102,16 +103,27 @@ module.exports = function (coolie) {
         // 是否在构建之前清空目标目录
         clean: true,
 
+        // 目标配置
+        dest: {
+            // 目标目录，相对于当前文件
+            dirname: '../webroot-pro/',
+            // 目标根域
+            host: '',
+            // 版本号长度
+            versionLength: 32
+        },
+
         // js 构建
         js: {
-            // 入口模块
+            // 入口模块，相对于当前文件
             main: [
+                // 支持 glob 语法
                 //【1】
             ],
-            // coolie-config.js 路径
+            // coolie-config.js 路径，相对于当前文件
             //【2】
             'coolie-config.js': null,
-            // js 文件保存目录
+            // js 文件保存目录，相对于 dest.dirname
             dest: './static/js/',
             // 分块配置
             chunk: []
@@ -119,10 +131,11 @@ module.exports = function (coolie) {
 
         // html 构建
         html: {
-            // html 文件
+            // html 文件，相对于当前文件
             src: [
+                // 支持 glob 语法
                 //【3】
-                'index.html'
+                './views/index.html'
             ],
             // 是否压缩
             minify: true
@@ -130,7 +143,7 @@ module.exports = function (coolie) {
 
         // css 构建
         css: {
-            // css 文件保存目录
+            // css 文件保存目录，相对于 dest.dirname
             dest: './static/css/',
             // css 压缩配置
             minify: {
@@ -140,26 +153,17 @@ module.exports = function (coolie) {
 
         // 资源
         resource: {
-            // 资源保存目录
+            // 资源保存目录，相对于 dest.dirname
             dest: './static/res/',
             // 是否压缩
             minify: true
         },
 
-        // 原样复制文件
+        // 原样复制文件，相对于当前文件
         copy: [
+            // 支持 glob 语法
             //【4】
-        ],
-
-        // 目标配置
-        dest: {
-            // 目标目录
-            dirname: '../dest/',
-            // 目标根域
-            host: '',
-            // 版本号长度
-            versionLength: 32
-        }
+        ]
     });
 
     // 使用 coolie 中间件
@@ -173,30 +177,31 @@ module.exports = function (coolie) {
 };
 ```
 
-- 【1】入口模块路径设置为空
-- 【2】模块加载器配置文件设置为空
-- 【3】需要构建的 HTML 文件，即`index.html`
-- 【4】需要复制的文件设置为空
+- 【1】入口模块文件留空，没有任何 JS 文件
+- 【2】模块加载器配置文件留空，没有用到任何模块加载器
+- 【3】需要构建的 html 文件
+- 【4】需要复制的文件留空，没有任何文件需要复制
 
 
 
 
 # 前端构建
-我们来尝试在`src`目录下执行前端构建，看看会发生什么。
+我们来尝试在`webroot-dev`目录下执行前端构建，看看会发生什么。
 
 ```
 ➜  coolie build
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
 
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo1/src/coolie.config.js
-         src dirname >> /coolie-demo1/src
-        dest dirname >> /coolie-demo1/dest/
+       coolie config >> /coolie-demo1/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo1/webroot-dev
+        dest dirname >> /coolie-demo1/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -211,30 +216,32 @@ module.exports = function (coolie) {
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
-                   √ >> ../dest/coolie-map.json
+                   √ >> ../webroot-pro/coolie-map.json
 
-       build success >> past 53ms
+       build success >> past 64ms
 ```
 
 啊，喂，看着屏幕上的日志刷刷而过，别眨眼，来看看构建之后的目录结构：
 
 ```
-coolie-demo1
-├── dest
-│   ├── coolie-map.json
+.
+├── webroot-dev
+│   ├── coolie.config.js
 │   └── index.html
-└── src
-    ├── coolie.config.js
+└── webroot-pro
+    ├── coolie-map.json
     └── index.html
 
 2 directories, 4 files
 ```
 
+从目录结构可以看到，构建之后的文件仍有`index.html`，但却多了一个`coolie-map.json`
+
 
 # 前端构建后运行
-构建给不给力，来看看构建之后的运行结果吧：
+先切换到构建之后的目录，来看看构建之后的运行结果吧：
 ```
-➜  cd ../dest
+➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
                 open >> http://192.168.0.167:63613
@@ -243,7 +250,7 @@ coolie-demo1
 
 ![](https://dn-fed.qbox.me/@/res/20151214154946097880495328 =332x140)
 
-如释重负，运行结果一模一样。
+可喜可贺，运行结果一模一样。
 
 
 # 前端构建后分析
@@ -271,7 +278,12 @@ coolie-demo1
 我们再来看看`index.html`：
 ```
 <!DOCTYPE html><meta charset="utf-8"><h1>Hello World</h1>
-<!--coolie@1.0.22-->
+<!--coolie build-->
 ```
 
 很明显，`index.html`已经被压缩了，并且打上了 coolie 的标记。
+
+到这里，一个完整的 hello world 已经完成了。
+其实前端构建就这么简单，一个配置一个命令就可以完成了。
+
+感兴趣的话，继续往下看吧。
