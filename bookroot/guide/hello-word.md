@@ -4,18 +4,18 @@
 # 准备
 先准备以下目录
 ```
-coolie-demo1
-├── dest
-└── src
+.
+├── webroot-dev
+└── webroot-pro
 
 2 directories, 0 files
 ```
 
-- `src`：构建之前的项目根目录（后面的 demo 与之相同）
-- `dest`：构建之后的项目根目录（后面的 demo 与之相同）
+- `webroot-dev`：构建之前的项目根目录（开发目录，后面的 demo 与之相同）
+- `webroot-pro`：构建之后的项目根目录（生产目录，后面的 demo 与之相同）
 
 
-接下来，我们就在`src`目录下开始写代码了。
+接下来，我们就在`webroot-dev`目录下开始写代码了。
 
 
 
@@ -30,17 +30,19 @@ coolie-demo1
 
 
 # 前端构建前运行
+`coolie-cli` 相比其他的构建工具，侵入性非常的低，未构建之前是可以正常运行的。
+
 当前的目录结构为：
 ```
-coolie-demo1
-├── dest
-└── src
-    └── index.html
+.
+├── webroot-dev
+│   └── index.html
+└── webroot-pro
 
-2 directories, 1 files
+2 directories, 1 file
 ```
 
-使用 [sts 工具](https://www.npmjs.com/package/sts)，在`src`目录下运行：
+使用 [sts 工具](https://www.npmjs.com/package/sts)（sts 是一款运行静态服务器的 node 工具），在`src`目录下运行：
 
 ```
 ➜  sts
@@ -56,9 +58,16 @@ coolie-demo1
 
 
 # 前端构建配置文件
-下面，我们来尝试下构建之后的效果。
-首先要配置前端构建配置文件，使用`coolie init -c`生成文件模板:
+看到配置文件先不要紧张，coolie-cli 的配置非常的简单：
+
+- 用过的都说好，配置简化到最小，即使不看文档也知道
+- 一次性配置终生受用，不像其他构建工具开发一点配置一点
+- 可以使用命令生成标准（推荐的）配置文件，只需要稍加修改即可
+
+
+使用`coolie init -c`命令生成文件模板:
 ```
+➜  cd webroot-dev
 ➜  coolie init -c
 
 ╔══════════════════════════════════════════════════════╗
