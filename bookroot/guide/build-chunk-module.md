@@ -428,9 +428,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/github/coolie-demo10/webroot-dev/coolie.config.js
-         src dirname >> /Users/cloudcome/development/github/coolie-demo10/webroot-dev
-        dest dirname >> /Users/cloudcome/development/github/coolie-demo10/webroot-pro/
+       coolie config >> /coolie-demo10/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo10/webroot-dev
+        dest dirname >> /coolie-demo10/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
