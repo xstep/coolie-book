@@ -30,106 +30,47 @@ CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块�
 ```
 
 
-# CSS 模块化
-这种分组构建的方式，非常有利于 CSS 的模块化。一个典型的 CSS 模块化直观展示：
-```
-<!--通用模块-->
-<!--coolie-->
-<link rel="stylesheet" href="/static/css/common/0-normalize.css">
-<link rel="stylesheet" href="/static/css/common/1-base.css">
-<link rel="stylesheet" href="/static/css/common/2-layout.css">
-<link rel="stylesheet" href="/static/css/common/2-input.css">
-<link rel="stylesheet" href="/static/css/common/2-button.css">
-<link rel="stylesheet" href="/static/css/common/2-list.css">
-<link rel="stylesheet" href="/static/css/common/2-text.css">
-<link rel="stylesheet" href="/static/css/common/2-kvlist.css">
-<link rel="stylesheet" href="/static/css/common/2-table.css">
-<!--/coolie-->
-
-<!--业务模块-->
-<!--coolie-->
-<link rel="stylesheet" href="/static/css/modules/layout.css">
-<link rel="stylesheet" href="/static/css/modules/header.css">
-<link rel="stylesheet" href="/static/css/modules/nav.css">
-<link rel="stylesheet" href="/static/css/modules/footer.css">
-<link rel="stylesheet" href="/static/css/modules/copyright.css">
-<!--/coolie-->
-
-<!--业务样式-->
-<!--coolie-->
-<link rel="stylesheet" href="/static/css/app.css">
-<!--/coolie-->
-```
-
-这种开发模式下，css 的目录结构可以这么分：
-
-```
-css
-├── app
-│   ├── page1.css
-│   ├── page2.css
-│   └── readme.md
-├── common
-│   ├── 0-normalize.css
-│   ├── 1-base.css
-│   └── 2-alert.css
-├── modules
-│   ├── module1.css
-│   ├── module2.css
-│   └── readme.md
-└── readme.md
-```
-
-
 
 # demo
 ## 初始化目录
 新建`coolie-demo3`目录：
 ```
-coolie-demo3
-└── src
+.
+└── webroot-dev
 
 2 directories, 0 files
 ```
 
 ## 初始化文件
-在 src 目录下，新建`1.css`和`2.css`：
-```
-/*1.css*/
-body{
-    background: #000;
-}
-```
-
-```
-/*2.css*/
-body{
-    color: #fff;
-}
-```
-
-然后是`index.html`：
+### index.html
 ```
 <!doctype html>
 <meta charset="utf8">
 
-<!--coolie-->
-<link rel="stylesheet" href="1.css">
-<link rel="stylesheet" href="2.css">
-<!--/coolie-->
+<link rel="stylesheet" href="coolie-demo3.css">
 
 <h1>coolie-demo3</h1>
 ```
 
+### coolie-demo3.css
+```
+body{
+	background: #000;
+}
+
+h1{
+	color: #fff;
+}
+```
+
 此时目录结构为：
 ```
-coolie-demo3
-└── src
-    ├── 1.css
-    ├── 2.css
+.
+└── webroot-dev
+    ├── coolie-demo3.css
     └── index.html
 
-1 directories, 3 files
+1 directory, 2 files
 ```
 
 
@@ -139,24 +80,24 @@ coolie-demo3
 ➜  cd src
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.162:49183
+                open >> http://192.168.0.157:56486
 ```
 
 
-![](https://dn-fed.qbox.me/@/res/20151210165107055838840951 =298x138)
+![](http://s.ydr.me/@/res/20160126102740447230185392 =328x122)
 
 
 ## 前端构建配置
-使用`coolie init -cj`生成`coolie.config.js`（前端构建工具的配置文件）：
+使用`coolie init -c`生成`coolie.config.js`（前端构建工具的配置文件）：
 ```
 ➜  coolie init -c
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
-        init success >> /coolie-demo3/src/coolie.config.js
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
+        init success >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev/coolie.config.js
 ```
 
 修改`coolie.config.js`为：
@@ -170,8 +111,8 @@ coolie-demo3
  *
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
- * @version 1.0.22
- * @create 2015-12-14 16:26:00
+ * @version 1.6.4
+ * @create 2016-01-26 10:28:28
  * =======================================================
  */
 
@@ -183,16 +124,28 @@ module.exports = function (coolie) {
         // 是否在构建之前清空目标目录
         clean: true,
 
+        // 目标配置
+        dest: {
+            // 目标目录，相对于当前文件
+            dirname: '../webroot-pro/',
+            // 目标根域
+            host: '',
+            // 版本号长度
+            versionLength: 32
+        },
+
         // js 构建
         js: {
-            // 入口模块
+            // 入口模块，相对于当前文件
             main: [
+                // 支持 glob 语法
+                // './static/js/app/**/*.js'
                 //【1】
             ],
-            // coolie-config.js 路径
+            // coolie-config.js 路径，相对于当前文件
             //【2】
             'coolie-config.js': null,
-            // js 文件保存目录
+            // js 文件保存目录，相对于 dest.dirname
             dest: './static/js/',
             // 分块配置
             chunk: []
@@ -200,8 +153,9 @@ module.exports = function (coolie) {
 
         // html 构建
         html: {
-            // html 文件
+            // html 文件，相对于当前文件
             src: [
+                // 支持 glob 语法
                 //【3】
                 'index.html'
             ],
@@ -211,7 +165,7 @@ module.exports = function (coolie) {
 
         // css 构建
         css: {
-            // css 文件保存目录
+            // css 文件保存目录，相对于 dest.dirname
             dest: './static/css/',
             // css 压缩配置
             minify: {
@@ -221,26 +175,19 @@ module.exports = function (coolie) {
 
         // 资源
         resource: {
-            // 资源保存目录
+            // 资源保存目录，相对于 dest.dirname
             dest: './static/res/',
             // 是否压缩
             minify: true
         },
 
-        // 原样复制文件
+        // 原样复制文件，相对于当前文件
         copy: [
+            // 支持 glob 语法
+            // './favicon.ico',
+            // './robots.txt'
             //【4】
-        ],
-
-        // 目标配置
-        dest: {
-            // 目标目录
-            dirname: '../dest/',
-            // 目标根域
-            host: '',
-            // 版本号长度
-            versionLength: 32
-        }
+        ]
     });
 
     // 使用 coolie 中间件
@@ -254,38 +201,37 @@ module.exports = function (coolie) {
 };
 ```
 
-- 【1】：去除了入口文件路径
+- 【1】：去除了入口模块的配置
 - 【2】：取消了模块加载器配置文件的路径
-- 【3】：修改了 html 文件路径
+- 【3】：修改了需要构建的 html 文件路径
 - 【4】：去除了原样复制文件配置
 
 此时的目录结构为：
 ```
-coolie-demo3
-└── src
-    ├── 1.css
-    ├── 2.css
+.
+└── webroot-dev
+    ├── coolie-demo3.css
     ├── coolie.config.js
     └── index.html
 
-1 directory, 4 files
+1 directory, 3 files
 ```
 
 ## 前端构建
-在 src 目录执行前端构建：
+在 webroot-dev 目录执行前端构建：
 ```
 ➜  coolie build
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo3/src/coolie.config.js
-         src dirname >> /coolie-demo3/src
-        dest dirname >> /coolie-demo3/dest/
+       coolie config >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev/coolie.config.js
+         src dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev
+        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -297,31 +243,30 @@ coolie-demo3
       overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
-                   √ >> /static/css/55c90fffc925a0abebdc406feaf0e53c.css
+                   √ >> /coolie-demo3.css
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
-                   √ >> ../dest/coolie-map.json
+                   √ >> ../webroot-pro/coolie-map.json
 
-       build success >> past 99ms
+       build success >> past 114ms
 ```
 
 构建之后的目录结构为：
 ```
-coolie-demo3
-├── dest
-│   ├── coolie-map.json
-│   ├── index.html
-│   └── static
-│       └── css
-│           └── 55c90fffc925a0abebdc406feaf0e53c.css
-└── src
-    ├── 1.css
-    ├── 2.css
-    ├── coolie.config.js
-    └── index.html
+.
+├── webroot-dev
+│   ├── coolie-demo3.css
+│   ├── coolie.config.js
+│   └── index.html
+└── webroot-pro
+    ├── coolie-map.json
+    ├── index.html
+    └── static
+        └── css
+            └── cb7915fd4819d13bbeac010e5523bce8.css
 
-4 directories, 7 files
+4 directories, 6 files
 ```
 
 
@@ -329,43 +274,28 @@ coolie-demo3
 
 使用 [sts](https://www.npmjs.com/package/sts) 执行：
 ```
-➜  cd ../dest
+➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.162:49724
+                open >> http://192.168.0.157:56681
 ```
 
 
-![](https://dn-fed.qbox.me/@/res/20151210165107055838840951 =298x138)
+![](http://s.ydr.me/@/res/20160126103158637420429859 =311x134)
 
 
 ## 构建结果分析
-先来看下`coolie-map.json`（[详细介绍点这里](/introduction/resource-relationship-map.md)）:
+### index.html
 ```
-{
-  "/index.html": {
-    "main": [],
-    "async": [],
-    "js": [],
-    "css": [
-      {
-        "dest": "/static/css/55c90fffc925a0abebdc406feaf0e53c.css",
-        "deps": [
-          {
-            "src": "../src/1.css",
-            "res": []
-          },
-          {
-            "src": "../src/2.css",
-            "res": []
-          }
-        ]
-      }
-    ]
-  }
-}
+<!doctype html><meta charset="utf8"> <link rel="stylesheet" href="/static/css/cb7915fd4819d13bbeac010e5523bce8.css"> <h1>coolie-demo3</h1>
+<!--coolie build-->
 ```
 
-标记了`index.html`引入了`static/css/55c90fffc925a0abebdc406feaf0e53c.css`文件，
-并且该文件是由`1.css`和`2.css`文件合并而来，并且`1.css`和`2.css`依赖的资源文件都为空。
+### css 文件
+```
+body{background:#000}h1{color:#fff}
+```
 
+- 构建之后的 html 被压缩了
+- 构建之后的 `link` 的 `href` 由 `coolie-demo3.css` 变为 `/static/css/cb7915fd4819d13bbeac010e5523bce8.css`
+- css 文件也被压缩了
