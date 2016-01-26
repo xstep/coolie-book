@@ -105,10 +105,10 @@ chunk: [
 
 # demo
 ## 初始化目录结构
-新建一个`coolie-demo8`的目录，结构如下：
+新建一个`coolie-demo10`的目录，结构如下：
 ```
-coolie-demo8
-└── src                // 开发目录
+.
+└── webroot-dev        // 开发目录
     └── static         // 静态目录
         └── js         // js 目录
             ├── app    // 入口模块目录
@@ -120,104 +120,111 @@ coolie-demo8
 ## 初始化文件
 本 demo 要的是，显示今天的年月日。分别在 libs 目录下新建
 
-- src/static/js/libs/year.js
-- src/static/js/libs/month.js
-- src/static/js/libs/date.js
+- webroot-dev/static/js/libs/year.js
+- webroot-dev/static/js/libs/month.js
+- webroot-dev/static/js/libs/date.js
 
 三个 js 分别输出当前的年、月、日。
 
-year.js：
+### year.js
 ```
-define(function (require, exports, module){
-	module.exports = function (){
-		return new Date().getFullYear();
-	};
+define(function (require, exports, module) {
+    module.exports = function () {
+        return new Date().getFullYear();
+    };
 });
 ```
 
-month.js：
+### month.js
 ```
-define(function (require, exports, module){
-	module.exports = function (){
-		return new Date().getMonth() + 1;
-	};
+define(function (require, exports, module) {
+    module.exports = function () {
+        return new Date().getMonth() + 1;
+    };
 });
 ```
 
-date.js：
+### date.js
 ```
-define(function (require, exports, module){
-	module.exports = function (){
-		return new Date().getDate();
-	};
+define(function (require, exports, module) {
+    module.exports = function () {
+        return new Date().getDate();
+    };
 });
 ```
 
 然后，在 app 目录下，新建两个 js ，分别属性今天的年、月和年、月、日。
 
-- src/static/js/app/year-month.js
-- src/static/js/app/year-month-date.js
+- webroot-dev/static/js/app/year-month.js
+- webroot-dev/static/js/app/year-month-date.js
 
-year-month.js:
+### year-month.js
+输出当前的年、月
 ```
-define(function (require, exports, module){
-	var year = require('../libs/year.js');
-	var month = require('../libs/month.js');
+define(function (require, exports, module) {
+    var year = require('../libs/year.js');
+    var month = require('../libs/month.js');
 
-	alert('today is ' + year() + '-' + month());
+    alert('today is ' + year() + '-' + month());
 });
 ```
 
-year-month-date.js
+### year-month-date.js
+输出当前的年、月、日
 ```
-define(function (require, exports, module){
-	var year = require('../libs/year.js');
-	var month = require('../libs/month.js');
-	var date = require('../libs/date.js');
+define(function (require, exports, module) {
+    var year = require('../libs/year.js');
+    var month = require('../libs/month.js');
+    var date = require('../libs/date.js');
 
-	alert('today is ' + year() + '-' + month() + '-' + date());
+    alert('today is ' + year() + '-' + month() + '-' + date());
 });
 ```
 
 从上面的代码结构和文件划分，可以明显的看出来，`year.js`、`month.js`、`date.js`是可以作为公共模块来处理的。
+
+### coolie.js
 按此不表，切换到 js 目录，下载模块加载器：
 
 ```
 ➜  cd static/js
-➜  coolie install coolie
+➜  coolie install coolie.js
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
-      install coolie >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
-        unzip coolie >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2015121610520100.zip
-         coolie file >> /coolie-demo8/src/static/js/coolie.js
-         coolie file >> /coolie-demo8/src/static/js/coolie.min.js
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.5                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
+   install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
+     unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012621551100.zip
+      coolie.js file >> /coolie-demo10/webroot-dev/static/js/coolie.js
+      coolie.js file >> /coolie-demo10/webroot-dev/static/js/coolie.min.js
 ```
 
+
+### coolie-config.js
 继续在 js 目录下新建模块加载器配置文件：
 ```
 ➜  coolie init -j
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
-        init success >> /coolie-demo8/src/static/js/coolie-config.js
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.5                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
+        init success >> /coolie-demo10/src/static/js/coolie-config.js
 ```
 
 不需要修改配置文件，因为默认的配置文件的`base`就是指向`app`目录。
 
 
-返回 src 目录，新建两个 html 分别执行两个入口模块：
+返回 webroot 目录，新建两个 html 分别执行两个入口模块：
 
 - src/year-month.html
 - src/year-month-date.html
 
-year-month.html：
+### year-month.html
+输出当前的年、月
 ```
 <!doctype html>
 <meta charset="utf-8">
@@ -227,7 +234,8 @@ data-main="year-month.js"></script>
 ```
 
 
-year-month-date.html：
+### year-month-date.html
+输出当前的年、月、日
 ```
 <!doctype html>
 <meta charset="utf-8">
@@ -238,8 +246,8 @@ data-main="year-month-date.js"></script>
 
 此时的目录结构为：
 ```
-coolie-demo8
-└── src                                    // 开发目录
+.
+└── webroot-dev                            // 开发目录
     ├── static                             // 静态目录
     │   └── js                             // JS 目录
     │       ├── app                        // 入口模块目录
@@ -284,22 +292,22 @@ coolie-demo8
 ## 前端构建配置
 在写配置之前，考虑下哪些模块可以作为公共模块。
 
-
 从全局来看，`date.js`只被入口模块使用了一次，没必要作为公共模块，
 `year.js`和`month.js`的使用率是 100%，有必要作为公共模块。
 
 那么，就将`year.js`和`month.js`合并一起作为公共模块。
 
-在 src 目录下，初始化配置文件：
+在 webroot-dev 目录下，初始化配置文件：
 ```
 ➜  coolie init -c
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.5                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
-        init success >> /coolie-demo8/src/coolie.config.js
+        init success >> /coolie-demo10/src/coolie.config.js
 ```
 
 修改配置文件为：
@@ -312,8 +320,8 @@ coolie-demo8
  *
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
- * @version 1.0.22
- * @create 2015-12-16 11:09:23
+ * @version 1.6.5
+ * @create 2016-01-26 22:00:17
  * =======================================================
  */
 
@@ -325,30 +333,39 @@ module.exports = function (coolie) {
         // 是否在构建之前清空目标目录
         clean: true,
 
+        // 目标配置
+        dest: {
+            // 目标目录，相对于当前文件
+            dirname: '../webroot-pro/',
+            // 目标根域
+            host: '',
+            // 版本号长度
+            versionLength: 32
+        },
+
         // js 构建
         js: {
-            // 入口模块
+            // 入口模块，相对于当前文件
             main: [
-                './static/js/app/**'
+                // 支持 glob 语法
+                './static/js/app/**/*.js'
             ],
-            // coolie-config.js 路径
+            // coolie-config.js 路径，相对于当前文件
             'coolie-config.js': './static/js/coolie-config.js',
-            // js 文件保存目录
+            // js 文件保存目录，相对于 dest.dirname
             dest: './static/js/',
             // 分块配置
             chunk: [
                 //【1】
-                [
-                    'static/js/libs/year.js',
-                    'static/js/libs/month.js'
-                ]
+                "static/js/libs/**.js"
             ]
         },
 
         // html 构建
         html: {
-            // html 文件
+            // html 文件，相对于当前文件
             src: [
+                // 支持 glob 语法
                 //【2】
                 '*.html'
             ],
@@ -358,7 +375,7 @@ module.exports = function (coolie) {
 
         // css 构建
         css: {
-            // css 文件保存目录
+            // css 文件保存目录，相对于 dest.dirname
             dest: './static/css/',
             // css 压缩配置
             minify: {
@@ -368,26 +385,19 @@ module.exports = function (coolie) {
 
         // 资源
         resource: {
-            // 资源保存目录
+            // 资源保存目录，相对于 dest.dirname
             dest: './static/res/',
             // 是否压缩
             minify: true
         },
 
-        // 原样复制文件
+        // 原样复制文件，相对于当前文件
         copy: [
+            // 支持 glob 语法
             //【3】
-        ],
-
-        // 目标配置
-        dest: {
-            // 目标目录
-            dirname: '../dest/',
-            // 目标根域
-            host: '',
-            // 版本号长度
-            versionLength: 32
-        }
+            //'./favicon.ico',
+            //'./robots.txt'
+        ]
     });
 
     // 使用 coolie 中间件
@@ -401,26 +411,26 @@ module.exports = function (coolie) {
 };
 ```
 
-- 【1】：修改了 chunk 配置，配置数组里添加了一项，该项是个数组，包含了`year.js`和`month.js`
+- 【1】：修改了 chunk 配置，配置数组里添加了一项，指定了 libs 下的模块可以作为公共模块，并交给构建工具自动管理
 - 【2】：修改了 html 配置，修改为`*.html`表示构建所有的 html 后缀文件
 - 【3】：去除了复制文件路径
 
 
 ## 前端构建
-在 src 目录下，执行前端构建：
+在 webroot-dev 目录下，执行前端构建：
 ```
 ➜  coolie build
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.5                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo8/src/coolie.config.js
-         src dirname >> /coolie-demo8/src
-        dest dirname >> /coolie-demo8/dest/
+       coolie config >> /Users/cloudcome/development/github/coolie-demo10/webroot-dev/coolie.config.js
+         src dirname >> /Users/cloudcome/development/github/coolie-demo10/webroot-dev
+        dest dirname >> /Users/cloudcome/development/github/coolie-demo10/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -437,7 +447,7 @@ module.exports = function (coolie) {
                           "../chunk/0.js": "d2f1d7c36aa7dd4588172993b6548c6d"
                         }"
                    √ >> callbacks: 0
-                   √ >> ../dest/static/js/bc44e15feeb306edcce80b4b1610020b.js
+                   √ >> ../webroot-pro/static/js/768ac82141fa5e7eac10af1d226d991d.js
 
                  5/6 >> build html
                    √ >> /static/js/coolie.js
@@ -445,42 +455,41 @@ module.exports = function (coolie) {
                    √ >> /year-month.html
 
                  6/6 >> generate a resource relationship map
-                   √ >> ../dest/coolie-map.json
+                   √ >> ../webroot-pro/coolie-map.json
 
-       build success >> past 408ms
-
+       build success >> past 388ms
 ```
 
 从构建日志可以看出，确实多了一个 chunk 信息。先来看看构建之后的目录结构：
 ```
-coolie-demo8
-├── dest
-│   ├── coolie-map.json
+.
+├── webroot-dev
+│   ├── coolie.config.js
 │   ├── static
 │   │   └── js
-│   │       ├── 770e249d8e38d50e8237f52ea5a5d216.js
 │   │       ├── app
-│   │       │   ├── 7360332894b3009f2fdcccd54379c803.js
-│   │       │   └── a7cf45b293111cea21c02ba730b534aa.js
-│   │       ├── bc44e15feeb306edcce80b4b1610020b.js
-│   │       └── chunk
-│   │           └── 0.d2f1d7c36aa7dd4588172993b6548c6d.js
+│   │       │   ├── year-month-date.js
+│   │       │   └── year-month.js
+│   │       ├── coolie-config.js
+│   │       ├── coolie.js
+│   │       ├── coolie.min.js
+│   │       └── libs
+│   │           ├── date.js
+│   │           ├── month.js
+│   │           └── year.js
 │   ├── year-month-date.html
 │   └── year-month.html
-└── src
-    ├── coolie.config.js
+└── webroot-pro
+    ├── coolie-map.json
     ├── static
     │   └── js
+    │       ├── 4199dbc923054982882ff5afba82bdd4.js
+    │       ├── 768ac82141fa5e7eac10af1d226d991d.js
     │       ├── app
-    │       │   ├── year-month-date.js
-    │       │   └── year-month.js
-    │       ├── coolie-config.js
-    │       ├── coolie.js
-    │       ├── coolie.min.js
-    │       └── libs
-    │           ├── date.js
-    │           ├── month.js
-    │           └── year.js
+    │       │   ├── 7360332894b3009f2fdcccd54379c803.js
+    │       │   └── a7cf45b293111cea21c02ba730b534aa.js
+    │       └── chunk
+    │           └── 0.d2f1d7c36aa7dd4588172993b6548c6d.js
     ├── year-month-date.html
     └── year-month.html
 
@@ -491,9 +500,9 @@ coolie-demo8
 
 
 ## 前端构建后运行
-切换到 dest 目录，使用[sts](https://www.npmjs.com/package/sts)执行：
+切换到 webroot-pro 目录，使用[sts](https://www.npmjs.com/package/sts)执行：
 ```
-➜  cd ../dest
+➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
                 open >> http://192.168.0.185:60728
@@ -516,12 +525,14 @@ coolie-demo8
 - 【1】：加载了入口模块
 - 【2】：加载了分块模块
 
+
 从两张图，可以明显的看出来【2】确实成为了公共模块。
 
 
 
 ## 分析构建结果
 
+### coolie-map
 首先看下`coolie-map.json`（[深度解析点这里](/introduction/resource-relationship-map.md)）：
 
 ```
@@ -529,33 +540,47 @@ coolie-demo8
   "/year-month-date.html": {
     "main": [
       {
-        "src": "../src/static/js/app/year-month-date.js",
+        "src": "../webroot-dev/static/js/app/year-month-date.js",
         "dest": "/static/js/app/a7cf45b293111cea21c02ba730b534aa.js",
         "deps": [
-          "../src/static/js/libs/year.js",
-          "../src/static/js/libs/month.js",
-          "../src/static/js/libs/date.js"
+          "../webroot-dev/static/js/libs/year.js",
+          "../webroot-dev/static/js/libs/month.js",
+          "../webroot-dev/static/js/libs/date.js"
         ]
       }
     ],
     "async": [],
-    "js": [],
+    "js": [
+      {
+        "dest": "/static/js/4199dbc923054982882ff5afba82bdd4.js",
+        "deps": [
+          "../webroot-dev/static/js/coolie.js"
+        ]
+      }
+    ],
     "css": [],
     "res": []
   },
   "/year-month.html": {
     "main": [
       {
-        "src": "../src/static/js/app/year-month.js",
+        "src": "../webroot-dev/static/js/app/year-month.js",
         "dest": "/static/js/app/7360332894b3009f2fdcccd54379c803.js",
         "deps": [
-          "../src/static/js/libs/year.js",
-          "../src/static/js/libs/month.js"
+          "../webroot-dev/static/js/libs/year.js",
+          "../webroot-dev/static/js/libs/month.js"
         ]
       }
     ],
     "async": [],
-    "js": [],
+    "js": [
+      {
+        "dest": "/static/js/4199dbc923054982882ff5afba82bdd4.js",
+        "deps": [
+          "../webroot-dev/static/js/coolie.js"
+        ]
+      }
+    ],
     "css": [],
     "res": []
   }
@@ -566,9 +591,11 @@ coolie-demo8
 从内容可以看出来各自页面引用的入口模块，以及他们的依赖关系。
 来分别看看构建之后的两个入口模块：
 
+
+### year-month-date.js
 a7cf45b293111cea21c02ba730b534aa.js：
 ```
-/*coolie@1.0.22*/
+/*coolie build*/
 define("0",["1","2","3"],function(s,i,a){var e=s("1"),t=s("2"),l=s("3");alert("today is "+e()+"-"+t()+"-"+l())});
 define("3",[],function(e,n,t){t.exports=function(){return(new Date).getDate()}});
 coolie.chunk(["0"]);
@@ -579,7 +606,7 @@ coolie.chunk(["0"]);
 
 从代码上看，确实没有了`year.js`和`month.js`的痕迹，只有`date.js`的代码。
 
-
+### year-month.js
 7360332894b3009f2fdcccd54379c803.js：
 ```
 /*coolie@1.0.22*/
@@ -590,11 +617,12 @@ coolie.chunk(["0"]);
 这里的代码就更简单了，只有一个入口模块，和一个`coolie.chunk`， `year.js`和`month.js`是公共模块，自然不在代码里。
 
 
+### chunk0
 最后来看看 chunk 模块吧：
 
 0.d2f1d7c36aa7dd4588172993b6548c6d.js：
 ```
-/*coolie@1.0.22*/
+/*coolie build*/
 define("1",[],function(e,n,t){t.exports=function(){return(new Date).getFullYear()}});
 define("2",[],function(n,e,t){t.exports=function(){return(new Date).getMonth()+1}});
 ```
@@ -612,5 +640,17 @@ year-month-date.html => date + chunk0
                                      => year + month
                      => date + year + month
 ```
+
+
+# github
+<https://github.com/cooliejs/coolie-demo10>
+
+
+# 小结
+至此 10 个 demo 已经全部说完了，
+覆盖了传统工程（coolie-demo2）、多模块工程（coolie-demo7）、单页面工程（coolie-demo9）和复合工程（coolie-demo10），
+几乎涉及到了前端的方方面面。
+
+coolie 应该会是你心里想的那样，简单的配置，完美的实现，用过的都说好。
 
 
