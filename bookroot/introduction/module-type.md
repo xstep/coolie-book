@@ -31,32 +31,54 @@ require('some.css', 'css|style');
 示例：
 
 ```
+// 返回 js 模块
 require('some.js');
-require.async('some.js');
+// 回调返回 js 模块
+require.async('some.js', callback);
 
+// 返回 css 文本
 require('some.css', 'css');
+// 返回 css url
 require('some.css', 'css|url');
+// 返回 css base64
 require('some.css', 'css|base64');
+// 返回 css 文本
 require('some.css', 'css|text');
+// 自动插入样式并返回`style`节点
 require('some.css', 'css|style');
 
+// 返回 text 文本
 require('some.txt', 'text');
+// 返回 text url
 require('some.txt', 'text|url');
+// 返回 text base64
 require('some.txt', 'text|base64');
+// 返回 text 文本
 require('some.txt', 'text|text');
 
+// 返回 html 文本
 require('some.html', 'html');
+// 返回 html url
 require('some.html', 'html|url');
+// 返回 html base64
 require('some.html', 'html|base64');
+// 返回 html 文本
 require('some.html', 'html|text');
 
+// 返回文件 url
 require('some.jpg', 'file');
+// 返回文件 url
 require('some.jpg', 'file|url');
+// 返回文件 base64
 require('some.jpg', 'file|base64');
 
+// 返回 json 的 js 对象
 require('some.json', 'json');
+// 返回 json 的 url 格式
 require('some.json', 'json|url');
+// 返回 json 的 base64 格式
 require('some.json', 'json|base64');
+// 返回 json 的文本
 require('some.json', 'json|text');
 ```
 
