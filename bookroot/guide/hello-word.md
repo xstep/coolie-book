@@ -287,3 +287,6 @@ module.exports = function (coolie) {
 其实前端构建就这么简单，一个配置一个命令就可以完成了。
 
 感兴趣的话，继续往下看吧。
+
+# github
+<https://github.com/cooliejs/coolie-demo1/>

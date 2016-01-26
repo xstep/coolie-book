@@ -294,3 +294,7 @@ body{background:#000}h1{color:#fff}
 - 构建之后的 html 被压缩了
 - 构建之后的 `link` 的 `href` 由 `coolie-demo4.css` 变为 `/static/css/cb7915fd4819d13bbeac010e5523bce8.css`
 - css 文件也被压缩了
+
+
+# github
+<https://github.com/cooliejs/coolie-demo4/>

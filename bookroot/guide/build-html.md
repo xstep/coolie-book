@@ -391,3 +391,8 @@ module.exports = function (coolie) {
 
 ### img
 图片被重名后放在`static/res`下。
+
+
+
+# github
+<https://github.com/cooliejs/coolie-demo6/>

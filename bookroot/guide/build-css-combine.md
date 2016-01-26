@@ -284,3 +284,7 @@ h1{color:#fff}
 - 构建之后的 html 被压缩了
 - 构建之后的 `link` 的 `href` 由 `coolie-demo3.css` 变为 `/static/css/9bfb05540ee797bff406a83a4f55aad0.css`
 - css 文件也被合并、压缩了，并且是分行表示的，一行代表一个文件
+
+
+# github
+<https://github.com/cooliejs/coolie-demo5/>

@@ -322,3 +322,7 @@ window.onload=function(){alert("coolie demo2")};
 ```
 
 可见，js 的内容也经过了压缩。
+
+
+# github
+<https://github.com/cooliejs/coolie-demo2/>
