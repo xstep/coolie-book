@@ -97,7 +97,7 @@ h1{
 │ coolie@1.6.4                       │
 │ The front-end development builder. │
 └────────────────────────────────────┘
-        init success >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev/coolie.config.js
+        init success >> /coolie-demo3/webroot-dev/coolie.config.js
 ```
 
 修改`coolie.config.js`为：
@@ -229,9 +229,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-pro/
+       coolie config >> /coolie-demo3/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo3/webroot-dev
+        dest dirname >> /coolie-demo3/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
