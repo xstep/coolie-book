@@ -1,59 +1,14 @@
-# JS 压缩
+# JS 合并
 
-JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模块，默认配置为：
+详细参考 [内容压缩策略](/introduction/content-compression.md)。
 
-```
-{
-    // 连续单语句，逗号分开
-    // 如： alert(1);alert(2); => alert(1),alert(2)
-    sequences: false,
-    // 重写属性
-    // 如：foo['bar'] => foo.bar
-    properties: false,
-    // 删除无意义代码
-    dead_code: false,
-    // 移除`debugger;`
-    drop_debugger: true,
-    // 使用以下不安全的压缩
-    unsafe: false,
-    // 不安全压缩
-    unsafe_comps: false,
-    // 压缩if表达式
-    conditionals: true,
-    // 压缩条件表达式
-    comparisons: true,
-    // 压缩常数表达式
-    evaluate: true,
-    // 压缩布尔值
-    booleans: true,
-    // 压缩循环
-    loops: true,
-    // 移除未使用变量
-    unused: false,
-    // 函数声明提前
-    hoist_funs: true,
-    // 变量声明提前
-    hoist_vars: false,
-    // 压缩 if return if continue
-    if_return: true,
-    // 合并连续变量省略
-    join_vars: true,
-    // 小范围连续变量压缩
-    cascade: true,
-    // 显示警告语句
-    warnings: false,
-    // 全局变量，会在构建之后，删除
-    global_defs: {
-        DEBUG: false
-    }
-}
-```
+
 
 # demo
 ## 初始化目录
-新建一个`coolie-demo2`目录：
+新建一个`coolie-demo3`目录：
 ```
-coolie-demo2
+coolie-demo3
 └── webroot-dev
 
 1 directories, 0 files
@@ -66,13 +21,21 @@ coolie-demo2
 <!doctype html>
 <meta charset="utf-8">
 
-<script src="coolie-demo2.js"></script>
+<!--coolie-->
+<script src="coolie-demo3-1.js"></script>
+<script src="coolie-demo3-2.js"></script>
+<!--/coolie-->
 ```
 
-### coolie-demo2.js
+### coolie-demo3-1.js
 ```
-window.onload = function() {
-	alert('coolie demo2');
+window.hello = 'coolie-demo3';
+```
+
+### coolie-demo3-2.js
+```
+window.onload = function (){
+    alert(window.hello);
 };
 ```
 
@@ -81,10 +44,11 @@ window.onload = function() {
 ```
 .
 └── webroot-dev
-    ├── coolie-demo2.js
+    ├── coolie-demo3-1.js
+    ├── coolie-demo3-2.js
     └── index.html
 
-1 directories, 2 files
+1 directories, 3 files
 ```
 
 
