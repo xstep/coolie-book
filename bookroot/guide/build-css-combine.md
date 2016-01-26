@@ -65,7 +65,7 @@ h1{
 ```
 
 
-![](http://s.ydr.me/@/res/20160126150550964747712130 =333x135)
+![](https://dn-fed.qbox.me/@/res/20160126150550964747712130 =333x135)
 
 
 ## 前端构建配置
@@ -212,9 +212,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo5/webroot-dev/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo5/webroot-dev
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo5/webroot-pro/
+       coolie config >> /coolie-demo5/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo5/webroot-dev
+        dest dirname >> /coolie-demo5/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -265,7 +265,7 @@ module.exports = function (coolie) {
 ```
 
 
-![](http://s.ydr.me/@/res/20160126151455911694104710 =339x137)
+![](https://dn-fed.qbox.me/@/res/20160126151455911694104710 =339x137)
 
 
 ## 构建结果分析

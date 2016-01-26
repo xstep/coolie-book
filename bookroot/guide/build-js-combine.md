@@ -61,7 +61,7 @@ window.onload = function (){
                 open >> http://172.22.252.118:50918
 ```
 
-![](http://s.ydr.me/@/res/20160126140023075858849755 =476x240)
+![](https://dn-fed.qbox.me/@/res/20160126140023075858849755 =476x240)
 
 
 ## 前端构建配置
@@ -214,9 +214,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev/coolie.config.js
-         src dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev
-        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-pro/
+       coolie config >> /coolie-demo3/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo3/webroot-dev
+        dest dirname >> /coolie-demo3/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -265,7 +265,7 @@ module.exports = function (coolie) {
 ```
 
 
-![](http://s.ydr.me/@/res/20160126144823804587442691 =472x232)
+![](https://dn-fed.qbox.me/@/res/20160126144823804587442691 =472x232)
 
 成功运行，下面来分析下构建之后的结果吧。
 
