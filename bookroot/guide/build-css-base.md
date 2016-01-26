@@ -1,8 +1,3 @@
-# CSS 合并
-
-详细参考 [内容压缩策略](/introduction/content-compression.md)。
-
-
 # CSS 压缩
 CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块，默认配置为：
 

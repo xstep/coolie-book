@@ -290,4 +290,4 @@ window.hello="coolie-demo3";
 window.onload=function(){alert(window.hello)};
 ```
 
-可见，js 的内容也经过了合并、压缩。
+可见，js 的内容也经过了合并、压缩，并且是分行表示的，一行代表一个文件

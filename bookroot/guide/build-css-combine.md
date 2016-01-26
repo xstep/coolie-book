@@ -3,42 +3,16 @@
 详细参考 [内容压缩策略](/introduction/content-compression.md)。
 
 
-# CSS 压缩
-CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块，默认配置为：
-
-```
-{
-    // 高级优化
-    advanced: false,
-    // 属性合并
-    aggressiveMerging: false,
-    // 兼容性，“ie7”、“ie8”、“*”（ie9+）
-    compatibility: 'ie7',
-    // 调试信息
-    debug: false,
-    // 断行
-    keepBreaks: false,
-    // 注释
-    keepSpecialComments: 0,
-    // 媒体查询合并
-    mediaMerging: true,
-    // url 检查
-    rebase: false,
-    // 资源地图
-    sourceMap: false
-}
-```
-
 
 
 # demo
 ## 初始化目录
-新建`coolie-demo3`目录：
+新建`coolie-demo5`目录：
 ```
 .
 └── webroot-dev
 
-2 directories, 0 files
+1 directories, 0 files
 ```
 
 ## 初始化文件
@@ -47,17 +21,23 @@ CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块�
 <!doctype html>
 <meta charset="utf8">
 
-<link rel="stylesheet" href="coolie-demo3.css">
+<!--coolie-->
+<link rel="stylesheet" href="coolie-demo5-1.css">
+<link rel="stylesheet" href="coolie-demo5-2.css">
+<!--/coolie-->
 
-<h1>coolie-demo3</h1>
+<h1>coolie-demo5</h1>
 ```
 
-### coolie-demo3.css
+### coolie-demo5-1.css
 ```
 body{
 	background: #000;
 }
+```
 
+### coolie-demo5-2.css
+```
 h1{
 	color: #fff;
 }
@@ -67,10 +47,11 @@ h1{
 ```
 .
 └── webroot-dev
-    ├── coolie-demo3.css
+    ├── coolie-demo5-1.css
+    ├── coolie-demo5-2.css
     └── index.html
 
-1 directory, 2 files
+1 directory, 3 files
 ```
 
 
@@ -80,11 +61,11 @@ h1{
 ➜  cd src
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.157:56486
+                open >> http://172.22.252.118:54141
 ```
 
 
-![](https://dn-fed.qbox.me/@/res/20160126102740447230185392 =328x122)
+![](http://s.ydr.me/@/res/20160126150550964747712130 =333x135)
 
 
 ## 前端构建配置
@@ -210,17 +191,19 @@ module.exports = function (coolie) {
 ```
 .
 └── webroot-dev
-    ├── coolie-demo3.css
+    ├── coolie-demo5-1.css
+    ├── coolie-demo5-2.css
     ├── coolie.config.js
     └── index.html
 
-1 directory, 3 files
+1 directory, 4 files
 ```
 
 ## 前端构建
 在 webroot-dev 目录执行前端构建：
 ```
 ➜  coolie build
+
 
 ┌────────────────────────────────────┐
 │ coolie-cli                         │
@@ -229,9 +212,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo3/webroot-dev/coolie.config.js
-         src dirname >> /coolie-demo3/webroot-dev
-        dest dirname >> /coolie-demo3/webroot-pro/
+       coolie config >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo5/webroot-dev/coolie.config.js
+         src dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo5/webroot-dev
+        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo5/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -243,20 +226,21 @@ module.exports = function (coolie) {
       overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
-                   √ >> /coolie-demo3.css
+                   √ >> /static/css/9bfb05540ee797bff406a83a4f55aad0.css
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
                    √ >> ../webroot-pro/coolie-map.json
 
-       build success >> past 114ms
+       build success >> past 119ms
 ```
 
 构建之后的目录结构为：
 ```
 .
 ├── webroot-dev
-│   ├── coolie-demo3.css
+│   ├── coolie-demo5-1.css
+│   ├── coolie-demo5-2.css
 │   ├── coolie.config.js
 │   └── index.html
 └── webroot-pro
@@ -264,9 +248,9 @@ module.exports = function (coolie) {
     ├── index.html
     └── static
         └── css
-            └── cb7915fd4819d13bbeac010e5523bce8.css
+            └── 9bfb05540ee797bff406a83a4f55aad0.css
 
-4 directories, 6 files
+4 directories, 7 files
 ```
 
 
@@ -277,25 +261,26 @@ module.exports = function (coolie) {
 ➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.157:56681
+                open >> http://172.22.252.118:54563
 ```
 
 
-![](https://dn-fed.qbox.me/@/res/20160126103158637420429859 =311x134)
+![](http://s.ydr.me/@/res/20160126151455911694104710 =339x137)
 
 
 ## 构建结果分析
 ### index.html
 ```
-<!doctype html><meta charset="utf8"> <link rel="stylesheet" href="/static/css/cb7915fd4819d13bbeac010e5523bce8.css"> <h1>coolie-demo3</h1>
+<!doctype html><meta charset="utf8"> <link rel="stylesheet" href="/static/css/9bfb05540ee797bff406a83a4f55aad0.css"> <h1>coolie-demo5</h1>
 <!--coolie build-->
 ```
 
 ### css 文件
 ```
-body{background:#000}h1{color:#fff}
+body{background:#000}
+h1{color:#fff}
 ```
 
 - 构建之后的 html 被压缩了
-- 构建之后的 `link` 的 `href` 由 `coolie-demo3.css` 变为 `/static/css/cb7915fd4819d13bbeac010e5523bce8.css`
-- css 文件也被压缩了
+- 构建之后的 `link` 的 `href` 由 `coolie-demo3.css` 变为 `/static/css/9bfb05540ee797bff406a83a4f55aad0.css`
+- css 文件也被合并、压缩了，并且是分行表示的，一行代表一个文件
