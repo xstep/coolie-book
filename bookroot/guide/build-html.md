@@ -23,14 +23,16 @@
 
  
 # 外链的脚本、样式
-- 外链的脚本：[脚本的合并、压缩、版本管理](./build-js.md)。
-- 外链的样式：[样式的合并、压缩、版本管理](./build-css.md)。
+- [JS 基本构建](./build-js.md)。
+- [JS 合并构建](./build-js2.md)。
+- [CSS 基本构建](./build-css.md)。
+- [CSS 合并构建](./build-css2.md)。
 
 
 
 # 内联的脚本、样式
 内联的脚本，指的是使用`script`标签包裹起来的脚本内容，也同样会被压缩处理。
-**除非**，该`script`指定了`coolieignore`属性，或者`type`属性值不是脚本。
+**除非，该`script`指定了`coolieignore`属性，或者`type`属性值不是脚本**。
 
 js type 值有：
 
@@ -43,14 +45,14 @@ js type 值有：
 - application/javascript
 - application/ecmascript
 
-内联的样式，指的是使用`style`标签包裹起来的样式内容，也同样会被压缩处理、版本管理。
 ```
 <script>var abc = '这里的 script 会被构建处理';</script>
-<script coolieignore>var abc = '这里的 script 会被构建处理';</script>
+<script coolieignore>var abc = '这里的 script 不会被构建处理';</script>
 ```
 
 
-**除非**，该`style`指定了`coolieignore`属性，或者`type`属性值不是样式。
+内联的样式，指的是使用`style`标签包裹起来的样式内容，也同样会被压缩处理、版本管理。
+**除非，该`style`指定了`coolieignore`属性，或者`type`属性值不是样式**。
 
 
 # 内嵌的样式
@@ -87,34 +89,30 @@ js type 值有：
 </script>
 ```
 
+**需要压缩 `template`、`script[type="template"]`内容，
+使用 [coolie-html-tag-template](/middleware/coolie-html-tag-template.md)**。
+
 
 # 注释
 并不是所有的注释都会被删除的，具体参考以下几条：
+## 单行注释会被删除
+```
+<!--会被删除-->
+```
+
 ## 非单行注释会被保留
 ```
 <!--
-换行了
+不会被删除
 -->
-```
-
-构建之后
-
-```
-<!--换行了-->
 ```
 
 ## 开头为`-`的多行注释会被删除
 
 ```
 <!--
-- 换行了
+- 会被删除
 -->
-```
-
-构建之后
-
-```
-<空>
 ```
 
 
