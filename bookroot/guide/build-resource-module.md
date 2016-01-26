@@ -392,7 +392,8 @@ module.exports = function (coolie) {
 }
 ```
 
-构建了`index.html`，该页面引用了`index.js`模块，
+### index.html
+`index.html`页面引用了`index.js`模块，
 并且该模块构建之后的文件名为`9a15f3baac85a8227af5a0e3a2a1a230.js`，
 该入口模块引用了`style.css`、`template.html`和`coolie.png`（图片是在 style.css 里引用的）三个模块。
 
@@ -414,3 +415,8 @@ coolie.png => /static/res/7d9bbb425d679ca6c75f1cbbc66785fa.png
 ```
 
 其中样式模块里使用了`coolie.importStyle`方法来自动加载样式。
+
+
+# github
+<https://github.com/cooliejs/coolie-demo8/>
+
