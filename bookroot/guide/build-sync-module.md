@@ -31,8 +31,8 @@ coolie-demo7
 └────────────────────────────────────┘
    install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
      unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012616381600.zip
-      coolie.js file >> /Users/cloudcome/development/github/coolie-demo7/coolie.js
-      coolie.js file >> /Users/cloudcome/development/github/coolie-demo7/coolie.min.js
+      coolie.js file >> /coolie-demo7/coolie.js
+      coolie.js file >> /coolie-demo7/coolie.min.js
 ```
 
 ### coolie-config.js
@@ -85,6 +85,8 @@ define(function (require, exports, module){
 });
 ```
 
+
+### date.js
 然后新建`date.js`:
 ```
 // date.js
@@ -103,13 +105,13 @@ define(function (require, exports, module){
 
 依赖链条很清晰：
 ```
-index.js => date.js
+index.js =依赖于=> date.js
 ```
 
 然后，来新建`index.html`：
 ```
-<!doctype html>
-<meta charset="utf-8">
+<!DOCTYPE html>
+<meta charset="UTF-8">
 
 <!--注意：-->
 <!--1. 这里的 script 标签多了 coolie 属性-->
@@ -128,7 +130,7 @@ index.js => date.js
 
 此时，目录结构为：
 ```
-coolie-demo5
+coolie-demo7
 └── src
     ├── coolie-config.js
     ├── coolie.js
@@ -146,10 +148,10 @@ coolie-demo5
 ```
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.167:52983
+                open >> http://192.168.0.192:62700
 ```
 
-![](https://dn-fed.qbox.me/@/res/20151214170821341124760909 =565x379)
+![](http://s.ydr.me/@/res/20160126180723653436449822 =576x356)
 
 如上图：
 
@@ -163,12 +165,13 @@ coolie-demo5
 ```
 ➜  coolie init -c
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
-        init success >> /coolie-demo5/src/coolie.config.js
+        init success >> /coolie-demo7/src/coolie.config.js
 ```
 
 修改配置文件（`coolie.config.js`）为：
@@ -181,8 +184,8 @@ coolie-demo5
  *
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
- * @version 1.0.22
- * @create 2015-12-14 21:34:36
+ * @version 1.6.4
+ * @create 2016-01-26 16:44:00
  * =======================================================
  */
 
@@ -194,17 +197,27 @@ module.exports = function (coolie) {
         // 是否在构建之前清空目标目录
         clean: true,
 
+        // 目标配置
+        dest: {
+            // 目标目录，相对于当前文件
+            dirname: '../webroot-pro/',
+            // 目标根域
+            host: '',
+            // 版本号长度
+            versionLength: 32
+        },
+
         // js 构建
         js: {
-            // 入口模块
+            // 入口模块，相对于当前文件
             main: [
+                // 支持 glob 语法
                 //【1】
-                'index.js'
+                './inedx.js'
             ],
-            // coolie-config.js 路径
-            //【2】
-            'coolie-config.js': 'coolie-config.js',
-            // js 文件保存目录
+            // coolie-config.js 路径，相对于当前文件
+            'coolie-config.js': './coolie-config.js',
+            // js 文件保存目录，相对于 dest.dirname
             dest: './static/js/',
             // 分块配置
             chunk: []
@@ -212,9 +225,9 @@ module.exports = function (coolie) {
 
         // html 构建
         html: {
-            // html 文件
+            // html 文件，相对于当前文件
             src: [
-                //【3】
+                // 支持 glob 语法
                 'index.html'
             ],
             // 是否压缩
@@ -223,7 +236,7 @@ module.exports = function (coolie) {
 
         // css 构建
         css: {
-            // css 文件保存目录
+            // css 文件保存目录，相对于 dest.dirname
             dest: './static/css/',
             // css 压缩配置
             minify: {
@@ -233,26 +246,19 @@ module.exports = function (coolie) {
 
         // 资源
         resource: {
-            // 资源保存目录
+            // 资源保存目录，相对于 dest.dirname
             dest: './static/res/',
             // 是否压缩
             minify: true
         },
 
-        // 原样复制文件
+        // 原样复制文件，相对于当前文件
         copy: [
             //【4】
-        ],
-
-        // 目标配置
-        dest: {
-            // 目标目录
-            dirname: '../dest/',
-            // 目标根域
-            host: '',
-            // 版本号长度
-            versionLength: 32
-        }
+            // 支持 glob 语法
+            //'./favicon.ico',
+            //'./robots.txt'
+        ]
     });
 
     // 使用 coolie 中间件
@@ -277,8 +283,8 @@ module.exports = function (coolie) {
 ## 前端构建
 此时目录结构为：
 ```
-coolie-demo5
-└── src
+.
+└── webroot-dev
     ├── coolie-config.js
     ├── coolie.config.js
     ├── coolie.js
@@ -294,16 +300,16 @@ coolie-demo5
 ```
 ➜  coolie build
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo5/src/coolie.config.js
-         src dirname >> /coolie-demo5/src
-        dest dirname >> /coolie-demo5/dest/
+       coolie config >> /coolie-demo7/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo7/webroot-dev
+        dest dirname >> /coolie-demo7/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -317,46 +323,46 @@ coolie-demo5
                    √ >> chunk: "chunk/"
                    √ >> version: "{}"
                    √ >> callbacks: 0
-                   √ >> ../dest/static/js/79f9ed3283181085347bfea15ac65773.js
+                   √ >> ../webroot-pro/static/js/b6122a2a4a1fbcd62c3c994106ca2a5d.js
 
                  5/6 >> build html
                    √ >> /coolie.min.js
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
-                   √ >> ../dest/coolie-map.json
+                   √ >> ../webroot-pro/coolie-map.json
 
-       build success >> past 554ms
+       build success >> past 375ms
 ```
 
 
 ## 前端构建后运行
 构建之后的目录结构为：
 ```
-coolie-demo5
-├── dest
-│   ├── coolie-map.json
+.
+├── webroot-dev
+│   ├── coolie-config.js
+│   ├── coolie.config.js
+│   ├── coolie.js
+│   ├── coolie.min.js
+│   ├── date.js
 │   ├── index.html
-│   └── static
-│       └── js
-│           ├── 66b18cb08533719f6b5e559b4d974141.js
-│           ├── 6e007a1301769a5e880e049cfa668749.js
-│           └── 79f9ed3283181085347bfea15ac65773.js
-└── src
-    ├── coolie-config.js
-    ├── coolie.config.js
-    ├── coolie.js
-    ├── coolie.min.js
-    ├── date.js
+│   └── index.js
+└── webroot-pro
+    ├── coolie-map.json
     ├── index.html
-    └── index.js
+    └── static
+        └── js
+            ├── 6e007a1301769a5e880e049cfa668749.js
+            ├── 89023476c8d524376702684e3b68399a.js
+            └── b6122a2a4a1fbcd62c3c994106ca2a5d.js
 
 4 directories, 12 files
 ```
 
 切换到`dest`（构建之后的目录），使用[sts](https://www.npmjs.com/package/sts)执行：
 ```
-➜  cd ../dest
+➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
                 open >> http://192.168.0.167:52983
@@ -364,9 +370,9 @@ coolie-demo5
 
 运行结果
 
-![](https://dn-fed.qbox.me/@/res/20151215100303946729780439 =476x321)
+![](http://s.ydr.me/@/res/20160126180623193976363756 =528x343)
 
-- 控制台打印了刚刚加载的模块信息，以及运行时间（从构建之前的35ms到构建之后的20ms）
+- 控制台打印了刚刚加载的模块信息，以及运行时间（从构建之前的33ms到构建之后的20ms）
 - 正确的执行了模块方法
 
 
@@ -377,15 +383,22 @@ coolie-demo5
   "/index.html": {
     "main": [
       {
-        "src": "../src/index.js",
+        "src": "../webroot-dev/index.js",
         "dest": "/static/js/6e007a1301769a5e880e049cfa668749.js",
         "deps": [
-          "../src/date.js"
+          "../webroot-dev/date.js"
         ]
       }
     ],
     "async": [],
-    "js": [],
+    "js": [
+      {
+        "dest": "/static/js/89023476c8d524376702684e3b68399a.js",
+        "deps": [
+          "../webroot-dev/coolie.min.js"
+        ]
+      }
+    ],
     "css": [],
     "res": []
   }
@@ -399,7 +412,7 @@ coolie-demo5
 
 先看入口模块文件（`6e007a1301769a5e880e049cfa668749.js`）：
 ```
-/*coolie@1.0.22*/
+/*coolie build*/
 define("0",["1"],function(a,t,e){var d=a("1");alert("today is "+d.format())});
 define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFullYear(),e.getMonth()+1,e.getDate()].join("-")}});
 ```
@@ -414,8 +427,8 @@ define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFul
 
 然后再来看看`index.html`：
 ```
-<!doctype html><meta charset="utf-8"> <script src="/static/js/66b18cb08533719f6b5e559b4d974141.js"  data-config="~/static/js/79f9ed3283181085347bfea15ac65773.js" data-main="6e007a1301769a5e880e049cfa668749.js" ></script>
-<!--coolie@1.0.22-->
+<!DOCTYPE html><meta charset="UTF-8"> <script src="/static/js/89023476c8d524376702684e3b68399a.js" data-config="~/static/js/b6122a2a4a1fbcd62c3c994106ca2a5d.js" data-main="6e007a1301769a5e880e049cfa668749.js"></script>
+<!--coolie build-->
 ```
 
 可以明显的看出，`<script>`标签上的属性变化很大：
@@ -426,8 +439,8 @@ define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFul
 
 =>
 
-<script src="/static/js/66b18cb08533719f6b5e559b4d974141.js"  
-        data-config="~/static/js/79f9ed3283181085347bfea15ac65773.js" 
+<script src="/static/js/89023476c8d524376702684e3b68399a.js"  
+        data-config="~/static/js/b6122a2a4a1fbcd62c3c994106ca2a5d.js" 
         data-main="6e007a1301769a5e880e049cfa668749.js" ></script>
 ```
 
@@ -438,10 +451,10 @@ define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFul
 - `data-config`：配置文件的路径也被修改了
 - `data-main`：入口模块的文件名也变化了
 
-接下来，看看配置文件（79f9ed3283181085347bfea15ac65773.js）吧：
+接下来，看看配置文件（b6122a2a4a1fbcd62c3c994106ca2a5d.js）吧：
 ```
-/*coolie@1.0.22*/
-coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,version:{}}).use();
+/*coolie build*/
+coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,builder:"1.6.4",version:{}}).use();
 ```
 配置文件里多了很多配置信息，[详细点这里阅读](/document/coolie-config.js.md)。
 
