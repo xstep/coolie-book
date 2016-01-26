@@ -66,14 +66,14 @@ define(function (require, exports, module) {
 └────────────────────────────────────┘
    install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
      unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012621071600.zip
-      coolie.js file >> /Users/cloudcome/development/github/coolie-demo8/webroot-dev/coolie.js
-      coolie.js file >> /Users/cloudcome/development/github/coolie-demo8/webroot-dev/coolie.min.js
+      coolie.js file >> /coolie-demo8/webroot-dev/coolie.js
+      coolie.js file >> /coolie-demo8/webroot-dev/coolie.min.js
 ```
 
 ### coolie-config.js
 再写模块加载器配置文件，使用命令生成配置文件（`coolie-config.js`）：
 ```
-➜  coolie init -c
+➜  coolie init -j
 
 ┌────────────────────────────────────┐
 │ coolie-cli                         │
@@ -81,7 +81,7 @@ define(function (require, exports, module) {
 │ The front-end development builder. │
 └────────────────────────────────────┘
 
-        init success >> /coolie-demo6/src/coolie.config.js
+        init success >> /coolie-demo6/src/coolie-config.js
 ```
 修改其内容为：
 ```
@@ -284,9 +284,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /Users/cloudcome/development/github/coolie-demo8/webroot-dev/coolie.config.js
-         src dirname >> /Users/cloudcome/development/github/coolie-demo8/webroot-dev
-        dest dirname >> /Users/cloudcome/development/github/coolie-demo8/webroot-pro/
+       coolie config >> /coolie-demo8/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo8/webroot-dev
+        dest dirname >> /coolie-demo8/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied

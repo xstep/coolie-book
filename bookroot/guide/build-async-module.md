@@ -34,37 +34,38 @@ window.on('hashchange', function(eve){
 
 
 ## 初始化目录结构
-新建一个空目录：
+新建一个空目录 coolie-demo9：
 ```
-coolie-demo7
-└── src
+.
+└── webroot-dev
 
 1 directory, 0 files
 ```
 
 
 ## 初始化文件
+### index.js
 新建一个入口模块`index.js`：
 ```
-define(function (require, exports, module){
-	var onhashchange = function(eve){
-		if (location.hash === '#a') {
-			require.async('pages/a.js', function(page){
-			    page();
-			});
-		} else if (location.hash === '#b') {
-			require.async('pages/b.js', function(page){
-			    page();
-			});
-		} else {
-			require.async('pages/404.js', function(page){
-			    page();
-			});
-		}
-	};
-	
-	window.onhashchange = onhashchange;
-	setTimeout(onhashchange);
+define(function (require, exports, module) {
+    var onhashchange = function (eve) {
+        if (location.hash === '#a') {
+            require.async('pages/a.js', function (page) {
+                page();
+            });
+        } else if (location.hash === '#b') {
+            require.async('pages/b.js', function (page) {
+                page();
+            });
+        } else {
+            require.async('pages/404.js', function (page) {
+                page();
+            });
+        }
+    };
+
+    window.onhashchange = onhashchange;
+    setTimeout(onhashchange, 0);
 });
 ```
 
@@ -72,56 +73,57 @@ define(function (require, exports, module){
 
 pages/a.js：
 ```
-define(function (require, exports, module){
-	module.exports = function(){
-		document.getElementById('demo').innerHTML = 'page a ' + Date.now();
-	};
+define(function (require, exports, module) {
+    module.exports = function () {
+        document.getElementById('demo').innerHTML = 'page a ' + Date.now();
+    };
 });
 ```
 
 pages/b.js：
 ```
-define(function (require, exports, module){
-	module.exports = function(){
-		document.getElementById('demo').innerHTML = 'page b ' + Date.now();
-	};
+define(function (require, exports, module) {
+    module.exports = function () {
+        document.getElementById('demo').innerHTML = 'page b ' + Date.now();
+    };
 });
 ```
 
 pages/404.js：
 ```
-define(function (require, exports, module){
-	module.exports = function(){
-		document.getElementById('demo').innerHTML = 'page 404 ' + Date.now();
-	};
+define(function (require, exports, module) {
+    module.exports = function () {
+        document.getElementById('demo').innerHTML = 'page 404 ' + Date.now();
+    };
 });
 ```
 
-然后，继续在 src 目录下，下载模块加载器：
+然后，继续在 webroot-dev 目录下，下载模块加载器：
 ```
-➜  coolie install coolie
+➜  coolie install coolie.js
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
-      install coolie >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
-        unzip coolie >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2015121520475600.zip
-         coolie file >> /coolie-demo7/src/coolie.js
-         coolie file >> /coolie-demo7/src/coolie.min.js
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.5                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
+   install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
+     unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012621373300.zip
+      coolie.js file >> /coolie-demo9/webroot-dev/coolie.js
+      coolie.js file >> /coolie-demo9/webroot-dev/coolie.min.js
 ```
 
 然后初始化模块加载器配置文件`coolie-config.js`：
 ```
 ➜  coolie init -j
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.5                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
-        init success >> /coolie-demo7/src/coolie-config.js
+        init success >> /coolie-demo9/src/coolie-config.js
 ```
 
 修改模块加载器配置文件为：
