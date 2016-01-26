@@ -59,79 +59,66 @@ JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模�
 新建一个`coolie-demo2`目录：
 ```
 coolie-demo2
-└── src
+└── webroot-dev
 
 1 directories, 0 files
 ```
 
 
 ## 初始化文件
-写 2 个 JS 文件，分别为 `1.js` 和 `2.js`：
-```
-// 1.js
-window.onload = function(){
-    alert('hello');
-};
-```
-
-```
-// 2.js
-window.onload = function(){
-    alert(window.onload.toString());
-};
-```
-
-在来个`index.html`:
+### index.html
 ```
 <!doctype html>
 <meta charset="utf-8">
 
-<!--coolie-->
-<script src="1.js"></script>
-<script src="2.js"></script>
-<!--/coolie-->
+<script src="coolie-demo2.js"></script>
 ```
 
+### coolie-demo2.js
+```
+window.onload = function() {
+	alert('coolie demo2');
+};
+```
 
 
 此时的目录结构为：
 ```
-coolie-demo2
-└── src
-    ├── 1.js
-    ├── 2.js
-    └── index.html
+.
+└── webroot-dev
+    ├── coolie-demo2.js
+    └── index.html
 
-1 directories, 3 files
+1 directories, 2 files
 ```
-
 
 
 ## 构建前运行
 使用 [sts](https://www.npmjs.com/package/sts) 执行：
 ```
-➜  cd src
+➜  cd webroot-dev
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.162:62019
+                open >> http://192.168.0.157:55119
 ```
 
-![](https://dn-fed.qbox.me/@/res/20151210160446617400855164 =420x156)
-
+![](http://s.ydr.me/@/res/20160126100403603386398368 =458x254)
 
 
 ## 前端构建配置
+在构建之前，依然需要配置，通过之前的 hello world 一节，想必你对 coolie 的配置也有一定的了解了。
+再来复习一次。
 
 使用`coolie init -c`生成`coolie.config.js`（前端构建工具的配置文件）：
 ```
 ➜  coolie init -c
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
-
-        init success >> /coolie-demo2/src/coolie.config.js
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
+        init success >> /coolie-demo2/webroot-dev/coolie.config.js
 ```
 
 修改`coolie.config.js`为：
@@ -144,8 +131,8 @@ coolie-demo2
  *
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
- * @version 1.0.22
- * @create 2015-12-14 16:17:27
+ * @version 1.6.4
+ * @create 2016-01-26 10:06:22
  * =======================================================
  */
 
@@ -157,16 +144,27 @@ module.exports = function (coolie) {
         // 是否在构建之前清空目标目录
         clean: true,
 
+        // 目标配置
+        dest: {
+            // 目标目录，相对于当前文件
+            dirname: '../webroot-pro/',
+            // 目标根域
+            host: '',
+            // 版本号长度
+            versionLength: 32
+        },
+
         // js 构建
         js: {
-            // 入口模块
+            // 入口模块，相对于当前文件
             main: [
+                // 支持 glob 语法
                 //【1】
             ],
-            // coolie-config.js 路径
+            // coolie-config.js 路径，相对于当前文件
             //【2】
             'coolie-config.js': null,
-            // js 文件保存目录
+            // js 文件保存目录，相对于 dest.dirname
             dest: './static/js/',
             // 分块配置
             chunk: []
@@ -174,8 +172,9 @@ module.exports = function (coolie) {
 
         // html 构建
         html: {
-            // html 文件
+            // html 文件，相对于当前文件
             src: [
+                // 支持 glob 语法
                 //【3】
                 'index.html'
             ],
@@ -185,7 +184,7 @@ module.exports = function (coolie) {
 
         // css 构建
         css: {
-            // css 文件保存目录
+            // css 文件保存目录，相对于 dest.dirname
             dest: './static/css/',
             // css 压缩配置
             minify: {
@@ -195,26 +194,19 @@ module.exports = function (coolie) {
 
         // 资源
         resource: {
-            // 资源保存目录
+            // 资源保存目录，相对于 dest.dirname
             dest: './static/res/',
             // 是否压缩
             minify: true
         },
 
-        // 原样复制文件
+        // 原样复制文件，相对于当前文件
         copy: [
+            // 支持 glob 语法
+            // './favicon.ico',
+            // './robots.txt'
             //【4】
-        ],
-
-        // 目标配置
-        dest: {
-            // 目标目录
-            dirname: '../dest/',
-            // 目标根域
-            host: '',
-            // 版本号长度
-            versionLength: 32
-        }
+        ]
     });
 
     // 使用 coolie 中间件
@@ -230,40 +222,41 @@ module.exports = function (coolie) {
 
 修改点：
 
-- 【1】：去除了入口文件路径
-- 【2】：去除了模块加载器配置文件的路径
-- 【3】：修改了 html 文件路径
+- 【1】：去掉了入口模块，此处没有用到模块化
+- 【2】：模块配置文件也没有，设置为 `null`
+- 【3】：修改需要构建的 html 文件路径
 - 【4】：去除了原样复制文件配置
 
 此时的目录结构为：
 
 ```
-coolie-demo2
-└── src
-    ├── 1.js
-    ├── 2.js
+.
+└── webroot-dev
+    ├── coolie-demo2.js
     ├── coolie.config.js
     └── index.html
 
-1 directories, 4 files
+1 directory, 3 files
 ```
 
 
 ## 前端构建
 执行构建：
 ```
+➜  cd webroot-dev
 ➜  coolie build
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
 
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo2/src/coolie.config.js
-         src dirname >> /coolie-demo2/src
-        dest dirname >> /coolie-demo2/dest/
+       coolie config >> /coolie-demo2/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo2/webroot-dev
+        dest dirname >> /coolie-demo2/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -275,86 +268,62 @@ coolie-demo2
       overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
-                   √ >> /static/js/06f5f56a93baa9089b10b901861c36dd.js
+                   √ >> /coolie-demo2.js
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
-                   √ >> ../dest/coolie-map.json
+                   √ >> ../webroot-pro/coolie-map.json
 
-       build success >> past 118ms
+       build success >> past 132ms
 ```
 
 构建之后的目录结构为：
 ```
-coolie-demo2
-├── dest
-│   ├── coolie-map.json
-│   ├── index.html
-│   └── static
-│       └── js
-│           └── 06f5f56a93baa9089b10b901861c36dd.js
-└── src
-    ├── 1.js
-    ├── 2.js
-    ├── coolie.config.js
-    └── index.html
+.
+├── webroot-dev
+│   ├── coolie-demo2.js
+│   ├── coolie.config.js
+│   └── index.html
+└── webroot-pro
+    ├── coolie-map.json
+    ├── index.html
+    └── static
+        └── js
+            └── b421893239552ab5531042432f4f2bcb.js
 
-4 directories, 7 files
+4 directories, 6 files
 ```
 
 ## 构建后运行
-切换到`dest`目录再次执行：
+切换到`webroot-pro`目录再次执行：
 ```
-➜  cd ../dest
+➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.162:62282
+                open >> http://192.168.0.157:55513
 ```
 
 
-![](https://dn-fed.qbox.me/@/res/20151210160722747529803842 =420x153)
+![](http://s.ydr.me/@/res/20160126101037397180095322 =447x225)
+
+成功运行，下面来分析下构建之后的结果吧。
 
 
 ## 分析构建结果
-通过两次弹窗内容，就可以知道构建之后的内容是经过压缩了。来看看构建之后的资源地图
-`coolie-map.json`（[详细介绍点这里](/introduction/resource-relationship-map.md)）：
+### index.html
+先来看看构建之后的 html 文件：
 ```
-{
-  "/index.html": {
-    "main": [],
-    "async": [],
-    "js": [
-      {
-        "dest": "/static/js/06f5f56a93baa9089b10b901861c36dd.js",
-        "deps": [
-          "../src/1.js",
-          "../src/2.js"
-        ]
-      }
-    ],
-    "css": [],
-    "res": []
-  }
-}
+<!doctype html><meta charset="utf-8"> <script src="/static/js/b421893239552ab5531042432f4f2bcb.js"></script>
+<!--coolie build-->
 ```
 
-标记了`index.html`引入了`static/js/06f5f56a93baa9089b10b901861c36dd.js`文件，
-并且该文件是由`1.js`和`2.js`合并而来。
+- `script` 路径由原来的 `coolie-demo2.js` 变为 `/static/js/b421893239552ab5531042432f4f2bcb.js`
+- html 的内容被压缩了
 
-看看`index.html`：
-
+### js 文件
+js 文件的文件名被修改了（[为什么要这么做？](https://www.zhihu.com/question/20790576)）
 ```
-<!doctype html><meta charset="utf-8"> <script src="/static/js/06f5f56a93baa9089b10b901861c36dd.js"></script>
-<!--coolie@1.0.22-->
-```
-
-代码经过压缩，并且合并了之前标记的`1.js`和`2.js`为`06f5f56a93baa9089b10b901861c36dd.js`。
-
-看看`06f5f56a93baa9089b10b901861c36dd.js`：
-```
-/*coolie@1.0.22*/
-window.onload=function(){alert("hello")};
-window.onload=function(){alert(window.onload.toString())};
+window.onload=function(){alert("coolie demo2")};
 ```
 
-
+可见，js 的内容也经过了压缩。

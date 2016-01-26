@@ -1,4 +1,4 @@
-学习新东西，往往都是从 Hello World 开始的，coolie 也是这样，一起来看看吧。
+coolie 好不好用，先从 hello world 开始。
 
 
 # 准备
