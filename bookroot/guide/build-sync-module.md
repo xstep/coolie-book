@@ -10,39 +10,44 @@ require('module2');  // 运行到这里，module2 载入
 
 # demo
 ## 初始化目录
-新建`coolie-demo5`，目录结构为：
+新建`coolie-demo7`，目录结构为：
 ```
-coolie-demo5
-└── src
+coolie-demo7
+└── webroot-dev
 
 1 directory, 0 files
 ```
 
 ## 初始化文件
-先下载模块加载器：
+### coolie.js
+先下载模块加载器（coolie.js）：
 ```
-➜  cd src
-➜  coolie install coolie
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
+➜  cd webroot-dev
+➜  coolie install coolie.js
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
+   install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
+     unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012616381600.zip
+      coolie.js file >> /Users/cloudcome/development/github/coolie-demo7/coolie.js
+      coolie.js file >> /Users/cloudcome/development/github/coolie-demo7/coolie.min.js
+```
 
-      install coolie >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
-        unzip coolie >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2015121416503100.zip
-         coolie file >> /coolie-demo5/src/coolie.js
-         coolie file >> /coolie-demo5/src/coolie.min.js
-```
-如果你感兴趣，可以简单的看看`coolie.js`的源代码。接下来，我们来初始化模块加载器的配置文件：
+### coolie-config.js
+如果你感兴趣，可以简单的看看`coolie.js`的源代码。
+接下来，我们来初始化模块加载器的配置文件：
 ```
 ➜  coolie init -j
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.22                                      ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.4                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
-        init success >> /coolie-demo5/src/coolie-config.js
+        init success >> /coolie-demo7/src/coolie-config.js
 ```
 
 修改为：
@@ -68,6 +73,8 @@ coolie.config({
 
 修改了`base`属性值为`./`，表示入口模块相对于`coolie-config.js`所在的`src`目录。
 
+
+### index.js
 然后我们来写入口模块了，新建`index.js`：
 ```
 // index.js
