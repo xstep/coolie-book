@@ -458,3 +458,7 @@ coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,builder
 ```
 配置文件里多了很多配置信息，[详细点这里阅读](/document/coolie-config.js.md)。
 
+
+# github
+<https://github.com/cooliejs/coolie-demo7>
+
