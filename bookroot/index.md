@@ -18,7 +18,7 @@
 - [教程](#)
     - [安装](/guide/install.md)
     - [前端构建配置](/guide/coolie.config.js.md)
-    - [Hello World](/guide/hello-word.md)
+    - [Hello World](/guide/hello-world.md)
     - [JS 基本构建](/guide/build-js-base.md)
     - [JS 合并构建](/guide/build-js-combine.md)
     - [CSS 基本构建](/guide/build-css-base.md)
