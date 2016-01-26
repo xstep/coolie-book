@@ -58,16 +58,13 @@ window.onload = function (){
 ➜  cd webroot-dev
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.157:55119
+                open >> http://172.22.252.118:50918
 ```
 
-![](https://dn-fed.qbox.me/@/res/20160126100403603386398368 =458x254)
+![](http://s.ydr.me/@/res/20160126140023075858849755 =476x240)
 
 
 ## 前端构建配置
-在构建之前，依然需要配置，通过之前的 hello world 一节，想必你对 coolie 的配置也有一定的了解了。
-再来复习一次。
-
 使用`coolie init -c`生成`coolie.config.js`（前端构建工具的配置文件）：
 ```
 ➜  coolie init -c
@@ -77,7 +74,7 @@ window.onload = function (){
 │ coolie@1.6.4                       │
 │ The front-end development builder. │
 └────────────────────────────────────┘
-        init success >> /coolie-demo2/webroot-dev/coolie.config.js
+        init success >> /coolie-demo3/webroot-dev/coolie.config.js
 ```
 
 修改`coolie.config.js`为：
@@ -91,7 +88,7 @@ window.onload = function (){
  * @link http://coolie.ydr.me/guide/coolie.config.js/
  * @author ydr.me
  * @version 1.6.4
- * @create 2016-01-26 10:06:22
+ * @create 2016-01-26 14:01:05
  * =======================================================
  */
 
@@ -118,6 +115,7 @@ module.exports = function (coolie) {
             // 入口模块，相对于当前文件
             main: [
                 // 支持 glob 语法
+                // './static/js/app/**/*.js'
                 //【1】
             ],
             // coolie-config.js 路径，相对于当前文件
@@ -186,16 +184,19 @@ module.exports = function (coolie) {
 - 【3】：修改需要构建的 html 文件路径
 - 【4】：去除了原样复制文件配置
 
+细心的同学可能发现了，配置文件基本没什么变化。
+
 此时的目录结构为：
 
 ```
 .
 └── webroot-dev
-    ├── coolie-demo2.js
+    ├── coolie-demo3-1.js
+    ├── coolie-demo3-2.js
     ├── coolie.config.js
     └── index.html
 
-1 directory, 3 files
+1 directory, 4 files
 ```
 
 
@@ -213,9 +214,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo2/webroot-dev/coolie.config.js
-         src dirname >> /coolie-demo2/webroot-dev
-        dest dirname >> /coolie-demo2/webroot-pro/
+       coolie config >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev/coolie.config.js
+         src dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-dev
+        dest dirname >> /Users/cloudcome/development/localhost/coolie-demo/coolie-demo3/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -227,20 +228,21 @@ module.exports = function (coolie) {
       overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
-                   √ >> /coolie-demo2.js
+                   √ >> /static/js/c6ee41f19d1aa974a3a6a0606de94a1b.js
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
                    √ >> ../webroot-pro/coolie-map.json
 
-       build success >> past 132ms
+       build success >> past 133ms
 ```
 
 构建之后的目录结构为：
 ```
 .
 ├── webroot-dev
-│   ├── coolie-demo2.js
+│   ├── coolie-demo3-1.js
+│   ├── coolie-demo3-2.js
 │   ├── coolie.config.js
 │   └── index.html
 └── webroot-pro
@@ -248,9 +250,9 @@ module.exports = function (coolie) {
     ├── index.html
     └── static
         └── js
-            └── b421893239552ab5531042432f4f2bcb.js
+            └── c6ee41f19d1aa974a3a6a0606de94a1b.js
 
-4 directories, 6 files
+4 directories, 7 files
 ```
 
 ## 构建后运行
@@ -263,7 +265,7 @@ module.exports = function (coolie) {
 ```
 
 
-![](https://dn-fed.qbox.me/@/res/20160126101037397180095322 =447x225)
+![](http://s.ydr.me/@/res/20160126144823804587442691 =472x232)
 
 成功运行，下面来分析下构建之后的结果吧。
 
@@ -272,17 +274,20 @@ module.exports = function (coolie) {
 ### index.html
 先来看看构建之后的 html 文件：
 ```
-<!doctype html><meta charset="utf-8"> <script src="/static/js/b421893239552ab5531042432f4f2bcb.js"></script>
+<!doctype html><meta charset="utf-8"> <script src="/static/js/c6ee41f19d1aa974a3a6a0606de94a1b.js"></script>
 <!--coolie build-->
 ```
 
-- `script` 路径由原来的 `coolie-demo2.js` 变为 `/static/js/b421893239552ab5531042432f4f2bcb.js`
+- `script` 标签的数量，由原来的 2 个，变成了 1 个
+- `script` 路径也变为 `/static/js/c6ee41f19d1aa974a3a6a0606de94a1b.js`
 - html 的内容被压缩了
 
+
 ### js 文件
-js 文件的文件名被修改了（[为什么要这么做？](https://www.zhihu.com/question/20790576)）
+js 文件的文件名被修改了
 ```
-window.onload=function(){alert("coolie demo2")};
+window.hello="coolie-demo3";
+window.onload=function(){alert(window.hello)};
 ```
 
-可见，js 的内容也经过了压缩。
+可见，js 的内容也经过了合并、压缩。
