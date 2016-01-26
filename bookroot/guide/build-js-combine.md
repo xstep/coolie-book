@@ -261,7 +261,7 @@ module.exports = function (coolie) {
 ➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.157:55513
+                open >> http://172.22.252.118:53266
 ```
 
 
