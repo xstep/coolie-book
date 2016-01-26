@@ -33,7 +33,7 @@ CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块�
 
 # demo
 ## 初始化目录
-新建`coolie-demo3`目录：
+新建`coolie-demo4`目录：
 ```
 .
 └── webroot-dev
@@ -47,12 +47,12 @@ CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块�
 <!doctype html>
 <meta charset="utf8">
 
-<link rel="stylesheet" href="coolie-demo3.css">
+<link rel="stylesheet" href="coolie-demo4.css">
 
-<h1>coolie-demo3</h1>
+<h1>coolie-demo4</h1>
 ```
 
-### coolie-demo3.css
+### coolie-demo4.css
 ```
 body{
 	background: #000;
@@ -67,7 +67,7 @@ h1{
 ```
 .
 └── webroot-dev
-    ├── coolie-demo3.css
+    ├── coolie-demo4.css
     └── index.html
 
 1 directory, 2 files
@@ -97,7 +97,7 @@ h1{
 │ coolie@1.6.4                       │
 │ The front-end development builder. │
 └────────────────────────────────────┘
-        init success >> /coolie-demo3/webroot-dev/coolie.config.js
+        init success >> /coolie-demo4/webroot-dev/coolie.config.js
 ```
 
 修改`coolie.config.js`为：
@@ -210,7 +210,7 @@ module.exports = function (coolie) {
 ```
 .
 └── webroot-dev
-    ├── coolie-demo3.css
+    ├── coolie-demo4.css
     ├── coolie.config.js
     └── index.html
 
@@ -229,9 +229,9 @@ module.exports = function (coolie) {
 └────────────────────────────────────┘
 
                  1/6 >> parse coolie config
-       coolie config >> /coolie-demo3/webroot-dev/coolie.config.js
-         src dirname >> /coolie-demo3/webroot-dev
-        dest dirname >> /coolie-demo3/webroot-pro/
+       coolie config >> /coolie-demo4/webroot-dev/coolie.config.js
+         src dirname >> /coolie-demo4/webroot-dev
+        dest dirname >> /coolie-demo4/webroot-pro/
 
                  2/6 >> copy files
           copy files >> no files are copied
@@ -243,7 +243,7 @@ module.exports = function (coolie) {
       overide config >> `coolie-config.js` is not defined
 
                  5/6 >> build html
-                   √ >> /coolie-demo3.css
+                   √ >> /coolie-demo4.css
                    √ >> /index.html
 
                  6/6 >> generate a resource relationship map
@@ -256,7 +256,7 @@ module.exports = function (coolie) {
 ```
 .
 ├── webroot-dev
-│   ├── coolie-demo3.css
+│   ├── coolie-demo4.css
 │   ├── coolie.config.js
 │   └── index.html
 └── webroot-pro
@@ -287,7 +287,7 @@ module.exports = function (coolie) {
 ## 构建结果分析
 ### index.html
 ```
-<!doctype html><meta charset="utf8"> <link rel="stylesheet" href="/static/css/cb7915fd4819d13bbeac010e5523bce8.css"> <h1>coolie-demo3</h1>
+<!doctype html><meta charset="utf8"> <link rel="stylesheet" href="/static/css/cb7915fd4819d13bbeac010e5523bce8.css"> <h1>coolie-demo4</h1>
 <!--coolie build-->
 ```
 
@@ -297,5 +297,5 @@ body{background:#000}h1{color:#fff}
 ```
 
 - 构建之后的 html 被压缩了
-- 构建之后的 `link` 的 `href` 由 `coolie-demo3.css` 变为 `/static/css/cb7915fd4819d13bbeac010e5523bce8.css`
+- 构建之后的 `link` 的 `href` 由 `coolie-demo4.css` 变为 `/static/css/cb7915fd4819d13bbeac010e5523bce8.css`
 - css 文件也被压缩了
