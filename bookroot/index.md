@@ -14,6 +14,7 @@
     - [内容压缩策略](/introduction/content-compression.md)
     - [版本管理策略](/introduction/version-management.md)
     - [资源关系图](/introduction/resource-relationship-map.md)
+    - [coolie 中间件](/introduction/coolie-middleware.md)
     - [coolie 优势](/introduction/advantage.md)
     - [常见问题](/introduction/common-problems.md)
 - [教程](#)
