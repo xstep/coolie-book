@@ -29,7 +29,7 @@ coolie 属于通用级别的前端工程化解决方案，与工程类型无关�
 
 
 # 开发 CMD，生产 CMD
-开发环境（构建之前）下使用最为人性化的 [cmd 规范](/introdution/module-definition.md)：
+开发环境（构建之前）下使用最为人性化的 [cmd 规范](/introduction/module-definition.md)：
 ```
 define(function(require, exports, module){
     require('path/to/some/module')
@@ -95,7 +95,7 @@ __`file_md5_version`表示文件的 md5 版本号，下同。__
 # 支持模块分块构建
 默认情况下，一个模块入口会将所有被依赖的模块打包成一个文件。
 当我们的工程里大量使用了相同的模块的时候，我们就应该考虑将这些公共模块单独独立出来，
-这就是模块分块构建策略（[详细点这里](/introduction/coolie.config.js.md)）。
+这就是模块分块构建策略（[详细点这里](/introduction/module-chunk.md)）。
 
 
 # 支持异步模块构建
