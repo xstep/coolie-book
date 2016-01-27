@@ -43,6 +43,7 @@ npm install -g coolie --registry=http://registry.npm.taobao.org
 ```
 ➜ coolie
 
+
                                   oooo    o8o
                                   `888    `"'
   .ooooo.    .ooooo.    .ooooo.    888   oooo    .ooooo.
@@ -51,16 +52,18 @@ npm install -g coolie --registry=http://registry.npm.taobao.org
  888   .o8  888   888  888   888   888    888   888    .o
  `Y8bod8P'  `Y8bod8P'  `Y8bod8P'  o888o  o888o  `Y8bod8P'
 
-╔══════════════════════════════════════════════════════╗
-║   coolie@1.0.0                                       ║
-║   The front-end development builder.                 ║
-╚══════════════════════════════════════════════════════╝
+┌────────────────────────────────────┐
+│ coolie-cli                         │
+│ coolie@1.6.6                       │
+│ The front-end development builder. │
+└────────────────────────────────────┘
 
 1. Command
    build                  >> build a front-end project
    book                   >> open coolie book in default browser
    install <module>       >> install a coolie module
    init                   >> initial configuration file
+   create                 >> create a sample, default is express
    help                   >> show help information
    version                >> show version information
 
@@ -68,14 +71,24 @@ npm install -g coolie --registry=http://registry.npm.taobao.org
    -d --dirname           >> specified a directory
    -j --coolie.js         >> initial configuration file of `coolie.js`
    -c --coolie-cli        >> initial configuration file of `coolie-cli`
+   -e --express           >> create a express sample
+   -s --static            >> create a static sample
+   -h --help              >> show help infomation with command
 
 ```
 
 
 
 # 更新
+可以定期检查下 coolie-cli 是否有更新，以便体验到更优质的构建效果。
 ```
-npm update -g coolie
+➜ coolie version
+```
+
+更新 coolie-cli，需要使用 npm
+
+```
+➜ npm update -g coolie
 ```
 
 如果长时间无反应，也可以使用[淘宝源](https://npm.taobao.org/)来更新。
