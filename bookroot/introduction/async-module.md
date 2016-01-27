@@ -1,4 +1,5 @@
-# 异步模块
+**beta，目前仅支持入口模块里加载异步模块**
+
 ```
 if (isIE8) {
     require.async('compatible-ie8.js', function(exports){
