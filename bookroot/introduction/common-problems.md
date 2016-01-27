@@ -63,8 +63,9 @@ coolie-cli 是前端构建工具，因此，不具备编译功能。
 ## 解决方案
 将 coolie.js 放在最后即可：
 ```
-<script coolie src="./coolie.js" data-config="./coolie-config.js" data-main="main.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<!--coolie 放在最后-->
+<script coolie src="./coolie.js" data-config="./coolie-config.js" data-main="main.js"></script>
 ```
 
 运行正常：
