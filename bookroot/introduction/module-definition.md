@@ -1,7 +1,6 @@
 coolie 遵循的是 [CMD 规范][cmd link]。
 
 
-# CMD 规范
 CMD 最先是由 seajs 提出的，是 commonJS 规范的前端实现。
 与 commonJS 的表现是一致的，即：依赖就近，顺序执行。
 

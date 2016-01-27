@@ -45,4 +45,4 @@ coolie.js 的构建工具为 [coolie-cli](https://github.com/cooliejs/coolie-cli
 工程化思维 | 无 | 有
 自动化版本管理 | 无 | 有
 
-
+[coolie 的更多优势看这里](./advantage.md)。
