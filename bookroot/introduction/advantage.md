@@ -82,7 +82,7 @@ __`file_md5_version`表示文件的 md5 版本号，下同。__
 
 =>
 
-<link rel="stylesheet" href="http://cdn.org/res/file_md5_version.css">
+<link rel="stylesheet" href="http://cdn.org/res/file_content_md5_version.css">
 ```
 
 在书写 css 的时候，只需要按照模块类型分开写 css，然后再页面上按需引用即可。
@@ -95,7 +95,7 @@ __`file_md5_version`表示文件的 md5 版本号，下同。__
 # 支持模块分块构建
 默认情况下，一个模块入口会将所有被依赖的模块打包成一个文件。
 当我们的工程里大量使用了相同的模块的时候，我们就应该考虑将这些公共模块单独独立出来，
-这就是模块分块构建策略（[详细点这里](/begin/coolie.config.js.md)）。
+这就是模块分块构建策略（[详细点这里](/introduction/coolie.config.js.md)）。
 
 
 # 支持异步模块构建
@@ -106,12 +106,12 @@ __`file_md5_version`表示文件的 md5 版本号，下同。__
 
 
 # 自由扩展，私人定制
-coolie 在 1.x 版本之后已经支持扩展支持了（[使用 coolie 中间件](/advance/middleware.md)）。
+coolie 在 1.x 版本之后已经支持扩展支持了（[使用 coolie 中间件](/introduction/coolie-middleware.md)）。
 通过 coolie 中间件可以完成你的个性化需求，实现私人定制。
 
 
 # 长期维护，中英社区支持
-coolie 定位于通用级的前端工程化解决方案，将会长期发展下去（[coolie 未来规划](/develop/feature.md)）。
+coolie 定位于通用级的前端工程化解决方案，将会长期发展下去。
 
 coolie 的相关问题、建议、意见可以在中英社区里提出：
 
@@ -156,7 +156,7 @@ gulp.src('some.html').pipe(findBJSAndReplaceToBMinJS).dest('path/some.html');
 
 =>
 
-<script src="/js/file_md5_version.js"></script>
+<script src="/js/file_content_md5_version.js"></script>
 ```
 
 
