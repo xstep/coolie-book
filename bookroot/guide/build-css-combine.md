@@ -1,3 +1,10 @@
+# 下载
+使用 coolie demo 命令下载本 demo。
+```
+➜ coolie demo 5
+```
+
+
 # CSS 合并
 
 详细参考 [内容压缩策略](/introduction/content-compression.md)。

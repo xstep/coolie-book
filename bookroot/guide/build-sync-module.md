@@ -1,3 +1,11 @@
+# 下载
+使用 coolie demo 命令下载本 demo。
+```
+➜ coolie demo 7
+```
+
+
+
 # 同步模块
 
 这里的同步模块指的是运行时，该模块是同步载入的（类似 NodeJS 里的 `require`）。

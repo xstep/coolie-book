@@ -1,3 +1,10 @@
+# 下载
+使用 coolie demo 命令下载本 demo。
+```
+➜ coolie demo 4
+```
+
+
 # CSS 压缩
 CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块，默认配置为：
 

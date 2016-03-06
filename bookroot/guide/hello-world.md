@@ -1,5 +1,11 @@
 coolie 好不好用，先从 hello world 开始。
 
+# 下载
+使用 coolie demo 命令下载本 demo。
+```
+➜ coolie demo 1
+```
+
 
 # 准备
 先准备以下目录

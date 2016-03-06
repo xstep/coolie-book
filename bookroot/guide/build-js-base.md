@@ -1,3 +1,9 @@
+# 下载
+使用 coolie demo 命令下载本 demo。
+```
+➜ coolie demo 2
+```
+
 # JS 压缩
 
 JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模块，默认配置为：
