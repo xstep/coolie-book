@@ -7,6 +7,14 @@
 - 测试断言库：[jasmine](http://jasmine.github.io/)
 - 开发可视化：[webstorm](https://www.jetbrains.com/webstorm/)
 
+
+# 下载
+使用 `coolie demo` 命令下载本 demo。
+```
+➜ coolie demo 11
+```
+
+
 # coolie-demo11
 新建一个 `coolie-demo11` 目录。
 
@@ -320,7 +328,31 @@ describe('coolie-demo11 unit test', function () {
 
 保存之后就可以玩了。
 
+![](https://dn-fed.qbox.me/@/res/20160409002449989491933608)
+
+从左到右：
+
+- 左：单元测试按钮
+- 中：单元测试调试模式
+- 右：单元测试覆盖率测试
+
 ## 单元测试
+点击中间按钮。启动之后会让你选择用浏览器打开
+
+![](https://dn-fed.qbox.me/@/res/20160409002650354856846888)
+
+测试完成会显示结果。
+
+![](https://dn-fed.qbox.me/@/res/20160409002908556058622888)
 
 
 ## 覆盖率测试
+
+点击右边的按钮，覆盖率测试。
+
+![](https://dn-fed.qbox.me/@/res/20160409003604488990736375)
+
+测试完成会弹出测试摘要，可以点击原始文件进去查看。
+
+![](https://dn-fed.qbox.me/@/res/20160409003437915417808341)
+
