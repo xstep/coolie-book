@@ -90,6 +90,237 @@ define(function (require, exports, module) {
 });
 ```
 
+# 安装测试模块
+新建一个 `package.json`
+
+```
+{
+    "name": "coolie-demo11",
+    "version": "0.0.1"
+}
+```
+
+然后安装模块
+
+```
+npm install -SD jasmine-core karma karma-coverage karma-coveralls karma-jasmine karma-phantomjs-launcher phantomjs-prebuilt 
+```
+
+这里推荐使用 [cnpm](http://cnpmjs.org/) 安装，快。
+
+初始化单元测试配置文件 `karma.config.js`。这里直接复制这个文件即可
+```
+// Karma configuration
+// Generated on Mon Nov 17 2014 14:46:48 GMT+0800 (中国标准时间)
+
+module.exports = function (config) {
+    config.set({
+
+        // base path that will be used to resolve all patterns (eg. files, exclude)
+        basePath: '',
 
 
+        // frameworks to use
+        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        // 单元测试断言库
+        frameworks: ['jasmine'],
 
+
+        client: {},
+
+
+        // list of files / patterns to load in the browser
+        files: [
+            // 直接引入模块加载器
+            './coolie.js',
+            {
+                // 加载 src 下的原始文件，但不直接引入，使用模块加载器引入
+                pattern: './src/**',
+                included: false
+            },
+            {
+                // 加载 test 下的入口文件，但不直接引入，使用模块加载器引入
+                pattern: './test/app-main.js',
+                included: false
+            },
+            // 直接引入测试主文件
+            './test/test-main.js'
+        ],
+
+
+        // list of files to exclude
+        exclude: [],
+
+
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        preprocessors: {
+            // 原始模块，需要测试覆盖率
+            './src/**': ['coverage']
+        },
+
+
+        // optionally, configure the reporter
+        // 覆盖率报告
+        coverageReporter: {
+            type: 'lcov',
+            dir: './coverage/'
+        },
+
+
+        // test results reporter to use
+        // possible values: 'dots', 'progress'
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        // 报告类型
+        reporters: ['progress', 'coveralls', 'coverage'],
+
+
+        // web server port
+        port: 9876,
+
+
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
+
+
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
+
+
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: false,
+
+
+        // start these browsers
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        browsers: [],
+
+
+        // Continuous Integration mode
+        // if true, Karma captures browsers, runs the tests and exits
+        singleRun: true,
+
+
+        // plugins
+        plugins: ['karma-*']
+    });
+};
+```
+
+这个配置文件基本不需要改动，主要的地方已经用中文注释了。
+
+
+# 测试入口文件 `test/app-main.js`
+我们需要将所有的 src 模块在这个入口模块里引入并导出。
+```
+/**
+ * 入口
+ * @author ydr.me
+ * @create 2016-04-09 00:04
+ */
+
+
+define(function (require, exports, module) {
+    'use strict';
+
+    module.exports = {
+        circle: require('../src/circle.js'),
+        square: require('../src/square.js')
+    };
+});
+```
+
+
+# 模块加载器
+在根目录
+```
+coolie install coolie.js
+```
+
+
+# 测试主文件`test/test-main.js`
+```
+/**
+ * 文件描述
+ * @author ydr.me
+ * @create 2016-04-09 00:07
+ */
+
+
+describe('coolie-demo11 unit test', function () {
+    // 模块加载器配置
+    coolie.config({
+        base: coolie.dirname
+    }).use('test/app-main.js');
+
+
+    // 圆
+    describe('circle', function () {
+        // 圆面积
+        it('.getArea', function (done) {
+            coolie.callback(function (exports) {
+                exports = exports.circle;
+
+                // 半径为 1 的圆
+                expect(exports.getArea(1)).toEqual(Math.PI);
+                done();
+            });
+        });
+
+        // 圆周长
+        it('.getCircumference', function (done) {
+            coolie.callback(function (exports) {
+                exports = exports.circle;
+
+                // 半径为 1 的圆
+                expect(exports.getCircumference(1)).toEqual(2 * Math.PI);
+                done();
+            });
+        });
+    });
+
+
+    // 方形
+    describe('square', function () {
+        // 方形面积
+        it('.getArea', function (done) {
+            coolie.callback(function (exports) {
+                exports = exports.square;
+
+                // 边长为 1 的正方形
+                expect(exports.getArea(1, 1)).toEqual(1);
+                done();
+            });
+        });
+
+        // 方形周长
+        it('.getCircumference', function (done) {
+            coolie.callback(function (exports) {
+                exports = exports.square;
+
+                // 边长为 1 的正方形
+                expect(exports.getCircumference(1, 1)).toEqual(4);
+                done();
+            });
+        });
+    });
+});
+```
+
+
+# 单元测试
+
+## webstorm 配置
+![](https://dn-fed.qbox.me/@/res/20160409002122450952799356)
+
+- 1：选择单元测试框架 karma
+- 2：填写名称“unit test”或者其他
+- 3：在下拉框里选择 `karma.config.js`
+
+保存之后就可以玩了。
+
+## 单元测试
+
+
+## 覆盖率测试
