@@ -7,16 +7,15 @@
 
 'use strict';
 
-var pkg = require('../../package.json');
+var Router = require('express').Router;
 
-// 主页
-exports.getIndex = function (req, res, next) {
-    res.send(pkg.name + '@' + pkg.version);
-};
+var router = new Router();
+var book = require('../utils/book.js');
+var configs = require('../../configs.js');
 
 
 // book
-exports.book = function (name, uri, data) {
+var buildController = function (name, uri, data) {
     return function (req, res, next) {
         var isAjax = req.headers['x-requested-with'] === 'XMLHttpRequest';
 
@@ -33,5 +32,11 @@ exports.book = function (name, uri, data) {
         res.render('book.html', data);
     };
 };
+
+
+book.buildRouters(router, buildController, configs.bookroot);
+
+
+module.exports = router;
 
 
