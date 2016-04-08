@@ -8,6 +8,9 @@
 - 开发可视化：[webstorm](https://www.jetbrains.com/webstorm/)
 
 
+关于 webstorm 的一些使用技巧文章中有提到 
+[《webstorm入门4-karma/jasmine/coverage/coveralls/phantomjs/travis-ci单元测试》](http://frontenddev.org/article/webstorm-primer-4-karma-jasmine-coverage-coveralls-phantomjs-travis-ci-unit-tests.html)。
+
 # 下载
 使用 `coolie demo` 命令下载本 demo。
 ```
@@ -15,11 +18,10 @@
 ```
 
 
-# coolie-demo11
+
+# 编写源代码
 新建一个 `coolie-demo11` 目录。
 
-
-# 编写我们的源代码
 任务是：写两个模块用于计算圆形和方形的面积、周长。
 
 新建 `src` 目录，用于存放我们的原始模块。
@@ -111,7 +113,7 @@ define(function (require, exports, module) {
 然后安装模块
 
 ```
-npm install -SD jasmine-core karma karma-coverage karma-coveralls karma-jasmine karma-phantomjs-launcher phantomjs-prebuilt 
+cnpm install -SD karma karma-coverage karma-coveralls karma-jasmine karma-phantomjs-launcher
 ```
 
 这里推荐使用 [cnpm](http://cnpmjs.org/) 安装，快。
@@ -130,7 +132,7 @@ module.exports = function (config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        // 单元测试断言库
+        // 单元测试框架
         frameworks: ['jasmine'],
 
 
