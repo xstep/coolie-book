@@ -32,7 +32,7 @@
     - [构建资源模块（demo8）](/guide/build-resource-module.md)
     - [构建异步模块（demo9）](/guide/build-async-module.md)
     - [模块分块构建（demo10）](/guide/build-chunk-module.md)
-    - [单元测试](/guide/unit-test.md)
+    - [单元测试（demo11）](/guide/unit-test.md)
     - [项目发布](/guide/project-release.md)
     - [最佳实践](/guide/best-practices.md)
 - [实例](#)

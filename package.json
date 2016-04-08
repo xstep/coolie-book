@@ -44,7 +44,7 @@
     "later": "^1.2.0",
     "marked": "^0.3.5",
     "multer": "^1.1.0",
-    "ydr-utils": "^42.2.14"
+    "ydr-utils": "^42.2.23"
   },
   "peerDependencies": {},
   "devDependencies": {
