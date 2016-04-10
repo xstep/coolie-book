@@ -231,74 +231,65 @@ coolie install coolie.js
 
 ## `test/test.circle.js`
 ```
-
-```
-## `test/test.square.js`
-```
-/**
- * 文件描述
- * @author ydr.me
- * @create 2016-04-09 00:07
- */
-
-
-describe('coolie-demo11 unit test', function () {
+describe('circle.js', function () {
     // 模块加载器配置
     coolie.config({
         base: coolie.dirname
-    }).use('test/app-main.js');
+    }).use('test/main.js');
 
+    var circle = null;
 
-    // 圆
-    describe('circle', function () {
-        // 圆面积
-        it('.getArea', function (done) {
-            coolie.callback(function (exports) {
-                exports = exports.circle;
-
-                // 半径为 1 的圆
-                expect(exports.getArea(1)).toEqual(Math.PI);
-                done();
-            });
-        });
-
-        // 圆周长
-        it('.getCircumference', function (done) {
-            coolie.callback(function (exports) {
-                exports = exports.circle;
-
-                // 半径为 1 的圆
-                expect(exports.getCircumference(1)).toEqual(2 * Math.PI);
-                done();
-            });
+    beforeAll(function (done) {
+        // 模块加载完毕之后再进行单元测试
+        coolie.callback(function (exports) {
+            circle = exports.circle;
+            done();
         });
     });
 
+    // 圆面积
+    it('.getArea', function () {
+        // 半径为 1 的圆
+        expect(circle.getArea(1)).toEqual(Math.PI);
+    });
 
-    // 方形
-    describe('square', function () {
-        // 方形面积
-        it('.getArea', function (done) {
-            coolie.callback(function (exports) {
-                exports = exports.square;
+    // 圆周长
+    it('.getCircumference', function () {
+        // 半径为 1 的圆
+        expect(circle.getCircumference(1)).toEqual(2 * Math.PI);
+    });
+});
+```
 
-                // 边长为 1 的正方形
-                expect(exports.getArea(1, 1)).toEqual(1);
-                done();
-            });
-        });
+## `test/test.square.js`
+```
+describe('square.js', function () {
+    // 模块加载器配置
+    coolie.config({
+        base: coolie.dirname
+    }).use('test/main.js');
 
-        // 方形周长
-        it('.getCircumference', function (done) {
-            coolie.callback(function (exports) {
-                exports = exports.square;
+    var square = null;
 
-                // 边长为 1 的正方形
-                expect(exports.getCircumference(1, 1)).toEqual(4);
-                done();
-            });
+    beforeAll(function (done) {
+        // 模块加载完毕之后再进行单元测试
+        coolie.callback(function (exports) {
+            square = exports.square;
+            done();
         });
     });
+
+    // 方形面积
+    it('.getArea', function () {
+        // 边长为 1 的正方形
+        expect(square.getArea(1, 1)).toEqual(1);
+    });
+
+    //// 方形周长
+    //it('.getCircumference', function () {
+    //    // 边长为 1 的正方形
+    //    expect(square.getCircumference(1, 1)).toEqual(4);
+    //});
 });
 ```
 
@@ -325,20 +316,23 @@ describe('coolie-demo11 unit test', function () {
 ## 单元测试
 点击中间按钮。启动之后会让你选择用浏览器打开
 
-![](https://dn-fed.qbox.me/@/res/20160409002650354856846888)
+![](https://dn-fed.qbox.me/@/res/20160410111947829332055449)
 
 测试完成会显示结果。
 
-![](https://dn-fed.qbox.me/@/res/20160409002908556058622888)
-
+![](https://dn-fed.qbox.me/@/res/20160410112216962464706696 =718x504)
 
 ## 覆盖率测试
+上面的`test.square.js`故意漏点一点代码没有被测试，来看看覆盖率是否正确。点击右边的按钮，覆盖率测试。
 
-点击右边的按钮，覆盖率测试。
-
-![](https://dn-fed.qbox.me/@/res/20160409003604488990736375)
+![](https://dn-fed.qbox.me/@/res/20160410112512503005562015 =830x354)
 
 测试完成会弹出测试摘要，可以点击原始文件进去查看。
 
-![](https://dn-fed.qbox.me/@/res/20160409003437915417808341)
+![](https://dn-fed.qbox.me/@/res/20160410112634476978142384 =952x460)
+
+如上图：
+
+- 绿色：已进行覆盖率测试
+- 红色：未进行覆盖率测试
 
