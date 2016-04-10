@@ -38,13 +38,6 @@
 
 ## `circle.js`
 ```
-/**
- * 计算圆的面积、周长
- * @author ydr.me
- * @create 2016-04-08 23:35
- */
-
-
 define(function (require, exports, module) {
     /**
      * 圆的面积
@@ -69,13 +62,6 @@ define(function (require, exports, module) {
 
 ## `square.js`
 ```
-/**
- * 计算方形的面积、周长
- * @author ydr.me
- * @create 2016-04-08 23:35
- */
-
-
 define(function (require, exports, module) {
     /**
      * 方形的面积
@@ -121,7 +107,6 @@ cnpm install -SD karma karma-coverage karma-coveralls karma-jasmine karma-phanto
 初始化单元测试配置文件 `karma.config.js`。这里直接复制这个文件即可
 ```
 // Karma configuration
-// Generated on Mon Nov 17 2014 14:46:48 GMT+0800 (中国标准时间)
 
 module.exports = function (config) {
     config.set({
@@ -150,11 +135,11 @@ module.exports = function (config) {
             },
             {
                 // 加载 test 下的入口文件，但不直接引入，使用模块加载器引入
-                pattern: './test/app-main.js',
+                pattern: './test/main.js',
                 included: false
             },
             // 直接引入测试主文件
-            './test/test-main.js'
+            './test/test.*.js'
         ],
 
 
@@ -221,16 +206,9 @@ module.exports = function (config) {
 这个配置文件基本不需要改动，主要的地方已经用中文注释了。
 
 
-# 测试入口文件 `test/app-main.js`
+# 测试入口文件 `test/main.js`
 我们需要将所有的 src 模块在这个入口模块里引入并导出。
 ```
-/**
- * 入口
- * @author ydr.me
- * @create 2016-04-09 00:04
- */
-
-
 define(function (require, exports, module) {
     'use strict';
 
@@ -249,7 +227,13 @@ coolie install coolie.js
 ```
 
 
-# 测试主文件`test/test-main.js`
+# 测试文件
+
+## `test/test.circle.js`
+```
+
+```
+## `test/test.square.js`
 ```
 /**
  * 文件描述
