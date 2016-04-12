@@ -5,32 +5,6 @@
 ```
 
 
-# CSS 压缩
-CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块，默认配置为：
-
-```
-{
-    // 高级优化
-    advanced: false,
-    // 属性合并
-    aggressiveMerging: false,
-    // 兼容性，“ie7”、“ie8”、“*”（ie9+）
-    compatibility: 'ie7',
-    // 调试信息
-    debug: false,
-    // 断行
-    keepBreaks: false,
-    // 注释
-    keepSpecialComments: 0,
-    // 媒体查询合并
-    mediaMerging: true,
-    // url 检查
-    rebase: false,
-    // 资源地图
-    sourceMap: false
-}
-```
-
 
 
 # demo

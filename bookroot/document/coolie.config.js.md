@@ -55,7 +55,9 @@ module.exports = function (coolie) {
             // js 文件保存目录，相对于 dest.dirname
             dest: './static/js/',
             // 分块配置
-            chunk: []
+            chunk: [],
+            // js 压缩配置
+            minify: true
         },
 
         // html 构建
@@ -64,7 +66,7 @@ module.exports = function (coolie) {
             src: [
                 './views/**/*.html'
             ],
-            // 是否压缩
+            // html 压缩配置
             minify: true
         },
 
@@ -73,9 +75,7 @@ module.exports = function (coolie) {
             // css 文件保存目录，相对于 dest.dirname
             dest: './static/css/',
             // css 压缩配置
-            minify: {
-                compatibility: 'ie7'
-            }
+            minify: true
         },
 
         // 资源
@@ -228,6 +228,78 @@ JS 压缩采用的是 uglify2。
 - [模块构建指导](./build-chunk-module.md)。
 
 
+## js.minify
+JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模块，默认配置为：
+
+```
+{
+    // 连续单语句，逗号分开
+    // 如： alert(1);alert(2); => alert(1),alert(2)
+    sequences: false,
+    
+    // 重写属性
+    // 如：foo['bar'] => foo.bar
+    properties: false,
+    
+    // 删除无意义代码
+    dead_code: false,
+    
+    // 移除`debugger;`
+    drop_debugger: true,
+    
+    // 使用不安全的压缩
+    unsafe: false,
+    
+    // 不安全压缩
+    unsafe_comps: false,
+    
+    // 压缩if表达式
+    // if(abc) { dosth. } => abc&&dosth.
+    conditionals: true,
+    
+    // 压缩比较表达式，unsafe === true
+    // !(a <= b) => a > b
+    // a = !b && !c && !d && !e => a=!(b||c||d||e)
+    comparisons: false,
+    
+    // 压缩常数表达式，移除无用的常量判断
+    // if(DEBUG){return 1}else{return 2} => return 2
+    // if(!1 == false){..} => EMPTY
+    evaluate: true,
+    
+    // 压缩布尔值
+    booleans: true,
+    
+    // 压缩循环
+    loops: true,
+    
+    // 移除未使用变量
+    // function(){ var a = 1; return 1;} => function(){return 1;}
+    unused: true,
+    
+    // 函数声明提前
+    hoist_funs: true,
+    
+    // 变量声明提前
+    hoist_vars: false,
+    
+    // 压缩 if return if continue
+    if_return: true,
+    
+    // 合并连续变量省略
+    join_vars: true,
+    
+    // 小范围连续变量压缩
+    cascade: true,
+    
+    // 显示警告语句
+    warnings: false,
+    
+    // 全局常量，会在构建之后，删除
+    global_defs: {}
+}
+```
+
 
 # css
 CSS 文件的构建的相关配置。如：
@@ -235,8 +307,8 @@ CSS 文件的构建的相关配置。如：
 "css": {}
 ```
 
-## css.dest
-`string`。css 文件的保存目录，相对于生产目录。
+## css.dest `string`
+css 文件的保存目录，相对于生产目录。
 ```
 "css": {
     "dest": "./static/css/"
@@ -244,15 +316,14 @@ CSS 文件的构建的相关配置。如：
 ```
 
 
-## css.minify
-`object`。css 压缩的一些配置，压缩工具使用的是 clean-css。
-保持默认即可。如：
+## css.minify `object/boolean`
+
+CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块，默认配置为：
 ```
-"css": {
-    "dest": "./static/css/",
-    "minify" : {
-        "compatibility": "ie7"
-    }
+{
+    keepBreaks: false,
+    keepSpecialComments: '0',
+    mediaMerging: true
 }
 ```
 
