@@ -57,7 +57,11 @@ module.exports = function (coolie) {
             // 分块配置
             chunk: [],
             // js 压缩配置
-            minify: true
+            minify: {
+                global_defs: {
+                    DEBUG: true
+                }
+            }
         },
 
         // html 构建
@@ -321,8 +325,14 @@ css 文件的保存目录，相对于生产目录。
 CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块，默认配置为：
 ```
 {
+    // 保留断行
     keepBreaks: false,
+    // 保留特殊注释
+    // *: 全部注释
+    // 1: 头部注释
+    // 0: 无注释
     keepSpecialComments: '0',
+    // 合并 media 查询
     mediaMerging: true
 }
 ```
@@ -351,10 +361,13 @@ HTML 文件的构建的相关配置。
 默认配置为：
 ```
 {
-    //
-    removeHTMLYUIComments: true,
-    removeHTMLLineComments: true,
-    joinHTMLSpaces: true,
+    // 删除多行注释
+    removeHTMLMultipleLinesComments: true,
+    // 删除单行注释
+    removeHTMLOneLineComments: true,
+    // 合并连续空白
+    joinHTMLContinuousBlanks: true,
+    // 移除换行
     removeHTMLBreakLines: true
 }
 ```
