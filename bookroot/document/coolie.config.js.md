@@ -281,7 +281,7 @@ JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模�
     hoist_funs: true,
     
     // 变量声明提前
-    hoist_vars: false,
+    hoist_vars: true,
     
     // 压缩 if return if continue
     if_return: true,
@@ -295,7 +295,7 @@ JS 压缩采用的是 [uglify-js](https://www.npmjs.com/package/uglify-js) 模�
     // 显示警告语句
     warnings: false,
     
-    // 全局常量，会在构建之后，删除
+    // 全局常量
     global_defs: {}
 }
 ```
@@ -327,9 +327,6 @@ CSS 压缩采用的 [clean-css](https://www.npmjs.com/package/clean-css) 模块�
 }
 ```
 
-**进阶阅读**
-
-- [npm: clean-css](https://www.npmjs.com/package/clean-css)
 
 
 # html
@@ -349,11 +346,16 @@ HTML 文件的构建的相关配置。
 
 ## html.minify
 `boolean`。html 文件是否压缩，为了照顾到各种模板引擎，只删除了回车、注释，
-如果用了一些**逗比**的缩进模板引擎，那么需要设置为 false。如：
+如果用了一些**逗比**的缩进模板引擎，那么需要设置为 false。
+
+默认配置为：
 ```
-"html": {
-    "src": "./views/**/*.html",
-    "minify": true
+{
+    //
+    removeHTMLYUIComments: true,
+    removeHTMLLineComments: true,
+    joinHTMLSpaces: true,
+    removeHTMLBreakLines: true
 }
 ```
 
