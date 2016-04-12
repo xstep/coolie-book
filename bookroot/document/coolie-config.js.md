@@ -24,6 +24,19 @@ coolie.config({
 
 
 
+# coolie.config>global
+定义全局变量。
+
+```
+coolie.config({
+    global: {
+        CLASSICAL: true
+    }
+});
+```
+
+
+
 # 入口模块配置
 同样也可以在 html 里修改模块加载器的配置。
 即在 html 里的配置，一个简单的配置示例：

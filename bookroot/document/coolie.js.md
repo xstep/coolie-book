@@ -20,21 +20,7 @@ coolie.config({
 ```
 
 
-# DEBUG
-coolie 会生成一个全局变量`DEBUG`，当配置了`config>debug`（详见：[模块加载器配置文档](./coolie-config.js.md)）为`true`的时候。
-`DEBUG`的用途主要用在开发环境，构建之后会被删除：
-```
-var url = '1';
 
-if(DEBUG){
-    url = '2';
-}
-```
-
-构建之后：
-```
-var url = '1';
-```
 
 
 # require(moduleId[, modulePipeline])
