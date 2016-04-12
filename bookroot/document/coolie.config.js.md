@@ -140,6 +140,23 @@ module.exports = function (coolie) {
 }
 ```
 
+也可以使用函数来动态指定
+```
+{
+    "host": function(type, path) {
+        if (/\.(png|jpg|jpeg|gif|webp|bmp)$/i.test(path)) {
+            return 'http://img.cdn.com';
+        }
+                    
+        return {
+            css: 'http://css.cdn.com/',
+            js: 'http://js.cdn.com/',
+            res: 'http://res.cdn.com/'
+        }[type];
+    }
+}
+```
+
 ## dest.versionLength `number`
 版本号长度，默认为 32 位。
 ```
