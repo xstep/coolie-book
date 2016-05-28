@@ -1,4 +1,4 @@
-目前 coolie.js 是基于 [seajs#3.0.1](http://seajs.org/) 的二次封装，主要有以下变化：
+目前 coolie.js#1.x 是基于 [seajs#3.0.1](http://seajs.org/) 的二次封装，主要有以下变化：
 
 
 # API、配置更简练

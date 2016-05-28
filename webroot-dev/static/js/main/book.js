@@ -103,7 +103,7 @@ var getPage = function (url) {
             });
         },
         onError: function () {
-            alert('页面内容获取失败');
+            location.reload();
         },
         onComplete: function () {
             buildProgress.done();

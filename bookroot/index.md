@@ -1,6 +1,5 @@
 - [介绍](#)
     - [coolie 是什么](/introduction/coolie.md)
-    - [coolie 与 seajs](/introduction/coolie-vs-seajs.md)
     - [模块化开发](/introduction/module-development.md)
     - [模块化规范](/introduction/module-definition.md)
     - [模块类型](/introduction/module-type.md)
