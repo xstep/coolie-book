@@ -13,24 +13,24 @@
 使用方法：
 
 ```
-require('style.css', 'css');
+require('style.css');
 ```
 
-[详细阅读点这里](/introduction/module-type.md)。
+[coolie 支持的模块类型](/introduction/module-type.md)。
 
 
 # demo
 ## 初始化目录结构
 新建`coolie-demo8`目录：
 ```
-.
+coolie-demo8
 └── webroot-dev
 
 1 directory, 0 files
 ```
 
 ## 初始化文件
-准备一张图片`coolie.png`，放在 src 目录下。
+准备一张图片`coolie.png`，放在 webroot-dev 目录下。
 
 ### style.css
 然后在 webroot-dev 目录下新建`style.css`：
@@ -52,11 +52,11 @@ body{
 ### index.js
 然后在 webroot-dev 目录下新建入口模块`index.js`：
 ```
-// 引入样式文件模块
-var style = require('./style.css', 'css|style');
+// 引入样式文件模块，并自动插入到 style 标签里
+require('./style.css', 'css|style');
 
-// 在文档里插入该 html 片段
-document.getElementById('demo').innerHTML = require('template.html', 'html');
+// 在文档里插入 html 片段
+document.getElementById('demo').innerHTML = require('./template.html');
 ```
 
 
@@ -138,29 +138,14 @@ coolie.config({
 ```
 <!doctype html>
 <meta charset="utf-8">
-
 <div id="demo"></div>
 
-<script coolie src="coolie.js"
-data-config="coolie-config.js"
-data-main="index.js"></script>
+<script src="/node_modules/coolie.js/coolie.js"
+        coolie
+        data-config="/coolie-config.js"
+        data-main="index.js"></script>
 ```
 
-此时的目录结构为：
-```
-.
-└── webroot-dev
-    ├── coolie-config.js
-    ├── coolie.js
-    ├── coolie.min.js
-    ├── coolie.png
-    ├── index.html
-    ├── index.js
-    ├── style.css
-    └── template.html
-
-1 directory, 8 files
-```
 
 ## 前端构建前运行
 在`src`目录下，使用[sts](https://www.npmjs.com/package/sts)执行：
