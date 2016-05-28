@@ -5,143 +5,149 @@
  */
 
 
-define(function (require, exports, module) {
-    'use strict';
-
-    var xhr = require('../alien/core/communication/xhr.js');
-    var selector = require('../alien/core/dom/selector.js');
-    var attribute = require('../alien/core/dom/attribute.js');
-    var event = require('../alien/core/event/touch.js');
-    var alert = require('../alien/widgets/alert.js');
-    var controller = require('../alien/utils/controller.js');
-    var Prettify = require('../alien/ui/prettify/index.js');
-
-    var $navs = selector.query('#nav li');
-    var $navAction = selector.query('#navAction')[0];
-    var $main = selector.query('#main')[0];
-    var $content = selector.query('#content')[0];
-    var $nav = selector.query('#nav')[0];
-    var history = window.history;
-    var APP = window.APP;
-    var navMap = {};
-    var lastURL = location.pathname;
-    var navActive = false;
-    var activeClass = 'active';
+'use strict';
 
 
-    // 实现 nav
-    var buildNav = function () {
-        var $navLinks = selector.query('#nav a');
+var ajax = require('blear.core.ajax');
+var selector = require('blear.core.selector');
+var attribute = require('blear.core.attribute');
+var layout = require('blear.core.layout');
+var transform = require('blear.core.transform');
+var event = require('blear.core.event');
+var time = require('blear.utils.time');
+var array = require('blear.utils.array');
 
-        $navLinks.forEach(function ($link) {
-            var href = attribute.attr($link, 'href');
 
-            navMap[href] = selector.parent($link)[0];
-        });
+var navItemEls = selector.query('#nav li');
+var navActionEl = selector.query('#navAction')[0];
+var mainEl = selector.query('#main')[0];
+var contentEl = selector.query('#content')[0];
+var navEl = selector.query('#nav')[0];
+var history = window.history;
+var APP = window.APP;
+var navMap = {};
+var lastURL = location.pathname;
+var navActive = false;
+var activeClass = 'active';
 
-        event.on($navAction, 'click', function () {
-            attribute[(navActive ? 'remove' : 'add') + 'Class']($nav, activeClass);
-            navActive = !navActive;
-        });
-    };
 
-    // 监听 pathname
-    var listenNav = function () {
-        var pathname = location.pathname;
-        var $navItem = navMap[pathname];
+// 实现 nav
+var buildNav = function () {
+    var navLinkEls = selector.query('#nav a');
 
-        attribute.removeClass($navs, activeClass);
-        attribute.addClass($navItem, activeClass);
+    array.each(navLinkEls, function (index, linkEl) {
+        var href = attribute.attr(linkEl, 'href');
 
-        if (navActive) {
-            attribute.removeClass($nav, activeClass);
-            navActive = false;
+        navMap[href] = selector.parent(linkEl)[0];
+    });
+
+    event.on(navActionEl, 'click', function () {
+        attribute[(navActive ? 'remove' : 'add') + 'Class'](navEl, activeClass);
+        navActive = !navActive;
+    });
+};
+
+// 监听 pathname
+var listenNav = function () {
+    var pathname = location.pathname;
+    var $navItem = navMap[pathname];
+
+    array.each(navItemEls, function (index, navEl) {
+        attribute.removeClass(navEl, activeClass);
+    });
+
+    attribute.addClass($navItem, activeClass);
+
+    if (navActive) {
+        attribute.removeClass(navEl, activeClass);
+        navActive = false;
+    }
+};
+
+var buildProgress = (function () {
+    var progressEl = selector.query('#progress')[0];
+
+    return {
+        start: function () {
+            transform.transit(progressEl, {
+                width: '40%',
+                opacity: 1
+            });
+        },
+        done: function () {
+            transform.transit(progressEl, {
+                width: '100%'
+            }, function () {
+                attribute.style(progressEl, {
+                    width: 0,
+                    opacity: 0
+                });
+            });
         }
     };
+}());
 
-    var buildProgress = (function () {
-        var $progress = selector.query('#progress')[0];
-        var nextFrame = 0;
-
-        return {
-            start: function () {
-                attribute.css($progress, {
-                    opacity: 1,
-                    width: 0
-                });
-                controller.clearFrame(nextFrame);
-                nextFrame = controller.nextFrame(function () {
-                    attribute.css($progress, 'width', '10%');
-                });
-            },
-            done: function () {
-                attribute.css($progress, 'width', '100%');
-                controller.clearFrame(nextFrame);
-                nextFrame = controller.nextFrame(function () {
-                    attribute.css($progress, 'opacity', 0);
-                });
-            }
-        };
-    }());
-
-    // 获取页面
-    var getPage = function (url) {
-        buildProgress.start();
-        xhr.ajax({
-            url: url,
-            cache: true
-        }).on('success', function (json) {
-            attribute.html($content, json.content);
+// 获取页面
+var getPage = function (url) {
+    buildProgress.start();
+    ajax({
+        url: url,
+        cache: true,
+        onSuccess: function (json) {
+            attribute.html(contentEl, json.content);
             document.title = (json.pageName ? json.pageName + ' - ' : '') + APP.title;
             listenNav();
-            controller.nextFrame(function () {
-                attribute.scrollTop($main, 0);
+            time.nextFrame(function () {
+                layout.scrollTop(mainEl, 0);
                 buildPrettify();
             });
-        }).on('error', function () {
+        },
+        onError: function () {
             alert('页面内容获取失败');
-        }).on('finish', function () {
+        },
+        onComplete: function () {
             buildProgress.done();
-        });
-    };
+        }
+    });
+};
 
-    // 实现页面
-    var buildPage = function () {
-        var $nav = selector.query('#nav')[0];
-        var onclick = function () {
-            var url = attribute.attr(this, 'href');
+// 实现页面
+var buildPage = function () {
+    var navEl = selector.query('#nav')[0];
+    var onclick = function () {
+        var url = attribute.attr(this, 'href');
 
-            if (location.pathname === url) {
-                return false;
-            }
-
-            history.pushState({}, null, url);
-            getPage(url);
+        if (location.pathname === url) {
             return false;
-        };
+        }
 
-        event.on($nav, 'click', 'a', onclick);
-        event.on(document, 'click', '.j-pjax', onclick);
-
-        event.on(window, 'popstate', function (eve) {
-            var url = location.pathname;
-
-            if (url === lastURL) {
-                return;
-            }
-
-            lastURL = url;
-            getPage(url);
-        });
+        history.pushState({}, null, url);
+        lastURL = url;
+        getPage(url);
+        return false;
     };
 
-    // 语法高亮
-    var buildPrettify = function () {
-        return new Prettify('#main pre');
-    };
+    event.on(navEl, 'click', 'a', onclick);
+    event.on(document, 'click', '.j-pjax', onclick);
 
-    buildNav();
-    buildPage();
-    buildPrettify();
-    listenNav();
-});
+    event.on(window, 'popstate', function (eve) {
+        var url = location.pathname;
+
+        if (url === lastURL) {
+            return;
+        }
+
+        lastURL = url;
+        getPage(url);
+    });
+};
+
+// 语法高亮
+var buildPrettify = function () {
+    // return new Prettify('#main pre');
+};
+
+buildNav();
+buildPage();
+buildPrettify();
+listenNav();

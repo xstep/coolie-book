@@ -1,6 +1,6 @@
 coolie.config({
     mode: 'CJS',
-    mainModulesDir: "./app/",
+    mainModulesDir: "./main/",
     nodeModulesDir: '/node_modules/',
     nodeModuleMainPath: 'src/index.js'
 }).use();

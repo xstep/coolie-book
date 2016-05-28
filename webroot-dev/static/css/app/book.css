@@ -8,9 +8,7 @@ html, body {
   top: 0;
   left: 0;
   width: 0;
-  z-index: 3;
-  -webkit-transition: all 400ms;
-  transition: all 400ms; }
+  z-index: 3; }
 
 .body {
   position: relative;

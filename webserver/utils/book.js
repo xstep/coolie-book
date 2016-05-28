@@ -98,11 +98,11 @@ var fixHref = function (content, srcFile) {
 
 /**
  * 构建路由
- * @param app
+ * @param router
  * @param controller
  * @param bookroot
  */
-exports.buildRouters = function (app, controller, bookroot) {
+exports.buildRouters = function (router, controller, bookroot) {
     var ret = getFiles(bookroot);
     var summaryFiles = ret.files;
     var summaryCode = ret.code;
@@ -121,7 +121,7 @@ exports.buildRouters = function (app, controller, bookroot) {
     summaryContent = fixHref(summaryContent);
     indexContent = fixHref(indexContent);
 
-    app.get('/', controller('', '/', dato.extend({
+    router.get('/', controller('', '/', dato.extend({
         sidebar: summaryContent,
         content: indexContent
     }, data)));
@@ -139,7 +139,7 @@ exports.buildRouters = function (app, controller, bookroot) {
             .replace(REG_EXTEND, '/');
         var toc = xss.mdTOC(content).trim();
 
-        if(toc){
+        if (toc) {
             toc = '<div class="toc"><p class="toc-title">TOC</p>' + xss.mdRender(toc, {
                     favicon: false,
                     at: false,
@@ -152,8 +152,9 @@ exports.buildRouters = function (app, controller, bookroot) {
         }).html;
         content = fixHref(content, file);
 
-        app.get(uri, controller(name, uri, dato.extend({
+        router.get(uri, controller(name, uri, dato.extend({
             sidebar: summaryContent,
+            toc: toc,
             content: toc + content
         }, data)));
     });

@@ -1,14 +1,26 @@
 .toc {
-  display: inline-block;
+  background: #fff;
+  min-width: 200px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
   border: 1px solid #E8E8E8;
-  float: right;
-  margin-left: 20px; }
+  z-index: 1;
+  opacity: 0.5;
+  -webkit-transform: translateX(50%);
+  transform: translateX(50%);
+  -webkit-transition: all 300ms;
+  transition: all 300ms; }
+  .toc:hover {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%); }
   .toc .toc-title {
-    display: none;
     margin-bottom: 0;
-    background: #E8E8E8;
-    text-align: center;
-    line-height: 3; }
+    color: #ccc;
+    height: 20px;
+    line-height: 30px;
+    padding: 0 10px; }
   .toc > ul {
     padding: 20px 40px !important; }
   .toc li,

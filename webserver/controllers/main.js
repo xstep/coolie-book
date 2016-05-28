@@ -21,6 +21,7 @@ var buildController = function (name, uri, data) {
 
         data.pageName = name;
 
+
         if (isAjax) {
             return res.json({
                 title: data.title,
