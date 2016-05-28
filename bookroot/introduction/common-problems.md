@@ -40,7 +40,7 @@ coolie-cli 是前端构建工具，因此，不具备编译功能。
 
 
 
-# coolie 与 jquery 发生冲突
+# coolie#1.x 与 jquery 发生冲突
 ```
 <script src="js/jquery-2.1.1.js"></script>
 <script coolie src="./coolie.js" data-config="./coolie-config.js" data-main="main.js"></script>

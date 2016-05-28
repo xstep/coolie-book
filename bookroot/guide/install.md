@@ -52,29 +52,31 @@ npm install -g coolie --registry=http://registry.npm.taobao.org
  888   .o8  888   888  888   888   888    888   888    .o
  `Y8bod8P'  `Y8bod8P'  `Y8bod8P'  o888o  o888o  `Y8bod8P'
 
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.6                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
+┌──────────────────────────────┐
+│ coolie@2.0.0                 │
+│ 前端工程化构建工具           │
+│ 官网：https://coolie.ydr.me/ │
+└──────────────────────────────┘
 
-1. Command
-   build                  >> build a front-end project
-   book                   >> open coolie book in default browser
-   install <module>       >> install a coolie module
-   init                   >> initial configuration file
-   create                 >> create a sample, default is express
-   help                   >> show help information
-   version                >> show version information
 
-2. Options
-   -d --dirname           >> specified a directory
-   -j --coolie.js         >> initial configuration file of `coolie.js`
-   -c --coolie-cli        >> initial configuration file of `coolie-cli`
-   -e --express           >> create a express sample
-   -s --static            >> create a static sample
-   -h --help              >> show help infomation with command
+1. 命令
+   build              >>  前端工程化构建
+   book               >>  打开 coolie 官方指南
+   init               >>  初始化配置文件
+   create             >>  创建一个 coolie 样板工程
+   demo <demoId>      >>  下载 coolie 官方示例
+   help               >>  打印帮助信息
+   version            >>  打印版本信息
 
+2. 参数
+   -h --help          >>  打印命名的帮助信息
+   -d --dirname       >>  指定目标目录，默认为当前工作目录
+   -j --coolie.js     >>  初始化模块加载器配置文件，生成文件名为`coolie-config.js
+   -c --coolie-cli    >>  初始化前端工程化构建配置文件，生成文件名为`coolie.config.js
+   -e --express       >>  选择 express 全栈工程样板
+   -s --static        >>  选择静态工程样板
+   -r --redis         >>  是否在 express 样板中使用 redis
+   -m --mongoose      >>  是否在 express 样板中使用 mongoose
 ```
 
 

@@ -27,20 +27,23 @@ coolie-demo7
 ```
 
 ## 初始化文件
+### package.json
+在 `webroot-dev` 根目录下新建 `package.json`：
+```
+{
+  "name": "coolie-demo7-webroot",
+  "version": "2.0.0"
+}
+```
+
+
 ### coolie.js
 先下载模块加载器（coolie.js）：
 ```
 ➜  cd webroot-dev
-➜  coolie install coolie.js
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.4                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
-   install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
-     unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012616381600.zip
-      coolie.js file >> /coolie-demo7/coolie.js
-      coolie.js file >> /coolie-demo7/coolie.min.js
+➜  npm install --save coolie.js
+
+coolie.js@2.0.8 node_modules/coolie.js
 ```
 
 ### coolie-config.js
@@ -98,17 +101,15 @@ define(function (require, exports, module){
 然后新建`date.js`:
 ```
 // date.js
-define(function (require, exports, module){
-	exports.format = function(){
-		var now = new Date();
+exports.format = function () {
+    var now = new Date();
 
-		return [
-			now.getFullYear(), 
-			now.getMonth() + 1,
-			now.getDate()
-		].join('-');
-	};
-});
+    return [
+        now.getFullYear(),
+        now.getMonth() + 1,
+        now.getDate()
+    ].join('-');
+};
 ```
 
 依赖链条很清晰：
