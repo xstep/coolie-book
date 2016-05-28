@@ -157,10 +157,6 @@ coolie.config({
 
 ![](https://dn-fed.qbox.me/@/res/20160126210848618401171152 =720x346)
 
-如上图：
-
-- 从页面上直观的看出，正确的执行了`style.css`和`template.html`内容
-- 从控制台上可以看出，正确的加载了`style.css`和`template.html`模块
 
 
 ## 前端构建配置
@@ -285,73 +281,11 @@ module.exports = function (coolie) {
 
 ## 前端构建
 执行前端构建：
-```
-➜  coolie build
 
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.4                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
-
-                 1/6 >> parse coolie config
-       coolie config >> /coolie-demo8/webroot-dev/coolie.config.js
-         src dirname >> /coolie-demo8/webroot-dev
-        dest dirname >> /coolie-demo8/webroot-pro/
-
-                 2/6 >> copy files
-          copy files >> no files are copied
-
-                 3/6 >> build main module
-                   √ >> /coolie.png
-                   √ >> /index.js
-
-                 4/6 >> override coolie-config.js
-                   √ >> base: "./"
-                   √ >> async: "async/"
-                   √ >> chunk: "chunk/"
-                   √ >> version: "{}"
-                   √ >> callbacks: 0
-                   √ >> ../webroot-pro/static/js/b6122a2a4a1fbcd62c3c994106ca2a5d.js
-
-                 5/6 >> build html
-                   √ >> /coolie.js
-                   √ >> /index.html
-
-                 6/6 >> generate a resource relationship map
-                   √ >> ../webroot-pro/coolie-map.json
-
-       build success >> past 441ms
-```
+![](http://s.ydr.me/@/res/20160528215824446948260382 =802x618)
 
 从构建日志上也可以看出，构建了哪些模块。
 
-此时的目录结构为：
-```
-.
-├── webroot-dev
-│   ├── coolie-config.js
-│   ├── coolie.config.js
-│   ├── coolie.js
-│   ├── coolie.min.js
-│   ├── coolie.png
-│   ├── index.html
-│   ├── index.js
-│   ├── style.css
-│   └── template.html
-└── webroot-pro
-    ├── coolie-map.json
-    ├── index.html
-    └── static
-        ├── js
-        │   ├── 4199dbc923054982882ff5afba82bdd4.js
-        │   ├── 9a15f3baac85a8227af5a0e3a2a1a230.js
-        │   └── b6122a2a4a1fbcd62c3c994106ca2a5d.js
-        └── res
-            └── 7d9bbb425d679ca6c75f1cbbc66785fa.png
-
-5 directories, 15 files
-```
 
 
 ## 前端构建后运行
@@ -380,7 +314,7 @@ module.exports = function (coolie) {
     "main": [
       {
         "src": "../webroot-dev/index.js",
-        "dest": "/static/js/9a15f3baac85a8227af5a0e3a2a1a230.js",
+        "dest": "/static/js/main/664c0ade7b31b0bafe89a6fe8685b2e1.js",
         "deps": [
           "../webroot-dev/style.css",
           "../webroot-dev/template.html",
@@ -388,12 +322,11 @@ module.exports = function (coolie) {
         ]
       }
     ],
-    "async": [],
     "js": [
       {
-        "dest": "/static/js/4199dbc923054982882ff5afba82bdd4.js",
+        "dest": "/static/js/0996319be2c4f9517575b54dcc4af897.js",
         "deps": [
-          "../webroot-dev/coolie.js"
+          "../webroot-dev/node_modules/coolie.js/coolie.js"
         ]
       }
     ],
@@ -405,15 +338,15 @@ module.exports = function (coolie) {
 
 ### index.html
 `index.html`页面引用了`index.js`模块，
-并且该模块构建之后的文件名为`9a15f3baac85a8227af5a0e3a2a1a230.js`，
+并且该模块构建之后的文件名为`664c0ade7b31b0bafe89a6fe8685b2e1.js`，
 该入口模块引用了`style.css`、`template.html`和`coolie.png`（图片是在 style.css 里引用的）三个模块。
 
-我们来看下入口模块`9a15f3baac85a8227af5a0e3a2a1a230.js`的内容：
+我们来看下入口模块`664c0ade7b31b0bafe89a6fe8685b2e1.js`的内容：
 ```
-/*coolie build*/
-define("0",["1","2"],function(e,t,n){var l=e("1");document.getElementById("demo").innerHTML=e("2")});
-define("1",[],function(y,d,r){coolie.importStyle("body{background:url(/static/res/7d9bbb425d679ca6c75f1cbbc66785fa.png);color:#AF00FF;font-size:60px}")});
-define("2",[],function(y,d,r){r.exports="<h1>Hello coolie</h1>"});
+/*coolie built*/
+define("0",["1","2"],function(e,n,d){e("1");document.getElementById("demo").innerHTML=e("2")});
+define("1",[],function(){return coolie.importStyle("body{background:url(/static/res/7d9bbb425d679ca6c75f1cbbc66785fa.png);color:#AF00FF;font-size:60px}")});
+define("2",[],function(){return"<h1>Hello coolie</h1>"});
 ```
 
 从上可知模块 ID 的对应关系：
