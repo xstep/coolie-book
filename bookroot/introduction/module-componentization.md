@@ -6,7 +6,7 @@
 banner
 ├── index.js
 ├── style.css <= style.scss
-├── arrow.png
+├── image.png
 └── template.html
 ```
 

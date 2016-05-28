@@ -21,6 +21,19 @@ data-config="coolie-config.js"></script>
 入口模块和模块加载器配置文件。
 
 
+
+# `<!--coolie--><!--/coolie-->`
+包裹 html 标签，标识范围内的 script、link 合并成一组
+```
+<!--coolie-->
+<script src="1.js"></script>  ====>
+<script src="2.js"></script>  ====> 1-2-3.js
+<script src="3.js"></script>  ====>
+<!--/coolie-->
+```
+
+
+
 # `coolieignore`
 标签当前标签可以被 coolie-cli 忽略构建。
 ```

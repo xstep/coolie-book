@@ -14,7 +14,7 @@
 目前，coolie-cli 按照以下六个步骤来进行。
 
 ## 1、分析配置文件
-coolie-cli 会分析指定目录下的`coolie.config.js`配置文件。
+coolie-cli 会分析指定目录下的`coolie.config.js`（默认）配置文件。
 分析出哪些 HTML 需要构建，哪些入口模块需要构建，以及 JS、CSS、资源文件的存放目录等等。
 配置文件基本是与工程的大小无关的，因为路径是支持 [glob](./resource-path.md) 格式的。
 
@@ -30,7 +30,7 @@ coolie-cli 会分析指定目录下的`coolie.config.js`配置文件。
 写入配置的文件主要是异步模块和分块模块的版本号，因为异步模块和分块模块都是用 ID 来表示的。
 
 ## 5、构建 html
-接下来就是构建 html，依次分析 html 里的资源标签和合并标记（即：`<!--coolie--><!--/coolie-->`），
+接下来就是构建 html，依次分析 html 里的资源标签和合并标记（即：[coolie 指令](./coolie-directive.md)），
 找出引用资源，然后进行压缩、合并、版本管理，并且替换在 html 里的引用路径。
 
 ## 6、生成 coolie-map.json

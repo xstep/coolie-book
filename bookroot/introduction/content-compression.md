@@ -13,7 +13,9 @@ coolie 的内容压缩也是别具一格。
 ```
 
 page1.html 引用了 `module1`、`module2`、`module3`和`module4`四个样式模块，
-并且将这 4 个样式模块分为一组，表示将这个 4 个样式模块合并压缩。
+并且将这 4 个样式模块分为一组，表示将这个 4 个样式模块合并压缩（[coolie 指令](./coolie-directive.md)）。
+
+
 
 coolie-cli 构建之后
 ```

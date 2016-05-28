@@ -3,7 +3,7 @@
 coolie-cli 的模块构建方式应该是比较特殊的一类，与 webpack 一样，都是另辟蹊径。
 
 - webpack：依赖模块放到数组里，数组索引值就是模块 ID。
-- coolie-cli：依赖模块全局标记 ID（三十六进制）。
+- coolie-cli：依赖模块全局标记 ID（三十六进制, 0-z）。
 
 coolie-cli 可以将长长的物理路径压缩成最短的字符，达到压缩率最大化，而不是将模块直接合并。
 
@@ -66,11 +66,10 @@ define('2',[],function(r,e,m){m.exports='module2'})
 即如上代码所示，`main.js`（入口模块）依赖了`module1.js`和`module2.js`两个模块，
 所以他们被合并在一起了。
 
-聪明的 coolie-cli，同时还支持[模块分块](./module-chunk.md)和[异步模块](./async-module.md)。
+聪明的 coolie-cli，同时还支持[模块分块（公共模块自动抽离）](./module-chunk.md)和[异步模块](./async-module.md)。
 
 
 
-[支持的模块类型](./module-type.md)
 
 
 

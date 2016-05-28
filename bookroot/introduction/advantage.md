@@ -17,22 +17,27 @@ coolie 属于通用级别的前端工程化解决方案，与工程类型无关�
 
 
 # 前端模块加载器零配置
-前端模块加载器只有一个配置项（只有`base`一项，[详细点这里](/document/coolie-config.js.md)）。
-并且该配置文件可以自动生成（使用`coolie init -j`，[详细点这里](/guide/coolie-config.js.md)）。
+前端模块加载器只有少量配置项（[模块加载器配置](/document/coolie-config.js.md)）。
+并且该配置文件可以自动生成（使用`coolie init -j`）。
 
 
 # 前端开发构建工具少配置
-同样，前端开发构建工具的配置也是非常的少（[详细点这里](/document/coolie.config.js.md)）。
-也同样，该配置文件可以自动生成（使用`coolie init -c`，[详细点这里](/guide/coolie-config.js.md)）。
+同样，前端开发构建工具的配置也是非常的少（[前端构建工具配置](/document/coolie.config.js.md)）。
+也同样，该配置文件可以自动生成（使用`coolie init -c`）。
 
 仅仅需要一点点配置，就可以省去你的大量的 grunt、gulp、webpack 代码。
 
 
-# 开发 CMD，生产 CMD
-开发环境（构建之前）下使用最为人性化的 [cmd 规范](/introduction/module-definition.md)：
+# 开发兼容 CJS 和 CMD，生产 CMD
+开发环境（构建之前）兼容 CJS 和 CMD 规范（[模块规范](/introduction/module-definition.md)）：
+```
+require('./path/to/some/module')
+require('some-node-module');
+```
+和
 ```
 define(function(require, exports, module){
-    require('path/to/some/module')
+    require('./path/to/some/module')
 });
 ```
 生产环境（构建之后）依然是 CMD 规范。
