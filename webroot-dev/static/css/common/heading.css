@@ -1,8 +1,6 @@
 .heading {
   position: relative; }
   .heading > a {
-    position: relative;
-    display: block;
     color: #444 !important; }
     .heading > a,
     .heading > a:link,

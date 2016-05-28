@@ -52,30 +52,30 @@ body{
 ### index.js
 然后在 webroot-dev 目录下新建入口模块`index.js`：
 ```
-define(function (require, exports, module) {
-    // 引入样式文件模块
-    var style = require('./style.css', 'style');
+// 引入样式文件模块
+var style = require('./style.css', 'css|style');
 
-    // 在文档里插入该 html 片段
-    document.getElementById('demo').innerHTML = require('template.html', 'html');
-});
+// 在文档里插入该 html 片段
+document.getElementById('demo').innerHTML = require('template.html', 'html');
+```
+
+
+### package.json
+新建 `package.json`:
+```
+{
+  "name": "coolie-demo8-webroot",
+  "version": "2.0.0"
+}
 ```
 
 
 ### coolie.js
 使用命令下载模块加载器：
 ```
-➜  coolie install coolie.js
+➜  npm install --save coolie.js
 
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.4                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
-   install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
-     unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012621071600.zip
-      coolie.js file >> /coolie-demo8/webroot-dev/coolie.js
-      coolie.js file >> /coolie-demo8/webroot-dev/coolie.min.js
+coolie.js@2.0.8 node_modules/coolie.js
 ```
 
 ### coolie-config.js
@@ -101,15 +101,33 @@ define(function (require, exports, module) {
  *
  * @link http://coolie.ydr.me/guide/coolie-config.js/
  * @author ydr.me
- * @version 1.0.22
- * @create 2015-12-15 17:39:19
+ * @version 2.0.0
+ * @create 2016-05-28 20:34:17
  * ======================================================
  */
 
 coolie.config({
+    // 模块模式，开发环境为 COMMONJS
+    mode: 'CJS',
+
     // 入口模块基准路径，相对于当前文件
-    base: './'
+    mainModulesDir: '/',
+
+    // node_modules 目录指向，相对于 mainModulesDir
+    nodeModulesDir: '/node_modules/',
+
+    // 手动指定 node 模块的入口文件，此时将不会去加载模块的 package.json
+    // 除非你非常肯定，你加载的 node 模块的入口路径都是一致的
+    // 否则不要修改配置此项
+    // nodeModuleMainPath: 'src/index.js',
+
+    // 是否为调试模式，构建之后会修改为 false
+    debug: true,
+
+    // 全局变量，用于模块构建的预定义变量判断压缩
+    global: {}
 }).use();
+
 ```
 
 主要修改了`base`值，使入口模块基准路径指向当前文件所在的目录。

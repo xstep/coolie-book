@@ -58,7 +58,7 @@ coolie.js@2.0.8 node_modules/coolie.js
 │ The front-end development builder. │
 └────────────────────────────────────┘
 
-        init success >> /coolie-demo7/src/coolie-config.js
+        init success >> /coolie-demo7/webroot-dev/coolie-config.js
 ```
 
 修改为：
@@ -84,7 +84,7 @@ coolie.config({
     mainModulesDir: '/',
 
     // node_modules 目录指向，相对于 mainModulesDir
-    nodeModulesDir: '/node_modules/',
+    nodeModulesDir: '/node_modules/',【1】
 
     // 手动指定 node 模块的入口文件，此时将不会去加载模块的 package.json
     // 除非你非常肯定，你加载的 node 模块的入口路径都是一致的
@@ -99,7 +99,15 @@ coolie.config({
 }).use();
 ```
 
-修改了`nodeModulesDir`属性值为`/`，表示入口模块目录为根目录。
+- 【1】：修改了`nodeModulesDir`属性值为`/`，表示入口模块目录为根目录。
+
+
+### 下载使用 node 模块
+```
+➜  npm install --save blear.utils.typeis
+
+blear.utils.typeis@1.0.2 node_modules/blear.utils.typeis
+```
 
 
 ### index.js
@@ -107,8 +115,9 @@ coolie.config({
 ```
 // index.js
 var date = require('./date.js');
+var typeis = require('blear.utils.typeis');
 
-alert('today is ' + date.format());
+alert('date typeis ' + typeis(date));
 ```
 
 
@@ -116,20 +125,12 @@ alert('today is ' + date.format());
 然后新建`date.js`:
 ```
 // date.js
-exports.format = function () {
-    var now = new Date();
-
-    return [
-        now.getFullYear(),
-        now.getMonth() + 1,
-        now.getDate()
-    ].join('-');
-};
+module.exports = new Date();
 ```
 
 依赖链条很清晰：
 ```
-index.js ==依赖于==> date.js
+index.js ==依赖于==> date.js + blear.utils.typeis
 ```
 
 然后，来新建`index.html`：
@@ -152,23 +153,6 @@ index.js ==依赖于==> date.js
 3. `data-config`属性：前端模块加载器配置文件
 4. `data-main`属性：模块入口文件地址，相对于`data-config.js`里的`mainModulesDir`属性（[详细点这里](./coolie-config.js.md)）
 
-此时，目录结构为：
-```
-coolie-demo7
-└── webroot-dev
-   ├── coolie-config.js
-   ├── coolie.config.js
-   ├── coolie.js
-   ├── coolie.min.js
-   ├── date.js
-   ├── index.html
-   ├── index.js
-   ├── node_modules
-   │   └── coolie.js
-   └── package.json
-
-2 directories, 8 files
-```
 
 
 ## 前端构建前运行
@@ -176,10 +160,10 @@ coolie-demo7
 ```
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.192:62700
+                open >> http://192.168.0.192:51741
 ```
 
-![](https://dn-fed.qbox.me/@/res/20160126180723653436449822 =576x356)
+![](https://dn-fed.qbox.me/@/res/20160528203902309811564321 =420x153)
 
 如上图：
 
@@ -309,21 +293,6 @@ module.exports = function (coolie) {
 
 
 ## 前端构建
-此时目录结构为：
-```
-.
-└── webroot-dev
-    ├── coolie-config.js
-    ├── coolie.config.js
-    ├── coolie.js
-    ├── coolie.min.js
-    ├── date.js
-    ├── index.html
-    └── index.js
-
-1 directory, 7 files
-```
-
 在`webroot-dev`目录下执行前端构建：
 ```
 ➜  coolie build
@@ -366,59 +335,16 @@ module.exports = function (coolie) {
 
 
 ## 前端构建后运行
-构建之后的目录结构为：
-```
-.
-├── readme.md
-├── webroot-dev
-│   ├── coolie-config.js
-│   ├── coolie.config.js
-│   ├── coolie.js
-│   ├── coolie.min.js
-│   ├── date.js
-│   ├── index.html
-│   ├── index.js
-│   ├── node_modules
-│   │   └── coolie.js
-│   │       ├── bs-config.js
-│   │       ├── coolie.js
-│   │       ├── coolie.min.js
-│   │       ├── karma.conf.js
-│   │       ├── package.json
-│   │       ├── readme.md
-│   │       ├── test
-│   │       │   ├── modules
-│   │       │   └── test.main.js
-│   │       ├── todo.md
-│   │       └── version.md
-│   └── package.json
-└── webroot-pro
-    ├── coolie-map.json
-    ├── index.html
-    └── static
-        └── js
-            ├── 0996319be2c4f9517575b54dcc4af897.js
-            ├── 334e1ea3301b33071eb3c5c1a510fd2d.js
-            └── main
-                └── a122d19654d3cec7f22b605bc4c74308.js
-
-9 directories, 23 files
-```
-
 切换到`webroo-pro`（构建之后的目录），使用[sts](https://www.npmjs.com/package/sts)执行：
 ```
 ➜  cd ../webroot-pro
 ➜  sts
                  sts >> A static server is running.
-                open >> http://192.168.0.167:52983
+                open >> http://192.168.0.192:51741
 ```
 
-运行结果
+![](https://dn-fed.qbox.me/@/res/20160528203902309811564321 =420x153)
 
-![](https://dn-fed.qbox.me/@/res/20160126180623193976363756 =528x343)
-
-- 控制台打印了刚刚加载的模块信息，以及运行时间（从构建之前的33ms到构建之后的20ms）
-- 正确的执行了模块方法
 
 
 ## 分析构建结果
@@ -429,9 +355,10 @@ module.exports = function (coolie) {
     "main": [
       {
         "src": "../webroot-dev/index.js",
-        "dest": "/static/js/main/a122d19654d3cec7f22b605bc4c74308.js",
+        "dest": "/static/js/main/5f74f36f0751b44b4f8f3b9d9788b234.js",
         "deps": [
-          "../webroot-dev/date.js"
+          "../webroot-dev/date.js",
+          "../webroot-dev/node_modules/blear.utils.typeis/src/index.js"
         ]
       }
     ],
@@ -451,20 +378,22 @@ module.exports = function (coolie) {
 
 从文件内容上很容易的看出来，构建的 html 为 `index.html`，
 该 html 文件依赖了一个入口文件`../webroot-dev/index.js`，
-构建之后的路径为`/static/js/main/a122d19654d3cec7f22b605bc4c74308.js`，
+构建之后的路径为`/static/js/main/5f74f36f0751b44b4f8f3b9d9788b234.js`，
 该入口模块依赖了一个模块`../src/date.js`。
 
-先看入口模块文件（`a122d19654d3cec7f22b605bc4c74308.js`）：
+先看入口模块文件（`5f74f36f0751b44b4f8f3b9d9788b234.js`）：
 ```
 /*coolie built*/
-define("0",["1"],function(a,t,e){var f=a("1");alert("today is "+f.format())});
-define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFullYear(),e.getMonth()+1,e.getDate()].join("-")}});
+define("0",["1","2"],function(e,t,a){var i=e("1"),n=e("2");alert("date typeis "+n(i))});
+define("1",[],function(e,n,t){t.exports=new Date});
+define("2",[],function(e,n,t){"use strict";var r="undefined",o=function(e){return void 0!==e},u=t.exports=function(e){if(typeof e===r)return r;if(e&&e===e.window)return"window";if(typeof document!==r&&e===document)return"document";if(null===e)return"null";if(e!==e)return"nan";var n=Object.prototype.toString.call(e).slice(8,-1).toLowerCase();if(1===e.nodeType&&e.nodeName)return"element";try{if("object"===n&&"callee"in e&&o(e))return"arguments"}catch(t){}return n},i=function(e){return function(n){return u(n)===e}};u.String=i("string");u.Number=i("number");u.Array=i("array");u.Object=i("object");u.Function=i("function");u.Null=i("null");u.Undefined=i("undefined");u.Regexp=u.RegExp=i("regexp");u.Boolean=i("boolean");u.Window=i("window");u.Document=i("document");u.Element=i("element");u.Nan=u.NaN=i("nan");u.Arguments=i("arguments");u.Date=i("date");u.Error=i("error")});
 ```
 
 从文件内容上可以清晰的看到：
 
-- 入口模块的 ID 为 0，依赖了一个ID 为 1 的模块
+- 入口模块的 ID 为 0，依赖了一个ID 为 1 和 2 两个模块
 - ID 为 1 的模块在第 2 行
+- ID 为 2 的模块在第 3 行
 - 模块的路径都压缩成了单个字符
 - 模块的内的`require`、`exports`和`module`都经过了压缩
 - 文件开头打上了 coolie 的标记
@@ -475,7 +404,7 @@ define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFul
 <meta charset="utf-8">
 <script src="/static/js/0996319be2c4f9517575b54dcc4af897.js"
         data-config="/static/js/334e1ea3301b33071eb3c5c1a510fd2d.js"
-        data-main="a122d19654d3cec7f22b605bc4c74308.js"></script>
+        data-main="5f74f36f0751b44b4f8f3b9d9788b234.js"></script>
 <!--coolie built-->
 ```
 
@@ -489,7 +418,7 @@ define("1",[],function(e,t,n){t.format=function(){var e=new Date;return[e.getFul
 
 <script src="/static/js/0996319be2c4f9517575b54dcc4af897.js"
         data-config="/static/js/334e1ea3301b33071eb3c5c1a510fd2d.js"
-        data-main="a122d19654d3cec7f22b605bc4c74308.js"></script>
+        data-main="5f74f36f0751b44b4f8f3b9d9788b234.js"></script>
 ```
 
 一一对应来看：

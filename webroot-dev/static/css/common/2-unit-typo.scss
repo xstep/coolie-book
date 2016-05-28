@@ -4,6 +4,7 @@
 .typo {
   color: #666;
   line-height: 1.8;
+  counter-reset: h1 h2 h3 h4 h5 h6;
 
   a {
     text-decoration: none;
@@ -35,8 +36,8 @@
     color: #222;
     font-weight: 500;
     line-height: 1.5em;
-    margin-top: 1.2em;
-    margin-bottom: 0.8em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
 
     a {
       &:link,
@@ -55,26 +56,56 @@
 
   h1 {
     font-size: 2.2em;
+
+    &:before {
+      counter-increment: h1;
+      content: counter(h1) ". ";
+    }
   }
 
   h2 {
-    font-size: 1.8em;
+    font-size: 2em;
+
+    &:before {
+      counter-increment: h2;
+      content: counter(h1) ". " counter(h2) " ";
+    }
   }
 
   h3 {
-    font-size: 1.4em;
+    font-size: 1.8em;
+
+    &:before {
+      counter-increment: h3;
+      content: counter(h1) ". " counter(h2) ". " counter(h3) " ";
+    }
   }
 
   h4 {
-    font-size: 1.2em;
+    font-size: 1.4em;
+
+    &:before {
+      counter-increment: h4;
+      content: counter(h1) ". " counter(h2) ". " counter(h3) ". " counter(h4) " ";
+    }
   }
 
   h5 {
     font-size: 1em;
+
+    &:before {
+      counter-increment: h5;
+      content: counter(h1) ". " counter(h2) ". " counter(h3) ". " counter(h4) ". " counter(h5) " ";
+    }
   }
 
   h6 {
     font-size: 0.9em;
+
+    &:before {
+      counter-increment: h6;
+      content: counter(h1) ". " counter(h2) ". " counter(h3) ". " counter(h4) ". " counter(h5) ". " counter(h6) " ";
+    }
   }
 
   ul,
