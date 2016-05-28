@@ -20,8 +20,10 @@
     <title>{{=pageName ? pageName + ' - ': ''}}{{=title}}</title>
 
     <!--coolie-->
-    <link rel="stylesheet" href="/static/css/common/0-normalize.css"/>
-    <link rel="stylesheet" href="/static/css/common/1-base.css"/>
+    <link rel="stylesheet" href="/node_modules/blear.css.reset/src/index.css"/>
+    <link rel="stylesheet" href="/node_modules/blear.css.function/src/index.css"/>
+    <link rel="stylesheet" href="/static/css/common/toc.css"/>
+    <link rel="stylesheet" href="/static/css/common/heading.css"/>
     <link rel="stylesheet" href="/static/css/common/2-unit-typo.css"/>
     <link rel="stylesheet" href="/static/css/common/2-unit-img.css"/>
     <!--/coolie-->
@@ -59,8 +61,8 @@
 </div>
 
 
-<script coolie src="https://dn-s7.qbox.me/@/p/coolie/1.2.6/coolie.min.js"
-        data-config="~/static/js/coolie-config.js"
+<script coolie src="/node_modules/coolie.js/coolie.js"
+        data-config="/static/js/coolie-config.js"
         data-main="book.js"></script>
 
 </body>

@@ -1,0 +1,9 @@
+{
+  "name": "coolie-book-webroot",
+  "version": "2.0.0",
+  "dependencies": {
+    "blear.css.function": "^1.0.1",
+    "blear.css.reset": "^1.0.4",
+    "coolie.js": "^2.0.8"
+  }
+}

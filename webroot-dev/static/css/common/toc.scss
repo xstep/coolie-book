@@ -1,0 +1,32 @@
+.toc {
+  display: inline-block;
+  border: 1px solid #E8E8E8;
+  float: right;
+  margin-left: 20px;
+
+  & &-title {
+    display: none;
+    margin-bottom: 0;
+    background: #E8E8E8;
+    text-align: center;
+    line-height: 3;
+  }
+
+  & > ul {
+    padding: 20px 40px !important;
+  }
+
+  & li,
+  & ul {
+    margin: 0 !important;
+
+    a {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: #666;
+      }
+    }
+  }
+}

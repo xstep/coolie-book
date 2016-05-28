@@ -2,54 +2,28 @@
 // @ref https://github.com/sofish/typo.css/blob/master/typo.css
 
 .typo {
-  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga", "kern";
-  color: #333;
+  color: #666;
   line-height: 1.8;
 
-  .toc {
-    display: inline-block;
-    min-width: 200px;
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 2rem;
+  a {
+    text-decoration: none;
 
-    &-title {
-      margin-bottom: 1rem;
+    &:link {
+      color: #2db7f5;
     }
 
-    li, ul {
-      margin: 0;
+    &:visited {
+      color: #CACACA;
     }
-  }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
-    font-weight: normal;
-    color: #000;
-    margin-bottom: 0.4em;
-    line-height: 1.5;
-  }
+    &:hover {
+      border-bottom: 1px solid;
+      text-decoration: none;
+      color: #57c5f7;
+    }
 
-  .heading {
-    a {
-      color: #444;
-
-      &,
-      &:link,
-      &:visited,
-      &:hover,
-      &:active {
-        text-decoration: none;
-      }
-
-      &:hover {
-        color: #000;
-      }
+    &:active {
+      color: #2baee9;
     }
   }
 
@@ -57,21 +31,50 @@
     margin-bottom: 1.8em;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    color: #222;
+    font-weight: 500;
+    line-height: 1.5em;
+    margin-top: 1.2em;
+    margin-bottom: 0.8em;
+
+    a {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: #666;
+        border-bottom: 1px dotted;
+      }
+    }
+
+    small {
+      font-size: 70%;
+    }
+  }
+
   h1 {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 
   h2 {
-    font-size: 1.6em;
+    font-size: 1.8em;
   }
 
-  * + h1,
-  * + h2,
-  * + h3,
-  * + h4,
-  * + h5,
-  * + h6 {
-    margin-top: 2em;
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  h6 {
+    font-size: 0.9em;
   }
 
   ul,
@@ -95,11 +98,11 @@
     margin-top: 1em;
   }
 
-  ol {
+  ol li {
     list-style: decimal;
   }
 
-  ul {
+  ul li {
     list-style: square;
   }
 
@@ -111,23 +114,21 @@
     width: 100%;
   }
 
-  table th, table td, table caption {
+  th {
+    background: #fbfbfb;
+  }
+
+  caption {
+    border-bottom: none;
+  }
+
+  th,
+  td,
+  caption {
     border: 1px solid #ddd;
     padding: 0.5em 1em;
     color: #666;
     vertical-align: middle;
-  }
-
-  table th {
-    background: #fbfbfb;
-  }
-
-  table thead th {
-    background: #f1f1f1;
-  }
-
-  .typo table caption {
-    border-bottom: none;
   }
 
   address, caption, cite, code, dfn, em, th, var {

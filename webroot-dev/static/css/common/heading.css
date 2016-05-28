@@ -1,0 +1,25 @@
+.heading {
+  position: relative; }
+  .heading > a {
+    position: relative;
+    display: block;
+    color: #444 !important; }
+    .heading > a,
+    .heading > a:link,
+    .heading > a:visited,
+    .heading > a:hover,
+    .heading > a:active {
+      text-decoration: none !important;
+      border: 0 !important; }
+    .heading > a:before {
+      content: "#";
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: -20px;
+      opacity: 0; }
+    .heading > a:hover:before {
+      opacity: 1; }
+    .heading > a:hover {
+      color: #333 !important; }

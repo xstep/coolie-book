@@ -1,0 +1,25 @@
+.toc {
+  display: inline-block;
+  border: 1px solid #E8E8E8;
+  float: right;
+  margin-left: 20px; }
+  .toc .toc-title {
+    display: none;
+    margin-bottom: 0;
+    background: #E8E8E8;
+    text-align: center;
+    line-height: 3; }
+  .toc > ul {
+    padding: 20px 40px !important; }
+  .toc li,
+  .toc ul {
+    margin: 0 !important; }
+    .toc li a:link,
+    .toc li a:visited,
+    .toc li a:hover,
+    .toc li a:active,
+    .toc ul a:link,
+    .toc ul a:visited,
+    .toc ul a:hover,
+    .toc ul a:active {
+      color: #666; }
