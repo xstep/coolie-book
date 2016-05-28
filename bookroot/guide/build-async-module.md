@@ -54,107 +54,57 @@ window.on('hashchange', function(eve){
 ### index.js
 新建一个入口模块`index.js`：
 ```
-define(function (require, exports, module) {
-    var onhashchange = function (eve) {
-        if (location.hash === '#a') {
-            require.async('pages/a.js', function (page) {
-                page();
-            });
-        } else if (location.hash === '#b') {
-            require.async('pages/b.js', function (page) {
-                page();
-            });
-        } else {
-            require.async('pages/404.js', function (page) {
-                page();
-            });
-        }
-    };
+var onhashchange = function (eve) {
+    if (location.hash === '#a') {
+        require.async('pages/a.js', function (page) {
+            page();
+        });
+    } else if (location.hash === '#b') {
+        require.async('pages/b.js', function (page) {
+            page();
+        });
+    } else {
+        require.async('pages/404.js', function (page) {
+            page();
+        });
+    }
+};
 
-    window.onhashchange = onhashchange;
-    setTimeout(onhashchange, 0);
-});
+window.onhashchange = onhashchange;
+setTimeout(onhashchange, 0);
 ```
 
 然后新建一个 pages 目录，分别放置这些页面片段。
 
 pages/a.js：
 ```
-define(function (require, exports, module) {
-    module.exports = function () {
-        document.getElementById('demo').innerHTML = 'page a ' + Date.now();
-    };
-});
+module.exports = function () {
+    document.getElementById('demo').innerHTML = 'page a ' + Date.now();
+};
 ```
 
 pages/b.js：
 ```
-define(function (require, exports, module) {
-    module.exports = function () {
-        document.getElementById('demo').innerHTML = 'page b ' + Date.now();
-    };
-});
+module.exports = function () {
+    document.getElementById('demo').innerHTML = 'page b ' + Date.now();
+};
 ```
 
 pages/404.js：
 ```
-define(function (require, exports, module) {
-    module.exports = function () {
-        document.getElementById('demo').innerHTML = 'page 404 ' + Date.now();
-    };
-});
+module.exports = function () {
+    document.getElementById('demo').innerHTML = 'page 404 ' + Date.now();
+};
 ```
 
-然后，继续在 webroot-dev 目录下，下载模块加载器：
-```
-➜  coolie install coolie.js
 
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.5                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
-   install coolie.js >> http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/p/j/coolie.zip
-     unzip coolie.js >> /var/folders/_8/nf73nk9d0yx_q_w6536gfr_80000gn/T/2016012621373300.zip
-      coolie.js file >> /coolie-demo9/webroot-dev/coolie.js
-      coolie.js file >> /coolie-demo9/webroot-dev/coolie.min.js
-```
+- 在 `webroot-dev` 目录下，新建`package.json`。
+- 在 `webroot-dev` 目录下，下载模块加载器`npm install --save coolie.js`。
+- 初始化模块加载器配置文件`coolie init -j`。
+- 修改`coolie-config.js` 的 `mainModulesDir: "/"` 配置，使其指向了根目录。
 
-然后初始化模块加载器配置文件`coolie-config.js`：
-```
-➜  coolie init -j
+**省略了以上步骤的详细操作方式，详细参考 [demo1](./hello-world.md)。**
 
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.5                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
-
-        init success >> /coolie-demo9/src/coolie-config.js
-```
-
-修改模块加载器配置文件为：
-```
-/**
- * ======================================================
- * coolie.js 配置文件 `coolie-config.js`
- * 使用 `coolie init -j` 生成 `coolie-config.js` 文件模板
- * 前端模块加载器配置文件
- *
- * @link http://coolie.ydr.me/guide/coolie-config.js/
- * @author ydr.me
- * @version 1.0.22
- * @create 2015-12-15 20:48:48
- * ======================================================
- */
-
-coolie.config({
-    // 入口模块基准路径，相对于当前文件
-    base: './'
-}).use();
-```
-
-只需要了`base`配置，使其指向了当前目录。
 
 最后写`index.html`：
 ```
@@ -176,39 +126,18 @@ coolie.config({
 <p><a href="#d">pages/d</a></p>
 
 <script coolie
-        src="coolie.js"
-        data-config="coolie-config.js"
+        src="/node_modules/coolie.js/coolie.js"
+        data-config="/coolie-config.js"
         data-main="index.js"></script>
 ```
 
 html 里分别加上了 4 个链接，来分别监听 hash 变化来异步载入不同的模块。
 
 
-此时的目录结构为：
-```
-.
-└── webroot-dev
-    ├── coolie-config.js
-    ├── coolie.js
-    ├── coolie.min.js
-    ├── index.html
-    ├── index.js
-    └── pages
-        ├── 404.js
-        ├── a.js
-        └── b.js
-
-2 directories, 8 files
-```
 
 
 ## 前端构建前运行
-在`src`目录下，使用[sts](https://www.npmjs.com/package/sts)执行：
-```
-➜  sts
-                 sts >> A static server is running.
-                open >> http://172.22.255.75:58920
-```
+在`webroot-dev`目录下，使用[sts](https://www.npmjs.com/package/sts)启动。
 
 ![](https://dn-fed.qbox.me/@/res/20151215210528244027950280 =693x377)
 
@@ -222,18 +151,7 @@ html 里分别加上了 4 个链接，来分别监听 hash 变化来异步载入
 
 
 ## 前端构建配置
-前端构建也不复杂，使用命令初始化前端构建配置文件（`coolie.config.js`）:
-```
-➜  coolie init -c
-
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.5                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
-
-        init success >> /coolie-demo9/src/coolie.config.js
-```
+前端构建也不复杂，使用命令初始化前端构建配置文件（`coolie.config.js`）
 
 修改配置文件为：
 ```
@@ -346,46 +264,43 @@ module.exports = function (coolie) {
 ```
 ➜  coolie build
 
-┌────────────────────────────────────┐
-│ coolie-cli                         │
-│ coolie@1.6.5                       │
-│ The front-end development builder. │
-└────────────────────────────────────┘
+┌──────────────────────────────┐
+│ coolie@2.0.0                 │
+│ 前端工程化构建工具           │
+│ 官网：https://coolie.ydr.me/ │
+└──────────────────────────────┘
 
-                 1/6 >> parse coolie config
-       coolie config >> /coolie-demo9/webroot-dev/coolie.config.js
-         src dirname >> /coolie-demo9/webroot-dev
-        dest dirname >> /coolie-demo9/webroot-pro/
 
-                 2/6 >> copy files
-          copy files >> no files are copied
+            step 1/6  >>  parse coolie-cli profile
+       coolie config  >> /coolie-demo9/webroot-dev/coolie.config.js
+         src dirname  >> /coolie-demo9/webroot-dev
+        dest dirname  >> /coolie-demo9/webroot-pro/
 
-                 3/6 >> build main module
-                   √ >> /index.js
-                   √ >> /pages/a.js
-                   √ >> /pages/b.js
-                   √ >> /pages/404.js
+            step 2/6  >>  copy files
+          copy files  >>  no files are copied
 
-                 4/6 >> override coolie-config.js
-                   √ >> base: "./"
-                   √ >> async: "async/"
-                   √ >> chunk: "chunk/"
-                   √ >> version: "{
-                          "async/1.js": "afe948d32200ecb81c4afe43d7afed45",
-                          "async/2.js": "141ae7e19078fca1a1e954507d545dcd",
-                          "async/3.js": "d6bd0d7db45a9639d6c4e60697312b7f"
-                        }"
-                   √ >> callbacks: 0
-                   √ >> ../webroot-pro/static/js/22e9f4fa525cb0c2f4477bef5eed3e58.js
+            step 3/6  >>  build main modules
+        parse module  >>  4 modules parsed
+          build main  >>  will build 4 main modules
+                 1/4  >>  /index.js
+                 2/4  >>  /pages/a.js
+                 3/4  >>  /pages/b.js
+                 4/4  >>  /pages/404.js
 
-                 5/6 >> build html
-                   √ >> /coolie.js
-                   √ >> /index.html
+            step 4/6  >>  generate coolie.js profile
+    coolie-config.js  >>  mainModulesDir: "/static/js/main/"
+    coolie-config.js  >>  asyncModulesDir: "../async/"
+    coolie-config.js  >>  chunkModulesDir: "../chunk/"
+    coolie-config.js  >>  callbacks: 0
+    coolie-config.js  >>  ../webroot-pro/static/js/6d22eee322fab66f0f6a574a74d2dba6.js
 
-                 6/6 >> generate a resource relationship map
-                   √ >> ../webroot-pro/coolie-map.json
+            step 5/6  >>  build htmls
+                 1/1  >>  /index.html
 
-       build success >> past 399ms
+            step 6/6  >>  generate coolie map
+          coolie map  >>  ../webroot-pro/coolie-map.json
+
+       build success  >>  elapsed 543ms, at 2016-05-28 22:26:52.578
 ```
 
 从实时打印的构建日志来看：
@@ -393,47 +308,11 @@ module.exports = function (coolie) {
 - 构建的入口模块不止`index.js`，还有`pages/a.js`、`pages/b.js`和`pages/404.js`
 - 构建之后的版本信息，多了`async/1.js`、`async/2.js`和`async/3.js`
 
-此时的目录结构为：
-```
-.
-├── webroot-dev
-│   ├── coolie-config.js
-│   ├── coolie.config.js
-│   ├── coolie.js
-│   ├── coolie.min.js
-│   ├── index.html
-│   ├── index.js
-│   └── pages
-│       ├── 404.js
-│       ├── a.js
-│       └── b.js
-└── webroot-pro
-    ├── coolie-map.json
-    ├── index.html
-    └── static
-        └── js
-            ├── 22e9f4fa525cb0c2f4477bef5eed3e58.js
-            ├── 4199dbc923054982882ff5afba82bdd4.js
-            ├── async
-            │   ├── 1.afe948d32200ecb81c4afe43d7afed45.js
-            │   ├── 2.141ae7e19078fca1a1e954507d545dcd.js
-            │   └── 3.d6bd0d7db45a9639d6c4e60697312b7f.js
-            └── cc6f657a2fbe6a336a75a27f65c428f6.js
-
-6 directories, 17 files
-```
-
 从目录结构也可以看出，原来的`pages`目录已经不存在了，并且多了一个`async`目录。
 
 
 ## 前端构建后运行
-切换到 dest 目录，使用[sts](https://www.npmjs.com/package/sts)执行：
-```
-➜  cd ../webroot-pro
-➜  sts
-                 sts >> A static server is running.
-                open >> http://192.168.0.182:60305
-```
+切换到 webroot-pro 目录，使用[sts](https://www.npmjs.com/package/sts)执行：
 
 ![](https://dn-fed.qbox.me/@/res/20151215211809774557246544 =693x377)
 
@@ -449,32 +328,15 @@ module.exports = function (coolie) {
     "main": [
       {
         "src": "../webroot-dev/index.js",
-        "dest": "/static/js/cc6f657a2fbe6a336a75a27f65c428f6.js",
-        "deps": []
-      }
-    ],
-    "async": [
-      {
-        "src": "../webroot-dev/pages/a.js",
-        "dest": "/static/js/async/1.afe948d32200ecb81c4afe43d7afed45.js",
-        "deps": []
-      },
-      {
-        "src": "../webroot-dev/pages/b.js",
-        "dest": "/static/js/async/2.141ae7e19078fca1a1e954507d545dcd.js",
-        "deps": []
-      },
-      {
-        "src": "../webroot-dev/pages/404.js",
-        "dest": "/static/js/async/3.d6bd0d7db45a9639d6c4e60697312b7f.js",
+        "dest": "/static/js/main/71b6a58839bc79bd924418ad47923722.js",
         "deps": []
       }
     ],
     "js": [
       {
-        "dest": "/static/js/4199dbc923054982882ff5afba82bdd4.js",
+        "dest": "/static/js/0996319be2c4f9517575b54dcc4af897.js",
         "deps": [
-          "../webroot-dev/coolie.js"
+          "../webroot-dev/node_modules/coolie.js/coolie.js"
         ]
       }
     ],
@@ -488,10 +350,22 @@ module.exports = function (coolie) {
 
 
 ### 入口模块
-接下来，看看入口模块（`cc6f657a2fbe6a336a75a27f65c428f6.js`）:
+接下来，看看入口模块（`71b6a58839bc79bd924418ad47923722.js`，已格式化）:
 ```
-/*coolie build*/
-define("0",[],function(n,a,s){var o=function(a){"#a"===location.hash?n.async("1",function(n){n()}):"#b"===location.hash?n.async("2",function(n){n()}):n.async("3",function(n){n()})};window.onhashchange=o;setTimeout(o,0)});
+/*coolie built*/
+define("0", [], function (n, o, a) {
+    var c = function (o) {
+        "#a" === location.hash ? n.async("4", function (n) {
+            n()
+        }) : "#b" === location.hash ? n.async("5", function (n) {
+            n()
+        }) : n.async("6", function (n) {
+            n()
+        })
+    };
+    window.onhashchange = c;
+    setTimeout(c, 0)
+});
 ```
 
 
@@ -500,7 +374,7 @@ define("0",[],function(n,a,s){var o=function(a){"#a"===location.hash?n.async("1"
 
 ```
 function(require, exports, module)
-function(n,       a,       s)
+function(n,       o,       a)
 ```
 
 上下一一对比，异步模块载入的方法应该是`n.async()`，通过搜索可以找到：
@@ -513,41 +387,66 @@ n.async("3",function(
 
 构建前后的一一对比，路径与 ID 的对应关系为：
 ```
-pages/a.js => 1
-pages/b.js => 2
-pages/404.js => 3
+pages/a.js => 4
+pages/b.js => 5
+pages/404.js => 6
 ```
 
 不止是同步模块的路径会被压缩，连异步模块的路径也会被压缩。
 
 
 ### index.html
-接下来去看看`index.html`：
+接下来去看看`index.html`（已格式化）：
 ```
-<!doctype html><meta charset="utf-8"><style>#demo{border:1px solid #ccc;padding:10px;font-size:20px}</style> <div id="demo"></div> <p><a href="#a">pages/a</a></p><p><a href="#b">pages/b</a></p><p><a href="#c">pages/c</a></p><p><a href="#d">pages/d</a></p> <script src="/static/js/4199dbc923054982882ff5afba82bdd4.js" data-config="~/static/js/22e9f4fa525cb0c2f4477bef5eed3e58.js" data-main="cc6f657a2fbe6a336a75a27f65c428f6.js"></script>
-<!--coolie build-->
+<!doctype html>
+<meta charset="utf-8">
+<style>#demo {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 20px
+}</style>
+<div id="demo"></div> <p><a href="#a">pages/a</a></p><p><a href="#b">pages/b</a></p><p><a href="#c">pages/c</a></p><p><a
+        href="#d">pages/d</a></p>
+<script src="/static/js/0996319be2c4f9517575b54dcc4af897.js"
+        data-config="/static/js/6d22eee322fab66f0f6a574a74d2dba6.js"
+        data-main="71b6a58839bc79bd924418ad47923722.js"></script>
+<!--coolie built-->
 ```
 
 
 ### coolie-config.js
-从`data-config`属性可知，构建之后的配置文件为`f7701ee7c175f381696a96d48f86d84d.js`:
+从`data-config`属性可知，构建之后的配置文件为`6d22eee322fab66f0f6a574a74d2dba6.js`（已格式化）:
 ```
-/*coolie build*/
-coolie.config({base:"./",async:"async/",chunk:"chunk/",debug:!1,cache:!0,builder:"1.6.5",version:{"async/1.js":"afe948d32200ecb81c4afe43d7afed45","async/2.js":"141ae7e19078fca1a1e954507d545dcd","async/3.js":"d6bd0d7db45a9639d6c4e60697312b7f"}}).use();
+/*coolie built*/
+coolie.config({
+    debug: !1,
+    mode: "AMD",
+    asyncModulesMap: {
+        4: "6039b8b176c5b79d8689eadc6cfa0840",
+        5: "546a0fa8aecd9ddee215f899080ce728",
+        6: "4e06aa7b5770cf4cc779c5976a269e91"
+    },
+    chunkModulesMap: {},
+    built: "coolie@2.0.0",
+    mainModulesDir: "/static/js/main/",
+    asyncModulesDir: "../async/",
+    chunkModulesDir: "../chunk/",
+    global: {}
+}).use();
 ```
 
-从文件内容可见，`version`属性下多了 3 个属性值：
+从文件内容可见，`asyncModulesMap`属性下多了 3 个属性值：
 ```
-version: {
-    "async/1.js": "afe948d32200ecb81c4afe43d7afed45",
-    "async/2.js": "141ae7e19078fca1a1e954507d545dcd",
-    "async/3.js": "d6bd0d7db45a9639d6c4e60697312b7f"
+asyncModulesMap: {
+    4: "6039b8b176c5b79d8689eadc6cfa0840",
+    5: "546a0fa8aecd9ddee215f899080ce728",
+    6: "4e06aa7b5770cf4cc779c5976a269e91"
 }
 ```
 
 
 当异步加载`n.async("1",function(`的时候，coolie 会先查找异步目录，`async:"async/"`下的`1.js`，
-然后去`version`里查找是否有对应的版本号，最终找到的文件就是`async/1.afe948d32200ecb81c4afe43d7afed45.js`。
+然后去`asyncModulesMap`里查找是否有对应的版本号，最终找到的文件就是`async/4.6039b8b176c5b79d8689eadc6cfa0840.js`。
 
 
 # github

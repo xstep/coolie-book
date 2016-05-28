@@ -282,7 +282,46 @@ module.exports = function (coolie) {
 ## 前端构建
 执行前端构建：
 
-![](http://s.ydr.me/@/res/20160528215824446948260382 =802x618)
+
+```
+➜  coolie build
+
+┌──────────────────────────────┐
+│ coolie@2.0.0                 │
+│ 前端工程化构建工具           │
+│ 官网：https://coolie.ydr.me/ │
+└──────────────────────────────┘
+
+
+            step 1/6  >>  parse coolie-cli profile
+       coolie config  >>  /coolie-demo8/webroot-dev/coolie.config.js
+         src dirname  >>  /coolie-demo8/webroot-dev
+        dest dirname  >>  /coolie-demo8/webroot-pro/
+
+            step 2/6  >>  copy files
+          copy files  >>  no files are copied
+
+            step 3/6  >>  build main modules
+        parse module  >>  1 modules parsed
+          build main  >>  will build 1 main modules
+                 1/1  >>  /index.js
+
+            step 4/6  >>  generate coolie.js profile
+    coolie-config.js  >>  mainModulesDir: "/static/js/main/"
+    coolie-config.js  >>  asyncModulesDir: "../async/"
+    coolie-config.js  >>  chunkModulesDir: "../chunk/"
+    coolie-config.js  >>  callbacks: 0
+    coolie-config.js  >>  ../webroot-pro/static/js/334e1ea3301b33071eb3c5c1a510fd2d.js
+
+            step 5/6  >>  build htmls
+                 1/1  >>  /index.html
+
+            step 6/6  >>  generate coolie map
+          coolie map  >>  ../webroot-pro/coolie-map.json
+
+       build success  >>  elapsed 585ms, at 2016-05-28 21:57:49.934
+```
+
 
 从构建日志上也可以看出，构建了哪些模块。
 
