@@ -21,8 +21,14 @@ var REG_EXTEND = /\.md$/i;
 var REG_HASH = /^#/;
 
 
-var indexMD = new SafeMakrdown();
-var contentMD = new SafeMakrdown();
+var indexMD = new SafeMakrdown({
+    xssable: false,
+    mentionable: false
+});
+var contentMD = new SafeMakrdown({
+    xssable: false,
+    mentionable: false
+});
 
 
 /**
