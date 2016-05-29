@@ -336,3 +336,15 @@ describe('square.js', function () {
 - 绿色：已进行覆盖率测试
 - 红色：未进行覆盖率测试
 
+
+
+
+# 小结
+至此 11 个 demo 已经全部看完了，
+覆盖了传统工程（coolie-demo2）、多模块工程（coolie-demo7）、
+单页面工程（coolie-demo9）和复合工程（coolie-demo10），
+涉及到了前端的方方面面。
+
+愿 coolie 如你所想。
+
+
