@@ -1,7 +1,6 @@
 .typo {
   color: #666;
-  line-height: 1.8;
-  counter-reset: h1 h2 h3 h4 h5 h6; }
+  line-height: 1.8; }
   .typo a {
     text-decoration: none; }
     .typo a:link {
@@ -47,29 +46,14 @@
       font-size: 70%; }
   .typo h1 {
     font-size: 2.2em; }
-    .typo h1:before {
-      counter-increment: h1;
-      content: counter(h1) ". "; }
   .typo h2 {
     font-size: 2em; }
-    .typo h2:before {
-      counter-increment: h2;
-      content: counter(h1) ". " counter(h2) " "; }
   .typo h3 {
     font-size: 1.8em; }
-    .typo h3:before {
-      counter-increment: h3;
-      content: counter(h1) ". " counter(h2) ". " counter(h3) " "; }
   .typo h4 {
     font-size: 1.4em; }
-    .typo h4:before {
-      counter-increment: h4;
-      content: counter(h1) ". " counter(h2) ". " counter(h3) ". " counter(h4) " "; }
   .typo h5 {
     font-size: 1em; }
-    .typo h5:before {
-      counter-increment: h5;
-      content: counter(h1) ". " counter(h2) ". " counter(h3) ". " counter(h4) ". " counter(h5) " "; }
   .typo h6 {
     font-size: 0.9em; }
     .typo h6:before {

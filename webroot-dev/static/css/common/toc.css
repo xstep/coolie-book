@@ -12,8 +12,10 @@
   -webkit-transform: translateX(50%);
   transform: translateX(50%);
   -webkit-transition: all 300ms;
-  transition: all 300ms;
-  counter-reset: toc1 toc2 toc3 toc4 toc5 toc6; }
+  transition: all 300ms; }
+  .toc-index {
+    margin-right: 10px;
+    color: #bbb; }
   .toc + h1,
   .toc + h2 {
     margin-top: 0; }
@@ -24,12 +26,6 @@
     opacity: 1;
     -webkit-transform: translateX(0%);
     transform: translateX(0%); }
-  .toc .toc-title {
-    margin-bottom: 0;
-    color: #ccc;
-    height: 20px;
-    line-height: 30px;
-    padding: 0 10px; }
   .toc ul li {
     list-style: none; }
   .toc > ul {
@@ -46,21 +42,3 @@
     .toc ul a:hover,
     .toc ul a:active {
       color: #666; }
-  .toc > ul > li:before {
-    counter-increment: toc1;
-    content: counter(toc1) ". "; }
-  .toc > ul > li > ul > li:before {
-    counter-increment: toc2;
-    content: counter(toc1) ". " counter(toc2) " "; }
-  .toc > ul > li > ul > li > ul > li:before {
-    counter-increment: toc3;
-    content: counter(toc1) ". " counter(toc2) ". " counter(toc3) " "; }
-  .toc > ul > li > ul > li > ul > li > ul > li:before {
-    counter-increment: toc4;
-    content: counter(toc1) ". " counter(toc2) ". " counter(toc3) ". " counter(toc4) " "; }
-  .toc > ul > li > ul > li > ul > li > ul > li > ul > li:before {
-    counter-increment: toc5;
-    content: counter(toc1) ". " counter(toc2) ". " counter(toc3) ". " counter(toc4) ". " counter(toc5) " "; }
-  .toc > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li:before {
-    counter-increment: toc6;
-    content: counter(toc1) ". " counter(toc2) ". " counter(toc3) ". " counter(toc4) ". " counter(toc5) ". " counter(toc6) " "; }

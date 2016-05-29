@@ -1,6 +1,11 @@
 .heading {
   position: relative;
 
+  &-index {
+    margin-right: 10px;
+    color: #bbb;
+  }
+
   > a {
     color: #444 !important;
 
@@ -19,7 +24,7 @@
       top: 50%;
       -webkit-transform: translateY(-50%);
       transform: translateY(-50%);
-      left: -20px;
+      left: -30px;
       opacity: 0;
     }
 

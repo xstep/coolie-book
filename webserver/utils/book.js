@@ -11,13 +11,18 @@ var fse = require('fs-extra');
 var path = require('ydr-utils').path;
 var cache = require('ydr-utils').cache;
 var dato = require('ydr-utils').dato;
-var xss = require('ydr-utils').xss;
 var marked = require('marked');
+var SafeMakrdown = require('blear.classes.safe-markdown');
+
 
 var REG_TEXT_LINK = /^\[([^\]]*)]\((.*?)\)?$/;
 var REG_MD = /\/(index|readme)\.md$/i;
 var REG_EXTEND = /\.md$/i;
 var REG_HASH = /^#/;
+
+
+var indexMD = new SafeMakrdown();
+var contentMD = new SafeMakrdown();
 
 
 /**
@@ -104,28 +109,22 @@ var fixHref = function (content, srcFile) {
  */
 exports.buildRouters = function (router, controller, bookroot) {
     var ret = getFiles(bookroot);
-    var summaryFiles = ret.files;
-    var summaryCode = ret.code;
-    var summaryContent = xss.mdRender(summaryCode, {
-        at: false,
-        favicon: false,
-        headingLink: false
-    }).html;
+    var contentFiles = ret.files;
+    var sidebarCode = ret.code;
+    var sidebarContent = contentMD.render(sidebarCode).content;
     var data = fse.readJsonSync(path.join(bookroot, './data.json'));
     var indexFile = path.join(bookroot, './readme.md');
     var indexCode = fse.readFileSync(indexFile, 'utf8');
-    var indexContent = xss.mdRender(indexCode, {
-        headingLink: true
-    }).html;
+    var indexContent = indexMD.render(indexCode).content;
 
-    summaryContent = fixHref(summaryContent);
+    sidebarContent = fixHref(sidebarContent);
     indexContent = fixHref(indexContent);
 
     router.get('/', controller('', '/', dato.extend({
-        sidebar: summaryContent,
+        sidebar: sidebarContent,
         content: indexContent
     }, data)));
-    summaryFiles.forEach(function (item) {
+    contentFiles.forEach(function (item) {
         var name = item.name;
         var file = item.file;
 
@@ -137,23 +136,14 @@ exports.buildRouters = function (router, controller, bookroot) {
         uri = uri
             .replace(REG_MD, '/')
             .replace(REG_EXTEND, '/');
-        var toc = xss.mdTOC(content).trim();
+        var ret = contentMD.render(content);
+        var toc = ret.toc;
 
-        if (toc) {
-            toc = '<div class="toc"><p class="toc-title">TOC</p>' + xss.mdRender(toc, {
-                    favicon: false,
-                    at: false,
-                    headingLink: false
-                }).html + '</div>';
-        }
-
-        content = xss.mdRender(content, {
-            headingLink: true
-        }).html;
+        content = ret.content;
         content = fixHref(content, file);
 
         router.get(uri, controller(name, uri, dato.extend({
-            sidebar: summaryContent,
+            sidebar: sidebarContent,
             toc: toc,
             content: toc + content
         }, data)));
