@@ -75,8 +75,8 @@ $title-size-small: 40px;
       text-decoration: none;
     }
 
-    &[href="#"]{
-      &,&:link,&:visited,&:hover,&:active{
+    &[href="#"] {
+      &, &:link, &:visited, &:hover, &:active {
         background: #f7f7f7;
         color: #000;
         cursor: default;
@@ -198,3 +198,25 @@ $title-size-small: 40px;
   }
 }
 
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+
+  img {
+    display: inline-block;
+  }
+
+  &-logo {
+
+  }
+
+  &-title {
+    font-size: 60px;
+    font-weight: normal;
+  }
+
+  &-desc {
+    font-size: 20px;
+    font-weight: normal;
+  }
+}

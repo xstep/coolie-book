@@ -2,11 +2,11 @@
   color: #666;
   line-height: 1.8; }
   .typo a {
-    text-decoration: none; }
-    .typo a:link {
-      color: #2db7f5; }
+    text-decoration: none;
+    margin: 0 3px; }
+    .typo a:link,
     .typo a:visited {
-      color: #CACACA; }
+      color: #2db7f5; }
     .typo a:hover {
       border-bottom: 1px solid;
       text-decoration: none;
@@ -15,50 +15,6 @@
       color: #2baee9; }
   .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table, .typo blockquote {
     margin-bottom: 1.8em; }
-  .typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6 {
-    color: #222;
-    font-weight: 500;
-    line-height: 1.5em;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em; }
-    .typo h1 a:link,
-    .typo h1 a:visited,
-    .typo h1 a:hover,
-    .typo h1 a:active, .typo h2 a:link,
-    .typo h2 a:visited,
-    .typo h2 a:hover,
-    .typo h2 a:active, .typo h3 a:link,
-    .typo h3 a:visited,
-    .typo h3 a:hover,
-    .typo h3 a:active, .typo h4 a:link,
-    .typo h4 a:visited,
-    .typo h4 a:hover,
-    .typo h4 a:active, .typo h5 a:link,
-    .typo h5 a:visited,
-    .typo h5 a:hover,
-    .typo h5 a:active, .typo h6 a:link,
-    .typo h6 a:visited,
-    .typo h6 a:hover,
-    .typo h6 a:active {
-      color: #666;
-      border-bottom: 1px dotted; }
-    .typo h1 small, .typo h2 small, .typo h3 small, .typo h4 small, .typo h5 small, .typo h6 small {
-      font-size: 70%; }
-  .typo h1 {
-    font-size: 2.2em; }
-  .typo h2 {
-    font-size: 2em; }
-  .typo h3 {
-    font-size: 1.8em; }
-  .typo h4 {
-    font-size: 1.4em; }
-  .typo h5 {
-    font-size: 1em; }
-  .typo h6 {
-    font-size: 0.9em; }
-    .typo h6:before {
-      counter-increment: h6;
-      content: counter(h1) ". " counter(h2) ". " counter(h3) ". " counter(h4) ". " counter(h5) ". " counter(h6) " "; }
   .typo ul,
   .typo ol {
     padding-left: 2em; }
@@ -75,7 +31,22 @@
   .typo ul li {
     list-style: square; }
   .typo img {
-    vertical-align: baseline; }
+    vertical-align: baseline;
+    max-width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 6px solid #e8e8e8;
+    overflow: hidden; }
+    .typo img.favicon {
+      width: 16px !important;
+      height: 16px !important;
+      max-width: none !important;
+      max-height: none !important;
+      vertical-align: middle;
+      margin: 0 2px;
+      display: inline-block;
+      border: 0;
+      border-radius: 3px; }
   .typo table {
     width: 100%; }
   .typo th {
@@ -117,23 +88,23 @@
     box-sizing: content-box; }
   .typo code, .typo pre {
     font-family: Monaco, Menlo, Consolas, "Courier New", FontAwesome, monospace;
-    background-color: #F8F8F8; }
+    background-color: #f7f7f7; }
   .typo code {
-    margin: 0 1px;
-    padding: 1px 4px;
-    border-radius: 2px;
-    color: #C7254E; }
+    margin: 0 4px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #C7254E;
+    font-size: 14px; }
   .typo pre {
-    background: #F6F6F6;
-    padding: 10px;
-    border: 1px solid #DDD;
+    padding: 15px;
     border-radius: 6px;
     word-wrap: normal;
     overflow: auto;
-    line-height: 1.4; }
+    line-height: 1.4;
+    tab-size: 4; }
   .typo pre code {
     background: transparent;
     margin: 0;
     padding: 0;
     border-radius: 0;
-    color: initial; }
+    color: #4e4e4e; }

@@ -1,12 +1,22 @@
 .heading {
+  font-family: Palatino, Garamond, Times, Georgia, serif;
   position: relative;
+  margin-bottom: 15px;
+  font-weight: normal;
 
   &-index {
     margin-right: 10px;
     color: #bbb;
   }
 
+  &-text {
+    code {
+      font-size: inherit;
+    }
+  }
+
   > a {
+    margin: 0;
     color: #444 !important;
 
     &,
@@ -35,5 +45,30 @@
     &:hover {
       color: #333 !important;
     }
+  }
+
+  &_1 {
+    font-size: 32px;
+    line-height: 64px;
+    margin-top: 50px;
+  }
+
+  &_2 {
+    font-size: 24px;
+    line-height: 48px;
+    margin-top: 30px;
+  }
+
+  &_3 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 20px;
+  }
+
+  &_4, &_5, &_6 {
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 16px;
+    font-weight: 900;
   }
 }

@@ -21,6 +21,7 @@ var staticOptions = {
     redirect: true
 };
 
+
 module.exports = function (next, app) {
     var controllers = require('./controllers/');
 

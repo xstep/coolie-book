@@ -1,9 +1,15 @@
 .heading {
-  position: relative; }
+  font-family: Palatino, Garamond, Times, Georgia, serif;
+  position: relative;
+  margin-bottom: 15px;
+  font-weight: normal; }
   .heading-index {
     margin-right: 10px;
     color: #bbb; }
+  .heading-text code {
+    font-size: inherit; }
   .heading > a {
+    margin: 0;
     color: #444 !important; }
     .heading > a,
     .heading > a:link,
@@ -24,3 +30,20 @@
       opacity: 1; }
     .heading > a:hover {
       color: #333 !important; }
+  .heading_1 {
+    font-size: 32px;
+    line-height: 64px;
+    margin-top: 50px; }
+  .heading_2 {
+    font-size: 24px;
+    line-height: 48px;
+    margin-top: 30px; }
+  .heading_3 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 20px; }
+  .heading_4, .heading_5, .heading_6 {
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 16px;
+    font-weight: 900; }

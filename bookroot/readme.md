@@ -1,8 +1,13 @@
-# ![](https://avatars3.githubusercontent.com/u/16667072?v=3&s=200 =100x100)
-coolie —— 前端**构建工具**与前端**模块加载器**组合的工程化解决方案。
+
+<div class="hero">
+    <div class="hero-logo"><img src="https://avatars3.githubusercontent.com/u/16667072?v=3&s=200" width="200" height="200"></div>
+    <h1 class="hero-title">coolie</h1>
+    <h2 class="hero-desc">前端**构建工具**与前端**模块加载器**组合的工程化解决方案。</h2>
+</div>
 
 
-## 作为前端构建工具
+
+# 作为前端构建工具 coolie-cli
 - JS 文件的分析、合并、压缩、版本管理
 - CSS 文件的分析、合并、压缩、版本管理
 - HTML 文件分析、压缩、版本管理
@@ -10,7 +15,7 @@ coolie —— 前端**构建工具**与前端**模块加载器**组合的工程�
 - 静态资源的分析、压缩、版本管理
 
 
-## 作为前端模块加载器
+# 作为前端模块加载器 coolie.js
 - 不需要提前编译
 - 兼容 ie6 - ie11/chrome/firefox，以及各种手机浏览器
 - 开发环境兼容 CommonJS、CMD 规范

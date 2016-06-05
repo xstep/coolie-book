@@ -35,7 +35,7 @@
     "url": "https://github.com/cloudcome/coolie-book/issues"
   },
   "dependencies": {
-    "blear.classes.safe-markdown": "^1.0.4",
+    "blear.classes.safe-markdown": "^1.0.5",
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.3",

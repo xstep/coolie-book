@@ -103,7 +103,7 @@ coolie 在处理资源时，会将资源的路径转为绝对路径。
 ```
 
 
-添加`coolieignore`以忽略资源构建
+添加`coolieignore`以忽略资源构建（[详见 coolie 指令](/introduction/coolie-directive.md)）
 ```
 <img src="/src/path/to/image1.png" coolieignore/>
 <img src="./path/to/image2.png"/>

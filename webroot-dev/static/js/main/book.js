@@ -56,6 +56,10 @@ var listenNav = function () {
         attribute.removeClass(navEl, activeClass);
     });
 
+    if (!$navItem) {
+        return;
+    }
+
     attribute.addClass($navItem, activeClass);
 
     if (navActive) {

@@ -7,13 +7,11 @@
 
   a {
     text-decoration: none;
+    margin: 0 3px;
 
-    &:link {
-      color: #2db7f5;
-    }
-
+    &:link,
     &:visited {
-      color: #CACACA;
+      color: #2db7f5;
     }
 
     &:hover {
@@ -29,57 +27,6 @@
 
   p, pre, ul, ol, dl, form, hr, table, blockquote {
     margin-bottom: 1.8em;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: #222;
-    font-weight: 500;
-    line-height: 1.5em;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-
-    a {
-      &:link,
-      &:visited,
-      &:hover,
-      &:active {
-        color: #666;
-        border-bottom: 1px dotted;
-      }
-    }
-
-    small {
-      font-size: 70%;
-    }
-  }
-
-  h1 {
-    font-size: 2.2em;
-  }
-
-  h2 {
-    font-size: 2em;
-  }
-
-  h3 {
-    font-size: 1.8em;
-  }
-
-  h4 {
-    font-size: 1.4em;
-  }
-
-  h5 {
-    font-size: 1em;
-  }
-
-  h6 {
-    font-size: 0.9em;
-
-    &:before {
-      counter-increment: h6;
-      content: counter(h1) ". " counter(h2) ". " counter(h3) ". " counter(h4) ". " counter(h5) ". " counter(h6) " ";
-    }
   }
 
   ul,
@@ -113,6 +60,23 @@
 
   img {
     vertical-align: baseline;
+    max-width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 6px solid #e8e8e8;
+    overflow: hidden;
+
+    &.favicon {
+      width: 16px !important;
+      height: 16px !important;
+      max-width: none !important;
+      max-height: none !important;
+      vertical-align: middle;
+      margin: 0 2px;
+      display: inline-block;
+      border: 0;
+      border-radius: 3px;
+    }
   }
 
   table {
@@ -175,24 +139,24 @@
 
   code, pre {
     font-family: Monaco, Menlo, Consolas, "Courier New", FontAwesome, monospace;
-    background-color: #F8F8F8;
+    background-color: #f7f7f7;
   }
 
   code {
-    margin: 0 1px;
-    padding: 1px 4px;
-    border-radius: 2px;
+    margin: 0 4px;
+    padding: 2px 6px;
+    border-radius: 4px;
     color: #C7254E;
+    font-size: 14px;
   }
 
   pre {
-    background: #F6F6F6;
-    padding: 10px;
-    border: 1px solid #DDD;
+    padding: 15px;
     border-radius: 6px;
     word-wrap: normal;
     overflow: auto;
     line-height: 1.4;
+    tab-size: 4;
   }
 
   pre code {
@@ -200,6 +164,6 @@
     margin: 0;
     padding: 0;
     border-radius: 0;
-    color: initial;
+    color: #4e4e4e;
   }
 }
