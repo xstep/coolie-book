@@ -50,4 +50,4 @@
     - [2.x](/version/2.x.md)
     - [1.x](/version/1.x.md)
     - [0.x](/version/0.x.md)
-- [参考](/thanks/readme.md)
+- [感谢](/thanks/readme.md)

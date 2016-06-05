@@ -27,7 +27,12 @@ var indexMD = new SafeMakrdown({
 });
 var contentMD = new SafeMakrdown({
     xssable: false,
-    mentionable: false
+    mentionable: false,
+    linkTrustedDomains: [
+        'ydr.me',
+        'frontenddev.org',
+        'qianduanblog.com'
+    ]
 });
 
 

@@ -14,7 +14,10 @@ require('../path/to/module');
 
 
 # 非相对路径
-这些模块是 node 模块，则从 `nodeModulesDir` （[模块加载器配置文件](/document/coolie-config.js.md)）目录查找。
+这些模块是 node 模块，则从 `nodeModulesDir` （[模块加载器配置文件](/document/coolie-config.js.md)）根目录查找。
+
+
+**因此，需要你前端使用的 node_modules 下的模块是平级安装的（npm3 已经支持）。**
 
 ```
 require('jquery');
