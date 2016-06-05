@@ -6,6 +6,7 @@
 - 测试驱动器：[karma](https://karma-runner.github.io/)
 - 测试断言库：[jasmine](http://jasmine.github.io/)
 - 开发可视化：[webstorm](https://www.jetbrains.com/webstorm/)
+- karma-coolie 适配器：[karma-coolie](https://github.com/cooliejs/karma-coolie)
 
 
 关于 webstorm 的一些使用技巧文章中有提到 
@@ -40,52 +41,62 @@
 
 ## `circle.js`
 ```
-define(function (require, exports, module) {
-    /**
-     * 圆的面积
-     * @param radius {Number} 半径
-     * @returns {number}
-     */
-    exports.getArea = function (radius) {
-        return Math.PI * radius * radius;
-    };
+/**
+ * 计算圆的面积、周长
+ * @author ydr.me
+ * @create 2016-04-08 23:35
+ */
 
 
-    /**
-     * 圆的周长
-     * @param radius {Number} 半径
-     * @returns {number}
-     */
-    exports.getCircumference = function (radius) {
-        return 2 * Math.PI * radius;
-    };
-});
+/**
+ * 圆的面积
+ * @param radius {Number} 半径
+ * @returns {number}
+ */
+exports.getArea = function (radius) {
+    return Math.PI * radius * radius;
+};
+
+
+/**
+ * 圆的周长
+ * @param radius {Number} 半径
+ * @returns {number}
+ */
+exports.getCircumference = function (radius) {
+    return 2 * Math.PI * radius;
+};
 ```
 
 ## `square.js`
 ```
-define(function (require, exports, module) {
-    /**
-     * 方形的面积
-     * @param width {Number} 宽
-     * @param height {Number} 高
-     * @returns {number}
-     */
-    exports.getArea = function (width, height) {
-        return width * height;
-    };
+/**
+ * 计算方形的面积、周长
+ * @author ydr.me
+ * @create 2016-04-08 23:35
+ */
 
 
-    /**
-     * 方形的周长
-     * @param width {Number} 宽
-     * @param height {Number} 高
-     * @returns {number}
-     */
-    exports.getCircumference = function (width, height) {
-        return 2 * (width + height);
-    };
-});
+/**
+ * 方形的面积
+ * @param width {Number} 宽
+ * @param height {Number} 高
+ * @returns {number}
+ */
+exports.getArea = function (width, height) {
+    return width * height;
+};
+
+
+/**
+ * 方形的周长
+ * @param width {Number} 宽
+ * @param height {Number} 高
+ * @returns {number}
+ */
+exports.getCircumference = function (width, height) {
+    return 2 * (width + height);
+};
 ```
 
 # 安装测试模块
@@ -101,26 +112,32 @@ define(function (require, exports, module) {
 然后安装模块
 
 ```
-cnpm install -SD karma karma-coverage karma-coveralls karma-jasmine karma-phantomjs-launcher
+npm install -D karma karma-coverage karma-jasmine karma-chrome-launcher karma-coolie
 ```
-
-这里推荐使用 [cnpm](http://cnpmjs.org/) 安装，快。
 
 初始化单元测试配置文件 `karma.config.js`。这里直接复制这个文件即可
 ```
-// Karma configuration
+/**
+ * karma 测试配置文件
+ * @author ydr.me
+ * @create 2016-04-20 21:15
+ */
+
+
+'use strict';
+
 
 module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: './',
 
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         // 单元测试框架
-        frameworks: ['jasmine'],
+        frameworks: ['jasmine', 'coolie'],
 
 
         client: {},
@@ -128,24 +145,26 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            // 直接引入模块加载器
-            './coolie.js',
             {
                 // 加载 src 下的原始文件，但不直接引入，使用模块加载器引入
                 pattern: './src/**',
                 included: false
             },
             {
-                // 加载 test 下的入口文件，但不直接引入，使用模块加载器引入
-                pattern: './test/main.js',
+                // 加载 src 下的原始文件，但不直接引入，使用模块加载器引入
+                pattern: './test/**',
                 included: false
             },
-            // 直接引入测试主文件
-            './test/test.*.js'
+            {
+                // 加载 test 下的入口文件，但不直接引入，使用模块加载器引入
+                pattern: './test/main.js',
+                included: true
+            }
         ],
 
 
         // list of files to exclude
+        include: [],
         exclude: [],
 
 
@@ -153,15 +172,16 @@ module.exports = function (config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             // 原始模块，需要测试覆盖率
-            './src/**': ['coverage']
+            './src/**.js': ['coverage']
         },
 
 
         // optionally, configure the reporter
         // 覆盖率报告
         coverageReporter: {
-            type: 'lcov',
-            dir: './coverage/'
+            reporters: [{
+                type: 'text-summary'
+            }]
         },
 
 
@@ -169,7 +189,7 @@ module.exports = function (config) {
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         // 报告类型
-        reporters: ['progress', 'coveralls', 'coverage'],
+        reporters: ['progress', 'coverage'],
 
 
         // web server port
@@ -191,12 +211,25 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: [],
+        browsers: ['Chrome'],
 
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: true,
+        singleRun: false,
+
+
+        // Concurrency level
+        // how many browser should be started simultaneous
+        concurrency: Infinity,
+
+
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
 
 
         // plugins
@@ -211,21 +244,23 @@ module.exports = function (config) {
 # 测试入口文件 `test/main.js`
 我们需要将所有的 src 模块在这个入口模块里引入并导出。
 ```
-define(function (require, exports, module) {
-    'use strict';
+(function (__karma__, coolie) {
+    var tests = [];
 
-    module.exports = {
-        circle: require('../src/circle.js'),
-        square: require('../src/square.js')
-    };
-});
-```
+    for (var file in __karma__.files) {
+        if (__karma__.files.hasOwnProperty(file)) {
+            if (/\/test\.[^/]*\.js$/i.test(file)) {
+                tests.push(file);
+            }
+        }
+    }
 
+    coolie.use(tests);
 
-# 模块加载器
-在根目录
-```
-coolie install coolie.js
+    coolie.callback(function () {
+        __karma__.start.call();
+    });
+})(window.__karma__, coolie);
 ```
 
 
@@ -233,22 +268,16 @@ coolie install coolie.js
 
 ## `test/test.circle.js`
 ```
+/**
+ * test circle
+ * @author ydr.me
+ * @create 2016-04-09 00:07
+ */
+
+
+var circle = require('../src/circle');
+
 describe('circle.js', function () {
-    // 模块加载器配置
-    coolie.config({
-        base: coolie.dirname
-    }).use('test/main.js');
-
-    var circle = null;
-
-    beforeAll(function (done) {
-        // 模块加载完毕之后再进行单元测试
-        coolie.callback(function (exports) {
-            circle = exports.circle;
-            done();
-        });
-    });
-
     // 圆面积
     it('.getArea', function () {
         // 半径为 1 的圆
@@ -265,22 +294,16 @@ describe('circle.js', function () {
 
 ## `test/test.square.js`
 ```
+/**
+ * test square
+ * @author ydr.me
+ * @create 2016-04-09 00:07
+ */
+
+
+var square = require('../src/square');
+
 describe('square.js', function () {
-    // 模块加载器配置
-    coolie.config({
-        base: coolie.dirname
-    }).use('test/main.js');
-
-    var square = null;
-
-    beforeAll(function (done) {
-        // 模块加载完毕之后再进行单元测试
-        coolie.callback(function (exports) {
-            square = exports.square;
-            done();
-        });
-    });
-
     // 方形面积
     it('.getArea', function () {
         // 边长为 1 的正方形
@@ -312,29 +335,21 @@ describe('square.js', function () {
 从左到右：
 
 - 左：单元测试按钮
-- 中：单元测试调试模式
-- 右：单元测试覆盖率测试
+- 中：单元测试调试模式按钮
+- 右：单元测试覆盖率测试按钮
 
 ## 单元测试
-点击中间按钮。启动之后会让你选择用浏览器打开
-
-![](https://dn-fed.qbox.me/@/res/20160410111947829332055449)
-
-测试完成会显示结果。
+点击单元测试按钮。启动之后会在后台自动打开浏览器。测试完成会显示结果。
 
 ![](https://dn-fed.qbox.me/@/res/20160410112216962464706696 =718x504)
 
 ## 覆盖率测试
-上面的`test.square.js`故意漏点一点代码没有被测试，来看看覆盖率是否正确。点击右边的按钮，覆盖率测试。
+上面的`test.square.js`故意漏点一点代码没有被测试，来看看覆盖率是否正确。点击单元测试覆盖率测试按钮，覆盖率测试。
 
-![](https://dn-fed.qbox.me/@/res/20160410112512503005562015 =830x354)
-
-测试完成会弹出测试摘要，可以点击原始文件进去查看。
-
-![](https://dn-fed.qbox.me/@/res/20160410112634476978142384 =952x460)
+![](https://dn-fed.qbox.me/@/res/20160605130142378880230269 =1260x570)
 
 如上图：
-
+    
 - 绿色：已进行覆盖率测试
 - 红色：未进行覆盖率测试
 
