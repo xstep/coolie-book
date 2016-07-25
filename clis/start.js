@@ -14,6 +14,7 @@ var util = require('util');
 var childProcess = require('child_process');
 
 var pkg = require('../package.json');
+var pm2 = require('../pm2.json');
 var configs = require('../configs.js');
 
 var startTime = Date.now();
@@ -186,8 +187,8 @@ var gitPull = function (callback) {
 // 更新代码
 var installNodeModules = function (callback) {
     logNormal('\n\n───────────[ 2/3 ]───────────');
-    exec('npm install --registry=' + NPM_REGISTRY, function () {
-        logSuccess('install node modules success');
+    exec('npm update --registry=' + NPM_REGISTRY, function () {
+        logSuccess('update node modules success');
         callback();
     });
 };
@@ -221,7 +222,7 @@ var startDebug = function (callback) {
 var startPM2 = function (callback) {
     exec([
         'pm2 start pm2.json',
-        'pm2 show ' + pkg.name
+        'pm2 show ' + pm2.name
     ], callback);
 };
 
