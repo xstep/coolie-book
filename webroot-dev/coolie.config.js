@@ -20,7 +20,7 @@ module.exports = function (coolie) {
         js: {
             // 入口模块
             main: [
-                './static/js/app/**'
+                './static/js/main/**'
             ],
             // coolie-config.js 路径
             'coolie-config.js': './static/js/coolie-config.js',
