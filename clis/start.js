@@ -20,6 +20,7 @@ var configs = require('../configs.js');
 var startTime = Date.now();
 var NPM_REGISTRY = 'http://registry.npm.taobao.org';
 var ROOT = path.join(__dirname, '../');
+var WEBROOT_DEV = path.join(ROOT, 'webroot-dev');
 var isDebug = process.argv[2] === '--debug';
 
 
@@ -166,7 +167,7 @@ var isDirectory = function (_path) {
 
 // 更新代码
 var gitPull = function (callback) {
-    logNormal('\n\n───────────[ 1/3 ]───────────');
+    logNormal('\n\n───────────[ 1/4 ]───────────');
 
     if (!isDirectory(path.join(ROOT, '.git'))) {
         logWarning('fatal: Not a git repository (or any of the parent directories): .git');
@@ -184,11 +185,34 @@ var gitPull = function (callback) {
 };
 
 
-// 更新代码
+// 更新后端模块
 var installNodeModules = function (callback) {
-    logNormal('\n\n───────────[ 2/3 ]───────────');
-    exec('npm update --registry=' + NPM_REGISTRY, function () {
+    logNormal('\n\n───────────[ 2/4 ]───────────');
+    exec([
+        'cd ' + ROOT,
+        'npm update --registry=' + NPM_REGISTRY
+    ], function () {
         logSuccess('update node modules success');
+        callback();
+    });
+};
+
+
+// 更新前端模块
+var installFrontModules = function (callback) {
+    logNormal('\n\n───────────[ 3/4 ]───────────');
+
+    if (configs.env !== 'local') {
+        logNormal('ignore front modules');
+        return callback();
+    }
+
+    exec([
+        'cd ' + WEBROOT_DEV,
+        'npm update --registry=' + NPM_REGISTRY,
+        'cd ' + ROOT
+    ], function () {
+        logSuccess('update front modules success');
         callback();
     });
 };
@@ -201,7 +225,7 @@ var startLocal = function (callback) {
 
     args.push(__filename);
     args.push('-w');
-    args.push('./webserver/,./bookroot/');
+    args.push('./webserver/');
     args.push('-e');
     args.push('js,md');
     args.push('app.js');
@@ -229,7 +253,7 @@ var startPM2 = function (callback) {
 
 // 启动
 var start = function () {
-    logNormal('\n\n───────────[ 3/3 ]───────────');
+    logNormal('\n\n───────────[ 4/4 ]───────────');
 
     var done = function () {
         logNormal('');
@@ -297,6 +321,8 @@ banner();
 // 更新代码安装模块并启动
 gitPull(function () {
     installNodeModules(function () {
-        start();
+        installFrontModules(function () {
+            start();
+        });
     });
 });
