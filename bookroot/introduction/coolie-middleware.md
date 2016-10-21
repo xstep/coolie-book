@@ -13,19 +13,19 @@ coolie-cli 中间件服务于不同的阶段，如构建 html 之前，构建 ht
 我们在构建 html 之后，再处理下 html 文件：
 
 ```
-coolie.use(function (options){  
+coolie.use(function (options) {  
     // 如果当前构建进度不是在 html 之后，则取消操作
     if( options.progress !== 'post-html' ) {
         return options;
     }
     
     // 找到有 data-src 属性的 div
-    coolie.mathHTML(options.code, {
+    options.code = coolie.matchHTML(options.code, {
         tag: 'div',
         attrs: {
             'data-src': /.*/
         }
-    },function (node){
+    }, function (node){
         // 构建资源模块，返回构建之后的 url
         var url = coolie.buildResPath(node.attrs['data-src'], options.file);
         
@@ -44,6 +44,8 @@ coolie.use(function (options){
         // 返回节点信息
         return node;
     });
+    
+    return options;
 });
 ```
 
